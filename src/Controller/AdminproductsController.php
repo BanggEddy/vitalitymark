@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class AdminproductsController extends AbstractController
 {
@@ -143,8 +144,8 @@ class AdminproductsController extends AbstractController
             'product' => $product,
         ]);
     }
-    #[Route('/editproduct/{id}', name: 'app_edit_product')]
-    public function editProduct(Request $request, Products $product, EntityManagerInterface $entityManager): Response
+
+    public function editProduct(Request $request, Products $product, EntityManagerInterface $entityManager, Filesystem $filesystem): Response
     {
         // Récupérer les données du formulaire
         $name = $request->request->get('name');
@@ -152,6 +153,27 @@ class AdminproductsController extends AbstractController
         $category = $request->request->get('category');
         $quantity = $request->request->get('quantity');
         $description = $request->request->get('description');
+
+        // Gérer le téléchargement de la nouvelle image
+        $imageFile = $request->files->get('image');
+        if ($imageFile instanceof UploadedFile) {
+            $imageName = uniqid() . '.' . $imageFile->guessExtension();
+            try {
+                $imageFile->move(
+                    $this->getParameter('images_directory'),
+                    $imageName
+                );
+            } catch (FileException $e) {
+                // Gérer l'erreur, par exemple afficher un message à l'utilisateur
+            }
+            // Supprimer l'ancienne image s'il en existe une
+            $oldImage = $product->getImages();
+            if ($oldImage) {
+                $filesystem->remove($this->getParameter('images_directory') . '/' . $oldImage);
+            }
+            // Mettre à jour le nom de la nouvelle image dans l'entité Products
+            $product->setImages($imageName);
+        }
 
         // Mettre à jour les attributs du produit avec les nouvelles valeurs
         $product->setName($name);

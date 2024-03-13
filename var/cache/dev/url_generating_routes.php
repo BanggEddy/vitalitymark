@@ -32,7 +32,6 @@ return [
     'App\Controller\AdminproductsController::deleteProduct' => [['id'], ['_controller' => 'App\\Controller\\AdminproductsController::deleteProduct'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/deleteproduct']], [], [], []],
     'App\Controller\AdminproductsController::updateProducts' => [[], ['_controller' => 'App\\Controller\\AdminproductsController::updateProducts'], [], [['text', '/adminupdateproducts']], [], [], []],
     'App\Controller\AdminproductsController::editProductForm' => [['id'], ['_controller' => 'App\\Controller\\AdminproductsController::editProductForm'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/adminformedit']], [], [], []],
-    'App\Controller\AdminproductsController::editProduct' => [['id'], ['_controller' => 'App\\Controller\\AdminproductsController::editProduct'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/editproduct']], [], [], []],
     'App\Controller\AdminvueController::index' => [[], ['_controller' => 'App\\Controller\\AdminvueController::index'], [], [['text', '/adminvue']], [], [], []],
     'App\Controller\RegistrationController::register' => [[], ['_controller' => 'App\\Controller\\RegistrationController::register'], [], [['text', '/register']], [], [], []],
     'App\Controller\SecurityController::login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], [], []],

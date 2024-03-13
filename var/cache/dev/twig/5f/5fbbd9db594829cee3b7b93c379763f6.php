@@ -75,7 +75,7 @@ class __TwigTemplate_bf74e39579bd64fb38e6f689b8f1cfd1 extends Template
     <form action=\"";
         // line 8
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_edit_product", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 8, $this->source); })()), "id", [], "any", false, false, false, 8)]), "html", null, true);
-        echo "\" method=\"post\">
+        echo "\" method=\"post\"  enctype=\"multipart/form-data\">
         <div class=\"form-group\">
             <label for=\"name\">Nom du produit</label>
             <input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" value=\"";
@@ -98,17 +98,35 @@ class __TwigTemplate_bf74e39579bd64fb38e6f689b8f1cfd1 extends Template
         echo "\">
         </div>
         <div class=\"form-group\">
+            <label for=\"image\">Image du produit</label>
+            <input type=\"file\" class=\"form-control-file\" id=\"image\" name=\"image\">
+            ";
+        // line 24
+        if (twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 24, $this->source); })()), "images", [], "any", false, false, false, 24)) {
+            // line 25
+            echo "                <small class=\"form-text text-muted\">Image actuelle : ";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 25, $this->source); })()), "images", [], "any", false, false, false, 25), "html", null, true);
+            echo "</small>
+            ";
+        } else {
+            // line 27
+            echo "                <small class=\"form-text text-muted\">Aucune image associée</small>
+            ";
+        }
+        // line 29
+        echo "        </div>
+        <div class=\"form-group\">
             <label for=\"quantity\">Quantité disponible</label>
             <input type=\"number\" class=\"form-control\" id=\"quantity\" name=\"quantity\" value=\"";
-        // line 23
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 23, $this->source); })()), "quantity", [], "any", false, false, false, 23), "html", null, true);
+        // line 32
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 32, $this->source); })()), "quantity", [], "any", false, false, false, 32), "html", null, true);
         echo "\">
         </div>
         <div class=\"form-group\">
             <label for=\"description\">Description</label>
             <textarea class=\"form-control\" id=\"description\" name=\"description\">";
-        // line 27
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 27, $this->source); })()), "description", [], "any", false, false, false, 27), "html", null, true);
+        // line 36
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 36, $this->source); })()), "description", [], "any", false, false, false, 36), "html", null, true);
         echo "</textarea>
         </div>
         <button type=\"submit\" class=\"btn btn-primary\">Enregistrer</button>
@@ -141,7 +159,7 @@ class __TwigTemplate_bf74e39579bd64fb38e6f689b8f1cfd1 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  111 => 27,  104 => 23,  97 => 19,  90 => 15,  83 => 11,  77 => 8,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  129 => 36,  122 => 32,  117 => 29,  113 => 27,  107 => 25,  105 => 24,  97 => 19,  90 => 15,  83 => 11,  77 => 8,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -153,7 +171,7 @@ class __TwigTemplate_bf74e39579bd64fb38e6f689b8f1cfd1 extends Template
 {% block body %}
 <div class=\"container\">
     <h1>Édition d'un produit</h1>
-    <form action=\"{{ path('app_edit_product', {'id': product.id}) }}\" method=\"post\">
+    <form action=\"{{ path('app_edit_product', {'id': product.id}) }}\" method=\"post\"  enctype=\"multipart/form-data\">
         <div class=\"form-group\">
             <label for=\"name\">Nom du produit</label>
             <input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" value=\"{{ product.name }}\">
@@ -165,6 +183,15 @@ class __TwigTemplate_bf74e39579bd64fb38e6f689b8f1cfd1 extends Template
         <div class=\"form-group\">
             <label for=\"category\">Catégorie</label>
             <input type=\"text\" class=\"form-control\" id=\"category\" name=\"category\" value=\"{{ product.category }}\">
+        </div>
+        <div class=\"form-group\">
+            <label for=\"image\">Image du produit</label>
+            <input type=\"file\" class=\"form-control-file\" id=\"image\" name=\"image\">
+            {% if product.images %}
+                <small class=\"form-text text-muted\">Image actuelle : {{ product.images }}</small>
+            {% else %}
+                <small class=\"form-text text-muted\">Aucune image associée</small>
+            {% endif %}
         </div>
         <div class=\"form-group\">
             <label for=\"quantity\">Quantité disponible</label>

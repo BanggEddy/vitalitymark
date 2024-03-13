@@ -6,6 +6,16 @@ controllers:
 uservue:
   path: /uservue
   controller: App\Controller\UservueController::index
-adminvue:
-  path: /adminvue
-  controller: App\Controller\AdminvueController::index
+
+#ADMINS
+adminproducts:
+  path: /adminproducts
+  controller: App\Controller\AdminproductsController::index
+
+#CRUD
+adminajouterproducts:
+  path: /product/new
+  controller: App\Controller\AdminproductsController::new
+admindeleteproducts:
+  path: /product/delete
+  controller: App\Controller\AdminproductsController::delete

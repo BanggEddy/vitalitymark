@@ -56,7 +56,7 @@ class __TwigTemplate_ef781f65281f748ec82349c5b1698d8a extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Hello UservueController!";
+        echo "Hello AdminproductsController!";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -71,37 +71,114 @@ class __TwigTemplate_ef781f65281f748ec82349c5b1698d8a extends Template
 
         // line 6
         echo "<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .product-card {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #DBFFCA;
+        border: 1px solid #ccc;
+        box-shadow: 10px 10px 2px #7cdf7c; 
+    }
+
+    .product-image {
+        width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .product-details {
+        margin-top: 10px;
+    }
+
+    .product-price {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .product-quantity {
+        color: #28a745;
+    }
+
+    .product-category {
+        color: #6c757d;
+    }
 </style>
 
-<div class=\"example-wrapper\">
-    <h1>Hello ";
-        // line 12
-        echo twig_escape_filter($this->env, (isset($context["controller_name"]) || array_key_exists("controller_name", $context) ? $context["controller_name"] : (function () { throw new RuntimeError('Variable "controller_name" does not exist.', 12, $this->source); })()), "html", null, true);
-        echo "! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/David/Desktop/vitalitymark/src/Controller/UservueController.php</code></li>
-        <li>Your template at <code>C:/Users/David/Desktop/vitalitymark/templates/uservue/index.html.twig</code></li>
-    </ul>
-    ";
-        // line 19
-        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 19, $this->source); })()), "user", [], "any", false, false, false, 19)) {
-            // line 20
-            echo "    <div class=\"mb-3\">
-        Vous êtes connecté en tant que ";
-            // line 21
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 21, $this->source); })()), "user", [], "any", false, false, false, 21), "userIdentifier", [], "any", false, false, false, 21), "html", null, true);
-            echo ", <a href=\"";
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
-            echo "\">Déconnexion</a>
-    </div>
-    ";
+<div class=\"container\">
+<br>
+<br>
+    <h1>Liste des produits</h1>
+<br>
+<br>
+    <div class=\"row\">
+        <div class=\"col-md-4\">
+            <div class=\"product-card\">
+                <h2> En ce moment</h2>
+                <img src=\"";
+        // line 53
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/cardfront.png"), "html", null, true);
+        echo "\" alt=\"";
+        echo "photo";
+        echo "\" class=\"product-image\">
+                <div class=\"product-details\">
+                    <h3>La sélection du moment</h3>
+                    <p>Découvrez nos meilleures promotions, nos dernières nouveautés ou nos plus grands succès que nous avons sélectionnés.</p>
+                    <a href=\"";
+        // line 57
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
+        echo "\" class=\"btn btn-primary\">J'en profite</a>
+                </div>
+            </div>
+        </div>
+        ";
+        // line 61
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 61, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
+            // line 62
+            echo "        <div class=\"col-md-4\">
+            <div class=\"product-card\">
+                <img src=\"";
+            // line 64
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["product"], "images", [], "any", false, false, false, 64))), "html", null, true);
+            echo "\" alt=\"";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 64), "html", null, true);
+            echo "\" class=\"product-image\">
+                <div class=\"product-details\">
+                    <h3>";
+            // line 66
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 66), "html", null, true);
+            echo "</h3>
+                    <p class=\"product-price\">";
+            // line 67
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "price", [], "any", false, false, false, 67), "html", null, true);
+            echo " €</p>
+                    <p>";
+            // line 68
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "description", [], "any", false, false, false, 68), "html", null, true);
+            echo "</p>
+                    <p class=\"product-quantity\">Quantité disponible: ";
+            // line 69
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "quantity", [], "any", false, false, false, 69), "html", null, true);
+            echo "</p>
+                    <p class=\"product-category\">Catégorie: ";
+            // line 70
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "category", [], "any", false, false, false, 70), "html", null, true);
+            echo "</p>
+                </div>
+            </div>
+        </div>
+        ";
         }
-        // line 24
-        echo "</div>
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 75
+        echo "    </div>
+</div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -129,34 +206,86 @@ class __TwigTemplate_ef781f65281f748ec82349c5b1698d8a extends Template
      */
     public function getDebugInfo()
     {
-        return array (  104 => 24,  96 => 21,  93 => 20,  91 => 19,  81 => 12,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  180 => 75,  169 => 70,  165 => 69,  161 => 68,  157 => 67,  153 => 66,  146 => 64,  142 => 62,  138 => 61,  131 => 57,  122 => 53,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'headeruser.html.twig' %}
 
-{% block title %}Hello UservueController!{% endblock %}
+{% block title %}Hello AdminproductsController!{% endblock %}
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .product-card {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #DBFFCA;
+        border: 1px solid #ccc;
+        box-shadow: 10px 10px 2px #7cdf7c; 
+    }
+
+    .product-image {
+        width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .product-details {
+        margin-top: 10px;
+    }
+
+    .product-price {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .product-quantity {
+        color: #28a745;
+    }
+
+    .product-category {
+        color: #6c757d;
+    }
 </style>
 
-<div class=\"example-wrapper\">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/David/Desktop/vitalitymark/src/Controller/UservueController.php</code></li>
-        <li>Your template at <code>C:/Users/David/Desktop/vitalitymark/templates/uservue/index.html.twig</code></li>
-    </ul>
-    {% if app.user %}
-    <div class=\"mb-3\">
-        Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href=\"{{ path('app_logout') }}\">Déconnexion</a>
+<div class=\"container\">
+<br>
+<br>
+    <h1>Liste des produits</h1>
+<br>
+<br>
+    <div class=\"row\">
+        <div class=\"col-md-4\">
+            <div class=\"product-card\">
+                <h2> En ce moment</h2>
+                <img src=\"{{ asset('images/cardfront.png') }}\" alt=\"{{ 'photo' }}\" class=\"product-image\">
+                <div class=\"product-details\">
+                    <h3>La sélection du moment</h3>
+                    <p>Découvrez nos meilleures promotions, nos dernières nouveautés ou nos plus grands succès que nous avons sélectionnés.</p>
+                    <a href=\"{{ path('app_login') }}\" class=\"btn btn-primary\">J'en profite</a>
+                </div>
+            </div>
+        </div>
+        {% for product in products %}
+        <div class=\"col-md-4\">
+            <div class=\"product-card\">
+                <img src=\"{{ asset('images/' ~ product.images) }}\" alt=\"{{ product.name }}\" class=\"product-image\">
+                <div class=\"product-details\">
+                    <h3>{{ product.name }}</h3>
+                    <p class=\"product-price\">{{ product.price }} €</p>
+                    <p>{{ product.description }}</p>
+                    <p class=\"product-quantity\">Quantité disponible: {{ product.quantity }}</p>
+                    <p class=\"product-category\">Catégorie: {{ product.category }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-    {% endif %}
 </div>
 {% endblock %}
 ", "user/uservue/index.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\user\\uservue\\index.html.twig");

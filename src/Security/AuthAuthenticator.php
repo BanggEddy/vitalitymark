@@ -47,7 +47,7 @@ class AuthAuthenticator extends AbstractLoginFormAuthenticator
         $roles = $token->getRoleNames();
 
         if (in_array('ROLE_ADMIN', $roles)) {
-            return new RedirectResponse($this->urlGenerator->generate('adminvue'));
+            return new RedirectResponse($this->urlGenerator->generate('adminproducts'));
         } elseif (in_array('ROLE_USER', $roles)) {
             return new RedirectResponse($this->urlGenerator->generate('uservue'));
         }

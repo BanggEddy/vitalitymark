@@ -9,6 +9,24 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     {% block stylesheets %}{% endblock %}
 </head>
+<style>
+  section2 {
+    background-color: #DBFFCA;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 10px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+  }
+</style>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
@@ -59,7 +77,27 @@
 
             {% block body %}
         {% endblock %}
+<br>
+<br>
 
+    <section2>
+    <div class="card">
+        <h2>Obtenir de l'aide</h2>
+        <p>Des experts sont là pour vous aider.</p>
+    </div>
+    <div class="card">
+        <h2>Trouver un magasin</h2>
+        <p>Localisez nos magasins près de chez vous.</p>
+    </div>
+    <div class="card">
+        <h2>Télécharger l'application</h2>
+        <p>Accédez à nos services où que vous soyez.</p>
+    </div>
+    <div class="card">
+        <h2>FAQ & Questions?</h2>
+        <p>Trouver des réponses à vos questions.</p>
+    </div>
+    </section2>
     <!-- Inclure Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

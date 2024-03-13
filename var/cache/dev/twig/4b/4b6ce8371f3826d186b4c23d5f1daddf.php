@@ -60,11 +60,29 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
         $this->displayBlock('stylesheets', $context, $blocks);
         // line 11
         echo "</head>
+<style>
+  section2 {
+    background-color: #DBFFCA;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+  }
+</style>
 <body>
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
             <img src=\"";
-        // line 15
+        // line 33
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
         echo "\">
 
@@ -109,10 +127,31 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
     </header>
 
             ";
-        // line 57
+        // line 75
         $this->displayBlock('body', $context, $blocks);
-        // line 59
+        // line 77
         echo "
+<br>
+<br>
+
+    <section2>
+    <div class=\"card\">
+        <h2>Obtenir de l'aide</h2>
+        <p>Des experts sont là pour vous aider.</p>
+    </div>
+    <div class=\"card\">
+        <h2>Trouver un magasin</h2>
+        <p>Localisez nos magasins près de chez vous.</p>
+    </div>
+    <div class=\"card\">
+        <h2>Télécharger l'application</h2>
+        <p>Accédez à nos services où que vous soyez.</p>
+    </div>
+    <div class=\"card\">
+        <h2>FAQ & Questions?</h2>
+        <p>Trouver des réponses à vos questions.</p>
+    </div>
+    </section2>
     <!-- Inclure Bootstrap JS -->
     <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>
     <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js\"></script>
@@ -150,14 +189,14 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
 
     }
 
-    // line 57
+    // line 75
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 58
+        // line 76
         echo "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -185,7 +224,7 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  161 => 58,  154 => 57,  142 => 10,  129 => 5,  115 => 59,  113 => 57,  68 => 15,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
+        return array (  200 => 76,  193 => 75,  181 => 10,  168 => 5,  133 => 77,  131 => 75,  86 => 33,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -201,6 +240,24 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
     <link rel=\"stylesheet\" href=\"{{ asset('css/style.css') }}\">
     {% block stylesheets %}{% endblock %}
 </head>
+<style>
+  section2 {
+    background-color: #DBFFCA;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+  }
+</style>
 <body>
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
@@ -249,6 +306,27 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
             {% block body %}
         {% endblock %}
 
+<br>
+<br>
+
+    <section2>
+    <div class=\"card\">
+        <h2>Obtenir de l'aide</h2>
+        <p>Des experts sont là pour vous aider.</p>
+    </div>
+    <div class=\"card\">
+        <h2>Trouver un magasin</h2>
+        <p>Localisez nos magasins près de chez vous.</p>
+    </div>
+    <div class=\"card\">
+        <h2>Télécharger l'application</h2>
+        <p>Accédez à nos services où que vous soyez.</p>
+    </div>
+    <div class=\"card\">
+        <h2>FAQ & Questions?</h2>
+        <p>Trouver des réponses à vos questions.</p>
+    </div>
+    </section2>
     <!-- Inclure Bootstrap JS -->
     <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>
     <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js\"></script>

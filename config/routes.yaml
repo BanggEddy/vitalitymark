@@ -13,9 +13,19 @@ adminproducts:
   controller: App\Controller\AdminproductsController::index
 
 #CRUD
+#Ajouter produits
 adminajouterproducts:
   path: /product/new
   controller: App\Controller\AdminproductsController::new
+#Supp
 admindeleteproducts:
   path: /product/delete
   controller: App\Controller\AdminproductsController::delete
+#UPDATE
+adminupdateproducts:
+  path: /product/update
+  controller: App\Controller\AdminupdateController::update
+app_edit_product:
+  path: "/editproduct/{id}"
+  controller: 'App\Controller\AdminproductsController::editProduct'
+  methods: ["POST"]

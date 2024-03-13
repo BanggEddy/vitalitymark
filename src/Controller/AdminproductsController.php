@@ -122,4 +122,48 @@ class AdminproductsController extends AbstractController
         // Rediriger vers la page admindeleteproducts après la suppression
         return $this->redirectToRoute('app_admin_delete_products');
     }
+
+    //Update un produit
+    #[Route('/adminupdateproducts', name: 'app_admin_update_products')]
+    public function updateProducts(ProductsRepository $productsRepository): Response
+    {
+        // Récupérer tous les produits depuis le repository
+        $products = $productsRepository->findAll();
+
+        // Passer les produits à la vue
+        return $this->render('admin/adminproducts/edit.html.twig', [
+            'products' => $products,
+        ]);
+    }
+
+    #[Route('/adminformedit/{id}', name: 'app_admin_form_edit')]
+    public function editProductForm(Products $product): Response
+    {
+        return $this->render('admin/adminproducts/formedit.html.twig', [
+            'product' => $product,
+        ]);
+    }
+    #[Route('/editproduct/{id}', name: 'app_edit_product')]
+    public function editProduct(Request $request, Products $product, EntityManagerInterface $entityManager): Response
+    {
+        // Récupérer les données du formulaire
+        $name = $request->request->get('name');
+        $price = $request->request->get('price');
+        $category = $request->request->get('category');
+        $quantity = $request->request->get('quantity');
+        $description = $request->request->get('description');
+
+        // Mettre à jour les attributs du produit avec les nouvelles valeurs
+        $product->setName($name);
+        $product->setPrice($price);
+        $product->setCategory($category);
+        $product->setQuantity($quantity);
+        $product->setDescription($description);
+
+        // Enregistrer les modifications dans la base de données
+        $entityManager->flush();
+
+        // Rediriger vers une page de confirmation ou une autre page après la modification
+        return $this->redirectToRoute('app_adminproducts');
+    }
 }

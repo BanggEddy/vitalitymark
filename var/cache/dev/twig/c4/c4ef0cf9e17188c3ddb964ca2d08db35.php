@@ -105,8 +105,8 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
                         </a>
                         <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdownMenuLink\">
                             <a class=\"dropdown-item\" href=\"/adminajouterproducts\">Ajouter</a>
+                            <a class=\"dropdown-item\" href=\"/adminupdateproducts\">Modifier</a>
                             <a class=\"dropdown-item\" href=\"/admindeleteproducts\">Supprimer</a>
-                            <a class=\"dropdown-item\" href=\"#\">Modifier</a>
                         </div>
                     </li>
                     <!-- Fin de la liste déroulante -->
@@ -296,8 +296,8 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
                         </a>
                         <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdownMenuLink\">
                             <a class=\"dropdown-item\" href=\"/adminajouterproducts\">Ajouter</a>
+                            <a class=\"dropdown-item\" href=\"/adminupdateproducts\">Modifier</a>
                             <a class=\"dropdown-item\" href=\"/admindeleteproducts\">Supprimer</a>
-                            <a class=\"dropdown-item\" href=\"#\">Modifier</a>
                         </div>
                     </li>
                     <!-- Fin de la liste déroulante -->

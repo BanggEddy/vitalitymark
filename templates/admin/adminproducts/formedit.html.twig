@@ -1,0 +1,32 @@
+{% extends 'headeradmin.html.twig' %}
+
+{% block title %}Édition d'un produit{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Édition d'un produit</h1>
+    <form action="{{ path('app_edit_product', {'id': product.id}) }}" method="post">
+        <div class="form-group">
+            <label for="name">Nom du produit</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ product.name }}">
+        </div>
+        <div class="form-group">
+            <label for="price">Prix</label>
+            <input type="number" class="form-control" id="price" name="price" value="{{ product.price }}">
+        </div>
+        <div class="form-group">
+            <label for="category">Catégorie</label>
+            <input type="text" class="form-control" id="category" name="category" value="{{ product.category }}">
+        </div>
+        <div class="form-group">
+            <label for="quantity">Quantité disponible</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" value="{{ product.quantity }}">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description">{{ product.description }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </form>
+</div>
+{% endblock %}

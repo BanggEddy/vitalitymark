@@ -31,6 +31,9 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            // Assign ROLE_USER
+            $user->setRoles(['ROLE_USER']);
+
             $entityManager->persist($user);
             $entityManager->flush();
 
@@ -39,8 +42,8 @@ class RegistrationController extends AbstractController
             return $security->login($user, AuthAuthenticator::class, 'main');
         }
 
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form,
+        return $this->render('auth/registration/register.html.twig', [
+            'registrationForm' => $form->createView(),
         ]);
     }
 }

@@ -1,5 +1,11 @@
 controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+  resource:
+    path: ../src/Controller/
+    namespace: App\Controller
+  type: attribute
+uservue:
+  path: /uservue
+  controller: App\Controller\UservueController::index
+adminvue:
+  path: /adminvue
+  controller: App\Controller\AdminvueController::index

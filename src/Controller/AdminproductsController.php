@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Security\Core\User\UserInterface;
+use App\Entity\User;
 
 class AdminproductsController extends AbstractController
 {
@@ -187,5 +189,23 @@ class AdminproductsController extends AbstractController
 
         // Rediriger vers une page de confirmation ou une autre page après la modification
         return $this->redirectToRoute('app_adminproducts');
+    }
+    #[Route('/compteadmin', name: 'app_admin_compte')]
+    public function adminCompte(): Response
+    {
+        // Récupérer l'utilisateur connecté
+        $user = $this->getUser();
+
+        // Vérifier si un utilisateur est connecté
+        if ($user instanceof User) {
+            $userId = $user->getId();
+        } else {
+            return $this->redirectToRoute('app_login');
+        }
+
+        // Passez les données de l'utilisateur à la vue Twig
+        return $this->render('admin/adminproducts/compteadmin.html.twig', [
+            'userId' => $userId,
+        ]);
     }
 }

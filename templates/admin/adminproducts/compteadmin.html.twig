@@ -1,32 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}VitalityMarket{% endblock %}</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-    <!-- Inclure Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    {% block stylesheets %}{% endblock %}
-</head>
-<style>
-  section2 {
-    background-color: #DBFFCA;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  .card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    text-align: center;
-  }
-</style>
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+
 <body>
 
     <header>
@@ -80,39 +57,11 @@
             </div>
         </nav>
         <section class="section">
-            <div>
-                <h1>Bienvenue :)</h1>
-                <p>Drive, Piéton, Cliquez Collectez, Livraison... C'est à vous de décider !</p>
-            </div>
+            {% if app.user %}
+                <h1>Compte admin id: {{ app.user.id }}</h1>
+            {% endif %}
         </section>
     </header>
+    </body>
 
-    {% block body %}
-    {% endblock %}
-<br>
-<br>
-
-    <section2>
-    <div class="card">
-        <h2>Obtenir de l'aide</h2>
-        <p>Des experts sont là pour vous aider.</p>
-    </div>
-    <div class="card">
-        <h2>Trouver un magasin</h2>
-        <p>Localisez nos magasins près de chez vous.</p>
-    </div>
-    <div class="card">
-        <h2>Télécharger l'application</h2>
-        <p>Accédez à nos services où que vous soyez.</p>
-    </div>
-    <div class="card">
-        <h2>FAQ & Questions?</h2>
-        <p>Trouver des réponses à vos questions.</p>
-    </div>
-    </section2>
-    <!-- Inclure Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+{% endblock %}

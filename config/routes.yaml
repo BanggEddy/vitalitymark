@@ -29,3 +29,7 @@ app_edit_product:
   path: "/editproduct/{id}"
   controller: 'App\Controller\AdminproductsController::editProduct'
   methods: ["POST"]
+#COMPTE ADMIN
+compteadmin:
+  path: /compteadmin
+  controller: App\Controller\AdminproductsController::adminPage

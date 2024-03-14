@@ -12,8 +12,8 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* headeradmin.html.twig */
-class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
+/* admin/adminproducts/compteadmin.html.twig */
+class __TwigTemplate_a915cfb309a90679af2b6b3da0e8e368 extends Template
 {
     private $source;
     private $macros = [];
@@ -24,66 +24,59 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
 
         $this->source = $this->getSourceContext();
 
-        $this->parent = false;
-
         $this->blocks = [
             'title' => [$this, 'block_title'],
-            'stylesheets' => [$this, 'block_stylesheets'],
             'body' => [$this, 'block_body'],
         ];
+    }
+
+    protected function doGetParent(array $context)
+    {
+        // line 1
+        return "base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "headeradmin.html.twig"));
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "admin/adminproducts/compteadmin.html.twig"));
 
-        // line 1
-        echo "<!DOCTYPE html>
-<html>
-<head>
-    <meta charset=\"UTF-8\">
-    <title>";
-        // line 5
-        $this->displayBlock('title', $context, $blocks);
-        echo "</title>
-    <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>\">
-    <!-- Inclure Bootstrap CSS -->
-    <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">
-    <link rel=\"stylesheet\" href=\"";
-        // line 9
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/style.css"), "html", null, true);
-        echo "\">
-    ";
-        // line 10
-        $this->displayBlock('stylesheets', $context, $blocks);
-        // line 11
-        echo "</head>
-<style>
-  section2 {
-    background-color: #DBFFCA;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  .card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    text-align: center;
-  }
-</style>
+        $this->parent = $this->loadTemplate("base.html.twig", "admin/adminproducts/compteadmin.html.twig", 1);
+        $this->parent->display($context, array_merge($this->blocks, $blocks));
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+    }
+
+    // line 3
+    public function block_title($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
+
+        echo "Connexion";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+    }
+
+    // line 5
+    public function block_body($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        // line 6
+        echo "
 <body>
 
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
             <img src=\"";
-        // line 34
+        // line 11
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
         echo "\">
 
@@ -134,84 +127,21 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
             </div>
         </nav>
         <section class=\"section\">
-            <div>
-                <h1>Bienvenue :)</h1>
-                <p>Drive, Piéton, Cliquez Collectez, Livraison... C'est à vous de décider !</p>
-            </div>
-        </section>
+            ";
+        // line 60
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 60, $this->source); })()), "user", [], "any", false, false, false, 60)) {
+            // line 61
+            echo "                <h1>Compte admin id: ";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 61, $this->source); })()), "user", [], "any", false, false, false, 61), "id", [], "any", false, false, false, 61), "html", null, true);
+            echo "</h1>
+            ";
+        }
+        // line 63
+        echo "        </section>
     </header>
+    </body>
 
-    ";
-        // line 90
-        $this->displayBlock('body', $context, $blocks);
-        // line 92
-        echo "<br>
-<br>
-
-    <section2>
-    <div class=\"card\">
-        <h2>Obtenir de l'aide</h2>
-        <p>Des experts sont là pour vous aider.</p>
-    </div>
-    <div class=\"card\">
-        <h2>Trouver un magasin</h2>
-        <p>Localisez nos magasins près de chez vous.</p>
-    </div>
-    <div class=\"card\">
-        <h2>Télécharger l'application</h2>
-        <p>Accédez à nos services où que vous soyez.</p>
-    </div>
-    <div class=\"card\">
-        <h2>FAQ & Questions?</h2>
-        <p>Trouver des réponses à vos questions.</p>
-    </div>
-    </section2>
-    <!-- Inclure Bootstrap JS -->
-    <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>
-    <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js\"></script>
-    <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>
-</body>
-</html>
 ";
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-    }
-
-    // line 5
-    public function block_title($context, array $blocks = [])
-    {
-        $macros = $this->macros;
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
-
-        echo "VitalityMarket";
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-    }
-
-    // line 10
-    public function block_stylesheets($context, array $blocks = [])
-    {
-        $macros = $this->macros;
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
-
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-    }
-
-    // line 90
-    public function block_body($context, array $blocks = [])
-    {
-        $macros = $this->macros;
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
-
-        // line 91
-        echo "    ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -222,7 +152,7 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
      */
     public function getTemplateName()
     {
-        return "headeradmin.html.twig";
+        return "admin/adminproducts/compteadmin.html.twig";
     }
 
     /**
@@ -238,40 +168,17 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  214 => 91,  207 => 90,  195 => 10,  182 => 5,  148 => 92,  146 => 90,  87 => 34,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
+        return array (  140 => 63,  134 => 61,  132 => 60,  80 => 11,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("<!DOCTYPE html>
-<html>
-<head>
-    <meta charset=\"UTF-8\">
-    <title>{% block title %}VitalityMarket{% endblock %}</title>
-    <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>\">
-    <!-- Inclure Bootstrap CSS -->
-    <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">
-    <link rel=\"stylesheet\" href=\"{{ asset('css/style.css') }}\">
-    {% block stylesheets %}{% endblock %}
-</head>
-<style>
-  section2 {
-    background-color: #DBFFCA;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  .card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    text-align: center;
-  }
-</style>
+        return new Source("{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+
 <body>
 
     <header>
@@ -325,42 +232,14 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
             </div>
         </nav>
         <section class=\"section\">
-            <div>
-                <h1>Bienvenue :)</h1>
-                <p>Drive, Piéton, Cliquez Collectez, Livraison... C'est à vous de décider !</p>
-            </div>
+            {% if app.user %}
+                <h1>Compte admin id: {{ app.user.id }}</h1>
+            {% endif %}
         </section>
     </header>
+    </body>
 
-    {% block body %}
-    {% endblock %}
-<br>
-<br>
-
-    <section2>
-    <div class=\"card\">
-        <h2>Obtenir de l'aide</h2>
-        <p>Des experts sont là pour vous aider.</p>
-    </div>
-    <div class=\"card\">
-        <h2>Trouver un magasin</h2>
-        <p>Localisez nos magasins près de chez vous.</p>
-    </div>
-    <div class=\"card\">
-        <h2>Télécharger l'application</h2>
-        <p>Accédez à nos services où que vous soyez.</p>
-    </div>
-    <div class=\"card\">
-        <h2>FAQ & Questions?</h2>
-        <p>Trouver des réponses à vos questions.</p>
-    </div>
-    </section2>
-    <!-- Inclure Bootstrap JS -->
-    <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>
-    <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js\"></script>
-    <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>
-</body>
-</html>
-", "headeradmin.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\headeradmin.html.twig");
+{% endblock %}
+", "admin/adminproducts/compteadmin.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\admin\\adminproducts\\compteadmin.html.twig");
     }
 }

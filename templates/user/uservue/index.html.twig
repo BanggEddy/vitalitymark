@@ -41,15 +41,13 @@
 </style>
 
 <div class="container">
-<br>
-<br>
+    <br><br>
     <h1>Liste des produits</h1>
-<br>
-<br>
+    <br><br>
     <div class="row">
         <div class="col-md-4">
             <div class="product-card">
-                <h2> En ce moment</h2>
+                <h2>En ce moment</h2>
                 <img src="{{ asset('images/cardfront.png') }}" alt="{{ 'photo' }}" class="product-image">
                 <div class="product-details">
                     <h3>La sélection du moment</h3>
@@ -59,15 +57,27 @@
             </div>
         </div>
         {% for product in products %}
-        <div class="col-md-4">
-            <div class="product-card">
-                <img src="{{ asset('images/' ~ product.images) }}" alt="{{ product.name }}" class="product-image">
-                <div class="product-details">
-                    <h3>{{ product.name }}</h3>
-                    <p class="product-price">{{ product.price }} €</p>
-                    <p>{{ product.description }}</p>
-                    <p class="product-quantity">Quantité disponible: {{ product.quantity }}</p>
-                    <p class="product-category">Catégorie: {{ product.category }}</p>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card">
+                <img src="{{ asset('images/' ~ product.images) }}" class="card-img-top" alt="{{ product.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    <p class="card-text"><strong>Prix :</strong> {{ product.price }} €</p>
+                    <p class="card-text"><strong>Quantité disponible :</strong> {{ product.quantity }}</p>
+                </div>
+                <div class="card-footer">
+                    <form action="{{ path('add_to_cart', {'id': product.id}) }}" method="post">
+                        <div class="form-group">
+                            <label for="quantity">Quantité :</label>
+                            <select name="quantity" id="quantity" class="form-control">
+                                {% for qty in 1..product.quantity %}
+                                <option value="{{ qty }}">{{ qty }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -135,16 +135,15 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
         </nav>
         <section class=\"section\">
             <div>
-                <h1>Bienvenue :)</h1>
-                <p>Drive, Piéton, Cliquez Collectez, Livraison... C'est à vous de décider !</p>
+                <h1>Admin</h1>
             </div>
         </section>
     </header>
 
     ";
-        // line 90
+        // line 89
         $this->displayBlock('body', $context, $blocks);
-        // line 92
+        // line 91
         echo "<br>
 <br>
 
@@ -203,14 +202,14 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
 
     }
 
-    // line 90
+    // line 89
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 91
+        // line 90
         echo "    ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -238,7 +237,7 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  214 => 91,  207 => 90,  195 => 10,  182 => 5,  148 => 92,  146 => 90,  87 => 34,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
+        return array (  213 => 90,  206 => 89,  194 => 10,  181 => 5,  147 => 91,  145 => 89,  87 => 34,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -326,8 +325,7 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
         </nav>
         <section class=\"section\">
             <div>
-                <h1>Bienvenue :)</h1>
-                <p>Drive, Piéton, Cliquez Collectez, Livraison... C'est à vous de décider !</p>
+                <h1>Admin</h1>
             </div>
         </section>
     </header>

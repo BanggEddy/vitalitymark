@@ -12,7 +12,7 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* auth/security/login.html.twig */
+/* Auth/security/login.html.twig */
 class __TwigTemplate_ee26b9be2e32bd37a4677cc096937bff extends Template
 {
     private $source;
@@ -40,9 +40,9 @@ class __TwigTemplate_ee26b9be2e32bd37a4677cc096937bff extends Template
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "auth/security/login.html.twig"));
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "Auth/security/login.html.twig"));
 
-        $this->parent = $this->loadTemplate("base.html.twig", "auth/security/login.html.twig", 2);
+        $this->parent = $this->loadTemplate("base.html.twig", "Auth/security/login.html.twig", 2);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -210,7 +210,7 @@ class __TwigTemplate_ee26b9be2e32bd37a4677cc096937bff extends Template
      */
     public function getTemplateName()
     {
-        return "auth/security/login.html.twig";
+        return "Auth/security/login.html.twig";
     }
 
     /**
@@ -329,6 +329,6 @@ class __TwigTemplate_ee26b9be2e32bd37a4677cc096937bff extends Template
     </body>
 
 {% endblock %}
-", "auth/security/login.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\Auth\\security\\login.html.twig");
+", "Auth/security/login.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\Auth\\security\\login.html.twig");
     }
 }

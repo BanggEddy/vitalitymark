@@ -77,46 +77,55 @@ class __TwigTemplate_d8d43dcca3672e227bceadcee4794bcd extends Template
     <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
     <title>User Panier</title>
+    <!-- Bootstrap CSS -->
+    <link href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\" rel=\"stylesheet\">
+    <style>
+        /* Ajoutez ici vos styles personnalisés si nécessaire */
+    </style>
 </head>
 <body>
-    <h1>User Panier</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Product Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-            </tr>
-        </thead>
-        <tbody>
-            ";
-        // line 25
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 25, $this->source); })()), "paniers", [], "any", false, false, false, 25));
-        foreach ($context['_seq'] as $context["_key"] => $context["panier"]) {
-            // line 26
-            echo "                <tr>
-                    <td>";
-            // line 27
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["panier"], "idproducts", [], "any", false, false, false, 27), "name", [], "any", false, false, false, 27), "html", null, true);
-            echo "</td>
-                    <td>";
-            // line 28
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["panier"], "idproducts", [], "any", false, false, false, 28), "price", [], "any", false, false, false, 28), "html", null, true);
-            echo "</td>
-                    <td>";
-            // line 29
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["panier"], "quantity", [], "any", false, false, false, 29), "html", null, true);
-            echo "</td>
+    <div class=\"container\">
+        <h1 class=\"mt-4 mb-4\">User Panier</h1>
+        <table class=\"table\">
+            <thead>
+                <tr>
+                    <th scope=\"col\">Product Name</th>
+                    <th scope=\"col\">Price</th>
+                    <th scope=\"col\">Quantity</th>
                 </tr>
-            ";
+            </thead>
+            <tbody>
+                ";
+        // line 31
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["panierDetails"]) || array_key_exists("panierDetails", $context) ? $context["panierDetails"] : (function () { throw new RuntimeError('Variable "panierDetails" does not exist.', 31, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["panierDetail"]) {
+            // line 32
+            echo "                    <tr>
+                        <td>";
+            // line 33
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["panierDetail"], "product_name", [], "any", false, false, false, 33), "html", null, true);
+            echo "</td>
+                        <td>";
+            // line 34
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["panierDetail"], "price", [], "any", false, false, false, 34), "html", null, true);
+            echo "</td>
+                        <td>";
+            // line 35
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["panierDetail"], "quantity", [], "any", false, false, false, 35), "html", null, true);
+            echo "</td>
+                    </tr>
+                ";
         }
         $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['panier'], $context['_parent'], $context['loop']);
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['panierDetail'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 32
-        echo "        </tbody>
-    </table>
+        // line 38
+        echo "            </tbody>
+        </table>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>
 </body>
 </html>
 
@@ -147,7 +156,7 @@ class __TwigTemplate_d8d43dcca3672e227bceadcee4794bcd extends Template
      */
     public function getDebugInfo()
     {
-        return array (  118 => 32,  109 => 29,  105 => 28,  101 => 27,  98 => 26,  94 => 25,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  124 => 38,  115 => 35,  111 => 34,  107 => 33,  104 => 32,  100 => 31,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -164,27 +173,36 @@ class __TwigTemplate_d8d43dcca3672e227bceadcee4794bcd extends Template
     <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
     <title>User Panier</title>
+    <!-- Bootstrap CSS -->
+    <link href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\" rel=\"stylesheet\">
+    <style>
+        /* Ajoutez ici vos styles personnalisés si nécessaire */
+    </style>
 </head>
 <body>
-    <h1>User Panier</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Product Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for panier in user.paniers %}
+    <div class=\"container\">
+        <h1 class=\"mt-4 mb-4\">User Panier</h1>
+        <table class=\"table\">
+            <thead>
                 <tr>
-                    <td>{{ panier.idproducts.name }}</td>
-                    <td>{{ panier.idproducts.price }}</td>
-                    <td>{{ panier.quantity }}</td>
+                    <th scope=\"col\">Product Name</th>
+                    <th scope=\"col\">Price</th>
+                    <th scope=\"col\">Quantity</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for panierDetail in panierDetails %}
+                    <tr>
+                        <td>{{ panierDetail.product_name }}</td>
+                        <td>{{ panierDetail.price }}</td>
+                        <td>{{ panierDetail.quantity }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>
 </body>
 </html>
 

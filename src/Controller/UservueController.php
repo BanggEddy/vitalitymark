@@ -72,14 +72,14 @@ class UservueController extends AbstractController
 
         return new JsonResponse(['message' => 'Product added to cart successfully.'], Response::HTTP_CREATED);
     }
-    #[Route('/api/user/panier', name: 'api_user_panier')]
-    public function getUserPanier(): JsonResponse
+    #[Route('/user/panier', name: 'user_panier')]
+    public function getUserPanier(): Response
     {
         /** @var UserInterface|null $user */
         $user = $this->getUser();
 
         if (!$user) {
-            return new JsonResponse(['message' => 'User not found'], Response::HTTP_NOT_FOUND);
+            throw $this->createNotFoundException('User not found');
         }
 
         $paniers = $user->getPaniers();
@@ -93,6 +93,8 @@ class UservueController extends AbstractController
             ];
         }
 
-        return new JsonResponse($panierDetails);
+        return $this->render('user/uservue/indexpanier.html.twig', [
+            'panierDetails' => $panierDetails,
+        ]);
     }
 }

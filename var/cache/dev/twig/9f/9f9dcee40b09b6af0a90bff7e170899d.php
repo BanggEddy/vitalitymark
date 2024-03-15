@@ -81,10 +81,10 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
 <body>
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
-            <img src=\"";
+            <a href=\"/uservue\" > <img src=\"";
         // line 33
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
-        echo "\">
+        echo "\"> </a>
 
             <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
                 <span class=\"navbar-toggler-icon\"></span>
@@ -97,7 +97,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"";
         // line 44
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("api_user_panier");
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_panier");
         echo "\">Voir le panier</a>
                     </li>
                     <li class=\"nav-item\">
@@ -266,7 +266,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
 <body>
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
-            <img src=\"{{ asset('images/logo.png') }}\">
+            <a href=\"/uservue\" > <img src=\"{{ asset('images/logo.png') }}\"> </a>
 
             <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
                 <span class=\"navbar-toggler-icon\"></span>
@@ -277,7 +277,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                         <a class=\"nav-link\" href=\"#\">Rayons</a>
                     </li>
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"{{ path('api_user_panier') }}\">Voir le panier</a>
+                        <a class=\"nav-link\" href=\"{{ path('user_panier') }}\">Voir le panier</a>
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"#\"><span style=\"color:red;\">Promos</span></a>

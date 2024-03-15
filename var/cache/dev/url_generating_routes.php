@@ -19,7 +19,7 @@ return [
     'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], [], []],
     'app_uservue' => [[], ['_controller' => 'App\\Controller\\UservueController::index'], [], [['text', '/uservue']], [], [], []],
     'add_to_cart' => [['id'], ['_controller' => 'App\\Controller\\UservueController::addToCart'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/add-to-cart']], [], [], []],
-    'product_show' => [['id'], ['_controller' => 'App\\Controller\\UservueController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/product']], [], [], []],
+    'api_user_panier' => [[], ['_controller' => 'App\\Controller\\UservueController::getUserPanier'], [], [['text', '/api/user/panier']], [], [], []],
     'uservue' => [[], ['_controller' => 'App\\Controller\\UservueController::index'], [], [['text', '/uservue']], [], [], []],
     'adminproducts' => [[], ['_controller' => 'App\\Controller\\AdminproductsController::index'], [], [['text', '/adminproducts']], [], [], []],
     'adminajouterproducts' => [[], ['_controller' => 'App\\Controller\\AdminproductsController::new'], [], [['text', '/product/new']], [], [], []],
@@ -42,5 +42,5 @@ return [
     'App\Controller\SecurityController::logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], [], []],
     'App\Controller\UservueController::index' => [[], ['_controller' => 'App\\Controller\\UservueController::index'], [], [['text', '/uservue']], [], [], []],
     'App\Controller\UservueController::addToCart' => [['id'], ['_controller' => 'App\\Controller\\UservueController::addToCart'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/add-to-cart']], [], [], []],
-    'App\Controller\UservueController::show' => [['id'], ['_controller' => 'App\\Controller\\UservueController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/product']], [], [], []],
+    'App\Controller\UservueController::getUserPanier' => [[], ['_controller' => 'App\\Controller\\UservueController::getUserPanier'], [], [['text', '/api/user/panier']], [], [], []],
 ];

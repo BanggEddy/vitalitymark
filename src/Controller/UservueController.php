@@ -72,13 +72,27 @@ class UservueController extends AbstractController
 
         return new JsonResponse(['message' => 'Product added to cart successfully.'], Response::HTTP_CREATED);
     }
-    #[Route('/product/{id}', name: 'product_show')]
-    public function show(Products $product): Response
+    #[Route('/api/user/panier', name: 'api_user_panier')]
+    public function getUserPanier(): JsonResponse
     {
-        // Votre logique pour afficher les détails du produit
-        // Par exemple, vous pouvez passer le produit à un template Twig pour l'affichage
-        return $this->render('user/uservue/panierindex.html.twig', [
-            'product' => $product,
-        ]);
+        /** @var UserInterface|null $user */
+        $user = $this->getUser();
+
+        if (!$user) {
+            return new JsonResponse(['message' => 'User not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        $paniers = $user->getPaniers();
+
+        $panierDetails = [];
+        foreach ($paniers as $panier) {
+            $panierDetails[] = [
+                'product_name' => $panier->getIdproducts()->getName(),
+                'price' => $panier->getIdproducts()->getPrice(),
+                'quantity' => $panier->getQuantity(),
+            ];
+        }
+
+        return new JsonResponse($panierDetails);
     }
 }

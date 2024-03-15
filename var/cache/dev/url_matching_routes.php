@@ -29,6 +29,10 @@ return [
             [['_route' => 'app_uservue', '_controller' => 'App\\Controller\\UservueController::index'], null, null, null, false, false, null],
             [['_route' => 'uservue', '_controller' => 'App\\Controller\\UservueController::index'], null, null, null, false, false, null],
         ],
+        '/api/user/panier' => [[['_route' => 'api_user_panier', '_controller' => 'App\\Controller\\UservueController::getUserPanier'], null, null, null, false, false, null]],
+        '/product/new' => [[['_route' => 'adminajouterproducts', '_controller' => 'App\\Controller\\AdminproductsController::new'], null, null, null, false, false, null]],
+        '/product/delete' => [[['_route' => 'admindeleteproducts', '_controller' => 'App\\Controller\\AdminproductsController::delete'], null, null, null, false, false, null]],
+        '/product/update' => [[['_route' => 'adminupdateproducts', '_controller' => 'App\\Controller\\AdminupdateController::update'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -38,13 +42,7 @@ return [
                     .'|minformedit/([^/]++)(*:98)'
                     .'|d\\-to\\-cart/([^/]++)(*:125)'
                 .')'
-                .'|/product/(?'
-                    .'|([^/]++)(*:154)'
-                    .'|new(*:165)'
-                    .'|delete(*:179)'
-                    .'|update(*:193)'
-                .')'
-                .'|/editproduct/([^/]++)(*:223)'
+                .'|/editproduct/([^/]++)(*:155)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -52,11 +50,7 @@ return [
         65 => [[['_route' => 'app_delete_product', '_controller' => 'App\\Controller\\AdminproductsController::deleteProduct'], ['id'], null, null, false, true, null]],
         98 => [[['_route' => 'app_admin_form_edit', '_controller' => 'App\\Controller\\AdminproductsController::editProductForm'], ['id'], null, null, false, true, null]],
         125 => [[['_route' => 'add_to_cart', '_controller' => 'App\\Controller\\UservueController::addToCart'], ['id'], null, null, false, true, null]],
-        154 => [[['_route' => 'product_show', '_controller' => 'App\\Controller\\UservueController::show'], ['id'], null, null, false, true, null]],
-        165 => [[['_route' => 'adminajouterproducts', '_controller' => 'App\\Controller\\AdminproductsController::new'], [], null, null, false, false, null]],
-        179 => [[['_route' => 'admindeleteproducts', '_controller' => 'App\\Controller\\AdminproductsController::delete'], [], null, null, false, false, null]],
-        193 => [[['_route' => 'adminupdateproducts', '_controller' => 'App\\Controller\\AdminupdateController::update'], [], null, null, false, false, null]],
-        223 => [
+        155 => [
             [['_route' => 'app_edit_product', '_controller' => 'App\\Controller\\AdminproductsController::editProduct'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

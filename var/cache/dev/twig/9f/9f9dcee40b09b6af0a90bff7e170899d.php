@@ -95,7 +95,10 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                         <a class=\"nav-link\" href=\"#\">Rayons</a>
                     </li>
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\">Mon Panier</a>
+                        <a class=\"nav-link\" href=\"";
+        // line 44
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("api_user_panier");
+        echo "\">Voir le panier</a>
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"#\"><span style=\"color:red;\">Promos</span></a>
@@ -226,7 +229,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  202 => 79,  195 => 78,  183 => 10,  170 => 5,  136 => 80,  134 => 78,  86 => 33,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
+        return array (  205 => 79,  198 => 78,  186 => 10,  173 => 5,  139 => 80,  137 => 78,  100 => 44,  86 => 33,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -274,7 +277,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                         <a class=\"nav-link\" href=\"#\">Rayons</a>
                     </li>
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\">Mon Panier</a>
+                        <a class=\"nav-link\" href=\"{{ path('api_user_panier') }}\">Voir le panier</a>
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"#\"><span style=\"color:red;\">Promos</span></a>

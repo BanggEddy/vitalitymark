@@ -33,9 +33,8 @@ class UservueController extends AbstractController
             'controller_name' => 'UservueController',
         ]);
     }
-
     /**
-     * @Route("/add_to_cart/{id}", name="add_to_cart", methods={"POST"})
+     * @Route("/add-to-cart/{id}", name="add_to_cart", methods={"POST"})
      */
     #[Route('/add-to-cart/{id}', name: 'add_to_cart')]
     public function addToCart(Request $request, Products $product): Response
@@ -51,26 +50,35 @@ class UservueController extends AbstractController
             return new JsonResponse(['error' => 'User not authenticated.'], Response::HTTP_UNAUTHORIZED);
         }
 
-        // Vérifier si la quantité demandée est disponible
-        if ($product->getQuantity() < $quantity) {
-            return new JsonResponse(['error' => 'Not enough quantity available.'], Response::HTTP_BAD_REQUEST);
+        try {
+            $this->entityManager->beginTransaction();
+
+            // Vérifier si la quantité demandée est disponible
+            if ($product->getQuantity() < $quantity) {
+                return new JsonResponse(['error' => 'Not enough quantity available.'], Response::HTTP_BAD_REQUEST);
+            }
+
+            // Créer une nouvelle entrée dans le panier
+            $panier = new Panier();
+            $panier->setQuantity($quantity);
+            $panier->setIdproducts($product);
+            $panier->setIduser($user);
+
+            // Décrémenter la quantité disponible du produit
+            $product->setQuantity($product->getQuantity() - $quantity);
+
+            // Enregistrer les modifications dans la base de données
+            $this->entityManager->persist($panier);
+            $this->entityManager->persist($product);
+            $this->entityManager->flush();
+
+            $this->entityManager->commit();
+
+            return new JsonResponse(['message' => 'Product added to cart successfully.'], Response::HTTP_CREATED);
+        } catch (\Exception $e) {
+            $this->entityManager->rollback();
+            return new JsonResponse(['error' => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
-
-        // Créer une nouvelle entrée dans le panier
-        $panier = new Panier();
-        $panier->setQuantity($quantity);
-        $panier->setIdproducts($product);
-        $panier->setIduser($user);
-
-        // Décrémenter la quantité disponible du produit
-        $product->setQuantity($product->getQuantity() - $quantity);
-
-        // Enregistrer les modifications dans la base de données
-        $this->entityManager->persist($panier);
-        $this->entityManager->persist($product);
-        $this->entityManager->flush();
-
-        return new JsonResponse(['message' => 'Product added to cart successfully.'], Response::HTTP_CREATED);
     }
     #[Route('/user/panier', name: 'user_panier')]
     public function getUserPanier(): Response

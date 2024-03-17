@@ -111,7 +111,7 @@ class __TwigTemplate_ebd89cfeabc738fad1035fed1686f3db extends Template
     <h1>Liste des produits</h1>
 
     <div class=\"row\">
-            <div class=\"col-md-4\">
+        <div class=\"col-md-4\">
             <div class=\"product-card\">
                 <h2> En ce moment</h2>
                 <img src=\"";
@@ -165,6 +165,29 @@ class __TwigTemplate_ebd89cfeabc738fad1035fed1686f3db extends Template
             // line 67
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "category", [], "any", false, false, false, 67), "html", null, true);
             echo "</p>
+                    
+                    <!-- Formulaires pour ajouter et retirer la quantité -->
+                    <form action=\"";
+            // line 70
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_quantity", ["productId" => twig_get_attribute($this->env, $this->source, $context["product"], "id", [], "any", false, false, false, 70)]), "html", null, true);
+            echo "\" method=\"post\" class=\"mb-3\">
+                        <div class=\"input-group\">
+                            <label for=\"add_quantity\" class=\"input-group-text\">Ajouter Quantité:</label>
+                            <input type=\"number\" id=\"add_quantity\" name=\"quantity\" class=\"form-control\" min=\"1\" value=\"1\">
+                            <button type=\"submit\" class=\"btn btn-success\">Ajouter</button>
+                        </div>
+                    </form>
+
+                    <form action=\"";
+            // line 78
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("remove_quantity", ["productId" => twig_get_attribute($this->env, $this->source, $context["product"], "id", [], "any", false, false, false, 78)]), "html", null, true);
+            echo "\" method=\"post\">
+                        <div class=\"input-group\">
+                            <label for=\"remove_quantity\" class=\"input-group-text\">Retirer Quantité:</label>
+                            <input type=\"number\" id=\"remove_quantity\" name=\"quantity\" class=\"form-control\" min=\"1\" value=\"1\">
+                            <button type=\"submit\" class=\"btn btn-danger\">Retirer</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -173,7 +196,7 @@ class __TwigTemplate_ebd89cfeabc738fad1035fed1686f3db extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 72
+        // line 89
         echo "    </div>
 </div>
 ";
@@ -203,7 +226,7 @@ class __TwigTemplate_ebd89cfeabc738fad1035fed1686f3db extends Template
      */
     public function getDebugInfo()
     {
-        return array (  177 => 72,  166 => 67,  162 => 66,  158 => 65,  154 => 64,  150 => 63,  143 => 61,  139 => 59,  135 => 58,  128 => 54,  119 => 50,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  200 => 89,  183 => 78,  172 => 70,  166 => 67,  162 => 66,  158 => 65,  154 => 64,  150 => 63,  143 => 61,  139 => 59,  135 => 58,  128 => 54,  119 => 50,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -254,7 +277,7 @@ class __TwigTemplate_ebd89cfeabc738fad1035fed1686f3db extends Template
     <h1>Liste des produits</h1>
 
     <div class=\"row\">
-            <div class=\"col-md-4\">
+        <div class=\"col-md-4\">
             <div class=\"product-card\">
                 <h2> En ce moment</h2>
                 <img src=\"{{ asset('images/cardfront.png') }}\" alt=\"{{ 'photo' }}\" class=\"product-image\">
@@ -275,6 +298,23 @@ class __TwigTemplate_ebd89cfeabc738fad1035fed1686f3db extends Template
                     <p>{{ product.description }}</p>
                     <p class=\"product-quantity\">Quantité disponible: {{ product.quantity }}</p>
                     <p class=\"product-category\">Catégorie: {{ product.category }}</p>
+                    
+                    <!-- Formulaires pour ajouter et retirer la quantité -->
+                    <form action=\"{{ path('add_quantity', {'productId': product.id}) }}\" method=\"post\" class=\"mb-3\">
+                        <div class=\"input-group\">
+                            <label for=\"add_quantity\" class=\"input-group-text\">Ajouter Quantité:</label>
+                            <input type=\"number\" id=\"add_quantity\" name=\"quantity\" class=\"form-control\" min=\"1\" value=\"1\">
+                            <button type=\"submit\" class=\"btn btn-success\">Ajouter</button>
+                        </div>
+                    </form>
+
+                    <form action=\"{{ path('remove_quantity', {'productId': product.id}) }}\" method=\"post\">
+                        <div class=\"input-group\">
+                            <label for=\"remove_quantity\" class=\"input-group-text\">Retirer Quantité:</label>
+                            <input type=\"number\" id=\"remove_quantity\" name=\"quantity\" class=\"form-control\" min=\"1\" value=\"1\">
+                            <button type=\"submit\" class=\"btn btn-danger\">Retirer</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

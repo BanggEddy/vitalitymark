@@ -15,6 +15,7 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\Entity\User;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class AdminproductsController extends AbstractController
 {
@@ -207,5 +208,61 @@ class AdminproductsController extends AbstractController
         return $this->render('admin/adminproducts/compteadmin.html.twig', [
             'userId' => $userId,
         ]);
+    }
+
+    #[Route('/admin/add_quantity/{productId}', name: 'admin_add_quantity')]
+    public function addQuantity(Request $request, $productId): Response
+    {
+        // Récupérer le repository de Product
+        $productRepository = $this->entityManager->getRepository(Products::class);
+        $product = $productRepository->find($productId);
+
+        if (!$product) {
+            throw $this->createNotFoundException('Le produit avec l\'ID ' . $productId . ' n\'existe pas.');
+        }
+
+        // Récupérer la quantité à ajouter depuis le formulaire
+        $quantityToAdd = $request->request->get('quantity');
+
+        // Ajouter la quantité au produit
+        $newQuantity = $product->getQuantity() + $quantityToAdd;
+        $product->setQuantity($newQuantity);
+
+        // Sauvegarder les changements dans la base de données
+        $this->entityManager->flush();
+
+        // Rediriger vers la liste des produits
+        return $this->redirectToRoute('admin_products_list');
+    }
+
+    #[Route('/admin/remove_quantity/{productId}', name: 'admin_remove_quantity')]
+    public function removeQuantity(Request $request, $productId): Response
+    {
+        // Récupérer le repository de Product
+        $productRepository = $this->entityManager->getRepository(Products::class);
+        $product = $productRepository->find($productId);
+
+        if (!$product) {
+            throw $this->createNotFoundException('Le produit avec l\'ID ' . $productId . ' n\'existe pas.');
+        }
+
+        // Récupérer la quantité à retirer depuis le formulaire
+        $quantityToRemove = $request->request->get('quantity');
+
+        // Vérifier si la quantité à retirer est inférieure ou égale à la quantité disponible
+        if ($quantityToRemove <= $product->getQuantity()) {
+            // Retirer la quantité du produit
+            $newQuantity = $product->getQuantity() - $quantityToRemove;
+            $product->setQuantity($newQuantity);
+
+            // Sauvegarder les changements dans la base de données
+            $this->entityManager->flush();
+        } else {
+            // Gérer le cas où la quantité à retirer est supérieure à la quantité disponible
+            throw new \Exception('La quantité à retirer est supérieure à la quantité disponible.');
+        }
+
+        // Rediriger vers la liste des produits
+        return $this->redirectToRoute('admin_products_list');
     }
 }

@@ -36,9 +36,13 @@ class Products
     #[ORM\OneToMany(targetEntity: Panier::class, mappedBy: 'idproducts')]
     private Collection $paniers;
 
+    #[ORM\OneToMany(targetEntity: Promo::class, mappedBy: 'idproduct')]
+    private Collection $promos;
+
     public function __construct()
     {
         $this->paniers = new ArrayCollection();
+        $this->promos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -142,6 +146,36 @@ class Products
             // set the owning side to null (unless already changed)
             if ($panier->getIdproducts() === $this) {
                 $panier->setIdproducts(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Promo>
+     */
+    public function getPromos(): Collection
+    {
+        return $this->promos;
+    }
+
+    public function addPromo(Promo $promo): static
+    {
+        if (!$this->promos->contains($promo)) {
+            $this->promos->add($promo);
+            $promo->setIdproduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removePromo(Promo $promo): static
+    {
+        if ($this->promos->removeElement($promo)) {
+            // set the owning side to null (unless already changed)
+            if ($promo->getIdproduct() === $this) {
+                $promo->setIdproduct(null);
             }
         }
 

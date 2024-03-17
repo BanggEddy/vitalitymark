@@ -12,7 +12,7 @@
         margin-bottom: 20px;
         background-color: #DBFFCA;
         border: 1px solid #ccc;
-        box-shadow: 10px 10px 2px #7cdf7c; 
+        box-shadow: 10px 10px 4px #7cdf7c; 
     }
 
     .product-image {
@@ -38,6 +38,9 @@
     .product-category {
         color: #6c757d;
     }
+    .custom-select {
+        font-size: 14px;
+    }
 </style>
 
 <div class="container">
@@ -57,21 +60,21 @@
             </div>
         </div>
         {% for product in products %}
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 product-card">
-                <img src="{{ asset('images/' ~ product.images) }}" class="card-img-top" alt="{{ product.name }}">
-                <div class="card-body">
+        <div class="col-md-4">
+            <div class="product-card">
+                <img src="{{ asset('images/' ~ product.images) }}" class="card-img-top product-image" alt="{{ product.name }}">
+                <div class="product-details">
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="card-text">{{ product.description }}</p>
                     <p class="card-text"><strong>Prix :</strong> {{ product.price }} €</p>
                     <p class="card-text"><strong>Quantité disponible :</strong> {{ product.quantity }}</p>
                 </div>
-                <div class="card-footer">
+                <div class="product-footer">
                     <form action="{{ path('add_to_cart', {'id': product.id}) }}" method="post">
                         <div class="form-group">
                             <label for="quantity">Quantité :</label>
-                            <select name="quantity" id="quantity" class="form-control">
-                                {% for qty in 1..product.quantity %}
+                            <select name="quantity" id="quantity" class="form-control custom-select">
+                                {% for qty in 0..product.quantity %}
                                 <option value="{{ qty }}">{{ qty }}</option>
                                 {% endfor %}
                             </select>

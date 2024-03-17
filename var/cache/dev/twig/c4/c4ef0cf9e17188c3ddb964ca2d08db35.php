@@ -82,10 +82,10 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
 
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
-            <img src=\"";
+            <a href=\"/adminproducts\" > <img src=\"";
         // line 34
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
-        echo "\">
+        echo "\"> </a>
 
             <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
                 <span class=\"navbar-toggler-icon\"></span>
@@ -275,7 +275,7 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
 
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
-            <img src=\"{{ asset('images/logo.png') }}\">
+            <a href=\"/adminproducts\" > <img src=\"{{ asset('images/logo.png') }}\"> </a>
 
             <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
                 <span class=\"navbar-toggler-icon\"></span>

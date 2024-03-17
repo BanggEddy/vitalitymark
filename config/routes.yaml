@@ -33,9 +33,22 @@ app_edit_product:
 compteadmin:
   path: /compteadmin
   controller: App\Controller\AdminproductsController::adminPage
+#PANIER USER
 api_user_panier:
   path: /api/user/panier
   controller: App\Controller\UserController::getUserPanier
 panier_index:
   path: /user/panier
   controller: App\Controller\UserController::getUserPanier
+#ADD QUANTITY PRODUCTS
+add_quantity:
+  path: "/admin/products/{productId}/add_quantity"
+  methods: ["POST"]
+  controller: 'App\Controller\AdminproductsController::addQuantity'
+remove_quantity:
+  path: "/admin/products/{productId}/remove_quantity"
+  methods: ["POST"]
+  controller: 'App\Controller\AdminproductsController::removeQuantity'
+admin_products_list:
+  path: "/admin/products/list"
+  controller: 'App\Controller\AdminproductsController::index'

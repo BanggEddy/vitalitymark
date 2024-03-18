@@ -1,41 +1,75 @@
-{% extends 'base.html.twig' %}
+{% extends 'headeradmin.html.twig' %}
 
 {% block title %}Promo index{% endblock %}
 
 {% block body %}
+    <style>
+        .promo-card {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #DBFFCA;
+            border: 1px solid #ccc;
+            box-shadow: 10px 10px 4px #7cdf7c; /* Ajout de l'ombre */
+        }
+
+        .promo-image {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .promo-details {
+            margin-top: 10px;
+        }
+
+        .promo-price {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .promo-quantity {
+            color: #28a745;
+        }
+
+        .promo-category {
+            color: #6c757d;
+        }
+
+        .promo-actions a {
+            margin-right: 10px;
+        }
+    </style>
+
     <h1>Promo index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Reduction</th>
-                <th>Date_fin</th>
-                <th>Date_debut</th>
-                <th>Priceafterpromo</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="row">
         {% for promo in promos %}
-            <tr>
-                <td>{{ promo.id }}</td>
-                <td>{{ promo.reduction }}</td>
-                <td>{{ promo.dateFin ? promo.dateFin|date('Y-m-d') : '' }}</td>
-                <td>{{ promo.dateDebut ? promo.dateDebut|date('Y-m-d') : '' }}</td>
-                <td>{{ promo.priceafterpromo }}</td>
-                <td>
-                    <a href="{{ path('app_promo_admin_show', {'id': promo.id}) }}">show</a>
-                    <a href="{{ path('app_promo_admin_edit', {'id': promo.id}) }}">edit</a>
-                </td>
-            </tr>
+            <div class="col-md-4">
+                <div class="promo-card">
+                    <img src="{{ asset('images/' ~ promo.images) }}" class="promo-image">
+                    <div class="promo-details">
+                        <h3>{{ promo.name }}</h3>
+                        <p class="promo-price">{{ promo.price }} €</p>
+                        <p>{{ promo.description }}</p>
+                        <p class="promo-quantity">Quantité disponible: {{ promo.quantity }}</p>
+                        <p class="promo-category">Catégorie: {{ promo.category }}</p>
+                        <div class="promo-actions">
+                            <a href="{{ path('app_promo_admin_show', {'id': promo.id}) }}" class="btn btn-primary">Show</a>
+                            <a href="{{ path('app_promo_admin_edit', {'id': promo.id}) }}" class="btn btn-info">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
+            <div class="col-md-12">
+                <p>No records found</p>
+            </div>
         {% endfor %}
-        </tbody>
-    </table>
+    </div>
 
-    <a href="{{ path('app_promo_admin_new') }}">Create new</a>
+    <a href="{{ path('app_promo_admin_new') }}" class="btn btn-success">Create new</a>
 {% endblock %}

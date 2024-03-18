@@ -42,6 +42,12 @@ class Promo
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $images = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $name = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $category = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -152,6 +158,30 @@ class Promo
     public function setImages(?string $images): static
     {
         $this->images = $images;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): static
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getCategory(): ?string
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?string $category): static
+    {
+        $this->category = $category;
 
         return $this;
     }

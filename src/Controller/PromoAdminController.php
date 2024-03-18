@@ -42,6 +42,8 @@ class PromoAdminController extends AbstractController
             // Assignation des données du produit à la promotion
             $promo->setDescription($product->getDescription());
             $promo->setImages($product->getImages());
+            $promo->setName($product->getName());
+            $promo->setCategory($product->getCategory());
             $promo->setPrice($product->getPrice());
 
             // Enregistrement de la promotion dans la base de données
@@ -82,6 +84,8 @@ class PromoAdminController extends AbstractController
             // Assignation des données du produit à la promotion
             $promo->setDescription($product->getDescription());
             $promo->setImages($product->getImages());
+            $promo->setName($product->getName());
+            $promo->setCategory($product->getCategory());
             $promo->setPrice($product->getPrice());
 
             // Enregistrement de la promotion dans la base de données

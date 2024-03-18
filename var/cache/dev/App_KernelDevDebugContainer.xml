@@ -311,7 +311,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.RlSOxZj"/>
+      <argument type="service" id=".service_locator.ddPfODV"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -1621,7 +1621,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.RlSOxZj"/>
+      <argument type="service" id=".service_locator.ddPfODV"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -4674,6 +4674,13 @@
         <argument key="loader" type="service_closure" id=".errored..service_locator.y4_Zrx..Symfony\Component\Config\Loader\LoaderInterface"/>
       </argument>
     </service>
+    <service id=".service_locator.C8cIOOc" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="productsRepository" type="service_closure" id="App\Repository\ProductsRepository"/>
+        <argument key="promoRepository" type="service_closure" id="App\Repository\PromoRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.czOFGB2" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -4733,10 +4740,10 @@
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.RlSOxZj" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.ddPfODV" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Controller\AccueilController::index" type="service_closure" id=".service_locator.czOFGB2"/>
+        <argument key="App\Controller\AccueilController::index" type="service_closure" id=".service_locator.C8cIOOc"/>
         <argument key="App\Controller\AdminproductsController::deleteProduct" type="service_closure" id=".service_locator.cPzBaXc"/>
         <argument key="App\Controller\AdminproductsController::deleteProducts" type="service_closure" id=".service_locator.czOFGB2"/>
         <argument key="App\Controller\AdminproductsController::editProduct" type="service_closure" id=".service_locator.hAIPoGV"/>
@@ -4756,7 +4763,7 @@
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
-        <argument key="App\Controller\AccueilController:index" type="service_closure" id=".service_locator.czOFGB2"/>
+        <argument key="App\Controller\AccueilController:index" type="service_closure" id=".service_locator.C8cIOOc"/>
         <argument key="App\Controller\AdminproductsController:deleteProduct" type="service_closure" id=".service_locator.cPzBaXc"/>
         <argument key="App\Controller\AdminproductsController:deleteProducts" type="service_closure" id=".service_locator.czOFGB2"/>
         <argument key="App\Controller\AdminproductsController:editProduct" type="service_closure" id=".service_locator.hAIPoGV"/>
@@ -6113,7 +6120,7 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.RlSOxZj"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.ddPfODV"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
@@ -6121,7 +6128,7 @@
     <service id=".service_locator.0ZDpJ7y" alias=".service_locator.hAIPoGV"/>
     <service id=".service_locator.QSs.W3t" alias=".service_locator.DtsKEqY"/>
     <service id=".service_locator.HT4rftb" alias=".service_locator.jpvOrpT"/>
-    <service id=".service_locator.6JPxfLt" alias=".service_locator.RlSOxZj"/>
+    <service id=".service_locator.xH7rvIE" alias=".service_locator.ddPfODV"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.Nnn9xXq" alias=".service_locator.M3b._FA"/>
     <service id=".service_locator.LMuqDDe" alias=".service_locator.VHsrTPK"/>
@@ -6136,6 +6143,7 @@
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id="security.event_dispatcher.main" alias="debug.security.event_dispatcher.main"/>
     <service id=".service_locator.gFlme_s" alias=".service_locator.y4_Zrx."/>
+    <service id=".service_locator.or6hf7N" alias=".service_locator.C8cIOOc"/>
     <service id=".service_locator.u4AVkgT" alias=".service_locator.czOFGB2"/>
     <service id=".service_locator.uocasTH" alias=".service_locator.cPzBaXc"/>
     <service id=".service_locator.a5LdLWS" alias=".service_locator.hAIPoGV"/>

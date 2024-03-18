@@ -46,6 +46,12 @@ class PromoAdminController extends AbstractController
             $promo->setCategory($product->getCategory());
             $promo->setPrice($product->getPrice());
 
+            // Calcul du prix après promotion
+            $reduction = $promo->getReduction();
+            $prixInitial = $promo->getPrice();
+            $prixApresPromo = $prixInitial - ($prixInitial * ($reduction / 100));
+            $promo->setPriceafterpromo($prixApresPromo);
+
             // Enregistrement de la promotion dans la base de données
             $entityManager->persist($promo);
             $entityManager->flush();

@@ -96,9 +96,9 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
                         <a class=\"nav-link\" href=\"#\">Rayons</a>
                     </li>
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\"><span style=\"color:red;\">Promos</span></a>
+                        <a class=\"nav-link\" href=\"/promo\"><span style=\"color:red;\">Promo</span></a>
                     </li>
-                                        <!-- Ajout de la liste déroulante -->
+                    <!-- Ajout de la liste déroulante -->
                     <li class=\"nav-item dropdown\">
                         <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdownMenuLink\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
                             Actions
@@ -286,9 +286,9 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
                         <a class=\"nav-link\" href=\"#\">Rayons</a>
                     </li>
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\"><span style=\"color:red;\">Promos</span></a>
+                        <a class=\"nav-link\" href=\"/promo\"><span style=\"color:red;\">Promo</span></a>
                     </li>
-                                        <!-- Ajout de la liste déroulante -->
+                    <!-- Ajout de la liste déroulante -->
                     <li class=\"nav-item dropdown\">
                         <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdownMenuLink\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
                             Actions

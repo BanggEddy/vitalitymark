@@ -224,6 +224,13 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\AdminvueController"/>
       </call>
     </service>
+    <service id="App\Controller\PromoAdminController" class="App\Controller\PromoAdminController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\PromoAdminController"/>
+      </call>
+    </service>
     <service id="App\Controller\RegistrationController" class="App\Controller\RegistrationController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -250,6 +257,9 @@
       <tag name="form.type"/>
     </service>
     <service id="App\Form\ProductsType" class="App\Form\ProductsType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\PromoType" class="App\Form\PromoType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" autoconfigure="true">
@@ -301,7 +311,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.Nj.z_bW"/>
+      <argument type="service" id=".service_locator.RlSOxZj"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -887,6 +897,7 @@
       <argument type="collection">
         <argument>App\Form\Products1Type</argument>
         <argument>App\Form\ProductsType</argument>
+        <argument>App\Form\PromoType</argument>
         <argument>App\Form\RegistrationFormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
@@ -1610,7 +1621,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.Nj.z_bW"/>
+      <argument type="service" id=".service_locator.RlSOxZj"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -1914,7 +1925,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.EiTQy0w"/>
+      <argument type="service" id=".service_locator.M3b._FA"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -4252,6 +4263,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminvueController" class="App\Controller\AdminvueController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminvueController" class="App\Controller\AdminvueController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdminvueController" class="App\Controller\AdminvueController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\PromoAdminController" class="App\Controller\PromoAdminController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\PromoAdminController" class="App\Controller\PromoAdminController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\PromoAdminController" class="App\Controller\PromoAdminController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\RegistrationController" class="App\Controller\RegistrationController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\RegistrationController" class="App\Controller\RegistrationController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\RegistrationController" class="App\Controller\RegistrationController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -4265,6 +4279,8 @@
     <service id=".abstract.instanceof.App\Form\Products1Type" class="App\Form\Products1Type" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ProductsType" class="App\Form\ProductsType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ProductsType" class="App\Form\ProductsType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\PromoType" class="App\Form\PromoType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\PromoType" class="App\Form\PromoType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PanierRepository" class="App\Repository\PanierRepository" autowire="true" abstract="true"/>
@@ -4678,6 +4694,31 @@
         <argument key="product" type="service_closure" id=".errored..service_locator.hAIPoGV.App\Entity\Products"/>
       </argument>
     </service>
+    <service id=".service_locator.1j13wVw" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="promoRepository" type="service_closure" id="App\Repository\PromoRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.CsMkqUa" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.mcb6ZOo" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="promo" type="service_closure" id=".errored..service_locator.mcb6ZOo.App\Entity\Promo"/>
+      </argument>
+    </service>
+    <service id=".service_locator.DtsKEqY" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="promo" type="service_closure" id=".errored..service_locator.DtsKEqY.App\Entity\Promo"/>
+      </argument>
+    </service>
     <service id=".service_locator.jpvOrpT" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -4692,7 +4733,7 @@
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.Nj.z_bW" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.RlSOxZj" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AccueilController::index" type="service_closure" id=".service_locator.czOFGB2"/>
@@ -4702,6 +4743,11 @@
         <argument key="App\Controller\AdminproductsController::editProductForm" type="service_closure" id=".service_locator.cPzBaXc"/>
         <argument key="App\Controller\AdminproductsController::index" type="service_closure" id=".service_locator.czOFGB2"/>
         <argument key="App\Controller\AdminproductsController::updateProducts" type="service_closure" id=".service_locator.czOFGB2"/>
+        <argument key="App\Controller\PromoAdminController::delete" type="service_closure" id=".service_locator.DtsKEqY"/>
+        <argument key="App\Controller\PromoAdminController::edit" type="service_closure" id=".service_locator.DtsKEqY"/>
+        <argument key="App\Controller\PromoAdminController::index" type="service_closure" id=".service_locator.1j13wVw"/>
+        <argument key="App\Controller\PromoAdminController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\PromoAdminController::show" type="service_closure" id=".service_locator.mcb6ZOo"/>
         <argument key="App\Controller\RegistrationController::register" type="service_closure" id=".service_locator.jpvOrpT"/>
         <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.rSTd.nA"/>
         <argument key="App\Controller\UservueController::addToCart" type="service_closure" id=".service_locator.cPzBaXc"/>
@@ -4717,6 +4763,11 @@
         <argument key="App\Controller\AdminproductsController:editProductForm" type="service_closure" id=".service_locator.cPzBaXc"/>
         <argument key="App\Controller\AdminproductsController:index" type="service_closure" id=".service_locator.czOFGB2"/>
         <argument key="App\Controller\AdminproductsController:updateProducts" type="service_closure" id=".service_locator.czOFGB2"/>
+        <argument key="App\Controller\PromoAdminController:delete" type="service_closure" id=".service_locator.DtsKEqY"/>
+        <argument key="App\Controller\PromoAdminController:edit" type="service_closure" id=".service_locator.DtsKEqY"/>
+        <argument key="App\Controller\PromoAdminController:index" type="service_closure" id=".service_locator.1j13wVw"/>
+        <argument key="App\Controller\PromoAdminController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\PromoAdminController:show" type="service_closure" id=".service_locator.mcb6ZOo"/>
         <argument key="App\Controller\RegistrationController:register" type="service_closure" id=".service_locator.jpvOrpT"/>
         <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.rSTd.nA"/>
         <argument key="App\Controller\UservueController:addToCart" type="service_closure" id=".service_locator.cPzBaXc"/>
@@ -4802,11 +4853,12 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.EiTQy0w" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.M3b._FA" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\Products1Type" type="service_closure" id="App\Form\Products1Type"/>
         <argument key="App\Form\ProductsType" type="service_closure" id="App\Form\ProductsType"/>
+        <argument key="App\Form\PromoType" type="service_closure" id="App\Form\PromoType"/>
         <argument key="App\Form\RegistrationFormType" type="service_closure" id="App\Form\RegistrationFormType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
@@ -5048,6 +5100,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\PromoAdminController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\PromoAdminController"/>
+      <argument>App\Controller\PromoAdminController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
     <service id=".service_locator.O2p6Lk7.App\Controller\RegistrationController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\RegistrationController"/>
       <argument>App\Controller\RegistrationController</argument>
@@ -5199,6 +5257,7 @@
           <argument>App\Controller\AccueilController</argument>
           <argument>App\Controller\AdminproductsController</argument>
           <argument>App\Controller\AdminvueController</argument>
+          <argument>App\Controller\PromoAdminController</argument>
           <argument>App\Controller\RegistrationController</argument>
           <argument>App\Controller\SecurityController</argument>
           <argument>App\Controller\UservueController</argument>
@@ -5256,6 +5315,12 @@
     </service>
     <service id=".errored..service_locator.hAIPoGV.App\Entity\Products" class="App\Entity\Products">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.hAIPoGV&quot;: it needs an instance of &quot;App\Entity\Products&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.mcb6ZOo.App\Entity\Promo" class="App\Entity\Promo">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.mcb6ZOo&quot;: it needs an instance of &quot;App\Entity\Promo&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.DtsKEqY.App\Entity\Promo" class="App\Entity\Promo">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.DtsKEqY&quot;: it needs an instance of &quot;App\Entity\Promo&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
@@ -6048,16 +6113,17 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.Nj.z_bW"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.RlSOxZj"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
     <service id=".service_locator.bJ.4HC5" alias=".service_locator.w7.f4fT"/>
     <service id=".service_locator.0ZDpJ7y" alias=".service_locator.hAIPoGV"/>
+    <service id=".service_locator.QSs.W3t" alias=".service_locator.DtsKEqY"/>
     <service id=".service_locator.HT4rftb" alias=".service_locator.jpvOrpT"/>
-    <service id=".service_locator.rVaXn3P" alias=".service_locator.Nj.z_bW"/>
+    <service id=".service_locator.6JPxfLt" alias=".service_locator.RlSOxZj"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
-    <service id=".service_locator.9vgOHux" alias=".service_locator.EiTQy0w"/>
+    <service id=".service_locator.Nnn9xXq" alias=".service_locator.M3b._FA"/>
     <service id=".service_locator.LMuqDDe" alias=".service_locator.VHsrTPK"/>
     <service id=".service_locator.jUv.zyj" alias=".service_locator.O2p6Lk7"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>
@@ -6073,6 +6139,10 @@
     <service id=".service_locator.u4AVkgT" alias=".service_locator.czOFGB2"/>
     <service id=".service_locator.uocasTH" alias=".service_locator.cPzBaXc"/>
     <service id=".service_locator.a5LdLWS" alias=".service_locator.hAIPoGV"/>
+    <service id=".service_locator.UtLq5wG" alias=".service_locator.1j13wVw"/>
+    <service id=".service_locator.9e2t_lq" alias=".service_locator.CsMkqUa"/>
+    <service id=".service_locator.JVV0XZr" alias=".service_locator.mcb6ZOo"/>
+    <service id=".service_locator.zfznZ0o" alias=".service_locator.DtsKEqY"/>
     <service id=".service_locator.NJIEzt2" alias=".service_locator.jpvOrpT"/>
     <service id=".service_locator.7NIAq8D" alias=".service_locator.rSTd.nA"/>
     <service id=".service_locator.GDg2hr7" alias=".service_locator.O2p6Lk7"/>

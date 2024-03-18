@@ -18,9 +18,6 @@ class Products
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $price = null;
-
     #[ORM\Column(length: 255)]
     private ?string $category = null;
 
@@ -38,6 +35,9 @@ class Products
 
     #[ORM\OneToMany(targetEntity: Promo::class, mappedBy: 'idproduct')]
     private Collection $promos;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $price = null;
 
     public function __construct()
     {
@@ -58,18 +58,6 @@ class Products
     public function setName(?string $name): static
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getPrice(): ?string
-    {
-        return $this->price;
-    }
-
-    public function setPrice(?string $price): static
-    {
-        $this->price = $price;
 
         return $this;
     }
@@ -178,6 +166,18 @@ class Products
                 $promo->setIdproduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?float $price): static
+    {
+        $this->price = $price;
 
         return $this;
     }

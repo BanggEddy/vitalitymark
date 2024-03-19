@@ -205,113 +205,117 @@ class __TwigTemplate_1b2e8f07a943e095b43aa25f223f207d extends Template
         foreach ($context['_seq'] as $context["_key"] => $context["promo"]) {
             // line 127
             echo "            <div class=\"col-md-4\">
-                <div class=\"promo-card\">
-                    <!-- Afficher les détails de la promotion -->
-                    <img src=\"";
-            // line 130
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["promo"], "getImages", [], "method", false, false, false, 130))), "html", null, true);
+                    <div class=\"promo-card\">
+                        <img src=\"";
+            // line 129
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["promo"], "getImages", [], "method", false, false, false, 129))), "html", null, true);
             echo "\" class=\"promo-image\">
-                    <div class=\"promo-details\">
-                        <h5 class=\"promo-title\">";
-            // line 132
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getName", [], "method", false, false, false, 132), "html", null, true);
+                        <div class=\"promo-details\">
+                            <h5 class=\"promo-title\">";
+            // line 131
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getName", [], "method", false, false, false, 131), "html", null, true);
             echo "</h5>
-                        <p class=\"promo-description\">";
+                            <p class=\"promo-description\">";
+            // line 132
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getDescription", [], "method", false, false, false, 132), "html", null, true);
+            echo "</p>
+                            <p class=\"promo-date\">Date de début: ";
             // line 133
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getDescription", [], "method", false, false, false, 133), "html", null, true);
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getDateDebut", [], "method", false, false, false, 133), "d/m/Y"), "html", null, true);
             echo "</p>
-                        <p class=\"promo-date\">Date de début: ";
+                            <p class=\"promo-date\">Date de fin: ";
             // line 134
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getDateDebut", [], "method", false, false, false, 134), "d/m/Y"), "html", null, true);
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getDateFin", [], "method", false, false, false, 134), "d/m/Y"), "html", null, true);
             echo "</p>
-                        <p class=\"promo-date\">Date de fin: ";
+                            ";
             // line 135
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getDateFin", [], "method", false, false, false, 135), "d/m/Y"), "html", null, true);
-            echo "</p>
-                        ";
-            // line 137
-            echo "                        ";
             $context["now"] = twig_date_format_filter($this->env, "now", "Y-m-d");
-            // line 138
-            echo "                        ";
-            $context["remainingDays"] = ((twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getDateFin", [], "method", false, false, false, 138), "U") - twig_date_format_filter($this->env, (isset($context["now"]) || array_key_exists("now", $context) ? $context["now"] : (function () { throw new RuntimeError('Variable "now" does not exist.', 138, $this->source); })()), "U")) / (24 * 3600));
-            // line 139
-            echo "                        ";
-            if (((isset($context["remainingDays"]) || array_key_exists("remainingDays", $context) ? $context["remainingDays"] : (function () { throw new RuntimeError('Variable "remainingDays" does not exist.', 139, $this->source); })()) > 0)) {
-                // line 140
-                echo "                            <p class=\"promo-description\">Nombre de jours restants: ";
-                echo twig_escape_filter($this->env, twig_round((isset($context["remainingDays"]) || array_key_exists("remainingDays", $context) ? $context["remainingDays"] : (function () { throw new RuntimeError('Variable "remainingDays" does not exist.', 140, $this->source); })()), 0, "floor"), "html", null, true);
+            // line 136
+            echo "                            ";
+            $context["remainingDays"] = ((twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getDateFin", [], "method", false, false, false, 136), "U") - twig_date_format_filter($this->env, (isset($context["now"]) || array_key_exists("now", $context) ? $context["now"] : (function () { throw new RuntimeError('Variable "now" does not exist.', 136, $this->source); })()), "U")) / (24 * 3600));
+            // line 137
+            echo "                            ";
+            if (((isset($context["remainingDays"]) || array_key_exists("remainingDays", $context) ? $context["remainingDays"] : (function () { throw new RuntimeError('Variable "remainingDays" does not exist.', 137, $this->source); })()) > 0)) {
+                // line 138
+                echo "                                <p class=\"promo-description\">Nombre de jours restants: ";
+                echo twig_escape_filter($this->env, twig_round((isset($context["remainingDays"]) || array_key_exists("remainingDays", $context) ? $context["remainingDays"] : (function () { throw new RuntimeError('Variable "remainingDays" does not exist.', 138, $this->source); })()), 0, "floor"), "html", null, true);
                 echo "</p>
-                        ";
+                            ";
             } else {
-                // line 142
-                echo "                            <p class=\"promo-description\">Offre expirée</p>
-                        ";
+                // line 140
+                echo "                                <p class=\"promo-description\">Offre expirée</p>
+                            ";
             }
-            // line 144
-            echo "                        <p class=\"promo-description\">Quantité disponible: ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getQuantity", [], "method", false, false, false, 144), "html", null, true);
+            // line 142
+            echo "                            <p class=\"promo-description\">Quantité disponible: ";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getQuantity", [], "method", false, false, false, 142), "html", null, true);
             echo "</p>
-                        ";
-            // line 146
-            echo "                        <p class=\"promo-description\">Réduction de: ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getReduction", [], "method", false, false, false, 146), "html", null, true);
+                            <p class=\"promo-description\">Réduction de: ";
+            // line 143
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getReduction", [], "method", false, false, false, 143), "html", null, true);
             echo " %</p>
-
-                        <p class=\"promo-price\">Prix après promotion: ";
-            // line 148
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getPriceafterpromo", [], "method", false, false, false, 148), "html", null, true);
+                            <p class=\"promo-price\">Prix après promotion: ";
+            // line 144
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getPriceafterpromo", [], "method", false, false, false, 144), "html", null, true);
             echo " €</p>
+                            <a href=\"";
+            // line 145
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("details_promotion", ["id" => twig_get_attribute($this->env, $this->source, $context["promo"], "id", [], "any", false, false, false, 145)]), "html", null, true);
+            echo "\" class=\"btn btn-light\">Voir les détails</a>
+                        </div>
                     </div>
-                </div>
             </div>
         ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['promo'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 153
+        // line 150
         echo "        ";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 153, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 150, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
-            // line 154
+            // line 151
             echo "        <div class=\"col-md-4\">
-            <div class=\"product-card\">
-                <img src=\"";
-            // line 156
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["product"], "images", [], "any", false, false, false, 156))), "html", null, true);
+                <div class=\"product-card\">
+                    <img src=\"";
+            // line 153
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["product"], "images", [], "any", false, false, false, 153))), "html", null, true);
             echo "\" class=\"product-image\">
-                <div class=\"product-details\">
-                    <h3>";
-            // line 158
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 158), "html", null, true);
+                    <div class=\"product-details\">
+                        <h3>";
+            // line 155
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 155), "html", null, true);
             echo "</h3>
-                    <p class=\"product-price\">";
-            // line 159
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "price", [], "any", false, false, false, 159), "html", null, true);
+                        <p class=\"product-price\">";
+            // line 156
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "price", [], "any", false, false, false, 156), "html", null, true);
             echo " €</p>
-                    <p>";
+                        <p>";
+            // line 157
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "description", [], "any", false, false, false, 157), "html", null, true);
+            echo "</p>
+                        <p class=\"product-quantity\">Quantité disponible: ";
+            // line 158
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "quantity", [], "any", false, false, false, 158), "html", null, true);
+            echo "</p>
+                        <p class=\"product-category\">Catégorie: ";
+            // line 159
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "category", [], "any", false, false, false, 159), "html", null, true);
+            echo "</p>
+                        <a href=\"";
             // line 160
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "description", [], "any", false, false, false, 160), "html", null, true);
-            echo "</p>
-                    <p class=\"product-quantity\">Quantité disponible: ";
-            // line 161
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "quantity", [], "any", false, false, false, 161), "html", null, true);
-            echo "</p>
-                    <p class=\"product-category\">Catégorie: ";
-            // line 162
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "category", [], "any", false, false, false, 162), "html", null, true);
-            echo "</p>
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("details_produit", ["id" => twig_get_attribute($this->env, $this->source, $context["product"], "id", [], "any", false, false, false, 160)]), "html", null, true);
+            echo "\" class=\"btn btn-light\">Voir les détails</a>
+                    </div>
                 </div>
-            </div>
         </div>
         ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 167
+        // line 165
         echo "        
     </div>
 </div>
@@ -342,7 +346,7 @@ class __TwigTemplate_1b2e8f07a943e095b43aa25f223f207d extends Template
      */
     public function getDebugInfo()
     {
-        return array (  315 => 167,  304 => 162,  300 => 161,  296 => 160,  292 => 159,  288 => 158,  283 => 156,  279 => 154,  274 => 153,  263 => 148,  257 => 146,  252 => 144,  248 => 142,  242 => 140,  239 => 139,  236 => 138,  233 => 137,  229 => 135,  225 => 134,  221 => 133,  217 => 132,  212 => 130,  207 => 127,  203 => 126,  196 => 122,  187 => 118,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  319 => 165,  308 => 160,  304 => 159,  300 => 158,  296 => 157,  292 => 156,  288 => 155,  283 => 153,  279 => 151,  274 => 150,  263 => 145,  259 => 144,  255 => 143,  250 => 142,  246 => 140,  240 => 138,  237 => 137,  234 => 136,  232 => 135,  228 => 134,  224 => 133,  220 => 132,  216 => 131,  211 => 129,  207 => 127,  203 => 126,  196 => 122,  187 => 118,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -474,43 +478,41 @@ class __TwigTemplate_1b2e8f07a943e095b43aa25f223f207d extends Template
         </div>
         {% for promo in promotions %}
             <div class=\"col-md-4\">
-                <div class=\"promo-card\">
-                    <!-- Afficher les détails de la promotion -->
-                    <img src=\"{{ asset('images/' ~ promo.getImages()) }}\" class=\"promo-image\">
-                    <div class=\"promo-details\">
-                        <h5 class=\"promo-title\">{{ promo.getName() }}</h5>
-                        <p class=\"promo-description\">{{ promo.getDescription() }}</p>
-                        <p class=\"promo-date\">Date de début: {{ promo.getDateDebut()|date('d/m/Y') }}</p>
-                        <p class=\"promo-date\">Date de fin: {{ promo.getDateFin()|date('d/m/Y') }}</p>
-                        {# Calcul du nombre de jours restants #}
-                        {% set now = 'now'|date('Y-m-d') %}
-                        {% set remainingDays = (promo.getDateFin()|date('U') - now|date('U')) / (24 * 3600) %}
-                        {% if remainingDays > 0 %}
-                            <p class=\"promo-description\">Nombre de jours restants: {{ remainingDays|round(0, 'floor') }}</p>
-                        {% else %}
-                            <p class=\"promo-description\">Offre expirée</p>
-                        {% endif %}
-                        <p class=\"promo-description\">Quantité disponible: {{ promo.getQuantity() }}</p>
-                        {# Calcul du prix après promotion #}
-                        <p class=\"promo-description\">Réduction de: {{ promo.getReduction() }} %</p>
-
-                        <p class=\"promo-price\">Prix après promotion: {{ promo.getPriceafterpromo() }} €</p>
+                    <div class=\"promo-card\">
+                        <img src=\"{{ asset('images/' ~ promo.getImages()) }}\" class=\"promo-image\">
+                        <div class=\"promo-details\">
+                            <h5 class=\"promo-title\">{{ promo.getName() }}</h5>
+                            <p class=\"promo-description\">{{ promo.getDescription() }}</p>
+                            <p class=\"promo-date\">Date de début: {{ promo.getDateDebut()|date('d/m/Y') }}</p>
+                            <p class=\"promo-date\">Date de fin: {{ promo.getDateFin()|date('d/m/Y') }}</p>
+                            {% set now = 'now'|date('Y-m-d') %}
+                            {% set remainingDays = (promo.getDateFin()|date('U') - now|date('U')) / (24 * 3600) %}
+                            {% if remainingDays > 0 %}
+                                <p class=\"promo-description\">Nombre de jours restants: {{ remainingDays|round(0, 'floor') }}</p>
+                            {% else %}
+                                <p class=\"promo-description\">Offre expirée</p>
+                            {% endif %}
+                            <p class=\"promo-description\">Quantité disponible: {{ promo.getQuantity() }}</p>
+                            <p class=\"promo-description\">Réduction de: {{ promo.getReduction() }} %</p>
+                            <p class=\"promo-price\">Prix après promotion: {{ promo.getPriceafterpromo() }} €</p>
+                            <a href=\"{{ path('details_promotion', {'id': promo.id}) }}\" class=\"btn btn-light\">Voir les détails</a>
+                        </div>
                     </div>
-                </div>
             </div>
         {% endfor %}
         {% for product in products %}
         <div class=\"col-md-4\">
-            <div class=\"product-card\">
-                <img src=\"{{ asset('images/' ~ product.images) }}\" class=\"product-image\">
-                <div class=\"product-details\">
-                    <h3>{{ product.name }}</h3>
-                    <p class=\"product-price\">{{ product.price }} €</p>
-                    <p>{{ product.description }}</p>
-                    <p class=\"product-quantity\">Quantité disponible: {{ product.quantity }}</p>
-                    <p class=\"product-category\">Catégorie: {{ product.category }}</p>
+                <div class=\"product-card\">
+                    <img src=\"{{ asset('images/' ~ product.images) }}\" class=\"product-image\">
+                    <div class=\"product-details\">
+                        <h3>{{ product.name }}</h3>
+                        <p class=\"product-price\">{{ product.price }} €</p>
+                        <p>{{ product.description }}</p>
+                        <p class=\"product-quantity\">Quantité disponible: {{ product.quantity }}</p>
+                        <p class=\"product-category\">Catégorie: {{ product.category }}</p>
+                        <a href=\"{{ path('details_produit', {'id': product.id}) }}\" class=\"btn btn-light\">Voir les détails</a>
+                    </div>
                 </div>
-            </div>
         </div>
         {% endfor %}
         

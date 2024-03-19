@@ -198,6 +198,7 @@ class UservueController extends AbstractController
         }
 
         return $this->render('user/uservue/indexpanier.html.twig', [
+            'promoDetails' => $promoDetails,
             'panierDetails' => $panierDetails,
             'totalPrice' => $totalPrice, // Passer le prix total au template Twig
         ]);

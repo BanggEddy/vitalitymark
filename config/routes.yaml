@@ -52,3 +52,12 @@ remove_quantity:
 admin_products_list:
   path: "/admin/products/list"
   controller: 'App\Controller\AdminproductsController::index'
+
+# Routes pour afficher les détails du produit ou de la promotion dans ACCUEIL
+details_produit:
+  path: "/details-produit/{id}"
+  controller: 'App\Controller\AccueilController::detailsProduit'
+
+details_promotion:
+  path: "/details-promotion/{id}"
+  controller: 'App\Controller\AccueilController::detailsPromotion'

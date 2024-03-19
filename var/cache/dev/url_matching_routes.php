@@ -44,42 +44,50 @@ return [
     [ // $regexpList
         0 => '{^(?'
                 .'|/_error/(\\d+)(?:\\.([^/]++))?(*:35)'
-                .'|/deleteproduct/([^/]++)(*:65)'
+                .'|/de(?'
+                    .'|leteproduct/([^/]++)(*:68)'
+                    .'|tails\\-pro(?'
+                        .'|duit/([^/]++)(*:101)'
+                        .'|motion/([^/]++)(*:124)'
+                    .')'
+                .')'
                 .'|/ad(?'
                     .'|min(?'
-                        .'|formedit/([^/]++)(*:101)'
+                        .'|formedit/([^/]++)(*:163)'
                         .'|/(?'
-                            .'|add_quantity/([^/]++)(*:134)'
-                            .'|remove_quantity/([^/]++)(*:166)'
+                            .'|add_quantity/([^/]++)(*:196)'
+                            .'|remove_quantity/([^/]++)(*:228)'
                             .'|products/([^/]++)/(?'
-                                .'|add_quantity(*:207)'
-                                .'|remove_quantity(*:230)'
+                                .'|add_quantity(*:269)'
+                                .'|remove_quantity(*:292)'
                             .')'
                         .')'
                     .')'
-                    .'|d\\-to\\-cart/([^/]++)(*:261)'
+                    .'|d\\-to\\-cart/([^/]++)(*:323)'
                 .')'
                 .'|/promo/admin/([^/]++)(?'
-                    .'|(*:294)'
-                    .'|/edit(*:307)'
-                    .'|(*:315)'
+                    .'|(*:356)'
+                    .'|/edit(*:369)'
+                    .'|(*:377)'
                 .')'
-                .'|/editproduct/([^/]++)(*:345)'
+                .'|/editproduct/([^/]++)(*:407)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
         35 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
-        65 => [[['_route' => 'app_delete_product', '_controller' => 'App\\Controller\\AdminproductsController::deleteProduct'], ['id'], null, null, false, true, null]],
-        101 => [[['_route' => 'app_admin_form_edit', '_controller' => 'App\\Controller\\AdminproductsController::editProductForm'], ['id'], null, null, false, true, null]],
-        134 => [[['_route' => 'admin_add_quantity', '_controller' => 'App\\Controller\\AdminproductsController::addQuantity'], ['productId'], null, null, false, true, null]],
-        166 => [[['_route' => 'admin_remove_quantity', '_controller' => 'App\\Controller\\AdminproductsController::removeQuantity'], ['productId'], null, null, false, true, null]],
-        207 => [[['_route' => 'add_quantity', '_controller' => 'App\\Controller\\AdminproductsController::addQuantity'], ['productId'], ['POST' => 0], null, false, false, null]],
-        230 => [[['_route' => 'remove_quantity', '_controller' => 'App\\Controller\\AdminproductsController::removeQuantity'], ['productId'], ['POST' => 0], null, false, false, null]],
-        261 => [[['_route' => 'add_to_cart', '_controller' => 'App\\Controller\\UservueController::addToCart'], ['id'], null, null, false, true, null]],
-        294 => [[['_route' => 'app_promo_admin_show', '_controller' => 'App\\Controller\\PromoAdminController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        307 => [[['_route' => 'app_promo_admin_edit', '_controller' => 'App\\Controller\\PromoAdminController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        315 => [[['_route' => 'app_promo_admin_delete', '_controller' => 'App\\Controller\\PromoAdminController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        345 => [
+        68 => [[['_route' => 'app_delete_product', '_controller' => 'App\\Controller\\AdminproductsController::deleteProduct'], ['id'], null, null, false, true, null]],
+        101 => [[['_route' => 'details_produit', '_controller' => 'App\\Controller\\AccueilController::detailsProduit'], ['id'], null, null, false, true, null]],
+        124 => [[['_route' => 'details_promotion', '_controller' => 'App\\Controller\\AccueilController::detailsPromotion'], ['id'], null, null, false, true, null]],
+        163 => [[['_route' => 'app_admin_form_edit', '_controller' => 'App\\Controller\\AdminproductsController::editProductForm'], ['id'], null, null, false, true, null]],
+        196 => [[['_route' => 'admin_add_quantity', '_controller' => 'App\\Controller\\AdminproductsController::addQuantity'], ['productId'], null, null, false, true, null]],
+        228 => [[['_route' => 'admin_remove_quantity', '_controller' => 'App\\Controller\\AdminproductsController::removeQuantity'], ['productId'], null, null, false, true, null]],
+        269 => [[['_route' => 'add_quantity', '_controller' => 'App\\Controller\\AdminproductsController::addQuantity'], ['productId'], ['POST' => 0], null, false, false, null]],
+        292 => [[['_route' => 'remove_quantity', '_controller' => 'App\\Controller\\AdminproductsController::removeQuantity'], ['productId'], ['POST' => 0], null, false, false, null]],
+        323 => [[['_route' => 'add_to_cart', '_controller' => 'App\\Controller\\UservueController::addToCart'], ['id'], null, null, false, true, null]],
+        356 => [[['_route' => 'app_promo_admin_show', '_controller' => 'App\\Controller\\PromoAdminController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        369 => [[['_route' => 'app_promo_admin_edit', '_controller' => 'App\\Controller\\PromoAdminController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        377 => [[['_route' => 'app_promo_admin_delete', '_controller' => 'App\\Controller\\PromoAdminController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        407 => [
             [['_route' => 'app_edit_product', '_controller' => 'App\\Controller\\AdminproductsController::editProduct'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

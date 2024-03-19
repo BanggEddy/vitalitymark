@@ -3,44 +3,59 @@
 {% block title %}Votre panier{% endblock %}
 
 {% block body %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Panier</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Ajoutez ici vos styles personnalisés si nécessaire */
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1 class="mt-4 mb-4">User Panier</h1>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Product Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for panierDetail in panierDetails %}
+<div class="container">
+    <h1 class="mt-4 mb-4">User Panier</h1>
+    <h2>Produits Normaux :</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Product Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for panierDetail in panierDetails %}
+                {% if panierDetail.price is defined %}
                     <tr>
                         <td>{{ panierDetail.product_name }}</td>
                         <td>{{ panierDetail.price }}</td>
                         <td>{{ panierDetail.quantity }}</td>
+                        <td>{{ panierDetail.subtotal }}</td>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <h2>Produits en Promotion :</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Product Name</th>
+                <th scope="col">Price After Promo</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for panierDetail in panierDetails %}
+                {% if panierDetail.price_after_promo is defined %}
+                    <tr>
+                        <td>{{ panierDetail.product_name }}</td>
+                        <td>{{ panierDetail.price_after_promo }}</td>
+                        <td>{{ panierDetail.quantity }}</td>
+                        <td>{{ panierDetail.subtotal }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3>Total Price: {{ totalPrice }}</h3>
+</div>
 </body>
 </html>
-
 {% endblock %}

@@ -136,7 +136,6 @@ class UservueController extends AbstractController
             return new JsonResponse(['error' => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
-
     #[Route('/user/panier', name: 'user_panier')]
     public function getUserPanier(PanierRepository $panierRepository): Response
     {
@@ -151,21 +150,51 @@ class UservueController extends AbstractController
         $paniers = $panierRepository->findBy(['iduser' => $user]);
 
         $panierDetails = [];
+        $promoDetails = [];
         $totalPrice = 0; // Initialiser le prix total à zéro
         foreach ($paniers as $panier) {
             $product = $panier->getIdproducts();
-            $price = $product->getPrice();
-            $quantity = $panier->getQuantity();
-            $subtotal = $price * $quantity; // Calculer le sous-total pour chaque produit
-            $totalPrice += $subtotal; // Ajouter le sous-total au prix total
 
-            // Ajouter les détails du panier
-            $panierDetails[] = [
-                'product_name' => $product->getName(),
-                'price' => $price,
-                'quantity' => $quantity,
-                'subtotal' => $subtotal, // Ajouter le sous-total aux détails du panier
-            ];
+            // Vérifier si un produit est associé au panier
+            if ($product) {
+                $quantity = $panier->getQuantity();
+                $price = 0; // Initialiser le prix à zéro
+
+                // Récupérer le prix du produit
+                $productPrice = $product->getPrice();
+
+                // Calculer le sous-total pour chaque produit
+                $subtotal = $productPrice * $quantity;
+                $totalPrice += $subtotal; // Ajouter le sous-total au prix total
+
+                // Ajouter les détails du panier
+                $panierDetails[] = [
+                    'product_name' => $product->getName(),
+                    'price' => $productPrice,
+                    'quantity' => $quantity,
+                    'subtotal' => $subtotal, // Ajouter le sous-total aux détails du panier
+                ];
+            }
+
+            // Récupérer la promotion associée au panier
+            $promo = $panier->getIdpromo();
+
+            // Vérifier si une promotion est associée au panier
+            if ($promo) {
+                // Créer un tableau pour stocker les détails de la promotion
+                $promoDetails = [
+                    'product_name' => $promo->getIdproduct()->getName(),
+                    'price_after_promo' => $promo->getPriceafterpromo(),
+                    'quantity' => $panier->getQuantity(),
+                    'subtotal' => $promo->getPriceafterpromo() * $panier->getQuantity(), // Calculer le sous-total avec le prix après promo
+                ];
+
+                // Ajouter les détails de la promotion au tableau des détails du panier
+                $panierDetails[] = $promoDetails;
+
+                // Ajouter le prix de la promotion au prix total
+                $totalPrice += $promoDetails['subtotal'];
+            }
         }
 
         return $this->render('user/uservue/indexpanier.html.twig', [

@@ -89,41 +89,91 @@ class __TwigTemplate_b5a76d06c6c5c18f89e6de010ac0cba1 extends Template
         echo "</td>
             </tr>
             <tr>
-                <th>Date_fin</th>
+                <th>Id du Produit</th>
                 <td>";
         // line 20
-        ((twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 20, $this->source); })()), "dateFin", [], "any", false, false, false, 20)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 20, $this->source); })()), "dateFin", [], "any", false, false, false, 20), "Y-m-d"), "html", null, true))) : (print ("")));
-        echo "</td>
-            </tr>
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 20, $this->source); })()), "idproduct", [], "any", false, false, false, 20), "id", [], "any", false, false, false, 20), "html", null, true);
+        echo "</td> ";
+        // line 21
+        echo "            </tr>
             <tr>
-                <th>Date_debut</th>
+                <th>Date Fin</th>
                 <td>";
         // line 24
-        ((twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 24, $this->source); })()), "dateDebut", [], "any", false, false, false, 24)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 24, $this->source); })()), "dateDebut", [], "any", false, false, false, 24), "Y-m-d"), "html", null, true))) : (print ("")));
+        ((twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 24, $this->source); })()), "dateFin", [], "any", false, false, false, 24)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 24, $this->source); })()), "dateFin", [], "any", false, false, false, 24), "Y-m-d"), "html", null, true))) : (print ("")));
         echo "</td>
             </tr>
             <tr>
-                <th>Priceafterpromo</th>
+                <th>Date Début</th>
                 <td>";
         // line 28
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 28, $this->source); })()), "priceafterpromo", [], "any", false, false, false, 28), "html", null, true);
+        ((twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 28, $this->source); })()), "dateDebut", [], "any", false, false, false, 28)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 28, $this->source); })()), "dateDebut", [], "any", false, false, false, 28), "Y-m-d"), "html", null, true))) : (print ("")));
+        echo "</td>
+            </tr>
+            <tr>
+                <th>Prix après promo</th>
+                <td>";
+        // line 32
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 32, $this->source); })()), "priceafterpromo", [], "any", false, false, false, 32), "html", null, true);
+        echo "</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>";
+        // line 36
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 36, $this->source); })()), "description", [], "any", false, false, false, 36), "html", null, true);
+        echo "</td>
+            </tr>
+            <tr>
+                <th>Quantité</th>
+                <td>";
+        // line 40
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 40, $this->source); })()), "quantity", [], "any", false, false, false, 40), "html", null, true);
+        echo "</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>";
+        // line 44
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 44, $this->source); })()), "price", [], "any", false, false, false, 44), "html", null, true);
+        echo "</td>
+            </tr>
+            <tr>
+                <th>Images</th>
+                <td>";
+        // line 48
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 48, $this->source); })()), "images", [], "any", false, false, false, 48), "html", null, true);
+        echo "</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>";
+        // line 52
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 52, $this->source); })()), "name", [], "any", false, false, false, 52), "html", null, true);
+        echo "</td>
+            </tr>
+            <tr>
+                <th>Catégorie</th>
+                <td>";
+        // line 56
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 56, $this->source); })()), "category", [], "any", false, false, false, 56), "html", null, true);
         echo "</td>
             </tr>
         </tbody>
     </table>
 
     <a href=\"";
-        // line 33
+        // line 61
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_promo_admin_index");
-        echo "\">back to list</a>
+        echo "\">Retour à la liste</a>
 
     <a href=\"";
-        // line 35
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_promo_admin_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 35, $this->source); })()), "id", [], "any", false, false, false, 35)]), "html", null, true);
-        echo "\">edit</a>
+        // line 63
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_promo_admin_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 63, $this->source); })()), "id", [], "any", false, false, false, 63)]), "html", null, true);
+        echo "\">Modifier</a>
 
     ";
-        // line 37
+        // line 65
         echo twig_include($this->env, $context, "admin/promo_admin/_delete_form.html.twig");
         echo "
 ";
@@ -153,7 +203,7 @@ class __TwigTemplate_b5a76d06c6c5c18f89e6de010ac0cba1 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  127 => 37,  122 => 35,  117 => 33,  109 => 28,  102 => 24,  95 => 20,  88 => 16,  81 => 12,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  177 => 65,  172 => 63,  167 => 61,  159 => 56,  152 => 52,  145 => 48,  138 => 44,  131 => 40,  124 => 36,  117 => 32,  110 => 28,  103 => 24,  98 => 21,  95 => 20,  88 => 16,  81 => 12,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -176,23 +226,51 @@ class __TwigTemplate_b5a76d06c6c5c18f89e6de010ac0cba1 extends Template
                 <td>{{ promo.reduction }}</td>
             </tr>
             <tr>
-                <th>Date_fin</th>
+                <th>Id du Produit</th>
+                <td>{{ promo.idproduct.id }}</td> {# Assuming you want to display the id of the associated product #}
+            </tr>
+            <tr>
+                <th>Date Fin</th>
                 <td>{{ promo.dateFin ? promo.dateFin|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>Date_debut</th>
+                <th>Date Début</th>
                 <td>{{ promo.dateDebut ? promo.dateDebut|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>Priceafterpromo</th>
+                <th>Prix après promo</th>
                 <td>{{ promo.priceafterpromo }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ promo.description }}</td>
+            </tr>
+            <tr>
+                <th>Quantité</th>
+                <td>{{ promo.quantity }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ promo.price }}</td>
+            </tr>
+            <tr>
+                <th>Images</th>
+                <td>{{ promo.images }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ promo.name }}</td>
+            </tr>
+            <tr>
+                <th>Catégorie</th>
+                <td>{{ promo.category }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href=\"{{ path('app_promo_admin_index') }}\">back to list</a>
+    <a href=\"{{ path('app_promo_admin_index') }}\">Retour à la liste</a>
 
-    <a href=\"{{ path('app_promo_admin_edit', {'id': promo.id}) }}\">edit</a>
+    <a href=\"{{ path('app_promo_admin_edit', {'id': promo.id}) }}\">Modifier</a>
 
     {{ include('admin/promo_admin/_delete_form.html.twig') }}
 {% endblock %}

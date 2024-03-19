@@ -56,7 +56,7 @@ class PromoAdminController extends AbstractController
             $entityManager->persist($promo);
             $entityManager->flush();
 
-            return new Response('Promo created successfully', Response::HTTP_CREATED);
+            return $this->redirectToRoute('app_promo_admin_index');
         }
 
         return $this->render('admin/promo_admin/new.html.twig', [

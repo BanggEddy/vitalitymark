@@ -147,24 +147,43 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
         echo "<br>
 <br>
 
-    <section2>
-    <div class=\"card\">
-        <h2>Obtenir de l'aide</h2>
-        <p>Des experts sont là pour vous aider.</p>
+<section2 class=\"row justify-content-around\">
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>Obtenir de l'aide</h2>
+                <p>Des experts sont là pour vous aider.</p>
+            </div>
+        </div>
     </div>
-    <div class=\"card\">
-        <h2>Trouver un magasin</h2>
-        <p>Localisez nos magasins près de chez vous.</p>
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>Trouver un magasin</h2>
+                <p>Localisez nos magasins près de chez vous.</p>
+            </div>
+        </div>
     </div>
-    <div class=\"card\">
-        <h2>Télécharger l'application</h2>
-        <p>Accédez à nos services où que vous soyez.</p>
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>Télécharger l'application</h2>
+                <p>Accédez à nos services où que vous soyez.</p>
+            </div>
+        </div>
     </div>
-    <div class=\"card\">
-        <h2>FAQ & Questions?</h2>
-        <p>Trouver des réponses à vos questions.</p>
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>FAQ & Questions?</h2>
+                <p>Trouver des réponses à vos questions.</p>
+            </div>
+        </div>
     </div>
-    </section2>
+</section2>
+
+
+
     <!-- Inclure Bootstrap JS -->
     <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>
     <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js\"></script>
@@ -237,7 +256,7 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  213 => 90,  206 => 89,  194 => 10,  181 => 5,  147 => 91,  145 => 89,  87 => 34,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
+        return array (  232 => 90,  225 => 89,  213 => 10,  200 => 5,  147 => 91,  145 => 89,  87 => 34,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -335,24 +354,43 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
 <br>
 <br>
 
-    <section2>
-    <div class=\"card\">
-        <h2>Obtenir de l'aide</h2>
-        <p>Des experts sont là pour vous aider.</p>
+<section2 class=\"row justify-content-around\">
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>Obtenir de l'aide</h2>
+                <p>Des experts sont là pour vous aider.</p>
+            </div>
+        </div>
     </div>
-    <div class=\"card\">
-        <h2>Trouver un magasin</h2>
-        <p>Localisez nos magasins près de chez vous.</p>
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>Trouver un magasin</h2>
+                <p>Localisez nos magasins près de chez vous.</p>
+            </div>
+        </div>
     </div>
-    <div class=\"card\">
-        <h2>Télécharger l'application</h2>
-        <p>Accédez à nos services où que vous soyez.</p>
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>Télécharger l'application</h2>
+                <p>Accédez à nos services où que vous soyez.</p>
+            </div>
+        </div>
     </div>
-    <div class=\"card\">
-        <h2>FAQ & Questions?</h2>
-        <p>Trouver des réponses à vos questions.</p>
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>FAQ & Questions?</h2>
+                <p>Trouver des réponses à vos questions.</p>
+            </div>
+        </div>
     </div>
-    </section2>
+</section2>
+
+
+
     <!-- Inclure Bootstrap JS -->
     <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>
     <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js\"></script>

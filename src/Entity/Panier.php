@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PanierRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PanierRepository::class)]
@@ -21,6 +23,9 @@ class Panier
 
     #[ORM\ManyToOne(inversedBy: 'paniers')]
     private ?Products $idproducts = null;
+
+    #[ORM\ManyToOne(inversedBy: 'paniers')]
+    private ?Promo $idpromo = null;
 
     public function getId(): ?int
     {
@@ -59,6 +64,18 @@ class Panier
     public function setIdproducts(?Products $idproducts): static
     {
         $this->idproducts = $idproducts;
+
+        return $this;
+    }
+
+    public function getIdpromo(): ?Promo
+    {
+        return $this->idpromo;
+    }
+
+    public function setIdpromo(?Promo $idpromo): static
+    {
+        $this->idpromo = $idpromo;
 
         return $this;
     }

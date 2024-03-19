@@ -26,6 +26,11 @@
     width: 200px;
     text-align: center;
   }
+      .nav-item .btn-outline-danger:hover {
+        color: white;
+        background-color: #DBFFCA;
+        border-color: #DBFFCA;
+    }
 </style>
 <body>
     <header>
@@ -61,9 +66,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">Déconnexion</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><span style="color:red;">0,00€</span></a>
-                    </li>
+<li class="nav-item">
+    <a class="nav-link btn btn-outline-danger" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-cart" style="margin-bottom:4px" viewBox="0 0 16 16">
+            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+        </svg>
+        <span class="text-danger">{{ totalPrice }}€</span>
+    </a>                   
+</li>
+
+
                 </ul>
             </div>
         </nav>
@@ -80,24 +92,40 @@
 <br>
 <br>
 
-    <section2>
-    <div class="card">
-        <h2>Obtenir de l'aide</h2>
-        <p>Des experts sont là pour vous aider.</p>
+<section2 class="row justify-content-around">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h2>Obtenir de l'aide</h2>
+                <p>Des experts sont là pour vous aider.</p>
+            </div>
+        </div>
     </div>
-    <div class="card">
-        <h2>Trouver un magasin</h2>
-        <p>Localisez nos magasins près de chez vous.</p>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h2>Trouver un magasin</h2>
+                <p>Localisez nos magasins près de chez vous.</p>
+            </div>
+        </div>
     </div>
-    <div class="card">
-        <h2>Télécharger l'application</h2>
-        <p>Accédez à nos services où que vous soyez.</p>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h2>Télécharger l'application</h2>
+                <p>Accédez à nos services où que vous soyez.</p>
+            </div>
+        </div>
     </div>
-    <div class="card">
-        <h2>FAQ & Questions?</h2>
-        <p>Trouver des réponses à vos questions.</p>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h2>FAQ & Questions?</h2>
+                <p>Trouver des réponses à vos questions.</p>
+            </div>
+        </div>
     </div>
-    </section2>
+</section2>
     <!-- Inclure Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

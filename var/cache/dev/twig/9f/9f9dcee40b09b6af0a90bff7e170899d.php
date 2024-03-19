@@ -77,12 +77,17 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
     width: 200px;
     text-align: center;
   }
+      .nav-item .btn-outline-danger:hover {
+        color: white;
+        background-color: #DBFFCA;
+        border-color: #DBFFCA;
+    }
 </style>
 <body>
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
             <a href=\"/uservue\" > <img src=\"";
-        // line 33
+        // line 38
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
         echo "\"> </a>
 
@@ -96,7 +101,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"";
-        // line 44
+        // line 49
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_panier");
         echo "\">Voir le panier</a>
                     </li>
@@ -118,9 +123,19 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/logout\">Déconnexion</a>
                     </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\"><span style=\"color:red;\">0,00€</span></a>
-                    </li>
+<li class=\"nav-item\">
+    <a class=\"nav-link btn btn-outline-danger\" href=\"#\">
+        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"red\" class=\"bi bi-cart\" style=\"margin-bottom:4px\" viewBox=\"0 0 16 16\">
+            <path d=\"M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2\"/>
+        </svg>
+        <span class=\"text-danger\">";
+        // line 74
+        echo twig_escape_filter($this->env, (isset($context["totalPrice"]) || array_key_exists("totalPrice", $context) ? $context["totalPrice"] : (function () { throw new RuntimeError('Variable "totalPrice" does not exist.', 74, $this->source); })()), "html", null, true);
+        echo "€</span>
+    </a>                   
+</li>
+
+
                 </ul>
             </div>
         </nav>
@@ -133,30 +148,46 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
     </header>
 
             ";
-        // line 78
+        // line 90
         $this->displayBlock('body', $context, $blocks);
-        // line 80
+        // line 92
         echo "<br>
 <br>
 
-    <section2>
-    <div class=\"card\">
-        <h2>Obtenir de l'aide</h2>
-        <p>Des experts sont là pour vous aider.</p>
+<section2 class=\"row justify-content-around\">
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>Obtenir de l'aide</h2>
+                <p>Des experts sont là pour vous aider.</p>
+            </div>
+        </div>
     </div>
-    <div class=\"card\">
-        <h2>Trouver un magasin</h2>
-        <p>Localisez nos magasins près de chez vous.</p>
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>Trouver un magasin</h2>
+                <p>Localisez nos magasins près de chez vous.</p>
+            </div>
+        </div>
     </div>
-    <div class=\"card\">
-        <h2>Télécharger l'application</h2>
-        <p>Accédez à nos services où que vous soyez.</p>
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>Télécharger l'application</h2>
+                <p>Accédez à nos services où que vous soyez.</p>
+            </div>
+        </div>
     </div>
-    <div class=\"card\">
-        <h2>FAQ & Questions?</h2>
-        <p>Trouver des réponses à vos questions.</p>
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>FAQ & Questions?</h2>
+                <p>Trouver des réponses à vos questions.</p>
+            </div>
+        </div>
     </div>
-    </section2>
+</section2>
     <!-- Inclure Bootstrap JS -->
     <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>
     <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js\"></script>
@@ -194,14 +225,14 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
 
     }
 
-    // line 78
+    // line 90
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 79
+        // line 91
         echo "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -229,7 +260,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  205 => 79,  198 => 78,  186 => 10,  173 => 5,  139 => 80,  137 => 78,  100 => 44,  86 => 33,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
+        return array (  236 => 91,  229 => 90,  217 => 10,  204 => 5,  154 => 92,  152 => 90,  133 => 74,  105 => 49,  91 => 38,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -262,6 +293,11 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
     width: 200px;
     text-align: center;
   }
+      .nav-item .btn-outline-danger:hover {
+        color: white;
+        background-color: #DBFFCA;
+        border-color: #DBFFCA;
+    }
 </style>
 <body>
     <header>
@@ -297,9 +333,16 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/logout\">Déconnexion</a>
                     </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\"><span style=\"color:red;\">0,00€</span></a>
-                    </li>
+<li class=\"nav-item\">
+    <a class=\"nav-link btn btn-outline-danger\" href=\"#\">
+        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"red\" class=\"bi bi-cart\" style=\"margin-bottom:4px\" viewBox=\"0 0 16 16\">
+            <path d=\"M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2\"/>
+        </svg>
+        <span class=\"text-danger\">{{ totalPrice }}€</span>
+    </a>                   
+</li>
+
+
                 </ul>
             </div>
         </nav>
@@ -316,24 +359,40 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
 <br>
 <br>
 
-    <section2>
-    <div class=\"card\">
-        <h2>Obtenir de l'aide</h2>
-        <p>Des experts sont là pour vous aider.</p>
+<section2 class=\"row justify-content-around\">
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>Obtenir de l'aide</h2>
+                <p>Des experts sont là pour vous aider.</p>
+            </div>
+        </div>
     </div>
-    <div class=\"card\">
-        <h2>Trouver un magasin</h2>
-        <p>Localisez nos magasins près de chez vous.</p>
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>Trouver un magasin</h2>
+                <p>Localisez nos magasins près de chez vous.</p>
+            </div>
+        </div>
     </div>
-    <div class=\"card\">
-        <h2>Télécharger l'application</h2>
-        <p>Accédez à nos services où que vous soyez.</p>
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>Télécharger l'application</h2>
+                <p>Accédez à nos services où que vous soyez.</p>
+            </div>
+        </div>
     </div>
-    <div class=\"card\">
-        <h2>FAQ & Questions?</h2>
-        <p>Trouver des réponses à vos questions.</p>
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>FAQ & Questions?</h2>
+                <p>Trouver des réponses à vos questions.</p>
+            </div>
+        </div>
     </div>
-    </section2>
+</section2>
     <!-- Inclure Bootstrap JS -->
     <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>
     <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js\"></script>

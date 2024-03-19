@@ -4,15 +4,23 @@
 
 {% block body %}
     <style>
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
         .promo-card {
             background-color: #f8f9fa;
             border: 1px solid #dee2e6;
             border-radius: 10px;
             padding: 20px;
-            margin-bottom: 20px;
+            margin: 20px;
             background-color: #DBFFCA;
             border: 1px solid #ccc;
             box-shadow: 10px 10px 4px #7cdf7c; /* Ajout de l'ombre */
+            max-width: 300px; /* Optionnel : limiter la largeur */
         }
 
         .promo-image {
@@ -45,22 +53,21 @@
     </style>
 
     <h1>Promo index</h1>
-
+    <a href="{{ path('app_promo_admin_new') }}" class="btn btn-success">Ajouter un produit en promotion</a>
+    <br><br>
     <div class="row">
         {% for promo in promos %}
-            <div class="col-md-4">
-                <div class="promo-card">
-                    <img src="{{ asset('images/' ~ promo.images) }}" class="promo-image">
-                    <div class="promo-details">
-                        <h3>{{ promo.name }}</h3>
-                        <p class="promo-price">{{ promo.price }} €</p>
-                        <p>{{ promo.description }}</p>
-                        <p class="promo-quantity">Quantité disponible: {{ promo.quantity }}</p>
-                        <p class="promo-category">Catégorie: {{ promo.category }}</p>
-                        <div class="promo-actions">
-                            <a href="{{ path('app_promo_admin_show', {'id': promo.id}) }}" class="btn btn-primary">Show</a>
-                            <a href="{{ path('app_promo_admin_edit', {'id': promo.id}) }}" class="btn btn-info">Edit</a>
-                        </div>
+            <div class="promo-card">
+                <img src="{{ asset('images/' ~ promo.images) }}" class="promo-image">
+                <div class="promo-details">
+                    <h3>{{ promo.name }}</h3>
+                    <p class="promo-price">{{ promo.priceafterpromo }} €</p>
+                    <p>{{ promo.description }}</p>
+                    <p class="promo-quantity">Quantité disponible: {{ promo.quantity }}</p>
+                    <p class="promo-category">Catégorie: {{ promo.category }}</p>
+                    <div class="promo-actions">
+                        <a href="{{ path('app_promo_admin_show', {'id': promo.id}) }}" class="btn btn-primary">Voir en détail</a>
+                        <a href="{{ path('app_promo_admin_edit', {'id': promo.id}) }}" class="btn btn-info">Modifier</a>
                     </div>
                 </div>
             </div>
@@ -71,5 +78,4 @@
         {% endfor %}
     </div>
 
-    <a href="{{ path('app_promo_admin_new') }}" class="btn btn-success">Create new</a>
 {% endblock %}

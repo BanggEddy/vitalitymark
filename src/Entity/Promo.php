@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PromoRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -47,6 +49,15 @@ class Promo
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $category = null;
+
+    #[ORM\OneToMany(targetEntity: Panier::class, mappedBy: 'idpromo')]
+    private Collection $paniers;
+
+    public function __construct()
+    {
+        $this->paniers = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -182,6 +193,36 @@ class Promo
     public function setCategory(?string $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Panier>
+     */
+    public function getPaniers(): Collection
+    {
+        return $this->paniers;
+    }
+
+    public function addPanier(Panier $panier): static
+    {
+        if (!$this->paniers->contains($panier)) {
+            $this->paniers->add($panier);
+            $panier->setIdpromo($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanier(Panier $panier): static
+    {
+        if ($this->paniers->removeElement($panier)) {
+            // set the owning side to null (unless already changed)
+            if ($panier->getIdpromo() === $this) {
+                $panier->setIdpromo(null);
+            }
+        }
 
         return $this;
     }

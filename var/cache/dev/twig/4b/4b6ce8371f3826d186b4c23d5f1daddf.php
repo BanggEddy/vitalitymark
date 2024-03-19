@@ -81,10 +81,10 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
 <body>
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
-            <img src=\"";
+            <a href=\"/\" > <img src=\"";
         // line 33
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
-        echo "\">
+        echo "\"> </a>
 
             <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
                 <span class=\"navbar-toggler-icon\"></span>
@@ -95,7 +95,7 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
                         <a class=\"nav-link\" href=\"#\">Rayons</a>
                     </li>
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\"><span style=\"color:red;\">Promos</span></a>
+                        <a class=\"nav-link\" href=\"/promo\"><span style=\"color:red;\">Promos</span></a>
                     </li>
                 </ul>
                 <ul class=\"navbar-nav ml-auto\">
@@ -261,7 +261,7 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
 <body>
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
-            <img src=\"{{ asset('images/logo.png') }}\">
+            <a href=\"/\" > <img src=\"{{ asset('images/logo.png') }}\"> </a>
 
             <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
                 <span class=\"navbar-toggler-icon\"></span>
@@ -272,7 +272,7 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
                         <a class=\"nav-link\" href=\"#\">Rayons</a>
                     </li>
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\"><span style=\"color:red;\">Promos</span></a>
+                        <a class=\"nav-link\" href=\"/promo\"><span style=\"color:red;\">Promos</span></a>
                     </li>
                 </ul>
                 <ul class=\"navbar-nav ml-auto\">

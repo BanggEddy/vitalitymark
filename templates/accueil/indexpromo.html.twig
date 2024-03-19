@@ -1,0 +1,149 @@
+{% extends 'header.html.twig' %}
+
+{% block title %}Hello AccueilController!{% endblock %}
+
+{% block body %}
+<style>
+.product-card {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #DBFFCA;
+    border: 1px solid #ccc;
+    box-shadow: 10px 10px 4px #7cdf7c; 
+    transition: transform 0.3s ease-in-out; /* Transition de l'effet */
+}
+.product-card:hover {
+    transform: translateY(-10px); /* Déplacement vers le haut */
+}
+
+.product-image {
+    position: relative; /* Position relative pour positionner l'élément de superposition */
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product-image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 128, 0, 0.5); /* Couleur de fond semi-transparente */
+    border-radius: 10px; /* Coins arrondis */
+    opacity: 0; /* Opacité initiale */
+    transition: opacity 0.3s ease-in-out; /* Transition de l'opacité */
+}
+
+.product-image:hover::after {
+    opacity: 1; /* Opacité lorsque survolé */
+}
+
+.product-details {
+    margin-top: 10px;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.product-quantity {
+    color: #28a745;
+}
+
+.product-category {
+    color: #6c757d;
+}
+</style>
+<style>
+/* CSS pour les cartes de promotion */
+.promo-card {
+    background-color: #f08080; /* Couleur de fond */
+    border: 1px 10px solid #fa8072 ; /* Bordure */
+    border-radius: 10px; /* Coins arrondis */
+    padding: 20px; /* Espacement intérieur */
+    margin-bottom: 20px; /* Marge en bas */
+    box-shadow: 5px 5px 5px #888888; /* Ombre */
+    transition: transform 0.3s ease-in-out; /* Transition de l'effet */
+}
+
+.promo-card:hover {
+    transform: translateY(-5px); /* Déplacement vers le haut */
+}
+
+.promo-image {
+    width: 100%; /* Largeur de l'image */
+    max-height: 200px; /* Hauteur maximale de l'image */
+    object-fit: cover; /* Redimensionner l'image pour couvrir la zone */
+    border-radius: 10px; /* Coins arrondis */
+}
+
+.promo-details {
+    margin-top: 10px; /* Marge en haut */
+}
+
+.promo-title {
+    font-size: 18px; /* Taille du titre */
+    font-weight: bold; /* Gras */
+}
+
+.promo-description {
+    color: #555; /* Couleur du texte de la description */
+}
+
+.promo-date {
+    color: #777; /* Couleur du texte de la date */
+}
+
+.promo-price {
+    color: #333; /* Couleur du texte du prix */
+    font-weight: bold; /* Gras */
+}
+</style>
+<div class="container">
+    <br>
+    <h1>Liste des produits</h1>
+    <br>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="product-card">
+                <h2> En ce moment</h2>
+                <img src="{{ asset('images/cardfront.png') }}" alt="{{ 'photo' }}" class="product-image">
+                <div class="product-details">
+                    <h3>La sélection du moment</h3>
+                    <p>Découvrez nos meilleures promotions, nos dernières nouveautés ou nos plus grands succès que nous avons sélectionnés.</p>
+                    <a href="{{ path('app_login') }}" class="btn btn-primary">J'en profite</a>
+                </div>
+            </div>
+        </div>
+        {% for promo in promotions %}
+            <div class="col-md-4">
+                    <div class="promo-card">
+                        <img src="{{ asset('images/' ~ promo.getImages()) }}" class="promo-image">
+                        <div class="promo-details">
+                            <h2 class="promo-title" style="font-weight: bold;">{{ promo.getName() }}</h2>
+                            {% set now = 'now'|date('Y-m-d') %}
+                            {% set remainingDays = (promo.getDateFin()|date('U') - now|date('U')) / (24 * 3600) %}
+                            {% if remainingDays > 0 %}
+                                <p class="promo-description" style="font-weight: bold;">Nombre de jours restants: {{ remainingDays|round(0, 'floor') }}</p>
+                            {% else %}
+                                <p class="promo-description" style="font-weight: bold;">Offre expirée</p>
+                            {% endif %}
+                            <p class="promo-description">Quantité disponible: {{ promo.getQuantity() }}</p>
+                            <p class="promo-description" style="font-weight: bold;color:red;">{{ promo.getReduction() }} % de réduction</p>
+                            <p class="promo-price">Prix après promotion: {{ promo.getPriceafterpromo() }} €</p>
+                            <a href="{{ path('details_promotion', {'id': promo.id}) }}" class="btn btn-light">Voir les détails</a>
+                        </div>
+                    </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

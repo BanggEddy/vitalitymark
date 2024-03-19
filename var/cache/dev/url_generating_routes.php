@@ -5,6 +5,7 @@
 return [
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], [], []],
     'app_accueil' => [[], ['_controller' => 'App\\Controller\\AccueilController::index'], [], [['text', '/']], [], [], []],
+    'app_promo' => [[], ['_controller' => 'App\\Controller\\AccueilController::promo'], [], [['text', '/promo']], [], [], []],
     'app_adminproducts' => [[], ['_controller' => 'App\\Controller\\AdminproductsController::index'], [], [['text', '/adminproducts']], [], [], []],
     'app_admin_add_products' => [[], ['_controller' => 'App\\Controller\\AdminproductsController::addProducts'], [], [['text', '/adminajouterproducts']], [], [], []],
     'app_create_product' => [[], ['_controller' => 'App\\Controller\\AdminproductsController::create'], [], [['text', '/product/create']], [], [], []],
@@ -42,6 +43,7 @@ return [
     'details_produit' => [['id'], ['_controller' => 'App\\Controller\\AccueilController::detailsProduit'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/details-produit']], [], [], []],
     'details_promotion' => [['id'], ['_controller' => 'App\\Controller\\AccueilController::detailsPromotion'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/details-promotion']], [], [], []],
     'App\Controller\AccueilController::index' => [[], ['_controller' => 'App\\Controller\\AccueilController::index'], [], [['text', '/']], [], [], []],
+    'App\Controller\AccueilController::promo' => [[], ['_controller' => 'App\\Controller\\AccueilController::promo'], [], [['text', '/promo']], [], [], []],
     'App\Controller\AccueilController::detailsProduit' => [['id'], ['_controller' => 'App\\Controller\\AccueilController::detailsProduit'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/details-produit']], [], [], []],
     'App\Controller\AccueilController::detailsPromotion' => [['id'], ['_controller' => 'App\\Controller\\AccueilController::detailsPromotion'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/details-promotion']], [], [], []],
     'App\Controller\AdminproductsController::index' => [[], ['_controller' => 'App\\Controller\\AdminproductsController::index'], [], [['text', '/adminproducts']], [], [], []],

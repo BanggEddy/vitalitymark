@@ -158,11 +158,11 @@ array_key_exists("promo", $context)) {
             echo "%</p>
                     <p>Date de début: ";
             // line 62
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 62, $this->source); })()), "date_debut", [], "any", false, false, false, 62), "d/m/Y"), "html", null, true);
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 62, $this->source); })()), "dateDebut", [], "any", false, false, false, 62), "d/m/Y"), "html", null, true);
             echo "</p>
                     <p>Date de fin: ";
             // line 63
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 63, $this->source); })()), "date_fin", [], "any", false, false, false, 63), "d/m/Y"), "html", null, true);
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 63, $this->source); })()), "dateFin", [], "any", false, false, false, 63), "d/m/Y"), "html", null, true);
             echo "</p>
                     <p>Prix après promotion: ";
             // line 64
@@ -178,7 +178,10 @@ array_key_exists("promo", $context)) {
         ";
         }
         // line 70
-        echo "    </div>
+        echo "                            <a class=\"nav-link\" href=\"/\">< Retour</a>
+
+    </div>
+    
 </div>
 
 <script>
@@ -280,15 +283,18 @@ array_key_exists("promo", $context)) {
                 <div class=\"promo-details\">
                     <h2>{{ promo.name }}</h2>
                     <p>Réduction: {{ promo.reduction }}%</p>
-                    <p>Date de début: {{ promo.date_debut|date('d/m/Y') }}</p>
-                    <p>Date de fin: {{ promo.date_fin|date('d/m/Y') }}</p>
+                    <p>Date de début: {{ promo.dateDebut|date('d/m/Y') }}</p>
+                    <p>Date de fin: {{ promo.dateFin|date('d/m/Y') }}</p>
                     <p>Prix après promotion: {{ promo.priceafterpromo }} €</p>
                     <p>Description:</p>
                     <p>{{ promo.description }}</p>
                 </div>
             </div>
         {% endif %}
+                            <a class=\"nav-link\" href=\"/\">< Retour</a>
+
     </div>
+    
 </div>
 
 <script>

@@ -28,7 +28,18 @@ class AccueilController extends AbstractController
             'promotions' => $promotions, // Passer les promotions à la vue
         ]);
     }
+    #[Route('/promo', name: 'app_promo')]
+    public function promo(ProductsRepository $productsRepository, PromoRepository $promoRepository): Response
+    {
 
+        // Récupérer toutes les promotions
+        $promotions = $promoRepository->findAll();
+
+        return $this->render('accueil/indexpromo.html.twig', [
+            'controller_name' => 'AccueilController',
+            'promotions' => $promotions, // Passer les promotions à la vue
+        ]);
+    }
     private $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)

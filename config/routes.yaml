@@ -11,7 +11,6 @@ uservue:
 adminproducts:
   path: /adminproducts
   controller: App\Controller\AdminproductsController::index
-
 #CRUD
 #Ajouter produits
 adminajouterproducts:
@@ -57,7 +56,10 @@ admin_products_list:
 details_produit:
   path: "/details-produit/{id}"
   controller: 'App\Controller\AccueilController::detailsProduit'
-
 details_promotion:
   path: "/details-promotion/{id}"
   controller: 'App\Controller\AccueilController::detailsPromotion'
+
+app_contact:
+  path: "/contact"
+  controller: 'App\Controller\AccueilController::indexcontact'

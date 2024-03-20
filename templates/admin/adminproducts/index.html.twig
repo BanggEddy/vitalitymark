@@ -12,7 +12,16 @@
         margin-bottom: 20px;
         background-color: #DBFFCA;
         border: 1px solid #ccc;
-        box-shadow: 10px 10px 4px #7cdf7c; /* Ajout de l'ombre */
+        transition: transform 0.3s ease; 
+        box-shadow: 2px 1px 1px #7cdf7c; 
+
+    }
+
+    .product-card:hover {
+        transform: translateY(-7px); 
+        box-shadow: 10px 10px 4px #7cdf7c; 
+        transition: 0.8s;
+
     }
 
     .product-image {
@@ -37,6 +46,23 @@
 
     .product-category {
         color: #6c757d;
+    }
+
+    .form-control:focus {
+        transform: translateY(0); 
+        transition: transform 0.5s ease;
+    }
+
+    .btn-success:hover {
+        background-color: #fff; 
+        border-color: #fff; 
+        color:#28a745
+    }
+
+    .btn-danger:hover {
+        background-color: #fff; 
+        border-color: #fff; 
+        color:#dc3545
     }
 </style>
 

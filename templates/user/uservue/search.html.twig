@@ -1,0 +1,166 @@
+{% extends 'headeruser.html.twig' %}
+
+{% block title %}Résultats de la recherche{% endblock %}
+
+{% block body %}
+<style>
+.product-card {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #DBFFCA;
+    border: 1px solid #ccc;
+    box-shadow: 10px 10px 4px #7cdf7c;
+    transition: transform 0.3s ease-in-out; /* Transition de l'effet */
+}
+
+.product-card:hover {
+    transform: translateY(-10px); /* Déplacement vers le haut */
+}
+
+.product-card img {
+    position: relative; /* Position relative pour positionner l'élément de superposition */
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product-card img::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 128, 0, 0.5); /* Couleur de fond semi-transparente */
+    border-radius: 10px; /* Coins arrondis */
+    opacity: 0; /* Opacité initiale */
+    transition: opacity 0.3s ease-in-out; /* Transition de l'opacité */
+}
+
+.product-card:hover img::after {
+    opacity: 1; /* Opacité lorsque survolé */
+}
+
+.product-card-details {
+    margin-top: 10px;
+}
+
+.product-card-title {
+    font-weight: bold;
+}
+
+.product-card-price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.product-card-category {
+    color: #6c757d;
+}
+
+.promo-card {
+    background-color: #f08080; /* Couleur de fond */
+    border: 1px 10px solid #fa8072; /* Bordure */
+    border-radius: 10px; /* Coins arrondis */
+    padding: 20px; /* Espacement intérieur */
+    margin-bottom: 20px; /* Marge en bas */
+    box-shadow: 5px 5px 5px #888888; /* Ombre */
+    transition: transform 0.3s ease-in-out; /* Transition de l'effet */
+}
+
+.promo-card:hover {
+    transform: translateY(-5px); /* Déplacement vers le haut */
+}
+
+.promo-card img {
+    width: 100%; /* Largeur de l'image */
+    max-height: 200px; /* Hauteur maximale de l'image */
+    object-fit: cover; /* Redimensionner l'image pour couvrir la zone */
+    border-radius: 10px; /* Coins arrondis */
+}
+
+.promo-card-details {
+    margin-top: 10px; /* Marge en haut */
+}
+
+.promo-card-title {
+    font-weight: bold; /* Gras */
+}
+
+.promo-card-description {
+    color: #555; /* Couleur du texte de la description */
+}
+
+.promo-card-price {
+    color: #333; /* Couleur du texte du prix */
+    font-weight: bold; /* Gras */
+}
+
+.btn-details {
+    background-color: #fff; /* Couleur de fond */
+    color: #000; /* Couleur du texte */
+    border: none; /* Suppression de la bordure */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 8px 16px; /* Espacement interne */
+    font-size: 14px; /* Taille de la police */
+}
+
+.btn-details:hover {
+    background-color: #000; /* Couleur de fond au survol */
+    color:#fff;
+}
+</style>
+
+<div class="container">
+    <br>
+    <h1>Résultats de la recherche</h1>
+    <br>
+
+    {% if products is not empty %}
+    <h2>Produits</h2>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4">
+            <div class="product-card">
+                <img src="{{ asset('images/' ~ product.images) }}" class="product-card-img-top" alt="{{ product.name }}">
+                <div class="product-card-details">
+                    <h3 class="product-card-title">{{ product.name }}</h3>
+                    <p class="product-card-text">{{ product.description }}</p>
+                    <p class="product-card-price">{{ product.price }} €</p>
+                    <p class="product-card-category">Catégorie: {{ product.category }}</p>
+                    <a href="{{ path('details_produit', {'id': product.id}) }}" class="btn btn-details">Voir les détails</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if promos is not empty %}
+    <h2>Promotions</h2>
+    <div class="row">
+        {% for promo in promos %}
+        <div class="col-md-4">
+            <div class="promo-card">
+                <img src="{{ asset('images/' ~ promo.getImages()) }}" class="promo-card-img-top" alt="{{ promo.getName() }}">
+                <div class="promo-card-details">
+                    <h3 class="promo-card-title">{{ promo.getName() }}</h3>
+                    <p class="promo-card-description">{{ promo.getDescription() }}</p>
+                    <p class="promo-card-price">{{ promo.getPriceafterpromo() }} €</p>
+                    <a href="{{ path('details_promotion', {'id': promo.id}) }}" class="btn btn-details">Voir les détails</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if products is empty and promos is empty %}
+    <p>Aucun résultat trouvé.</p>
+    {% endif %}
+</div>
+{% endblock %}

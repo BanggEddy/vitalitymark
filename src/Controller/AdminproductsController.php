@@ -15,6 +15,8 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\Entity\User;
+use App\Entity\Promo;
+
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class AdminproductsController extends AbstractController
@@ -264,5 +266,44 @@ class AdminproductsController extends AbstractController
 
         // Rediriger vers la liste des produits
         return $this->redirectToRoute('admin_products_list');
+    }
+
+    //Afficher le profil admin
+    #[Route('/compte/admin', name: 'compte_admin')]
+    public function profiladmin()
+    {
+
+        return $this->render('admin/adminproducts/compteadmin.html.twig', []);
+    }
+
+    //Rechercher un produit
+    #[Route('/search/admin', name: 'search_admin')]
+    public function search(Request $request, EntityManagerInterface $entityManager)
+    {
+        // Récupérer le terme de recherche depuis la requête
+        $keyword = $request->request->get('keyword');
+
+        // Récupérer les produits correspondant au nom du produit (correspondance partielle)
+        $productsRepository = $entityManager->getRepository(Products::class);
+        $products = $productsRepository->createQueryBuilder('p')
+            ->where('p.name LIKE :keyword')
+            ->setParameter('keyword', '%' . $keyword . '%')
+            ->getQuery()
+            ->getResult();
+
+        // Récupérer les promotions correspondant au nom du produit (correspondance partielle)
+        $promosRepository = $entityManager->getRepository(Promo::class);
+        $promos = $promosRepository->createQueryBuilder('p')
+            ->join('p.idproduct', 'pr')
+            ->where('pr.name LIKE :keyword')
+            ->setParameter('keyword', '%' . $keyword . '%')
+            ->getQuery()
+            ->getResult();
+
+        return $this->render('admin/adminproducts/search.html.twig', [
+            'products' => $products,
+            'promos' => $promos,
+            'keyword' => $keyword,
+        ]);
     }
 }

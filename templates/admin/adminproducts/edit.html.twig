@@ -12,7 +12,15 @@
         margin-bottom: 20px;
         background-color: #DBFFCA;
         border: 1px solid #ccc;
-        box-shadow: 10px 10px 4px #7cdf7c; /* Ajout de l'ombre */
+        transition: transform 0.3s ease; /* Transition pour l'effet de survol */
+        box-shadow: 2px 1px 1px #7cdf7c; /* Ajout de l'ombre */
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px); /* Translation vers le haut au survol */
+        box-shadow: 10px 5px 4px #7cdf7c; /* Ajout de l'ombre */
+        transition: 0.8s;
+
     }
 
     .product-image {
@@ -69,7 +77,8 @@
                     <p>{{ product.description }}</p>
                     <p class="product-quantity">Quantité disponible: {{ product.quantity }}</p>
                     <p class="product-category">Catégorie: {{ product.category }}</p>
-                    <a href="{{ path('app_admin_form_edit', {'id': product.id}) }}" class="btn btn-secondary edit-button">Éditer</a>                </div>
+                    <a href="{{ path('app_admin_form_edit', {'id': product.id}) }}" class="btn btn-secondary edit-button">Éditer</a>
+                </div>
             </div>
         </div>
         {% endfor %}

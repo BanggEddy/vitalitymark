@@ -86,11 +86,12 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
 <body>
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
-            <a href=\"/uservue\" > <img src=\"";
-        // line 38
+            <a href=\"/uservue\" style=\"text-decoration: none;\">
+                <img src=\"";
+        // line 39
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
-        echo "\"> </a>
-
+        echo "\" alt=\"Logo\" style=\"width: 150px; height: auto; border-radius: 50%; border: 4px solid #4CAF50; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s;\">
+            </a>
             <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
                 <span class=\"navbar-toggler-icon\"></span>
             </button>
@@ -101,7 +102,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"";
-        // line 49
+        // line 50
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_panier");
         echo "\">Voir le panier</a>
                     </li>
@@ -110,9 +111,12 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                     </li>
                 </ul>
                 <ul class=\"navbar-nav ml-auto\">
-                    <form class=\"form-inline my-2 my-lg-0 mr-auto\">
-                        <input class=\"form-control\" type=\"text\" placeholder=\"bio, viandes, lait\" aria-label=\"Search\">
-                        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>
+                    <form action=\"";
+        // line 57
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("search_user");
+        echo "\" method=\"post\" class=\"form-inline my-2 my-lg-0 mr-auto\">
+                        <input class=\"form-control\" type=\"text\" name=\"keyword\" placeholder=\"Rechercher un produit\" aria-label=\"Search\">
+                        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Rechercher</button>
                     </form>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"#\">Aide et Contact</a>
@@ -129,8 +133,8 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
             <path d=\"M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2\"/>
         </svg>
         <span class=\"text-danger\">";
-        // line 74
-        echo twig_escape_filter($this->env, (isset($context["totalPrice"]) || array_key_exists("totalPrice", $context) ? $context["totalPrice"] : (function () { throw new RuntimeError('Variable "totalPrice" does not exist.', 74, $this->source); })()), "html", null, true);
+        // line 75
+        echo twig_escape_filter($this->env, (isset($context["totalPrice"]) || array_key_exists("totalPrice", $context) ? $context["totalPrice"] : (function () { throw new RuntimeError('Variable "totalPrice" does not exist.', 75, $this->source); })()), "html", null, true);
         echo "€</span>
     </a>                   
 </li>
@@ -148,9 +152,9 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
     </header>
 
             ";
-        // line 90
+        // line 91
         $this->displayBlock('body', $context, $blocks);
-        // line 92
+        // line 93
         echo "<br>
 <br>
 
@@ -225,14 +229,14 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
 
     }
 
-    // line 90
+    // line 91
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 91
+        // line 92
         echo "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -260,7 +264,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  236 => 91,  229 => 90,  217 => 10,  204 => 5,  154 => 92,  152 => 90,  133 => 74,  105 => 49,  91 => 38,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
+        return array (  240 => 92,  233 => 91,  221 => 10,  208 => 5,  158 => 93,  156 => 91,  137 => 75,  116 => 57,  106 => 50,  92 => 39,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -302,8 +306,9 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
 <body>
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
-            <a href=\"/uservue\" > <img src=\"{{ asset('images/logo.png') }}\"> </a>
-
+            <a href=\"/uservue\" style=\"text-decoration: none;\">
+                <img src=\"{{ asset('images/logo.png') }}\" alt=\"Logo\" style=\"width: 150px; height: auto; border-radius: 50%; border: 4px solid #4CAF50; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s;\">
+            </a>
             <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
                 <span class=\"navbar-toggler-icon\"></span>
             </button>
@@ -320,9 +325,9 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                     </li>
                 </ul>
                 <ul class=\"navbar-nav ml-auto\">
-                    <form class=\"form-inline my-2 my-lg-0 mr-auto\">
-                        <input class=\"form-control\" type=\"text\" placeholder=\"bio, viandes, lait\" aria-label=\"Search\">
-                        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>
+                    <form action=\"{{ path('search_user') }}\" method=\"post\" class=\"form-inline my-2 my-lg-0 mr-auto\">
+                        <input class=\"form-control\" type=\"text\" name=\"keyword\" placeholder=\"Rechercher un produit\" aria-label=\"Search\">
+                        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Rechercher</button>
                     </form>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"#\">Aide et Contact</a>

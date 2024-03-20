@@ -56,44 +56,53 @@ class __TwigTemplate_16b6049568e4873bb6cfb6416a9ef1fc extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "    <style>
-        /* Style pour le formulaire */
-        .card {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 30px 30px 2px rgba(10, 10, 10, 0.1);
-            padding: 20px;
-            width: 400px;
-            margin: 0 auto; /* Pour centrer le formulaire horizontalement */
-            background-color: #DBFFCA;
-            transition: transform 0.3s ease; /* Transition pour l'effet de survol */
-        }
+        echo "<style>
+    .card {
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 30px 30px 2px rgba(10, 10, 10, 0.1);
+        padding: 20px;
+        width: 400px;
+        margin: 0 auto;
+        background-color: #DBFFCA;
+        transition: transform 0.3s ease;
+    }
 
-        .card:hover {
-            transform: translateY(-7px); /* Translation vers le haut au survol */
-        }
+    .card:hover {
+        transform: translateY(-7px); 
+    }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+    .form-group {
+        margin-bottom: 20px;
+    }
 
-        .image-container img {
-            width: 100%;
-            height: 100vh; /* Pour occuper toute la hauteur de l'écran */
-            object-fit: cover; /* Pour couvrir tout l'espace du conteneur */
-        }
+    .image-container img {
+        width: 100%;
+        height: 100vh; 
+        object-fit: cover; 
+    }
 
-        /* Style pour la partie du formulaire */
-        .green-background {
-            background-color: #8CD769;
-            padding: 20px;
-            border-radius: 0 10px 10px 0;
-            display: flex;
-            justify-content: center; /* Pour centrer le contenu horizontalement */
-            align-items: center; /* Pour centrer le contenu verticalement */
-            height: 100vh; /* Pour occuper toute la hauteur de l'écran */
-        }
-    </style>
+    .green-background {
+        background-color: #8CD769;
+        padding: 20px;
+        border-radius: 0 10px 10px 0;
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        height: 100vh; 
+    }
+
+    .form-control:hover {
+        transform: translateY(-5px); 
+        transition: transform 0.3s ease; 
+    }
+
+    .form-control:focus {
+        transform: translateY(0); 
+        transition: transform 0.5s ease;
+    }
+</style>
+
 
     <body>
         <div class=\"container-fluid\">
@@ -103,74 +112,74 @@ class __TwigTemplate_16b6049568e4873bb6cfb6416a9ef1fc extends Template
                     <div class=\"green-background\">
                         <div class=\"card\">
                             <a href=\"";
-        // line 52
+        // line 61
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
         echo "\">&lt;- Retour</a>
 
                             <img src=\"";
-        // line 54
+        // line 63
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
         echo "\" style=\"width: 120px; height: auto; display: block; margin: 0 auto; border-radius: 5px;\" alt=\"Votre image\">
 
                             <h2 class=\"text-center\">Inscription</h2>
 
                             ";
-        // line 58
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 58, $this->source); })()), 'errors');
-        echo "
-                            <div class=\"form-group\">
-                                ";
-        // line 60
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 60, $this->source); })()), "civilite", [], "any", false, false, false, 60), 'row');
-        echo "
-                            </div>
-                            ";
-        // line 62
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 62, $this->source); })()), 'form_start', ["attr" => ["class" => "form"]]);
-        echo "
-                            <div class=\"form-group\">
-                                ";
-        // line 64
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 64, $this->source); })()), "email", [], "any", false, false, false, 64), 'row', ["attr" => ["class" => "form-control", "placeholder" => "Email"]]);
-        echo "
-                            </div>
-                            <div class=\"form-group\">
-                            ";
         // line 67
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 67, $this->source); })()), "name", [], "any", false, false, false, 67), 'row', ["attr" => ["class" => "form-control", "placeholder" => "Prénom et Nom"]]);
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 67, $this->source); })()), 'errors');
+        echo "
+                            <div class=\"form-group\">
+                                ";
+        // line 69
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 69, $this->source); })()), "civilite", [], "any", false, false, false, 69), 'row');
+        echo "
+                            </div>
+                            ";
+        // line 71
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 71, $this->source); })()), 'form_start', ["attr" => ["class" => "form"]]);
+        echo "
+                            <div class=\"form-group\">
+                                ";
+        // line 73
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 73, $this->source); })()), "email", [], "any", false, false, false, 73), 'row', ["attr" => ["class" => "form-control", "placeholder" => "Email"]]);
+        echo "
+                            </div>
+                            <div class=\"form-group\">
+                            ";
+        // line 76
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 76, $this->source); })()), "name", [], "any", false, false, false, 76), 'row', ["attr" => ["class" => "form-control", "placeholder" => "Prénom et Nom"]]);
         echo "
                             </div>
                             <div class=\"form-group\">
                                 ";
-        // line 70
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 70, $this->source); })()), "plainPassword", [], "any", false, false, false, 70), 'row', ["label" => "Mot de passe", "attr" => ["class" => "form-control", "placeholder" => "Mot de passe"]]);
-        // line 73
+        // line 79
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 79, $this->source); })()), "plainPassword", [], "any", false, false, false, 79), 'row', ["label" => "Mot de passe", "attr" => ["class" => "form-control", "placeholder" => "Mot de passe"]]);
+        // line 82
         echo "
                             </div>
                             <div class=\"form-group form-check\">
                                 ";
-        // line 76
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 76, $this->source); })()), "agreeTerms", [], "any", false, false, false, 76), 'row', ["label" => "Accepter les termes", "attr" => ["class" => "form-check-input", "style" => "margin-left: 20px;"]]);
+        // line 85
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 85, $this->source); })()), "agreeTerms", [], "any", false, false, false, 85), 'row', ["label" => "Accepter les termes", "attr" => ["class" => "form-check-input", "style" => "margin-left: 20px;"]]);
         echo "
                                 ";
-        // line 77
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 77, $this->source); })()), "agreeTerms", [], "any", false, false, false, 77), 'label', ["label_attr" => ["class" => "form-check-label"]]);
+        // line 86
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 86, $this->source); })()), "agreeTerms", [], "any", false, false, false, 86), 'label', ["label_attr" => ["class" => "form-check-label"]]);
         echo "
                             </div>
 
                             <button type=\"submit\" class=\"btn btn-primary btn-block\">S'inscrire</button>
                             <p>*Champs obligatoires</p>
                             ";
-        // line 82
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 82, $this->source); })()), 'form_end');
+        // line 91
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 91, $this->source); })()), 'form_end');
         echo "
 
                             <p class=\"mt-3 text-center\">Déjà un compte Vitality.fr ?  <a href=\"";
-        // line 84
+        // line 93
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
         echo "\">Connectez-vous ici</a></p>
                             <p class=\"mt-3 text-center\"><a href=\"";
-        // line 85
+        // line 94
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
         echo "\">Besoin d'aide ?</a></p>
 
@@ -181,7 +190,7 @@ class __TwigTemplate_16b6049568e4873bb6cfb6416a9ef1fc extends Template
                 <div class=\"col-md-6 p-0\">
                     <div class=\"image-container\">
                         <img src=\"";
-        // line 93
+        // line 102
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/connectetregister.png"), "html", null, true);
         echo "\" alt=\"Votre image\">
                     </div>
@@ -216,7 +225,7 @@ class __TwigTemplate_16b6049568e4873bb6cfb6416a9ef1fc extends Template
      */
     public function getDebugInfo()
     {
-        return array (  185 => 93,  174 => 85,  170 => 84,  165 => 82,  157 => 77,  153 => 76,  148 => 73,  146 => 70,  140 => 67,  134 => 64,  129 => 62,  124 => 60,  119 => 58,  112 => 54,  107 => 52,  59 => 6,  52 => 5,  35 => 3,);
+        return array (  194 => 102,  183 => 94,  179 => 93,  174 => 91,  166 => 86,  162 => 85,  157 => 82,  155 => 79,  149 => 76,  143 => 73,  138 => 71,  133 => 69,  128 => 67,  121 => 63,  116 => 61,  59 => 6,  52 => 5,  35 => 3,);
     }
 
     public function getSourceContext()
@@ -226,44 +235,53 @@ class __TwigTemplate_16b6049568e4873bb6cfb6416a9ef1fc extends Template
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <style>
-        /* Style pour le formulaire */
-        .card {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 30px 30px 2px rgba(10, 10, 10, 0.1);
-            padding: 20px;
-            width: 400px;
-            margin: 0 auto; /* Pour centrer le formulaire horizontalement */
-            background-color: #DBFFCA;
-            transition: transform 0.3s ease; /* Transition pour l'effet de survol */
-        }
+<style>
+    .card {
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 30px 30px 2px rgba(10, 10, 10, 0.1);
+        padding: 20px;
+        width: 400px;
+        margin: 0 auto;
+        background-color: #DBFFCA;
+        transition: transform 0.3s ease;
+    }
 
-        .card:hover {
-            transform: translateY(-7px); /* Translation vers le haut au survol */
-        }
+    .card:hover {
+        transform: translateY(-7px); 
+    }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+    .form-group {
+        margin-bottom: 20px;
+    }
 
-        .image-container img {
-            width: 100%;
-            height: 100vh; /* Pour occuper toute la hauteur de l'écran */
-            object-fit: cover; /* Pour couvrir tout l'espace du conteneur */
-        }
+    .image-container img {
+        width: 100%;
+        height: 100vh; 
+        object-fit: cover; 
+    }
 
-        /* Style pour la partie du formulaire */
-        .green-background {
-            background-color: #8CD769;
-            padding: 20px;
-            border-radius: 0 10px 10px 0;
-            display: flex;
-            justify-content: center; /* Pour centrer le contenu horizontalement */
-            align-items: center; /* Pour centrer le contenu verticalement */
-            height: 100vh; /* Pour occuper toute la hauteur de l'écran */
-        }
-    </style>
+    .green-background {
+        background-color: #8CD769;
+        padding: 20px;
+        border-radius: 0 10px 10px 0;
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        height: 100vh; 
+    }
+
+    .form-control:hover {
+        transform: translateY(-5px); 
+        transition: transform 0.3s ease; 
+    }
+
+    .form-control:focus {
+        transform: translateY(0); 
+        transition: transform 0.5s ease;
+    }
+</style>
+
 
     <body>
         <div class=\"container-fluid\">

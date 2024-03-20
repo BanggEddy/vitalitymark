@@ -9,6 +9,7 @@ use App\Repository\ProductsRepository;
 use App\Entity\Products;
 use App\Entity\Panier;
 use App\Entity\User;
+use App\Entity\Promo;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
@@ -136,6 +137,8 @@ class UservueController extends AbstractController
             return new JsonResponse(['error' => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
+    #Panier user
     #[Route('/user/panier', name: 'user_panier')]
     public function getUserPanier(PanierRepository $panierRepository): Response
     {
@@ -200,6 +203,61 @@ class UservueController extends AbstractController
         return $this->render('user/uservue/indexpanier.html.twig', [
             'promoDetails' => $promoDetails,
             'panierDetails' => $panierDetails,
+            'totalPrice' => $totalPrice, // Passer le prix total au template Twig
+        ]);
+    }
+
+    #Chercher un article
+    #[Route('/search/user', name: 'search_user')]
+    public function search(Request $request, EntityManagerInterface $entityManager, PanierRepository $panierRepository)
+    {
+        // Récupérer le terme de recherche depuis la requête
+        $keyword = $request->request->get('keyword');
+
+        // Récupérer les produits correspondant au nom du produit (correspondance partielle)
+        $productsRepository = $entityManager->getRepository(Products::class);
+        $products = $productsRepository->createQueryBuilder('p')
+            ->where('p.name LIKE :keyword')
+            ->setParameter('keyword', '%' . $keyword . '%')
+            ->getQuery()
+            ->getResult();
+
+        // Récupérer les promotions correspondant au nom du produit (correspondance partielle)
+        $promosRepository = $entityManager->getRepository(Promo::class);
+        $promos = $promosRepository->createQueryBuilder('p')
+            ->join('p.idproduct', 'pr')
+            ->where('pr.name LIKE :keyword')
+            ->setParameter('keyword', '%' . $keyword . '%')
+            ->getQuery()
+            ->getResult();
+
+        // Récupérer le panier de l'utilisateur
+        $user = $this->getUser();
+        $panier = $panierRepository->findBy(['iduser' => $user]);
+
+        // Initialiser le prix total à zéro
+        $totalPrice = 0;
+
+        // Calculer le prix total en parcourant les éléments du panier de l'utilisateur
+        foreach ($panier as $item) {
+            // Vérifier si l'élément du panier est une promotion ou un produit normal
+            if ($item->getIdpromo() !== null) {
+                // Si c'est une promotion, calculer le prix après la réduction
+                $priceAfterPromo = $item->getIdpromo()->getPriceafterpromo();
+                // Ajouter le prix après promotion au total
+                $totalPrice += $item->getQuantity() * $priceAfterPromo;
+            } elseif ($item->getIdproducts() !== null) {
+                // Si c'est un produit normal, calculer le prix normal
+                $price = $item->getIdproducts()->getPrice();
+                // Ajouter le prix normal au total
+                $totalPrice += $item->getQuantity() * $price;
+            }
+        }
+
+        return $this->render('user/uservue/search.html.twig', [
+            'products' => $products,
+            'promos' => $promos,
+            'keyword' => $keyword,
             'totalPrice' => $totalPrice, // Passer le prix total au template Twig
         ]);
     }

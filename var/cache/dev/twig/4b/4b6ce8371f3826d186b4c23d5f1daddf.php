@@ -81,10 +81,13 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
 <body>
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
-            <a href=\"/\" > <img src=\"";
-        // line 33
+            <a href=\"/\" style=\"text-decoration: none;\">
+                <img src=\"";
+        // line 34
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
-        echo "\"> </a>
+        echo "\" alt=\"Logo\" style=\"width: 150px; height: auto; border-radius: 50%; border: 4px solid #4CAF50; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s;\">
+            </a>
+
 
             <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
                 <span class=\"navbar-toggler-icon\"></span>
@@ -95,16 +98,19 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
                         <a class=\"nav-link\" href=\"#\">Rayons</a>
                     </li>
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"/promo\"><span style=\"color:red;\">Promos</span></a>
+                        <a class=\"nav-link\" href=\"/promo \"><span style=\"color:red;\">Promos</span></a>
                     </li>
                 </ul>
                 <ul class=\"navbar-nav ml-auto\">
-                    <form class=\"form-inline my-2 my-lg-0 mr-auto\">
-                        <input class=\"form-control\" type=\"text\" placeholder=\"bio, viandes, lait\" aria-label=\"Search\">
-                        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>
+                    <form action=\"";
+        // line 51
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("search");
+        echo "\" method=\"post\" class=\"form-inline my-2 my-lg-0 mr-auto\">
+                        <input class=\"form-control\" type=\"text\" name=\"keyword\" placeholder=\"Rechercher un produit\" aria-label=\"Search\">
+                        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Rechercher</button>
                     </form>
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\">Aide et Contact</a>
+                        <a class=\"nav-link\" href=\"/contact\">Aide et Contact</a>
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"#\">Mon Panier</a>
@@ -127,9 +133,9 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
     </header>
 
             ";
-        // line 75
+        // line 78
         $this->displayBlock('body', $context, $blocks);
-        // line 77
+        // line 80
         echo "
 <br>
 <br>
@@ -189,14 +195,14 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
 
     }
 
-    // line 75
+    // line 78
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 76
+        // line 79
         echo "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -224,7 +230,7 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  200 => 76,  193 => 75,  181 => 10,  168 => 5,  133 => 77,  131 => 75,  86 => 33,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
+        return array (  206 => 79,  199 => 78,  187 => 10,  174 => 5,  139 => 80,  137 => 78,  107 => 51,  87 => 34,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -261,7 +267,10 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
 <body>
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
-            <a href=\"/\" > <img src=\"{{ asset('images/logo.png') }}\"> </a>
+            <a href=\"/\" style=\"text-decoration: none;\">
+                <img src=\"{{ asset('images/logo.png') }}\" alt=\"Logo\" style=\"width: 150px; height: auto; border-radius: 50%; border: 4px solid #4CAF50; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s;\">
+            </a>
+
 
             <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
                 <span class=\"navbar-toggler-icon\"></span>
@@ -272,16 +281,16 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
                         <a class=\"nav-link\" href=\"#\">Rayons</a>
                     </li>
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"/promo\"><span style=\"color:red;\">Promos</span></a>
+                        <a class=\"nav-link\" href=\"/promo \"><span style=\"color:red;\">Promos</span></a>
                     </li>
                 </ul>
                 <ul class=\"navbar-nav ml-auto\">
-                    <form class=\"form-inline my-2 my-lg-0 mr-auto\">
-                        <input class=\"form-control\" type=\"text\" placeholder=\"bio, viandes, lait\" aria-label=\"Search\">
-                        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>
+                    <form action=\"{{ path('search') }}\" method=\"post\" class=\"form-inline my-2 my-lg-0 mr-auto\">
+                        <input class=\"form-control\" type=\"text\" name=\"keyword\" placeholder=\"Rechercher un produit\" aria-label=\"Search\">
+                        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Rechercher</button>
                     </form>
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\">Aide et Contact</a>
+                        <a class=\"nav-link\" href=\"/contact\">Aide et Contact</a>
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"#\">Mon Panier</a>

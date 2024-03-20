@@ -82,11 +82,12 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
 
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
-            <a href=\"/adminproducts\" > <img src=\"";
-        // line 34
+            <a href=\"/adminproducts\" style=\"text-decoration: none;\">
+                <img src=\"";
+        // line 35
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
-        echo "\"> </a>
-
+        echo "\" alt=\"Logo\" style=\"width: 150px; height: auto; border-radius: 50%; border: 4px solid #4CAF50; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s;\">
+            </a>
             <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
                 <span class=\"navbar-toggler-icon\"></span>
             </button>
@@ -112,16 +113,19 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
                     <!-- Fin de la liste déroulante -->
                 </ul>
                 <ul class=\"navbar-nav ml-auto\">
-                    <form class=\"form-inline my-2 my-lg-0 mr-auto\">
-                        <input class=\"form-control\" type=\"text\" placeholder=\"bio, viandes, lait\" aria-label=\"Search\">
-                        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>
+                    <form action=\"";
+        // line 62
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("search_admin");
+        echo "\" method=\"post\" class=\"form-inline my-2 my-lg-0 mr-auto\">
+                        <input class=\"form-control\" type=\"text\" name=\"keyword\" placeholder=\"Rechercher un produit\" aria-label=\"Search\">
+                        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Rechercher</button>
                     </form>
 
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"#\">Mon Panier</a>
                     </li>
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"/compteadmin\">Mon Compte</a>
+                        <a class=\"nav-link\" href=\"/compte/admin\">Mon Compte</a>
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/logout\">Déconnexion</a>
@@ -141,9 +145,9 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
     </header>
 
     ";
-        // line 89
+        // line 90
         $this->displayBlock('body', $context, $blocks);
-        // line 91
+        // line 92
         echo "<br>
 <br>
 
@@ -221,14 +225,14 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
 
     }
 
-    // line 89
+    // line 90
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 90
+        // line 91
         echo "    ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -256,7 +260,7 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  232 => 90,  225 => 89,  213 => 10,  200 => 5,  147 => 91,  145 => 89,  87 => 34,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
+        return array (  236 => 91,  229 => 90,  217 => 10,  204 => 5,  151 => 92,  149 => 90,  118 => 62,  88 => 35,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -294,8 +298,9 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
 
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
-            <a href=\"/adminproducts\" > <img src=\"{{ asset('images/logo.png') }}\"> </a>
-
+            <a href=\"/adminproducts\" style=\"text-decoration: none;\">
+                <img src=\"{{ asset('images/logo.png') }}\" alt=\"Logo\" style=\"width: 150px; height: auto; border-radius: 50%; border: 4px solid #4CAF50; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s;\">
+            </a>
             <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
                 <span class=\"navbar-toggler-icon\"></span>
             </button>
@@ -321,16 +326,16 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
                     <!-- Fin de la liste déroulante -->
                 </ul>
                 <ul class=\"navbar-nav ml-auto\">
-                    <form class=\"form-inline my-2 my-lg-0 mr-auto\">
-                        <input class=\"form-control\" type=\"text\" placeholder=\"bio, viandes, lait\" aria-label=\"Search\">
-                        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>
+                    <form action=\"{{ path('search_admin') }}\" method=\"post\" class=\"form-inline my-2 my-lg-0 mr-auto\">
+                        <input class=\"form-control\" type=\"text\" name=\"keyword\" placeholder=\"Rechercher un produit\" aria-label=\"Search\">
+                        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Rechercher</button>
                     </form>
 
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"#\">Mon Panier</a>
                     </li>
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"/compteadmin\">Mon Compte</a>
+                        <a class=\"nav-link\" href=\"/compte/admin\">Mon Compte</a>
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/logout\">Déconnexion</a>

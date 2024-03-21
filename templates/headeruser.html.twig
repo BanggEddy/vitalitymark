@@ -9,29 +9,33 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     {% block stylesheets %}{% endblock %}
 </head>
-<style>
-  section2 {
-    background-color: #DBFFCA;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  .card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 10px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    text-align: center;
-  }
-      .nav-item .btn-outline-danger:hover {
-        color: white;
-        background-color: #DBFFCA;
-        border-color: #DBFFCA;
-    }
-</style>
+    <style>
+        /* Ajout des transitions pour les boutons */
+        .nav-item .btn-outline-danger {
+            transition: all 0.3s ease;
+        }
+        .nav-item .btn-outline-danger:hover {
+            color: white;
+            background-color: #DBFFCA;
+            border-color: #DBFFCA;
+        }
+        /* Ajout d'une transition pour la section2 */
+        section2 {
+            background-color: #DBFFCA;
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            transition: all 0.5s ease;
+        }
+        section2 .card {
+            transition: transform 0.3s ease;
+        }
+        section2 .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
@@ -50,7 +54,7 @@
                         <a class="nav-link" href="{{ path('user_panier') }}">Voir le panier</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><span style="color:red;">Promos</span></a>
+                        <a class="nav-link" href="{{ path('app_user_promo') }}"><span style="color:red;">Promos</span></a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
@@ -62,7 +66,7 @@
                         <a class="nav-link" href="#">Aide et Contact</a>
                     </li>
                     <li class="nav-item">
-                            <a href="{{ path('user_loyalty_card', {'id': user_id}) }}">Voir ma carte de fidélité</a>
+                        <a class="nav-link" href="{{ path('user_loyalty_card', {'id': user_id}) }}">Ma carte de fidélité</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/login">Mon Compte</a>

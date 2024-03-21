@@ -1,0 +1,145 @@
+{% extends 'headeruser.html.twig' %}
+
+{% block title %}Hello AdminproductsController!{% endblock %}
+
+{% block body %}
+<style>
+    .product-card {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #DBFFCA;
+        border: 1px solid #ccc;
+        box-shadow: 10px 10px 4px #7cdf7c; 
+    }
+
+    .product-image {
+        width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .product-details {
+        margin-top: 10px;
+    }
+
+    .product-price {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .product-quantity {
+        color: #28a745;
+    }
+
+    .product-category {
+        color: #6c757d;
+    }
+    .custom-select {
+        font-size: 14px;
+    }
+</style>
+<style>
+.promo-card {
+    background-color: #f08080; 
+    border: 1px 10px solid #fa8072 ; 
+    border-radius: 10px; 
+    padding: 20px; 
+    margin-bottom: 20px; 
+    box-shadow: 5px 5px 5px #888888; 
+    transition: transform 0.3s ease-in-out; 
+}
+
+.promo-card:hover {
+    transform: translateY(-5px); 
+}
+
+.promo-image {
+    width: 100%; 
+    max-height: 200px; 
+    object-fit: cover; 
+    border-radius: 10px; 
+}
+
+.promo-details {
+    margin-top: 10px;
+}
+
+.promo-title {
+    font-size: 18px;
+    font-weight: bold; 
+}
+
+.promo-description {
+    color: #555; 
+}
+
+.promo-date {
+    color: #777; 
+}
+
+.promo-price {
+    color: #333; 
+    font-weight: bold; 
+}
+</style>
+<div class="container">
+    <br><br>
+    <h1>Liste des produits</h1>
+    <br><br>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="product-card">
+                <h2>En ce moment</h2>
+                <img src="{{ asset('images/cardfront.png') }}" alt="{{ 'photo' }}" class="product-image">
+                <div class="product-details">
+                    <h3>La sélection du moment</h3>
+                    <p>Découvrez nos meilleures promotions, nos dernières nouveautés ou nos plus grands succès que nous avons sélectionnés.</p>
+                    <a href="{{ path('app_login') }}" class="btn btn-primary">J'en profite</a>
+                </div>
+            </div>
+        </div>
+        {% for promo in promotions %}
+            <div class="col-md-4">
+                <div class="promo-card">
+                    <!-- Afficher les détails de la promotion -->
+                    <img src="{{ asset('images/' ~ promo.getImages()) }}" class="promo-image">
+                    <div class="promo-details">
+                        <h5 class="promo-title">{{ promo.getName() }}</h5>
+                        <p class="promo-description">{{ promo.getDescription() }}</p>
+                        <p class="promo-date">Date de début: {{ promo.getDateDebut()|date('d/m/Y') }}</p>
+                        <p class="promo-date">Date de fin: {{ promo.getDateFin()|date('d/m/Y') }}</p>
+                        {# Calcul du nombre de jours restants #}
+                        {% set now = 'now'|date('Y-m-d') %}
+                        {% set remainingDays = (promo.getDateFin()|date('U') - now|date('U')) / (24 * 3600) %}
+                        {% if remainingDays > 0 %}
+                            <p class="promo-description">Nombre de jours restants: {{ remainingDays|round(0, 'floor') }}</p>
+                        {% else %}
+                            <p class="promo-description">Offre expirée</p>
+                        {% endif %}
+                        <p class="promo-description">Quantité disponible: {{ promo.getQuantity() }}</p>
+                        <p class="promo-description">Réduction de: {{ promo.getReduction() }} %</p>
+
+                        <p class="promo-price">Prix après promotion: {{ promo.getPriceafterpromo() }} €</p>
+
+                        <form action="{{ path('add_to_cart', {'id': promo.getId()}) }}" method="post">
+                            <div class="form-group">
+                                <label for="quantity">Quantité :</label>
+                                <select name="quantity" id="quantity" class="form-control custom-select">
+                                    {% for qty in 0..promo.getQuantity() %}
+                                        <option value="{{ qty }}">{{ qty }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

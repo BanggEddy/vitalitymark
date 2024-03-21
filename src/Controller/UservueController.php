@@ -75,6 +75,56 @@ class UservueController extends AbstractController
             'user_id' => $userId,
         ]);
     }
+
+    #Promo Client
+    #[Route('/user/promo', name: 'app_user_promo')]
+    public function promo(ProductsRepository $productsRepository, PanierRepository $panierRepository, PromoRepository $promoRepository): Response
+    {
+        // Récupérer l'utilisateur actuellement connecté
+        $user = $this->getUser();
+
+        // Récupérer l'ID de l'utilisateur
+        $userId = null;
+        if ($user instanceof User) {
+            // Récupérer l'ID de l'utilisateur
+            $userId = $user->getId();
+        }
+        // Récupérer tous les produits disponibles depuis le repository
+        $products = $productsRepository->findAll();
+
+        // Récupérer le panier de l'utilisateur
+        $user = $this->getUser();
+        $panier = $panierRepository->findBy(['iduser' => $user]);
+        $promotions = $promoRepository->findAll();
+
+        // Initialiser le prix total du panier
+        $totalPrice = 0;
+
+        // Parcourir les éléments du panier
+        foreach ($panier as $item) {
+            // Vérifier si l'élément du panier est une promotion ou un produit normal
+            if ($item->getIdpromo() !== null) {
+                // Si c'est une promotion, calculer le prix après la réduction
+                $priceAfterPromo = $item->getIdpromo()->getPriceafterpromo();
+                // Ajouter le prix après promotion au total
+                $totalPrice += $item->getQuantity() * $priceAfterPromo;
+            } elseif ($item->getIdproducts() !== null) {
+                // Si c'est un produit normal, calculer le prix normal
+                $price = $item->getIdproducts()->getPrice();
+                // Ajouter le prix normal au total
+                $totalPrice += $item->getQuantity() * $price;
+            }
+        }
+
+        return $this->render('user/uservue/promo.html.twig', [
+            'products' => $products,
+            'controller_name' => 'UservueController',
+            'totalPrice' => $totalPrice,
+            'promotions' => $promotions,
+            'user_id' => $userId,
+        ]);
+    }
+
     #Pour ajouter des produits dans le panier
     /**
      * @Route("/add-to-cart/{id}", name="add_to_cart", methods={"POST"})
@@ -159,7 +209,15 @@ class UservueController extends AbstractController
         if (!$user) {
             throw $this->createNotFoundException('User not found');
         }
+        // Récupérer l'utilisateur actuellement connecté
+        $user = $this->getUser();
 
+        // Récupérer l'ID de l'utilisateur
+        $userId = null;
+        if ($user instanceof User) {
+            // Récupérer l'ID de l'utilisateur
+            $userId = $user->getId();
+        }
         // Récupérer les paniers de l'utilisateur depuis le repository
         $paniers = $panierRepository->findBy(['iduser' => $user]);
 
@@ -215,6 +273,7 @@ class UservueController extends AbstractController
             'promoDetails' => $promoDetails,
             'panierDetails' => $panierDetails,
             'totalPrice' => $totalPrice, // Passer le prix total au template Twig
+            'user_id' => $userId,
         ]);
     }
 
@@ -284,8 +343,40 @@ class UservueController extends AbstractController
     }
 
     #[Route('/user/uservue/card/{id}', name: 'user_loyalty_card_page')]
-    public function showUserLoyaltyCardPage($id): Response
+    public function showUserLoyaltyCardPage($id, PanierRepository $panierRepository): Response
     {
+        // Initialiser le prix total du panier
+        $totalPrice = 0;
+
+        // Récupérer le panier de l'utilisateur
+        $user = $this->getUser();
+        $panier = $panierRepository->findBy(['iduser' => $user]);
+
+        // Parcourir les éléments du panier
+        foreach ($panier as $item) {
+            // Vérifier si l'élément du panier est une promotion ou un produit normal
+            if ($item->getIdpromo() !== null) {
+                // Si c'est une promotion, calculer le prix après la réduction
+                $priceAfterPromo = $item->getIdpromo()->getPriceafterpromo();
+                // Ajouter le prix après promotion au total
+                $totalPrice += $item->getQuantity() * $priceAfterPromo;
+            } elseif ($item->getIdproducts() !== null) {
+                // Si c'est un produit normal, calculer le prix normal
+                $price = $item->getIdproducts()->getPrice();
+                // Ajouter le prix normal au total
+                $totalPrice += $item->getQuantity() * $price;
+            }
+        }
+
+        // Récupérer l'utilisateur actuellement connecté
+        $user = $this->getUser();
+
+        // Récupérer l'ID de l'utilisateur
+        $userId = null;
+        if ($user instanceof User) {
+            // Récupérer l'ID de l'utilisateur
+            $userId = $user->getId();
+        }
         // Récupérer l'utilisateur par son ID en utilisant l'EntityManager
         $user = $this->entityManager->getRepository(User::class)->find($id);
 
@@ -305,6 +396,8 @@ class UservueController extends AbstractController
         // Rendre la vue de la carte de fidélité avec les données de la carte
         return $this->render('user/uservue/card.html.twig', [
             'loyaltyCard' => $loyaltyCard,
+            'user_id' => $userId,
+            'totalPrice' => $totalPrice, // Passer le prix total au template Twig
         ]);
     }
 }

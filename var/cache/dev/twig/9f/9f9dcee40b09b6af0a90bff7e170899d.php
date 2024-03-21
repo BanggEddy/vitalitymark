@@ -60,35 +60,39 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
         $this->displayBlock('stylesheets', $context, $blocks);
         // line 11
         echo "</head>
-<style>
-  section2 {
-    background-color: #DBFFCA;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  .card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 10px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    text-align: center;
-  }
-      .nav-item .btn-outline-danger:hover {
-        color: white;
-        background-color: #DBFFCA;
-        border-color: #DBFFCA;
-    }
-</style>
+    <style>
+        /* Ajout des transitions pour les boutons */
+        .nav-item .btn-outline-danger {
+            transition: all 0.3s ease;
+        }
+        .nav-item .btn-outline-danger:hover {
+            color: white;
+            background-color: #DBFFCA;
+            border-color: #DBFFCA;
+        }
+        /* Ajout d'une transition pour la section2 */
+        section2 {
+            background-color: #DBFFCA;
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            transition: all 0.5s ease;
+        }
+        section2 .card {
+            transition: transform 0.3s ease;
+        }
+        section2 .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 <body>
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
             <a href=\"/uservue\" style=\"text-decoration: none;\">
                 <img src=\"";
-        // line 39
+        // line 43
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
         echo "\" alt=\"Logo\" style=\"width: 150px; height: auto; border-radius: 50%; border: 4px solid #4CAF50; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s;\">
             </a>
@@ -102,17 +106,20 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"";
-        // line 50
+        // line 54
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_panier");
         echo "\">Voir le panier</a>
                     </li>
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\"><span style=\"color:red;\">Promos</span></a>
+                        <a class=\"nav-link\" href=\"";
+        // line 57
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_promo");
+        echo "\"><span style=\"color:red;\">Promos</span></a>
                     </li>
                 </ul>
                 <ul class=\"navbar-nav ml-auto\">
                     <form action=\"";
-        // line 57
+        // line 61
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("search_user");
         echo "\" method=\"post\" class=\"form-inline my-2 my-lg-0 mr-auto\">
                         <input class=\"form-control\" type=\"text\" name=\"keyword\" placeholder=\"Rechercher un produit\" aria-label=\"Search\">
@@ -122,10 +129,10 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                         <a class=\"nav-link\" href=\"#\">Aide et Contact</a>
                     </li>
                     <li class=\"nav-item\">
-                            <a href=\"";
-        // line 65
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_loyalty_card", ["id" => (isset($context["user_id"]) || array_key_exists("user_id", $context) ? $context["user_id"] : (function () { throw new RuntimeError('Variable "user_id" does not exist.', 65, $this->source); })())]), "html", null, true);
-        echo "\">Voir ma carte de fidélité</a>
+                        <a class=\"nav-link\" href=\"";
+        // line 69
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_loyalty_card", ["id" => (isset($context["user_id"]) || array_key_exists("user_id", $context) ? $context["user_id"] : (function () { throw new RuntimeError('Variable "user_id" does not exist.', 69, $this->source); })())]), "html", null, true);
+        echo "\">Ma carte de fidélité</a>
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/login\">Mon Compte</a>
@@ -139,8 +146,8 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                                 <path d=\"M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2\"/>
                             </svg>
                             <span class=\"text-danger\">";
-        // line 78
-        echo twig_escape_filter($this->env, (isset($context["totalPrice"]) || array_key_exists("totalPrice", $context) ? $context["totalPrice"] : (function () { throw new RuntimeError('Variable "totalPrice" does not exist.', 78, $this->source); })()), "html", null, true);
+        // line 82
+        echo twig_escape_filter($this->env, (isset($context["totalPrice"]) || array_key_exists("totalPrice", $context) ? $context["totalPrice"] : (function () { throw new RuntimeError('Variable "totalPrice" does not exist.', 82, $this->source); })()), "html", null, true);
         echo "€</span>
                         </a>                   
                     </li>
@@ -156,9 +163,9 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
     </header>
 
             ";
-        // line 92
+        // line 96
         $this->displayBlock('body', $context, $blocks);
-        // line 94
+        // line 98
         echo "<br>
 <br>
 
@@ -233,14 +240,14 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
 
     }
 
-    // line 92
+    // line 96
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 93
+        // line 97
         echo "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -268,7 +275,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  244 => 93,  237 => 92,  225 => 10,  212 => 5,  162 => 94,  160 => 92,  143 => 78,  127 => 65,  116 => 57,  106 => 50,  92 => 39,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
+        return array (  251 => 97,  244 => 96,  232 => 10,  219 => 5,  169 => 98,  167 => 96,  150 => 82,  134 => 69,  123 => 61,  116 => 57,  110 => 54,  96 => 43,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -284,29 +291,33 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
     <link rel=\"stylesheet\" href=\"{{ asset('css/style.css') }}\">
     {% block stylesheets %}{% endblock %}
 </head>
-<style>
-  section2 {
-    background-color: #DBFFCA;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  .card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 10px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    text-align: center;
-  }
-      .nav-item .btn-outline-danger:hover {
-        color: white;
-        background-color: #DBFFCA;
-        border-color: #DBFFCA;
-    }
-</style>
+    <style>
+        /* Ajout des transitions pour les boutons */
+        .nav-item .btn-outline-danger {
+            transition: all 0.3s ease;
+        }
+        .nav-item .btn-outline-danger:hover {
+            color: white;
+            background-color: #DBFFCA;
+            border-color: #DBFFCA;
+        }
+        /* Ajout d'une transition pour la section2 */
+        section2 {
+            background-color: #DBFFCA;
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            transition: all 0.5s ease;
+        }
+        section2 .card {
+            transition: transform 0.3s ease;
+        }
+        section2 .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 <body>
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
@@ -325,7 +336,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                         <a class=\"nav-link\" href=\"{{ path('user_panier') }}\">Voir le panier</a>
                     </li>
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\"><span style=\"color:red;\">Promos</span></a>
+                        <a class=\"nav-link\" href=\"{{ path('app_user_promo') }}\"><span style=\"color:red;\">Promos</span></a>
                     </li>
                 </ul>
                 <ul class=\"navbar-nav ml-auto\">
@@ -337,7 +348,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                         <a class=\"nav-link\" href=\"#\">Aide et Contact</a>
                     </li>
                     <li class=\"nav-item\">
-                            <a href=\"{{ path('user_loyalty_card', {'id': user_id}) }}\">Voir ma carte de fidélité</a>
+                        <a class=\"nav-link\" href=\"{{ path('user_loyalty_card', {'id': user_id}) }}\">Ma carte de fidélité</a>
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/login\">Mon Compte</a>

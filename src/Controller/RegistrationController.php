@@ -12,6 +12,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use App\Entity\LoyaltyCard;
+use App\Form\LoyaltyCardType;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -31,19 +34,31 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            // Assign ROLE_USER
             $user->setRoles(['ROLE_USER']);
 
+            $loyaltyCard = new LoyaltyCard();
+            $loyaltyCard->setCardNumber($this->generateRandomCardNumber()); // Generate a random card number
+            $loyaltyCard->setCardType('normal');
+            $loyaltyCard->setPoints(10);
+
+            $loyaltyCard->setIduser($user);
+
             $entityManager->persist($user);
+            $entityManager->persist($loyaltyCard);
             $entityManager->flush();
 
-            // do anything else you need here, like send an email
-
+            // Log in the user
             return $security->login($user, AuthAuthenticator::class, 'main');
         }
 
         return $this->render('auth/registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
+    }
+
+    // Function to generate a random card number
+    private function generateRandomCardNumber(): string
+    {
+        return strtoupper(substr(md5(uniqid()), 0, 10));
     }
 }

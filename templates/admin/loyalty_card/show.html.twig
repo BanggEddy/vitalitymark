@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LoyaltyCard{% endblock %}
+
+{% block body %}
+    <h1>LoyaltyCard</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ loyalty_card.id }}</td>
+            </tr>
+            <tr>
+                <th>Card_number</th>
+                <td>{{ loyalty_card.cardNumber }}</td>
+            </tr>
+            <tr>
+                <th>Card_type</th>
+                <td>{{ loyalty_card.cardType }}</td>
+            </tr>
+            <tr>
+                <th>Points</th>
+                <td>{{ loyalty_card.points }}</td>
+            </tr>
+            <tr>
+                <th>Personalized_offer</th>
+                <td>{{ loyalty_card.personalizedOffer }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_loyalty_card_index') }}">back to list</a>
+
+    <a href="{{ path('app_loyalty_card_edit', {'id': loyalty_card.id}) }}">edit</a>
+
+    {{ include('admin/loyalty_card/_delete_form.html.twig') }}
+{% endblock %}

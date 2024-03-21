@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LoyaltyCard index{% endblock %}
+
+{% block body %}
+    <h1>LoyaltyCard index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Card_number</th>
+                <th>Card_type</th>
+                <th>Points</th>
+                <th>Personalized_offer</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for loyalty_card in loyalty_cards %}
+            <tr>
+                <td>{{ loyalty_card.id }}</td>
+                <td>{{ loyalty_card.cardNumber }}</td>
+                <td>{{ loyalty_card.cardType }}</td>
+                <td>{{ loyalty_card.points }}</td>
+                <td>{{ loyalty_card.personalizedOffer }}</td>
+                <td>
+                    <a href="{{ path('app_loyalty_card_show', {'id': loyalty_card.id}) }}">show</a>
+                    <a href="{{ path('app_loyalty_card_edit', {'id': loyalty_card.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_loyalty_card_new') }}">Create new</a>
+{% endblock %}

@@ -9,8 +9,8 @@
     <parameter key="kernel.runtime_mode.cli">%env(not:default:kernel.runtime_mode.web:)%</parameter>
     <parameter key="kernel.runtime_mode.worker">%env(bool:default::key:worker:default:kernel.runtime_mode:)%</parameter>
     <parameter key="kernel.debug">true</parameter>
-    <parameter key="kernel.build_dir">C:/Users/David/Desktop/vitalitymark/var/cache/dev</parameter>
-    <parameter key="kernel.cache_dir">C:/Users/David/Desktop/vitalitymark/var/cache/dev</parameter>
+    <parameter key="kernel.build_dir">C:\Users\David\Desktop\vitalitymark\var\cache\dev</parameter>
+    <parameter key="kernel.cache_dir">C:\Users\David\Desktop\vitalitymark\var\cache\dev</parameter>
     <parameter key="kernel.logs_dir">C:\Users\David\Desktop\vitalitymark\var\log</parameter>
     <parameter key="kernel.bundles" type="collection">
       <parameter key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</parameter>
@@ -84,12 +84,12 @@
     <parameter key="asset.request_context.base_path">null</parameter>
     <parameter key="asset.request_context.secure">null</parameter>
     <parameter key="debug.error_handler.throw_at">-1</parameter>
-    <parameter key="debug.container.dump">C:/Users/David/Desktop/vitalitymark/var/cache/dev/App_KernelDevDebugContainer.xml</parameter>
+    <parameter key="debug.container.dump">C:\Users\David\Desktop\vitalitymark\var\cache\dev/App_KernelDevDebugContainer.xml</parameter>
     <parameter key="router.request_context.host">localhost</parameter>
     <parameter key="router.request_context.scheme">http</parameter>
     <parameter key="router.request_context.base_url"></parameter>
     <parameter key="router.resource">kernel::loadRoutes</parameter>
-    <parameter key="router.cache_dir">C:/Users/David/Desktop/vitalitymark/var/cache/dev</parameter>
+    <parameter key="router.cache_dir">C:\Users\David\Desktop\vitalitymark\var\cache\dev</parameter>
     <parameter key="request_listener.http_port">80</parameter>
     <parameter key="request_listener.https_port">443</parameter>
     <parameter key="cache.prefix.seed">_C:\Users\David\Desktop\vitalitymark.App_KernelDevDebugContainer</parameter>
@@ -105,7 +105,7 @@
     <parameter key="session.metadata.update_threshold">0</parameter>
     <parameter key="form.type_extension.csrf.enabled">true</parameter>
     <parameter key="form.type_extension.csrf.field_name">_token</parameter>
-    <parameter key="validator.mapping.cache.file">C:/Users/David/Desktop/vitalitymark/var/cache/dev/validation.php</parameter>
+    <parameter key="validator.mapping.cache.file">C:\Users\David\Desktop\vitalitymark\var\cache\dev/validation.php</parameter>
     <parameter key="validator.translation_domain">validators</parameter>
     <parameter key="data_collector.templates" type="collection"/>
     <parameter key="twig.form.resources" type="collection">
@@ -176,7 +176,7 @@
     <parameter key="doctrine.orm.second_level_cache.regions_configuration.class">Doctrine\ORM\Cache\RegionsConfiguration</parameter>
     <parameter key="doctrine.orm.auto_generate_proxy_classes">true</parameter>
     <parameter key="doctrine.orm.enable_lazy_ghost_objects">true</parameter>
-    <parameter key="doctrine.orm.proxy_dir">C:/Users/David/Desktop/vitalitymark/var/cache/dev/doctrine/orm/Proxies</parameter>
+    <parameter key="doctrine.orm.proxy_dir">C:\Users\David\Desktop\vitalitymark\var\cache\dev/doctrine/orm/Proxies</parameter>
     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
     <parameter key="doctrine.migrations.preferred_em">null</parameter>
     <parameter key="doctrine.migrations.preferred_connection">null</parameter>
@@ -225,6 +225,20 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\AdminvueController"/>
       </call>
     </service>
+    <service id="App\Controller\CouponController" class="App\Controller\CouponController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\CouponController"/>
+      </call>
+    </service>
+    <service id="App\Controller\LoyaltyCardController" class="App\Controller\LoyaltyCardController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\LoyaltyCardController"/>
+      </call>
+    </service>
     <service id="App\Controller\PromoAdminController" class="App\Controller\PromoAdminController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -254,6 +268,12 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\UservueController"/>
       </call>
     </service>
+    <service id="App\Form\CouponType" class="App\Form\CouponType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\LoyaltyCardType" class="App\Form\LoyaltyCardType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\Products1Type" class="App\Form\Products1Type" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -267,6 +287,14 @@
       <tag name="form.type"/>
     </service>
     <service id="App\Repository\ContactRepository" class="App\Repository\ContactRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\CouponRepository" class="App\Repository\CouponRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\LoyaltyCardRepository" class="App\Repository\LoyaltyCardRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -316,7 +344,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.zfEsq7R"/>
+      <argument type="service" id=".service_locator.B1ITvZ_"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -397,7 +425,7 @@
       </argument>
     </service>
     <service id="http_cache.store" class="Symfony\Component\HttpKernel\HttpCache\Store">
-      <argument>C:/Users/David/Desktop/vitalitymark/var/cache/dev/http_cache</argument>
+      <argument>C:\Users\David\Desktop\vitalitymark\var\cache\dev/http_cache</argument>
     </service>
     <service id="url_helper" class="Symfony\Component\HttpFoundation\UrlHelper">
       <argument type="service" id="request_stack"/>
@@ -407,7 +435,7 @@
       <tag name="container.no_preload"/>
       <argument type="tagged_iterator" tag="kernel.cache_warmer"/>
       <argument>true</argument>
-      <argument>C:/Users/David/Desktop/vitalitymark/var/cache/dev/App_KernelDevDebugContainerDeprecations.log</argument>
+      <argument>C:\Users\David\Desktop\vitalitymark\var\cache\dev/App_KernelDevDebugContainerDeprecations.log</argument>
     </service>
     <service id="cache_clearer" class="Symfony\Component\HttpKernel\CacheClearer\ChainCacheClearer">
       <argument type="tagged_iterator" tag="kernel.cache_clearer"/>
@@ -900,6 +928,8 @@
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\CouponType</argument>
+        <argument>App\Form\LoyaltyCardType</argument>
         <argument>App\Form\Products1Type</argument>
         <argument>App\Form\ProductsType</argument>
         <argument>App\Form\PromoType</argument>
@@ -1019,7 +1049,7 @@
       <tag name="kernel.reset" method="reset"/>
       <argument>SlHf3zRbgN</argument>
       <argument>0</argument>
-      <argument>C:/Users/David/Desktop/vitalitymark/var/cache/dev/pools/app</argument>
+      <argument>C:\Users\David\Desktop\vitalitymark\var\cache\dev/pools/app</argument>
       <argument type="service" id="cache.default_marshaller" on-invalid="ignore"/>
       <call method="setLogger">
         <argument type="service" id="logger" on-invalid="ignore"/>
@@ -1035,7 +1065,7 @@
       <argument>-FCM3s-995</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:/Users/David/Desktop/vitalitymark/var/cache/dev/pools/system</argument>
+      <argument>C:\Users\David\Desktop\vitalitymark\var\cache\dev/pools/system</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -1045,7 +1075,7 @@
       <argument>j1atO2iSyX</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:/Users/David/Desktop/vitalitymark/var/cache/dev/pools/system</argument>
+      <argument>C:\Users\David\Desktop\vitalitymark\var\cache\dev/pools/system</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -1055,7 +1085,7 @@
       <argument>Jv5jW5HQZB</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:/Users/David/Desktop/vitalitymark/var/cache/dev/pools/system</argument>
+      <argument>C:\Users\David\Desktop\vitalitymark\var\cache\dev/pools/system</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -1065,7 +1095,7 @@
       <argument>kPz2gr04EE</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:/Users/David/Desktop/vitalitymark/var/cache/dev/pools/system</argument>
+      <argument>C:\Users\David\Desktop\vitalitymark\var\cache\dev/pools/system</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -1075,7 +1105,7 @@
       <argument>eXtW-mBNX6</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:/Users/David/Desktop/vitalitymark/var/cache/dev/pools/system</argument>
+      <argument>C:\Users\David\Desktop\vitalitymark\var\cache\dev/pools/system</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -1085,7 +1115,7 @@
       <argument></argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:/Users/David/Desktop/vitalitymark/var/cache/dev/pools/system</argument>
+      <argument>C:\Users\David\Desktop\vitalitymark\var\cache\dev/pools/system</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -1104,7 +1134,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>C:/Users/David/Desktop/vitalitymark/var/cache/dev/pools/app</argument>
+      <argument>C:\Users\David\Desktop\vitalitymark\var\cache\dev/pools/app</argument>
       <argument type="service" id="cache.default_marshaller" on-invalid="ignore"/>
       <call method="setLogger">
         <argument type="service" id="logger" on-invalid="ignore"/>
@@ -1626,7 +1656,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.zfEsq7R"/>
+      <argument type="service" id=".service_locator.B1ITvZ_"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -1721,7 +1751,7 @@
       <argument type="service" id=".service_locator.PvoQzFT.router.default"/>
       <argument>kernel::loadRoutes</argument>
       <argument type="collection">
-        <argument key="cache_dir">C:/Users/David/Desktop/vitalitymark/var/cache/dev</argument>
+        <argument key="cache_dir">C:\Users\David\Desktop\vitalitymark\var\cache\dev</argument>
         <argument key="debug">true</argument>
         <argument key="generator_class">Symfony\Component\Routing\Generator\CompiledUrlGenerator</argument>
         <argument key="generator_dumper_class">Symfony\Component\Routing\Generator\Dumper\CompiledUrlGeneratorDumper</argument>
@@ -1867,7 +1897,7 @@
       <argument>true</argument>
     </service>
     <service id="session.storage.factory.mock_file" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorageFactory">
-      <argument>C:/Users/David/Desktop/vitalitymark/var/cache/dev/sessions</argument>
+      <argument>C:\Users\David\Desktop\vitalitymark\var\cache\dev/sessions</argument>
       <argument>MOCKSESSID</argument>
       <argument type="service">
         <service class="Symfony\Component\HttpFoundation\Session\Storage\MetadataBag">
@@ -1930,7 +1960,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.M3b._FA"/>
+      <argument type="service" id=".service_locator.UFWPv.M"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -2060,10 +2090,10 @@
     <service id="validator.mapping.cache_warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\ValidatorCacheWarmer">
       <tag name="kernel.cache_warmer"/>
       <argument type="service" id="validator.builder"/>
-      <argument>C:/Users/David/Desktop/vitalitymark/var/cache/dev/validation.php</argument>
+      <argument>C:\Users\David\Desktop\vitalitymark\var\cache\dev/validation.php</argument>
     </service>
     <service id="validator.mapping.cache.adapter" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" constructor="create">
-      <argument>C:/Users/David/Desktop/vitalitymark/var/cache/dev/validation.php</argument>
+      <argument>C:\Users\David\Desktop\vitalitymark\var\cache\dev/validation.php</argument>
       <argument type="service" id="cache.validator"/>
     </service>
     <service id="validator.validator_factory" class="Symfony\Component\Validator\ContainerConstraintValidatorFactory">
@@ -2326,7 +2356,7 @@
       <argument>PnL0RmjtGh</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:/Users/David/Desktop/vitalitymark/var/cache/dev/pools/system</argument>
+      <argument>C:\Users\David\Desktop\vitalitymark\var\cache\dev/pools/system</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -2373,7 +2403,7 @@
       <argument type="service" id="twig.loader.native_filesystem"/>
       <argument type="collection">
         <argument key="autoescape">name</argument>
-        <argument key="cache">C:/Users/David/Desktop/vitalitymark/var/cache/dev/twig</argument>
+        <argument key="cache">C:\Users\David\Desktop\vitalitymark\var\cache\dev/twig</argument>
         <argument key="charset">UTF-8</argument>
         <argument key="debug">true</argument>
         <argument key="strict_variables">true</argument>
@@ -2826,7 +2856,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.twsK0H9"/>
+      <argument type="service" id=".service_locator.WtAngNC"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -3000,7 +3030,7 @@
         <argument type="service" id=".doctrine.orm.default_metadata_driver"/>
       </call>
       <call method="setProxyDir">
-        <argument>C:/Users/David/Desktop/vitalitymark/var/cache/dev/doctrine/orm/Proxies</argument>
+        <argument>C:\Users\David\Desktop\vitalitymark\var\cache\dev/doctrine/orm/Proxies</argument>
       </call>
       <call method="setProxyNamespace">
         <argument>Proxies</argument>
@@ -3415,7 +3445,7 @@
       <argument>ZUBXCEB6sB</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:/Users/David/Desktop/vitalitymark/var/cache/dev/pools/system</argument>
+      <argument>C:\Users\David\Desktop\vitalitymark\var\cache\dev/pools/system</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -3431,7 +3461,7 @@
       <argument>cFcoG5zK-I</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:/Users/David/Desktop/vitalitymark/var/cache/dev/pools/system</argument>
+      <argument>C:\Users\David\Desktop\vitalitymark\var\cache\dev/pools/system</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -3944,7 +3974,7 @@
       <argument>FWm50iZQkl</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:/Users/David/Desktop/vitalitymark/var/cache/dev/pools/system</argument>
+      <argument>C:\Users\David\Desktop\vitalitymark\var\cache\dev/pools/system</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -4268,6 +4298,12 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminvueController" class="App\Controller\AdminvueController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminvueController" class="App\Controller\AdminvueController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdminvueController" class="App\Controller\AdminvueController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CouponController" class="App\Controller\CouponController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CouponController" class="App\Controller\CouponController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CouponController" class="App\Controller\CouponController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LoyaltyCardController" class="App\Controller\LoyaltyCardController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LoyaltyCardController" class="App\Controller\LoyaltyCardController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\LoyaltyCardController" class="App\Controller\LoyaltyCardController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\PromoAdminController" class="App\Controller\PromoAdminController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\PromoAdminController" class="App\Controller\PromoAdminController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\PromoAdminController" class="App\Controller\PromoAdminController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -4280,6 +4316,10 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UservueController" class="App\Controller\UservueController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UservueController" class="App\Controller\UservueController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\UservueController" class="App\Controller\UservueController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CouponType" class="App\Form\CouponType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\CouponType" class="App\Form\CouponType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\LoyaltyCardType" class="App\Form\LoyaltyCardType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\LoyaltyCardType" class="App\Form\LoyaltyCardType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\Products1Type" class="App\Form\Products1Type" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\Products1Type" class="App\Form\Products1Type" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ProductsType" class="App\Form\ProductsType" autowire="true" abstract="true"/>
@@ -4290,6 +4330,10 @@
     <service id=".abstract.instanceof.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ContactRepository" class="App\Repository\ContactRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ContactRepository" class="App\Repository\ContactRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CouponRepository" class="App\Repository\CouponRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CouponRepository" class="App\Repository\CouponRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\LoyaltyCardRepository" class="App\Repository\LoyaltyCardRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\LoyaltyCardRepository" class="App\Repository\LoyaltyCardRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PanierRepository" class="App\Repository\PanierRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\PanierRepository" class="App\Repository\PanierRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProductsControllerRepository" class="App\Repository\ProductsControllerRepository" autowire="true" abstract="true"/>
@@ -4714,6 +4758,44 @@
         <argument key="product" type="service_closure" id=".errored..service_locator.hAIPoGV.App\Entity\Products"/>
       </argument>
     </service>
+    <service id=".service_locator.KuADytJ" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="couponRepository" type="service_closure" id="App\Repository\CouponRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.m2Z5Caj" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="coupon" type="service_closure" id=".errored..service_locator.m2Z5Caj.App\Entity\Coupon"/>
+      </argument>
+    </service>
+    <service id=".service_locator.FH0U8W3" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="coupon" type="service_closure" id=".errored..service_locator.FH0U8W3.App\Entity\Coupon"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.7i3BCB3" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="loyaltyCardRepository" type="service_closure" id="App\Repository\LoyaltyCardRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.oFpVnn4" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="loyaltyCard" type="service_closure" id=".errored..service_locator.oFpVnn4.App\Entity\LoyaltyCard"/>
+      </argument>
+    </service>
+    <service id=".service_locator.DxJ_gkE" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="loyaltyCard" type="service_closure" id=".errored..service_locator.DxJ_gkE.App\Entity\LoyaltyCard"/>
+      </argument>
+    </service>
     <service id=".service_locator.1j13wVw" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -4777,7 +4859,7 @@
         <argument key="panierRepository" type="service_closure" id="App\Repository\PanierRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.zfEsq7R" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.B1ITvZ_" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AccueilController::index" type="service_closure" id=".service_locator.C8cIOOc"/>
@@ -4790,6 +4872,16 @@
         <argument key="App\Controller\AdminproductsController::index" type="service_closure" id=".service_locator.czOFGB2"/>
         <argument key="App\Controller\AdminproductsController::search" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\AdminproductsController::updateProducts" type="service_closure" id=".service_locator.czOFGB2"/>
+        <argument key="App\Controller\CouponController::delete" type="service_closure" id=".service_locator.FH0U8W3"/>
+        <argument key="App\Controller\CouponController::edit" type="service_closure" id=".service_locator.FH0U8W3"/>
+        <argument key="App\Controller\CouponController::index" type="service_closure" id=".service_locator.KuADytJ"/>
+        <argument key="App\Controller\CouponController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\CouponController::show" type="service_closure" id=".service_locator.m2Z5Caj"/>
+        <argument key="App\Controller\LoyaltyCardController::delete" type="service_closure" id=".service_locator.DxJ_gkE"/>
+        <argument key="App\Controller\LoyaltyCardController::edit" type="service_closure" id=".service_locator.DxJ_gkE"/>
+        <argument key="App\Controller\LoyaltyCardController::index" type="service_closure" id=".service_locator.7i3BCB3"/>
+        <argument key="App\Controller\LoyaltyCardController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\LoyaltyCardController::show" type="service_closure" id=".service_locator.oFpVnn4"/>
         <argument key="App\Controller\PromoAdminController::delete" type="service_closure" id=".service_locator.DtsKEqY"/>
         <argument key="App\Controller\PromoAdminController::edit" type="service_closure" id=".service_locator.DtsKEqY"/>
         <argument key="App\Controller\PromoAdminController::index" type="service_closure" id=".service_locator.1j13wVw"/>
@@ -4815,6 +4907,16 @@
         <argument key="App\Controller\AdminproductsController:index" type="service_closure" id=".service_locator.czOFGB2"/>
         <argument key="App\Controller\AdminproductsController:search" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\AdminproductsController:updateProducts" type="service_closure" id=".service_locator.czOFGB2"/>
+        <argument key="App\Controller\CouponController:delete" type="service_closure" id=".service_locator.FH0U8W3"/>
+        <argument key="App\Controller\CouponController:edit" type="service_closure" id=".service_locator.FH0U8W3"/>
+        <argument key="App\Controller\CouponController:index" type="service_closure" id=".service_locator.KuADytJ"/>
+        <argument key="App\Controller\CouponController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\CouponController:show" type="service_closure" id=".service_locator.m2Z5Caj"/>
+        <argument key="App\Controller\LoyaltyCardController:delete" type="service_closure" id=".service_locator.DxJ_gkE"/>
+        <argument key="App\Controller\LoyaltyCardController:edit" type="service_closure" id=".service_locator.DxJ_gkE"/>
+        <argument key="App\Controller\LoyaltyCardController:index" type="service_closure" id=".service_locator.7i3BCB3"/>
+        <argument key="App\Controller\LoyaltyCardController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\LoyaltyCardController:show" type="service_closure" id=".service_locator.oFpVnn4"/>
         <argument key="App\Controller\PromoAdminController:delete" type="service_closure" id=".service_locator.DtsKEqY"/>
         <argument key="App\Controller\PromoAdminController:edit" type="service_closure" id=".service_locator.DtsKEqY"/>
         <argument key="App\Controller\PromoAdminController:index" type="service_closure" id=".service_locator.1j13wVw"/>
@@ -4907,9 +5009,11 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.M3b._FA" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.UFWPv.M" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\CouponType" type="service_closure" id="App\Form\CouponType"/>
+        <argument key="App\Form\LoyaltyCardType" type="service_closure" id="App\Form\LoyaltyCardType"/>
         <argument key="App\Form\Products1Type" type="service_closure" id="App\Form\Products1Type"/>
         <argument key="App\Form\ProductsType" type="service_closure" id="App\Form\ProductsType"/>
         <argument key="App\Form\PromoType" type="service_closure" id="App\Form\PromoType"/>
@@ -4931,10 +5035,12 @@
         <argument key="doctrine.orm.listeners.pdo_session_handler_schema_listener" type="service_closure" id="doctrine.orm.listeners.pdo_session_handler_schema_listener"/>
       </argument>
     </service>
-    <service id=".service_locator.twsK0H9" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.WtAngNC" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\ContactRepository" type="service_closure" id="App\Repository\ContactRepository"/>
+        <argument key="App\Repository\CouponRepository" type="service_closure" id="App\Repository\CouponRepository"/>
+        <argument key="App\Repository\LoyaltyCardRepository" type="service_closure" id="App\Repository\LoyaltyCardRepository"/>
         <argument key="App\Repository\PanierRepository" type="service_closure" id="App\Repository\PanierRepository"/>
         <argument key="App\Repository\ProductsControllerRepository" type="service_closure" id="App\Repository\ProductsControllerRepository"/>
         <argument key="App\Repository\ProductsRepository" type="service_closure" id="App\Repository\ProductsRepository"/>
@@ -5155,6 +5261,18 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\CouponController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\CouponController"/>
+      <argument>App\Controller\CouponController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\LoyaltyCardController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\LoyaltyCardController"/>
+      <argument>App\Controller\LoyaltyCardController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
     <service id=".service_locator.O2p6Lk7.App\Controller\PromoAdminController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\PromoAdminController"/>
       <argument>App\Controller\PromoAdminController</argument>
@@ -5312,6 +5430,8 @@
           <argument>App\Controller\AccueilController</argument>
           <argument>App\Controller\AdminproductsController</argument>
           <argument>App\Controller\AdminvueController</argument>
+          <argument>App\Controller\CouponController</argument>
+          <argument>App\Controller\LoyaltyCardController</argument>
           <argument>App\Controller\PromoAdminController</argument>
           <argument>App\Controller\RegistrationController</argument>
           <argument>App\Controller\SecurityController</argument>
@@ -5370,6 +5490,18 @@
     </service>
     <service id=".errored..service_locator.hAIPoGV.App\Entity\Products" class="App\Entity\Products">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.hAIPoGV&quot;: it needs an instance of &quot;App\Entity\Products&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.m2Z5Caj.App\Entity\Coupon" class="App\Entity\Coupon">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.m2Z5Caj&quot;: it needs an instance of &quot;App\Entity\Coupon&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.FH0U8W3.App\Entity\Coupon" class="App\Entity\Coupon">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.FH0U8W3&quot;: it needs an instance of &quot;App\Entity\Coupon&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.oFpVnn4.App\Entity\LoyaltyCard" class="App\Entity\LoyaltyCard">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.oFpVnn4&quot;: it needs an instance of &quot;App\Entity\LoyaltyCard&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.DxJ_gkE.App\Entity\LoyaltyCard" class="App\Entity\LoyaltyCard">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.DxJ_gkE&quot;: it needs an instance of &quot;App\Entity\LoyaltyCard&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
     <service id=".errored..service_locator.mcb6ZOo.App\Entity\Promo" class="App\Entity\Promo">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.mcb6ZOo&quot;: it needs an instance of &quot;App\Entity\Promo&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
@@ -6168,19 +6300,20 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.zfEsq7R"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.B1ITvZ_"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
     <service id=".service_locator.bJ.4HC5" alias=".service_locator.w7.f4fT"/>
     <service id=".service_locator.0ZDpJ7y" alias=".service_locator.hAIPoGV"/>
+    <service id=".service_locator.URyQvYy" alias=".service_locator.DxJ_gkE"/>
     <service id=".service_locator.QSs.W3t" alias=".service_locator.DtsKEqY"/>
     <service id=".service_locator.HT4rftb" alias=".service_locator.jpvOrpT"/>
     <service id=".service_locator.3a4rz3w" alias=".service_locator.rP290eI"/>
     <service id=".service_locator.eL6lHl5" alias=".service_locator.pXnaH3B"/>
-    <service id=".service_locator.2o0kDyQ" alias=".service_locator.zfEsq7R"/>
+    <service id=".service_locator.oJl3DWO" alias=".service_locator.B1ITvZ_"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
-    <service id=".service_locator.Nnn9xXq" alias=".service_locator.M3b._FA"/>
+    <service id=".service_locator.ihMfA6E" alias=".service_locator.UFWPv.M"/>
     <service id=".service_locator.LMuqDDe" alias=".service_locator.VHsrTPK"/>
     <service id=".service_locator.jUv.zyj" alias=".service_locator.O2p6Lk7"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>
@@ -6198,6 +6331,12 @@
     <service id=".service_locator.u4AVkgT" alias=".service_locator.czOFGB2"/>
     <service id=".service_locator.uocasTH" alias=".service_locator.cPzBaXc"/>
     <service id=".service_locator.a5LdLWS" alias=".service_locator.hAIPoGV"/>
+    <service id=".service_locator.vBfPDkp" alias=".service_locator.KuADytJ"/>
+    <service id=".service_locator.udod_Yt" alias=".service_locator.m2Z5Caj"/>
+    <service id=".service_locator.gxNxuyE" alias=".service_locator.FH0U8W3"/>
+    <service id=".service_locator.3Rl9_Fp" alias=".service_locator.7i3BCB3"/>
+    <service id=".service_locator.mYgamyJ" alias=".service_locator.oFpVnn4"/>
+    <service id=".service_locator.KP6tpCw" alias=".service_locator.DxJ_gkE"/>
     <service id=".service_locator.UtLq5wG" alias=".service_locator.1j13wVw"/>
     <service id=".service_locator.JVV0XZr" alias=".service_locator.mcb6ZOo"/>
     <service id=".service_locator.zfznZ0o" alias=".service_locator.DtsKEqY"/>

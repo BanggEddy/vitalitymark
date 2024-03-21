@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New LoyaltyCard{% endblock %}
+
+{% block body %}
+    <h1>Create new LoyaltyCard</h1>
+
+    {{ include('admin/loyalty_card/_form.html.twig') }}
+
+    <a href="{{ path('app_loyalty_card_index') }}">back to list</a>
+{% endblock %}

@@ -344,7 +344,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.B1ITvZ_"/>
+      <argument type="service" id=".service_locator.NgoYNMX"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -1656,7 +1656,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.B1ITvZ_"/>
+      <argument type="service" id=".service_locator.NgoYNMX"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -4815,7 +4815,7 @@
         <argument key="promo" type="service_closure" id=".errored..service_locator.DtsKEqY.App\Entity\Promo"/>
       </argument>
     </service>
-    <service id=".service_locator.jpvOrpT" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.ywU5Sl_" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
@@ -4859,7 +4859,7 @@
         <argument key="panierRepository" type="service_closure" id="App\Repository\PanierRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.B1ITvZ_" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.NgoYNMX" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AccueilController::index" type="service_closure" id=".service_locator.C8cIOOc"/>
@@ -4887,7 +4887,7 @@
         <argument key="App\Controller\PromoAdminController::index" type="service_closure" id=".service_locator.1j13wVw"/>
         <argument key="App\Controller\PromoAdminController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\PromoAdminController::show" type="service_closure" id=".service_locator.mcb6ZOo"/>
-        <argument key="App\Controller\RegistrationController::register" type="service_closure" id=".service_locator.jpvOrpT"/>
+        <argument key="App\Controller\RegistrationController::register" type="service_closure" id=".service_locator.ywU5Sl_"/>
         <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.rSTd.nA"/>
         <argument key="App\Controller\UservueController::addToCart" type="service_closure" id=".service_locator.pXnaH3B"/>
         <argument key="App\Controller\UservueController::getUserPanier" type="service_closure" id=".service_locator.XjqUGgN"/>
@@ -4922,7 +4922,7 @@
         <argument key="App\Controller\PromoAdminController:index" type="service_closure" id=".service_locator.1j13wVw"/>
         <argument key="App\Controller\PromoAdminController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\PromoAdminController:show" type="service_closure" id=".service_locator.mcb6ZOo"/>
-        <argument key="App\Controller\RegistrationController:register" type="service_closure" id=".service_locator.jpvOrpT"/>
+        <argument key="App\Controller\RegistrationController:register" type="service_closure" id=".service_locator.ywU5Sl_"/>
         <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.rSTd.nA"/>
         <argument key="App\Controller\UservueController:addToCart" type="service_closure" id=".service_locator.pXnaH3B"/>
         <argument key="App\Controller\UservueController:getUserPanier" type="service_closure" id=".service_locator.XjqUGgN"/>
@@ -6300,7 +6300,7 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.B1ITvZ_"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.NgoYNMX"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
@@ -6308,10 +6308,10 @@
     <service id=".service_locator.0ZDpJ7y" alias=".service_locator.hAIPoGV"/>
     <service id=".service_locator.URyQvYy" alias=".service_locator.DxJ_gkE"/>
     <service id=".service_locator.QSs.W3t" alias=".service_locator.DtsKEqY"/>
-    <service id=".service_locator.HT4rftb" alias=".service_locator.jpvOrpT"/>
+    <service id=".service_locator.HT4rftb" alias=".service_locator.ywU5Sl_"/>
     <service id=".service_locator.3a4rz3w" alias=".service_locator.rP290eI"/>
     <service id=".service_locator.eL6lHl5" alias=".service_locator.pXnaH3B"/>
-    <service id=".service_locator.oJl3DWO" alias=".service_locator.B1ITvZ_"/>
+    <service id=".service_locator.ta0m5Zh" alias=".service_locator.NgoYNMX"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.ihMfA6E" alias=".service_locator.UFWPv.M"/>
     <service id=".service_locator.LMuqDDe" alias=".service_locator.VHsrTPK"/>
@@ -6340,7 +6340,7 @@
     <service id=".service_locator.UtLq5wG" alias=".service_locator.1j13wVw"/>
     <service id=".service_locator.JVV0XZr" alias=".service_locator.mcb6ZOo"/>
     <service id=".service_locator.zfznZ0o" alias=".service_locator.DtsKEqY"/>
-    <service id=".service_locator.NJIEzt2" alias=".service_locator.jpvOrpT"/>
+    <service id=".service_locator.NJIEzt2" alias=".service_locator.ywU5Sl_"/>
     <service id=".service_locator.7NIAq8D" alias=".service_locator.rSTd.nA"/>
     <service id=".service_locator.5Ckxd3v" alias=".service_locator.rP290eI"/>
     <service id=".service_locator.MhNSvul" alias=".service_locator.pXnaH3B"/>

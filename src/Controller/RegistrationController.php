@@ -19,14 +19,14 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, Security $security, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, Security $security): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
+            // Encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
@@ -36,19 +36,21 @@ class RegistrationController extends AbstractController
 
             $user->setRoles(['ROLE_USER']);
 
+            // Create a new loyalty card for the user
             $loyaltyCard = new LoyaltyCard();
-            $loyaltyCard->setCardNumber($this->generateRandomCardNumber()); // Generate a random card number
+            $loyaltyCard->setCardNumber($this->generateRandomCardNumber());
             $loyaltyCard->setCardType('normal');
             $loyaltyCard->setPoints(10);
 
+            // Associate the loyalty card with the user
+            $user->setIdloyaltycard($loyaltyCard);
             $loyaltyCard->setIduser($user);
 
             $entityManager->persist($user);
             $entityManager->persist($loyaltyCard);
             $entityManager->flush();
 
-            // Log in the user
-            return $security->login($user, AuthAuthenticator::class, 'main');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('auth/registration/register.html.twig', [

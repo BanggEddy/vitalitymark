@@ -122,24 +122,28 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                         <a class=\"nav-link\" href=\"#\">Aide et Contact</a>
                     </li>
                     <li class=\"nav-item\">
+                            <a href=\"";
+        // line 65
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_loyalty_card", ["id" => (isset($context["user_id"]) || array_key_exists("user_id", $context) ? $context["user_id"] : (function () { throw new RuntimeError('Variable "user_id" does not exist.', 65, $this->source); })())]), "html", null, true);
+        echo "\">Voir ma carte de fidélité</a>
+                    </li>
+                    <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/login\">Mon Compte</a>
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/logout\">Déconnexion</a>
                     </li>
-<li class=\"nav-item\">
-    <a class=\"nav-link btn btn-outline-danger\" href=\"#\">
-        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"red\" class=\"bi bi-cart\" style=\"margin-bottom:4px\" viewBox=\"0 0 16 16\">
-            <path d=\"M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2\"/>
-        </svg>
-        <span class=\"text-danger\">";
-        // line 75
-        echo twig_escape_filter($this->env, (isset($context["totalPrice"]) || array_key_exists("totalPrice", $context) ? $context["totalPrice"] : (function () { throw new RuntimeError('Variable "totalPrice" does not exist.', 75, $this->source); })()), "html", null, true);
+                    <li class=\"nav-item\">
+                        <a class=\"nav-link btn btn-outline-danger\" href=\"#\">
+                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"red\" class=\"bi bi-cart\" style=\"margin-bottom:4px\" viewBox=\"0 0 16 16\">
+                                <path d=\"M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2\"/>
+                            </svg>
+                            <span class=\"text-danger\">";
+        // line 78
+        echo twig_escape_filter($this->env, (isset($context["totalPrice"]) || array_key_exists("totalPrice", $context) ? $context["totalPrice"] : (function () { throw new RuntimeError('Variable "totalPrice" does not exist.', 78, $this->source); })()), "html", null, true);
         echo "€</span>
-    </a>                   
-</li>
-
-
+                        </a>                   
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -152,9 +156,9 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
     </header>
 
             ";
-        // line 91
+        // line 92
         $this->displayBlock('body', $context, $blocks);
-        // line 93
+        // line 94
         echo "<br>
 <br>
 
@@ -229,14 +233,14 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
 
     }
 
-    // line 91
+    // line 92
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 92
+        // line 93
         echo "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -264,7 +268,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  240 => 92,  233 => 91,  221 => 10,  208 => 5,  158 => 93,  156 => 91,  137 => 75,  116 => 57,  106 => 50,  92 => 39,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
+        return array (  244 => 93,  237 => 92,  225 => 10,  212 => 5,  162 => 94,  160 => 92,  143 => 78,  127 => 65,  116 => 57,  106 => 50,  92 => 39,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -333,21 +337,22 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                         <a class=\"nav-link\" href=\"#\">Aide et Contact</a>
                     </li>
                     <li class=\"nav-item\">
+                            <a href=\"{{ path('user_loyalty_card', {'id': user_id}) }}\">Voir ma carte de fidélité</a>
+                    </li>
+                    <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/login\">Mon Compte</a>
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/logout\">Déconnexion</a>
                     </li>
-<li class=\"nav-item\">
-    <a class=\"nav-link btn btn-outline-danger\" href=\"#\">
-        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"red\" class=\"bi bi-cart\" style=\"margin-bottom:4px\" viewBox=\"0 0 16 16\">
-            <path d=\"M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2\"/>
-        </svg>
-        <span class=\"text-danger\">{{ totalPrice }}€</span>
-    </a>                   
-</li>
-
-
+                    <li class=\"nav-item\">
+                        <a class=\"nav-link btn btn-outline-danger\" href=\"#\">
+                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"red\" class=\"bi bi-cart\" style=\"margin-bottom:4px\" viewBox=\"0 0 16 16\">
+                                <path d=\"M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2\"/>
+                            </svg>
+                            <span class=\"text-danger\">{{ totalPrice }}€</span>
+                        </a>                   
+                    </li>
                 </ul>
             </div>
         </nav>

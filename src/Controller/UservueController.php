@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use App\Repository\PanierRepository;
 use App\Repository\PromoRepository;
+use App\Repository\LoyaltyCardRepository;
 
 class UservueController extends AbstractController
 {
@@ -30,6 +31,15 @@ class UservueController extends AbstractController
     #[Route('/uservue', name: 'app_uservue')]
     public function index(ProductsRepository $productsRepository, PanierRepository $panierRepository, PromoRepository $promoRepository): Response
     {
+        // Récupérer l'utilisateur actuellement connecté
+        $user = $this->getUser();
+
+        // Récupérer l'ID de l'utilisateur
+        $userId = null;
+        if ($user instanceof User) {
+            // Récupérer l'ID de l'utilisateur
+            $userId = $user->getId();
+        }
         // Récupérer tous les produits disponibles depuis le repository
         $products = $productsRepository->findAll();
 
@@ -62,6 +72,7 @@ class UservueController extends AbstractController
             'controller_name' => 'UservueController',
             'totalPrice' => $totalPrice, // Passer le prix total au template Twig
             'promotions' => $promotions, // Passer les promotions à la vue
+            'user_id' => $userId,
         ]);
     }
     #Pour ajouter des produits dans le panier
@@ -259,6 +270,41 @@ class UservueController extends AbstractController
             'promos' => $promos,
             'keyword' => $keyword,
             'totalPrice' => $totalPrice, // Passer le prix total au template Twig
+        ]);
+    }
+
+    #[Route('/user/loyalty-card/{id}', name: 'user_loyalty_card')]
+    public function redirectToUserLoyaltyCard($id): RedirectResponse
+    {
+        // Construire l'URL de redirection vers la page de la carte de fidélité
+        $redirectUrl = $this->generateUrl('user_loyalty_card_page', ['id' => $id]);
+
+        // Créer une réponse de redirection
+        return new RedirectResponse($redirectUrl);
+    }
+
+    #[Route('/user/uservue/card/{id}', name: 'user_loyalty_card_page')]
+    public function showUserLoyaltyCardPage($id): Response
+    {
+        // Récupérer l'utilisateur par son ID en utilisant l'EntityManager
+        $user = $this->entityManager->getRepository(User::class)->find($id);
+
+        // Vérifier si l'utilisateur existe
+        if (!$user) {
+            throw $this->createNotFoundException('User not found');
+        }
+
+        // Récupérer la carte de fidélité de l'utilisateur
+        $loyaltyCard = $user->getIdloyaltycard();
+
+        // Vérifier si l'utilisateur a une carte de fidélité
+        if (!$loyaltyCard) {
+            throw $this->createNotFoundException('User has no loyalty card');
+        }
+
+        // Rendre la vue de la carte de fidélité avec les données de la carte
+        return $this->render('user/uservue/card.html.twig', [
+            'loyaltyCard' => $loyaltyCard,
         ]);
     }
 }

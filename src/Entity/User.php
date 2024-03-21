@@ -50,6 +50,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Contact::class, mappedBy: 'iduser')]
     private Collection $contacts;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?LoyaltyCard $idloyaltycard = null;
+
     public function __construct()
     {
         $this->paniers = new ArrayCollection();
@@ -223,6 +226,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $contact->setIduser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIdloyaltycard(): ?LoyaltyCard
+    {
+        return $this->idloyaltycard;
+    }
+
+    public function setIdloyaltycard(?LoyaltyCard $idloyaltycard): static
+    {
+        $this->idloyaltycard = $idloyaltycard;
 
         return $this;
     }

@@ -63,3 +63,8 @@ details_promotion:
 app_contact:
   path: "/contact"
   controller: 'App\Controller\AccueilController::indexcontact'
+
+api_loyalty_card:
+  path: /api/loyalty-card
+  controller: App\Controller\UservueController::getLoyaltyCard
+  methods: [GET]

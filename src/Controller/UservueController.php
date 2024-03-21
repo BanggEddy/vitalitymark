@@ -400,4 +400,78 @@ class UservueController extends AbstractController
             'totalPrice' => $totalPrice, // Passer le prix total au template Twig
         ]);
     }
+
+    #Compte User
+    #[Route('/user/profile', name: 'user_profile')]
+    public function userProfile(PanierRepository $panierRepository): Response
+    {
+        // Initialiser le prix total à zéro
+        $totalPrice = 0;
+
+        // Récupérer le panier de l'utilisateur
+        $user = $this->getUser();
+        $panier = $panierRepository->findBy(['iduser' => $user]);
+
+        // Calculer le prix total en parcourant les éléments du panier de l'utilisateur
+        foreach ($panier as $item) {
+            // Vérifier si l'élément du panier est une promotion ou un produit normal
+            if ($item->getIdpromo() !== null) {
+                // Si c'est une promotion, calculer le prix après la réduction
+                $priceAfterPromo = $item->getIdpromo()->getPriceafterpromo();
+                // Ajouter le prix après promotion au total
+                $totalPrice += $item->getQuantity() * $priceAfterPromo;
+            } elseif ($item->getIdproducts() !== null) {
+                // Si c'est un produit normal, calculer le prix normal
+                $price = $item->getIdproducts()->getPrice();
+                // Ajouter le prix normal au total
+                $totalPrice += $item->getQuantity() * $price;
+            }
+        }
+
+        $user = $this->getUser();
+
+        // Récupérer l'ID de l'utilisateur
+        $userId = null;
+        if ($user instanceof User) {
+            // Récupérer l'ID de l'utilisateur
+            $userId = $user->getId();
+        }
+        return $this->render('user/uservue/user.html.twig', [
+            'user' => $user,
+            'user_id' => $userId,
+            'totalPrice' => $totalPrice, // Passer le prix total au template Twig
+        ]);
+    }
+
+    /**
+     * @Route("/edit_user_profile", name="edit_user_profile", methods={"POST"})
+     */
+    #[Route('edit/user/profile', name: 'edit_user_profile')]
+    public function editUserProfile(Request $request, EntityManagerInterface $entityManager, PanierRepository $panierRepository): Response
+    {
+        // Récupérer le panier de l'utilisateur
+        $user = $this->getUser();
+
+        // Vérifier si l'utilisateur est connecté
+        if (!$user instanceof User) {
+            throw $this->createNotFoundException('Utilisateur non trouvé.');
+        }
+
+        // Récupérer les données du formulaire
+        $email = $request->request->get('email');
+        $name = $request->request->get('name');
+        $adresse = $request->request->get('adresse');
+        $civilite = $request->request->get('civilite');
+
+        // Mettre à jour les données de l'utilisateur
+        $user->setEmail($email);
+        $user->setName($name);
+        $user->setAdresse($adresse);
+        $user->setCivilite($civilite);
+
+        // Enregistrer les changements dans la base de données
+        $entityManager->flush();
+
+        return new RedirectResponse($this->generateUrl('user_profile_view'));
+    }
 }

@@ -68,3 +68,7 @@ api_loyalty_card:
   path: /api/loyalty-card
   controller: App\Controller\UservueController::getLoyaltyCard
   methods: [GET]
+
+user_profile_view:
+  path: /user/profile
+  controller: App\Controller\UserController::viewProfile

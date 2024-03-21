@@ -1,0 +1,36 @@
+{% extends 'headeruser.html.twig' %}
+
+{% block title %}Profil utilisateur{% endblock %}
+
+{% block body %}
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h1 class="mb-3">Profil utilisateur</h1>
+        <form action="{{ path('edit_user_profile') }}" method="post">
+          <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}">
+          </div>
+          <div class="form-group">
+            <label for="name">Nom :</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ user.name }}">
+          </div>
+          <div class="form-group">
+            <label for="adresse">Adresse :</label>
+            <input type="text" class="form-control" id="adresse" name="adresse" value="{{ user.adresse }}">
+          </div>
+          <div class="form-group">
+            <label for="civilite">Civilité :</label>
+            <select class="form-control" id="civilite" name="civilite">
+              <option value="M." {% if user.civilite == 'M.' %} selected {% endif %}>M.</option>
+              <option value="Mme." {% if user.civilite == 'Mme.' %} selected {% endif %}>Mme.</option>
+              <option value="Autre" {% if user.civilite == 'Autre' %} selected {% endif %}>Autre</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -44,6 +44,7 @@ class RegistrationController extends AbstractController
 
             // Associate the loyalty card with the user
             $user->setIdloyaltycard($loyaltyCard);
+            $user->setCivilite($form->get('civilite')->getData());
             $loyaltyCard->setIduser($user);
 
             $entityManager->persist($user);

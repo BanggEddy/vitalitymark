@@ -46,6 +46,8 @@ return [
     'search_user' => [[], ['_controller' => 'App\\Controller\\UservueController::search'], [], [['text', '/search/user']], [], [], []],
     'user_loyalty_card' => [['id'], ['_controller' => 'App\\Controller\\UservueController::redirectToUserLoyaltyCard'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/user/loyalty-card']], [], [], []],
     'user_loyalty_card_page' => [['id'], ['_controller' => 'App\\Controller\\UservueController::showUserLoyaltyCardPage'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/user/uservue/card']], [], [], []],
+    'user_profile' => [[], ['_controller' => 'App\\Controller\\UservueController::userProfile'], [], [['text', '/user/profile']], [], [], []],
+    'edit_user_profile' => [[], ['_controller' => 'App\\Controller\\UservueController::editUserProfile'], [], [['text', '/edit/user/profile']], [], [], []],
     'uservue' => [[], ['_controller' => 'App\\Controller\\UservueController::index'], [], [['text', '/uservue']], [], [], []],
     'adminproducts' => [[], ['_controller' => 'App\\Controller\\AdminproductsController::index'], [], [['text', '/adminproducts']], [], [], []],
     'adminajouterproducts' => [[], ['_controller' => 'App\\Controller\\AdminproductsController::new'], [], [['text', '/product/new']], [], [], []],
@@ -62,6 +64,7 @@ return [
     'details_promotion' => [['id'], ['_controller' => 'App\\Controller\\AccueilController::detailsPromotion'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/details-promotion']], [], [], []],
     'app_contact' => [[], ['_controller' => 'App\\Controller\\AccueilController::indexcontact'], [], [['text', '/contact']], [], [], []],
     'api_loyalty_card' => [[], ['_controller' => 'App\\Controller\\UservueController::getLoyaltyCard'], [], [['text', '/api/loyalty-card']], [], [], []],
+    'user_profile_view' => [[], ['_controller' => 'App\\Controller\\UserController::viewProfile'], [], [['text', '/user/profile']], [], [], []],
     'App\Controller\AccueilController::index' => [[], ['_controller' => 'App\\Controller\\AccueilController::index'], [], [['text', '/']], [], [], []],
     'App\Controller\AccueilController::promo' => [[], ['_controller' => 'App\\Controller\\AccueilController::promo'], [], [['text', '/promo']], [], [], []],
     'App\Controller\AccueilController::detailsProduit' => [['id'], ['_controller' => 'App\\Controller\\AccueilController::detailsProduit'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/details-produit']], [], [], []],
@@ -107,4 +110,6 @@ return [
     'App\Controller\UservueController::search' => [[], ['_controller' => 'App\\Controller\\UservueController::search'], [], [['text', '/search/user']], [], [], []],
     'App\Controller\UservueController::redirectToUserLoyaltyCard' => [['id'], ['_controller' => 'App\\Controller\\UservueController::redirectToUserLoyaltyCard'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/user/loyalty-card']], [], [], []],
     'App\Controller\UservueController::showUserLoyaltyCardPage' => [['id'], ['_controller' => 'App\\Controller\\UservueController::showUserLoyaltyCardPage'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/user/uservue/card']], [], [], []],
+    'App\Controller\UservueController::userProfile' => [[], ['_controller' => 'App\\Controller\\UservueController::userProfile'], [], [['text', '/user/profile']], [], [], []],
+    'App\Controller\UservueController::editUserProfile' => [[], ['_controller' => 'App\\Controller\\UservueController::editUserProfile'], [], [['text', '/edit/user/profile']], [], [], []],
 ];

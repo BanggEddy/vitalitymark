@@ -135,7 +135,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
         echo "\">Ma carte de fidélité</a>
                     </li>
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"/login\">Mon Compte</a>
+                        <a class=\"nav-link\" href=\"/user/profile\">Mon Compte</a>
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/logout\">Déconnexion</a>
@@ -351,7 +351,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                         <a class=\"nav-link\" href=\"{{ path('user_loyalty_card', {'id': user_id}) }}\">Ma carte de fidélité</a>
                     </li>
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"/login\">Mon Compte</a>
+                        <a class=\"nav-link\" href=\"/user/profile\">Mon Compte</a>
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/logout\">Déconnexion</a>

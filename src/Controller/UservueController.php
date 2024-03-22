@@ -10,6 +10,7 @@ use App\Entity\Products;
 use App\Entity\Panier;
 use App\Entity\User;
 use App\Entity\Promo;
+use App\Entity\Contact;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
@@ -17,7 +18,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use App\Repository\PanierRepository;
 use App\Repository\PromoRepository;
-use App\Repository\LoyaltyCardRepository;
 use App\Form\ProductSearchType;
 
 class UservueController extends AbstractController
@@ -92,8 +92,19 @@ class UservueController extends AbstractController
 
     #Promo Client
     #[Route('/user/promo', name: 'app_user_promo')]
-    public function promo(ProductsRepository $productsRepository, PanierRepository $panierRepository, PromoRepository $promoRepository): Response
+    public function promo(ProductsRepository $productsRepository, PanierRepository $panierRepository, PromoRepository $promoRepository, Request $request, $category = null): Response
     {
+
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('user_category_products', ['category' => $category]));
+        }
         $user = $this->getUser();
 
         // Récupérer l'ID de l'utilisateur
@@ -131,6 +142,8 @@ class UservueController extends AbstractController
             'totalPrice' => $totalPrice,
             'promotions' => $promotions,
             'user_id' => $userId,
+            'category' => $category,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -209,8 +222,20 @@ class UservueController extends AbstractController
 
     #Panier user
     #[Route('/user/panier', name: 'user_panier')]
-    public function getUserPanier(PanierRepository $panierRepository): Response
+    public function getUserPanier(PanierRepository $panierRepository, Request $request, $category = null): Response
     {
+
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('user_category_products', ['category' => $category]));
+        }
+
         /** @var UserInterface|null $user */
         $user = $this->getUser();
 
@@ -275,17 +300,23 @@ class UservueController extends AbstractController
         }
 
         return $this->render('user/uservue/indexpanier.html.twig', [
+            'category' => $category,
             'promoDetails' => $promoDetails,
             'panierDetails' => $panierDetails,
             'totalPrice' => $totalPrice,
             'user_id' => $userId,
+            'form' => $form->createView(),
         ]);
     }
 
     #Chercher un article
     #[Route('/search/user', name: 'search_user')]
-    public function search(Request $request, EntityManagerInterface $entityManager, PanierRepository $panierRepository)
-    {
+    public function search(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        PanierRepository $panierRepository,
+        PromoRepository $promoRepository
+    ) {
         // Récupérer le terme de recherche depuis la requête
         $keyword = $request->request->get('keyword');
 
@@ -331,6 +362,7 @@ class UservueController extends AbstractController
             'promos' => $promos,
             'keyword' => $keyword,
             'totalPrice' => $totalPrice,
+
         ]);
     }
 
@@ -345,8 +377,20 @@ class UservueController extends AbstractController
     }
 
     #[Route('/user/uservue/card/{id}', name: 'user_loyalty_card_page')]
-    public function showUserLoyaltyCardPage($id, PanierRepository $panierRepository): Response
+    public function showUserLoyaltyCardPage($id, PanierRepository $panierRepository, Request $request, $category = null): Response
     {
+
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('user_category_products', ['category' => $category]));
+        }
+        $user = $this->getUser();
         $totalPrice = 0;
         $user = $this->getUser();
         $panier = $panierRepository->findBy(['iduser' => $user]);
@@ -393,13 +437,27 @@ class UservueController extends AbstractController
             'loyaltyCard' => $loyaltyCard,
             'user_id' => $userId,
             'totalPrice' => $totalPrice,
+            'form' => $form->createView(),
+            'category' => $category,
         ]);
     }
 
     #Compte User
     #[Route('/user/profile', name: 'user_profile')]
-    public function userProfile(PanierRepository $panierRepository): Response
+    public function userProfile(PanierRepository $panierRepository, Request $request, $category = null): Response
     {
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('user_category_products', ['category' => $category]));
+        }
+        $user = $this->getUser();
+
         $totalPrice = 0;
         $user = $this->getUser();
         $panier = $panierRepository->findBy(['iduser' => $user]);
@@ -431,7 +489,9 @@ class UservueController extends AbstractController
         return $this->render('user/uservue/user.html.twig', [
             'user' => $user,
             'user_id' => $userId,
-            'totalPrice' => $totalPrice, // Passer le prix total au template Twig
+            'totalPrice' => $totalPrice,
+            'form' => $form->createView(),
+            'category' => $category,
         ]);
     }
 
@@ -465,6 +525,7 @@ class UservueController extends AbstractController
     #[Route('/user/uservue/categorie/{category}', name: 'user_category_products')]
     public function showCategoryProducts($category): Response
     {
+
         $products = $this->entityManager->getRepository(Products::class)->findBy(['category' => $category]);
         $promotions = $this->entityManager->getRepository(Promo::class)->findBy(['category' => $category]);
 
@@ -473,5 +534,95 @@ class UservueController extends AbstractController
             'products' => $products,
             'promotions' => $promotions,
         ]);
+    }
+
+
+    //Contact
+    #[Route('/contact/user', name: 'app_contact_user')]
+    public function indexcontact(
+        Request $request,
+        PanierRepository $panierRepository,
+
+    ): Response {
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+        $category = null; // Initialiser $category à null
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            return new RedirectResponse($this->generateUrl('user_category_products', ['category' => $category]));
+        }
+
+        $user = $this->getUser();
+        $userId = null;
+
+        if ($user instanceof User) {
+            $userId = $user->getId();
+        }
+
+        $panier = $panierRepository->findBy(['iduser' => $user]);
+        $totalPrice = 0;
+
+        // Parcourir les éléments du panier
+        foreach ($panier as $item) {
+            // Vérifier si l'élément du panier est une promotion ou un produit normal
+            if ($item->getIdpromo() !== null) {
+                // Si c'est une promotion, calculer le prix après la réduction
+                $priceAfterPromo = $item->getIdpromo()->getPriceafterpromo();
+                // Ajouter le prix après promotion au total
+                $totalPrice += $item->getQuantity() * $priceAfterPromo;
+            } elseif ($item->getIdproducts() !== null) {
+                // Si c'est un produit normal, calculer le prix normal
+                $price = $item->getIdproducts()->getPrice();
+                // Ajouter le prix normal au total
+                $totalPrice += $item->getQuantity() * $price;
+            }
+        }
+
+        return $this->render('user/uservue/contact.html.twig', [
+            'controller_name' => 'AccueilController',
+            'form' => $form->createView(),
+            'category' => $category,
+            'user_id' => $userId,
+            'totalPrice' => $totalPrice,
+
+        ]);
+    }
+
+    /**
+     * @Route("/contact/submit", name="app_contact_submit")
+     */
+    #[Route('/contact/user/submit', name: 'app_contact_user_submit')]
+    public function submitContact(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        // Récupérer l'utilisateur connecté
+        $user = $this->getUser();
+
+        // Vérifier si l'utilisateur est connecté
+        if (!$user) {
+            throw $this->createAccessDeniedException('Vous devez être connecté pour soumettre le formulaire de contact.');
+        }
+
+        // Récupérer les données du formulaire
+        $name = $request->request->get('name');
+        $email = $request->request->get('email');
+        $subject = $request->request->get('subject');
+        $message = $request->request->get('message');
+
+        // Créer une nouvelle instance de Contact
+        $contact = new Contact();
+        $contact->setName($name);
+        $contact->setEmail($email);
+        $contact->setSubject($subject);
+        $contact->setObject($message);
+        $contact->setIduser($user);
+
+        // Enregistrer le contact dans la base de données
+        $entityManager->persist($contact);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_contact_user');
     }
 }

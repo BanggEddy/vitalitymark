@@ -60,9 +60,16 @@ details_promotion:
   path: "/details-promotion/{id}"
   controller: 'App\Controller\AccueilController::detailsPromotion'
 
+#Contact for anonymous
 app_contact:
   path: "/contact"
   controller: 'App\Controller\AccueilController::indexcontact'
+
+#Contact for Users:
+app_contact_user_submit:
+  path: "/contact/user/submit"
+  controller: 'App\Controller\UservueController::submitContact'
+  methods: ["POST"]
 
 api_loyalty_card:
   path: /api/loyalty-card

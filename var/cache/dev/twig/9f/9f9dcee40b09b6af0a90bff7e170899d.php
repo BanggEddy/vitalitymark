@@ -104,33 +104,31 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
             <li class=\"nav-item\">
                 ";
         // line 51
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 51, $this->source); })()), 'form_start', ["attr" => ["class" => "form-inline my-2 my-lg-0 mr-auto"]]);
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 51, $this->source); })()), 'form_start', ["attr" => ["class" => "form-inline my-2 my-lg-0"]]);
         echo "
-                <div class=\"form-group\">
-                    ";
-        // line 53
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 53, $this->source); })()), "category", [], "any", false, false, false, 53), 'row', ["attr" => ["class" => "form-control", "placeholder" => "Rechercher un produit", "aria-label" => "Search"]]);
-        echo "
-                    <button type=\"submit\" class=\"btn btn-outline-success my-2 my-sm-0\">
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">
-                            <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0\"/>
-                        </svg>
-                    </button>
-                </div>
                 ";
-        // line 60
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 60, $this->source); })()), 'form_end');
+        // line 52
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 52, $this->source); })()), "category", [], "any", false, false, false, 52), 'row', ["attr" => ["class" => "form-control", "placeholder" => "Rechercher", "aria-label" => "Search"]]);
+        echo "
+                <button type=\"submit\" class=\"btn btn-outline-success my-2 my-sm-0\">
+                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">
+                        <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0\"/>
+                    </svg>
+                </button>
+                ";
+        // line 58
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 58, $this->source); })()), 'form_end');
         echo "
             </li>
             <li class=\"nav-item\">
                 <a class=\"nav-link\" href=\"";
-        // line 63
+        // line 61
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_panier");
         echo "\">Voir le panier</a>
             </li>
             <li class=\"nav-item\">
                 <a class=\"nav-link\" href=\"";
-        // line 66
+        // line 64
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_promo");
         echo "\"><span style=\"color:red;\">Promos</span></a>
             </li>
@@ -138,7 +136,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
         <ul class=\"navbar-nav ml-auto\">
             <li class=\"nav-item\">
                 <form action=\"";
-        // line 71
+        // line 69
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("search_user");
         echo "\" method=\"post\" class=\"form-inline my-2 my-lg-0 mr-auto\">
                     <input class=\"form-control\" type=\"text\" name=\"keyword\" placeholder=\"Rechercher un produit\" aria-label=\"Search\">
@@ -150,12 +148,12 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                 </form>
             </li>
             <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"#\">Aide et Contact</a>
+                <a class=\"nav-link\" href=\"/contact/user\">Aide et Contact</a>
             </li>
             <li class=\"nav-item\">
                 <a class=\"nav-link\" href=\"";
-        // line 84
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_loyalty_card", ["id" => (isset($context["user_id"]) || array_key_exists("user_id", $context) ? $context["user_id"] : (function () { throw new RuntimeError('Variable "user_id" does not exist.', 84, $this->source); })())]), "html", null, true);
+        // line 82
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_loyalty_card", ["id" => (isset($context["user_id"]) || array_key_exists("user_id", $context) ? $context["user_id"] : (function () { throw new RuntimeError('Variable "user_id" does not exist.', 82, $this->source); })())]), "html", null, true);
         echo "\">Ma carte de fidélité</a>
             </li>
             <li class=\"nav-item\">
@@ -170,8 +168,8 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                         <path d=\"M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2\"/>
                     </svg>
                     <span class=\"text-danger\">";
-        // line 97
-        echo twig_escape_filter($this->env, (isset($context["totalPrice"]) || array_key_exists("totalPrice", $context) ? $context["totalPrice"] : (function () { throw new RuntimeError('Variable "totalPrice" does not exist.', 97, $this->source); })()), "html", null, true);
+        // line 95
+        echo twig_escape_filter($this->env, (isset($context["totalPrice"]) || array_key_exists("totalPrice", $context) ? $context["totalPrice"] : (function () { throw new RuntimeError('Variable "totalPrice" does not exist.', 95, $this->source); })()), "html", null, true);
         echo "€</span>
                 </a>                   
             </li>
@@ -188,9 +186,9 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
     </header>
 
             ";
-        // line 112
+        // line 110
         $this->displayBlock('body', $context, $blocks);
-        // line 114
+        // line 112
         echo "<br>
 <br>
 
@@ -279,14 +277,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }
 
-    // line 112
+    // line 110
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 113
+        // line 111
         echo "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -314,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
      */
     public function getDebugInfo()
     {
-        return array (  290 => 113,  283 => 112,  271 => 10,  258 => 5,  194 => 114,  192 => 112,  174 => 97,  158 => 84,  142 => 71,  134 => 66,  128 => 63,  122 => 60,  112 => 53,  107 => 51,  96 => 43,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
+        return array (  288 => 111,  281 => 110,  269 => 10,  256 => 5,  192 => 112,  190 => 110,  172 => 95,  156 => 82,  140 => 69,  132 => 64,  126 => 61,  120 => 58,  111 => 52,  107 => 51,  96 => 43,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -369,15 +367,13 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class=\"collapse navbar-collapse\" id=\"navbarNav\">
         <ul class=\"navbar-nav\">
             <li class=\"nav-item\">
-                {{ form_start(form, {'attr': {'class': 'form-inline my-2 my-lg-0 mr-auto'}}) }}
-                <div class=\"form-group\">
-                    {{ form_row(form.category, {'attr': {'class': 'form-control', 'placeholder': 'Rechercher un produit', 'aria-label': 'Search'}}) }}
-                    <button type=\"submit\" class=\"btn btn-outline-success my-2 my-sm-0\">
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">
-                            <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0\"/>
-                        </svg>
-                    </button>
-                </div>
+                {{ form_start(form, {'attr': {'class': 'form-inline my-2 my-lg-0'}}) }}
+                {{ form_row(form.category, {'attr': {'class': 'form-control', 'placeholder': 'Rechercher', 'aria-label': 'Search'}}) }}
+                <button type=\"submit\" class=\"btn btn-outline-success my-2 my-sm-0\">
+                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">
+                        <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0\"/>
+                    </svg>
+                </button>
                 {{ form_end(form) }}
             </li>
             <li class=\"nav-item\">
@@ -399,7 +395,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </form>
             </li>
             <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"#\">Aide et Contact</a>
+                <a class=\"nav-link\" href=\"/contact/user\">Aide et Contact</a>
             </li>
             <li class=\"nav-item\">
                 <a class=\"nav-link\" href=\"{{ path('user_loyalty_card', {'id': user_id}) }}\">Ma carte de fidélité</a>

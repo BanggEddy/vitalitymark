@@ -156,7 +156,19 @@ class __TwigTemplate_6014f0c1f25ca7ab336ac9093467b158 extends Template
         </div>
         <div class=\"form-group\">
             <label for=\"category\">Catégorie:</label>
-            <input type=\"text\" class=\"form-control\" id=\"category\" name=\"category\" required>
+            <select class=\"form-control\" id=\"category\" name=\"category\" required>
+                <option value=\"\">Sélectionner une catégorie</option>
+                <option value=\"Produits frais\">Produits frais</option>
+                <option value=\"Épicerie\">Épicerie</option>
+                <option value=\"Boulangerie\">Boulangerie</option>
+                <option value=\"Surgelés\">Surgelés</option>
+                <option value=\"Boissons\">Boissons</option>
+                <option value=\"Produits d'hygiène et de beauté\">Produits d'hygiène et de beauté</option>
+                <option value=\"Entretien ménager\">Entretien ménager</option>
+                <option value=\"Articles pour bébés et enfants\">Articles pour bébés et enfants</option>
+                <option value=\"Produits de santé\">Produits de santé</option>
+                <option value=\"Articles pour animaux de compagnie\">Articles pour animaux de compagnie</option>
+            </select>
         </div>
         <div class=\"form-group\">
             <label for=\"quantity\">Quantité:</label>
@@ -281,7 +293,19 @@ class __TwigTemplate_6014f0c1f25ca7ab336ac9093467b158 extends Template
         </div>
         <div class=\"form-group\">
             <label for=\"category\">Catégorie:</label>
-            <input type=\"text\" class=\"form-control\" id=\"category\" name=\"category\" required>
+            <select class=\"form-control\" id=\"category\" name=\"category\" required>
+                <option value=\"\">Sélectionner une catégorie</option>
+                <option value=\"Produits frais\">Produits frais</option>
+                <option value=\"Épicerie\">Épicerie</option>
+                <option value=\"Boulangerie\">Boulangerie</option>
+                <option value=\"Surgelés\">Surgelés</option>
+                <option value=\"Boissons\">Boissons</option>
+                <option value=\"Produits d'hygiène et de beauté\">Produits d'hygiène et de beauté</option>
+                <option value=\"Entretien ménager\">Entretien ménager</option>
+                <option value=\"Articles pour bébés et enfants\">Articles pour bébés et enfants</option>
+                <option value=\"Produits de santé\">Produits de santé</option>
+                <option value=\"Articles pour animaux de compagnie\">Articles pour animaux de compagnie</option>
+            </select>
         </div>
         <div class=\"form-group\">
             <label for=\"quantity\">Quantité:</label>

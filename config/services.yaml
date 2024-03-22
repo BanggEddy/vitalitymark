@@ -24,3 +24,4 @@ services:
     # please note that last definitions always *replace* previous ones
 parameters:
     images_directory: '%kernel.project_dir%/public/images'
+

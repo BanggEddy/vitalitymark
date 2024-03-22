@@ -18,6 +18,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use App\Repository\PanierRepository;
 use App\Repository\PromoRepository;
 use App\Repository\LoyaltyCardRepository;
+use App\Form\ProductSearchType;
 
 class UservueController extends AbstractController
 {
@@ -29,9 +30,25 @@ class UservueController extends AbstractController
     }
 
     #[Route('/uservue', name: 'app_uservue')]
-    public function index(ProductsRepository $productsRepository, PanierRepository $panierRepository, PromoRepository $promoRepository): Response
-    {
-        // Récupérer l'utilisateur actuellement connecté
+    public function index(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        ProductsRepository $productsRepository,
+        PanierRepository $panierRepository,
+        PromoRepository $promoRepository
+    ): Response {
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+        $products = [];
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('user_category_products', ['category' => $category]));
+        }
+
         $user = $this->getUser();
 
         // Récupérer l'ID de l'utilisateur
@@ -40,15 +57,10 @@ class UservueController extends AbstractController
             // Récupérer l'ID de l'utilisateur
             $userId = $user->getId();
         }
-        // Récupérer tous les produits disponibles depuis le repository
-        $products = $productsRepository->findAll();
 
-        // Récupérer le panier de l'utilisateur
-        $user = $this->getUser();
+        $allProducts = $productsRepository->findAll();
         $panier = $panierRepository->findBy(['iduser' => $user]);
         $promotions = $promoRepository->findAll();
-
-        // Initialiser le prix total du panier
         $totalPrice = 0;
 
         // Parcourir les éléments du panier
@@ -69,10 +81,12 @@ class UservueController extends AbstractController
 
         return $this->render('user/uservue/index.html.twig', [
             'products' => $products,
+            'allProducts' => $allProducts,
             'controller_name' => 'UservueController',
-            'totalPrice' => $totalPrice, // Passer le prix total au template Twig
-            'promotions' => $promotions, // Passer les promotions à la vue
+            'totalPrice' => $totalPrice,
+            'promotions' => $promotions,
             'user_id' => $userId,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -80,7 +94,6 @@ class UservueController extends AbstractController
     #[Route('/user/promo', name: 'app_user_promo')]
     public function promo(ProductsRepository $productsRepository, PanierRepository $panierRepository, PromoRepository $promoRepository): Response
     {
-        // Récupérer l'utilisateur actuellement connecté
         $user = $this->getUser();
 
         // Récupérer l'ID de l'utilisateur
@@ -89,15 +102,11 @@ class UservueController extends AbstractController
             // Récupérer l'ID de l'utilisateur
             $userId = $user->getId();
         }
-        // Récupérer tous les produits disponibles depuis le repository
-        $products = $productsRepository->findAll();
 
-        // Récupérer le panier de l'utilisateur
+        $products = $productsRepository->findAll();
         $user = $this->getUser();
         $panier = $panierRepository->findBy(['iduser' => $user]);
         $promotions = $promoRepository->findAll();
-
-        // Initialiser le prix total du panier
         $totalPrice = 0;
 
         // Parcourir les éléments du panier
@@ -163,7 +172,6 @@ class UservueController extends AbstractController
                 return new JsonResponse(['error' => 'Not enough quantity available in the promotion.'], Response::HTTP_BAD_REQUEST);
             }
 
-            // Créer une nouvelle entrée dans le panier
             $panier = new Panier();
             $panier->setQuantity($quantity);
 
@@ -209,7 +217,6 @@ class UservueController extends AbstractController
         if (!$user) {
             throw $this->createNotFoundException('User not found');
         }
-        // Récupérer l'utilisateur actuellement connecté
         $user = $this->getUser();
 
         // Récupérer l'ID de l'utilisateur
@@ -218,12 +225,11 @@ class UservueController extends AbstractController
             // Récupérer l'ID de l'utilisateur
             $userId = $user->getId();
         }
-        // Récupérer les paniers de l'utilisateur depuis le repository
         $paniers = $panierRepository->findBy(['iduser' => $user]);
 
         $panierDetails = [];
         $promoDetails = [];
-        $totalPrice = 0; // Initialiser le prix total à zéro
+        $totalPrice = 0;
         foreach ($paniers as $panier) {
             $product = $panier->getIdproducts();
 
@@ -248,7 +254,6 @@ class UservueController extends AbstractController
                 ];
             }
 
-            // Récupérer la promotion associée au panier
             $promo = $panier->getIdpromo();
 
             // Vérifier si une promotion est associée au panier
@@ -272,7 +277,7 @@ class UservueController extends AbstractController
         return $this->render('user/uservue/indexpanier.html.twig', [
             'promoDetails' => $promoDetails,
             'panierDetails' => $panierDetails,
-            'totalPrice' => $totalPrice, // Passer le prix total au template Twig
+            'totalPrice' => $totalPrice,
             'user_id' => $userId,
         ]);
     }
@@ -301,11 +306,8 @@ class UservueController extends AbstractController
             ->getQuery()
             ->getResult();
 
-        // Récupérer le panier de l'utilisateur
         $user = $this->getUser();
         $panier = $panierRepository->findBy(['iduser' => $user]);
-
-        // Initialiser le prix total à zéro
         $totalPrice = 0;
 
         // Calculer le prix total en parcourant les éléments du panier de l'utilisateur
@@ -328,7 +330,7 @@ class UservueController extends AbstractController
             'products' => $products,
             'promos' => $promos,
             'keyword' => $keyword,
-            'totalPrice' => $totalPrice, // Passer le prix total au template Twig
+            'totalPrice' => $totalPrice,
         ]);
     }
 
@@ -345,10 +347,7 @@ class UservueController extends AbstractController
     #[Route('/user/uservue/card/{id}', name: 'user_loyalty_card_page')]
     public function showUserLoyaltyCardPage($id, PanierRepository $panierRepository): Response
     {
-        // Initialiser le prix total du panier
         $totalPrice = 0;
-
-        // Récupérer le panier de l'utilisateur
         $user = $this->getUser();
         $panier = $panierRepository->findBy(['iduser' => $user]);
 
@@ -368,10 +367,8 @@ class UservueController extends AbstractController
             }
         }
 
-        // Récupérer l'utilisateur actuellement connecté
         $user = $this->getUser();
 
-        // Récupérer l'ID de l'utilisateur
         $userId = null;
         if ($user instanceof User) {
             // Récupérer l'ID de l'utilisateur
@@ -385,7 +382,6 @@ class UservueController extends AbstractController
             throw $this->createNotFoundException('User not found');
         }
 
-        // Récupérer la carte de fidélité de l'utilisateur
         $loyaltyCard = $user->getIdloyaltycard();
 
         // Vérifier si l'utilisateur a une carte de fidélité
@@ -393,11 +389,10 @@ class UservueController extends AbstractController
             throw $this->createNotFoundException('User has no loyalty card');
         }
 
-        // Rendre la vue de la carte de fidélité avec les données de la carte
         return $this->render('user/uservue/card.html.twig', [
             'loyaltyCard' => $loyaltyCard,
             'user_id' => $userId,
-            'totalPrice' => $totalPrice, // Passer le prix total au template Twig
+            'totalPrice' => $totalPrice,
         ]);
     }
 
@@ -405,10 +400,7 @@ class UservueController extends AbstractController
     #[Route('/user/profile', name: 'user_profile')]
     public function userProfile(PanierRepository $panierRepository): Response
     {
-        // Initialiser le prix total à zéro
         $totalPrice = 0;
-
-        // Récupérer le panier de l'utilisateur
         $user = $this->getUser();
         $panier = $panierRepository->findBy(['iduser' => $user]);
 
@@ -449,29 +441,37 @@ class UservueController extends AbstractController
     #[Route('edit/user/profile', name: 'edit_user_profile')]
     public function editUserProfile(Request $request, EntityManagerInterface $entityManager, PanierRepository $panierRepository): Response
     {
-        // Récupérer le panier de l'utilisateur
         $user = $this->getUser();
 
-        // Vérifier si l'utilisateur est connecté
         if (!$user instanceof User) {
             throw $this->createNotFoundException('Utilisateur non trouvé.');
         }
 
-        // Récupérer les données du formulaire
         $email = $request->request->get('email');
         $name = $request->request->get('name');
         $adresse = $request->request->get('adresse');
         $civilite = $request->request->get('civilite');
 
-        // Mettre à jour les données de l'utilisateur
         $user->setEmail($email);
         $user->setName($name);
         $user->setAdresse($adresse);
         $user->setCivilite($civilite);
 
-        // Enregistrer les changements dans la base de données
         $entityManager->flush();
 
         return new RedirectResponse($this->generateUrl('user_profile_view'));
+    }
+
+    #[Route('/user/uservue/categorie/{category}', name: 'user_category_products')]
+    public function showCategoryProducts($category): Response
+    {
+        $products = $this->entityManager->getRepository(Products::class)->findBy(['category' => $category]);
+        $promotions = $this->entityManager->getRepository(Promo::class)->findBy(['category' => $category]);
+
+        return $this->render('user/uservue/categorie.html.twig', [
+            'category' => $category,
+            'products' => $products,
+            'promotions' => $promotions,
+        ]);
     }
 }

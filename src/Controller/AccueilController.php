@@ -25,38 +25,31 @@ class AccueilController extends AbstractController
     #[Route('/', name: 'app_accueil')]
     public function index(ProductsRepository $productsRepository, PromoRepository $promoRepository): Response
     {
-        // Récupérer tous les produits
         $products = $productsRepository->findAll();
-
-        // Récupérer toutes les promotions
         $promotions = $promoRepository->findAll();
 
         return $this->render('accueil/index.html.twig', [
             'controller_name' => 'AccueilController',
             'products' => $products,
-            'promotions' => $promotions, // Passer les promotions à la vue
+            'promotions' => $promotions,
         ]);
     }
     #[Route('/promo', name: 'app_promo')]
     public function promo(ProductsRepository $productsRepository, PromoRepository $promoRepository): Response
     {
-
-        // Récupérer toutes les promotions
         $promotions = $promoRepository->findAll();
 
         return $this->render('accueil/indexpromo.html.twig', [
             'controller_name' => 'AccueilController',
-            'promotions' => $promotions, // Passer les promotions à la vue
+            'promotions' => $promotions,
         ]);
     }
 
     #[Route('/details-produit/{id}', name: 'details_produit')]
     public function detailsProduit($id): Response
     {
-        // Récupérer le produit depuis la base de données
         $product = $this->entityManager->getRepository(Products::class)->find($id);
 
-        // Afficher la vue avec les détails du produit
         return $this->render('accueil/indexproduit.html.twig', [
             'product' => $product
         ]);
@@ -65,10 +58,8 @@ class AccueilController extends AbstractController
     #[Route('/details-promotion/{id}', name: 'details_promotion')]
     public function detailsPromotion($id): Response
     {
-        // Récupérer la promotion depuis la base de données
         $promo = $this->entityManager->getRepository(Promo::class)->find($id);
 
-        // Afficher la vue avec les détails de la promotion
         return $this->render('accueil/indexproduit.html.twig', [
             'promo' => $promo
         ]);
@@ -116,7 +107,6 @@ class AccueilController extends AbstractController
     #[Route('/contact/submit', name: 'app_contact_submit')]
     public function submitContact(Request $request): Response
     {
-        // Utilisez directement l'EntityManager
         $entityManager = $this->entityManager;
 
         $name = $request->request->get('name');
@@ -124,18 +114,15 @@ class AccueilController extends AbstractController
         $subject = $request->request->get('subject');
         $message = $request->request->get('message');
 
-        // Créer une nouvelle instance de l'entité Contact
         $contact = new Contact();
         $contact->setName($name);
         $contact->setEmail($email);
         $contact->setSubject($subject);
         $contact->setObject($message);
 
-        // Persiste l'entité et effectue l'opération en base de données
         $entityManager->persist($contact);
         $entityManager->flush();
 
-        // Redirige vers une page de confirmation ou affiche un message de succès
         return $this->redirectToRoute('app_contact');
     }
 }

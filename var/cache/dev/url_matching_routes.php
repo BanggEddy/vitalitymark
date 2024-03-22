@@ -58,6 +58,7 @@ return [
         '/admin/products/list' => [[['_route' => 'admin_products_list', '_controller' => 'App\\Controller\\AdminproductsController::index'], null, null, null, false, false, null]],
         '/contact' => [[['_route' => 'app_contact', '_controller' => 'App\\Controller\\AccueilController::indexcontact'], null, null, null, false, false, null]],
         '/api/loyalty-card' => [[['_route' => 'api_loyalty_card', '_controller' => 'App\\Controller\\UservueController::getLoyaltyCard'], null, ['GET' => 0], null, false, false, null]],
+        '/search-products' => [[['_route' => 'app_search_products', '_controller' => 'App\\Controller\\UservueController::searchProducts'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -100,9 +101,12 @@ return [
                 .')'
                 .'|/user/(?'
                     .'|loyalty\\-card/([^/]++)(*:521)'
-                    .'|uservue/card/([^/]++)(*:550)'
+                    .'|uservue/ca(?'
+                        .'|rd/([^/]++)(*:553)'
+                        .'|tegorie/([^/]++)(*:577)'
+                    .')'
                 .')'
-                .'|/editproduct/([^/]++)(*:580)'
+                .'|/editproduct/([^/]++)(*:608)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -126,8 +130,9 @@ return [
         473 => [[['_route' => 'app_promo_admin_edit', '_controller' => 'App\\Controller\\PromoAdminController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
         481 => [[['_route' => 'app_promo_admin_delete', '_controller' => 'App\\Controller\\PromoAdminController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
         521 => [[['_route' => 'user_loyalty_card', '_controller' => 'App\\Controller\\UservueController::redirectToUserLoyaltyCard'], ['id'], null, null, false, true, null]],
-        550 => [[['_route' => 'user_loyalty_card_page', '_controller' => 'App\\Controller\\UservueController::showUserLoyaltyCardPage'], ['id'], null, null, false, true, null]],
-        580 => [
+        553 => [[['_route' => 'user_loyalty_card_page', '_controller' => 'App\\Controller\\UservueController::showUserLoyaltyCardPage'], ['id'], null, null, false, true, null]],
+        577 => [[['_route' => 'user_category_products', '_controller' => 'App\\Controller\\UservueController::showCategoryProducts'], ['category'], null, null, false, true, null]],
+        608 => [
             [['_route' => 'app_edit_product', '_controller' => 'App\\Controller\\AdminproductsController::editProduct'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

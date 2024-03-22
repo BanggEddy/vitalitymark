@@ -65,6 +65,8 @@ return [
     'app_contact' => [[], ['_controller' => 'App\\Controller\\AccueilController::indexcontact'], [], [['text', '/contact']], [], [], []],
     'api_loyalty_card' => [[], ['_controller' => 'App\\Controller\\UservueController::getLoyaltyCard'], [], [['text', '/api/loyalty-card']], [], [], []],
     'user_profile_view' => [[], ['_controller' => 'App\\Controller\\UserController::viewProfile'], [], [['text', '/user/profile']], [], [], []],
+    'app_search_products' => [[], ['_controller' => 'App\\Controller\\UservueController::searchProducts'], [], [['text', '/search-products']], [], [], []],
+    'user_category_products' => [['category'], ['_controller' => 'App\\Controller\\UservueController::showCategoryProducts'], [], [['variable', '/', '[^/]++', 'category', true], ['text', '/user/uservue/categorie']], [], [], []],
     'App\Controller\AccueilController::index' => [[], ['_controller' => 'App\\Controller\\AccueilController::index'], [], [['text', '/']], [], [], []],
     'App\Controller\AccueilController::promo' => [[], ['_controller' => 'App\\Controller\\AccueilController::promo'], [], [['text', '/promo']], [], [], []],
     'App\Controller\AccueilController::detailsProduit' => [['id'], ['_controller' => 'App\\Controller\\AccueilController::detailsProduit'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/details-produit']], [], [], []],
@@ -112,4 +114,5 @@ return [
     'App\Controller\UservueController::showUserLoyaltyCardPage' => [['id'], ['_controller' => 'App\\Controller\\UservueController::showUserLoyaltyCardPage'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/user/uservue/card']], [], [], []],
     'App\Controller\UservueController::userProfile' => [[], ['_controller' => 'App\\Controller\\UservueController::userProfile'], [], [['text', '/user/profile']], [], [], []],
     'App\Controller\UservueController::editUserProfile' => [[], ['_controller' => 'App\\Controller\\UservueController::editUserProfile'], [], [['text', '/edit/user/profile']], [], [], []],
+    'App\Controller\UservueController::showCategoryProducts' => [['category'], ['_controller' => 'App\\Controller\\UservueController::showCategoryProducts'], [], [['variable', '/', '[^/]++', 'category', true], ['text', '/user/uservue/categorie']], [], [], []],
 ];

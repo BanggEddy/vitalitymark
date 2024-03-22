@@ -89,71 +89,96 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
     </style>
 <body>
     <header>
-        <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
-            <a href=\"/uservue\" style=\"text-decoration: none;\">
-                <img src=\"";
+<nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
+    <a href=\"/uservue\" style=\"text-decoration: none;\">
+        <img src=\"";
         // line 43
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
         echo "\" alt=\"Logo\" style=\"width: 150px; height: auto; border-radius: 50%; border: 4px solid #4CAF50; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s;\">
-            </a>
-            <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
-                <span class=\"navbar-toggler-icon\"></span>
-            </button>
-            <div class=\"collapse navbar-collapse\" id=\"navbarNav\">
-                <ul class=\"navbar-nav\">
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\">Rayons</a>
-                    </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"";
-        // line 54
+    </a>
+    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
+        <span class=\"navbar-toggler-icon\"></span>
+    </button>
+    <div class=\"collapse navbar-collapse\" id=\"navbarNav\">
+        <ul class=\"navbar-nav\">
+            <li class=\"nav-item\">
+                ";
+        // line 51
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 51, $this->source); })()), 'form_start', ["attr" => ["class" => "form-inline my-2 my-lg-0 mr-auto"]]);
+        echo "
+                <div class=\"form-group\">
+                    ";
+        // line 53
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 53, $this->source); })()), "category", [], "any", false, false, false, 53), 'row', ["attr" => ["class" => "form-control", "placeholder" => "Rechercher un produit", "aria-label" => "Search"]]);
+        echo "
+                    <button type=\"submit\" class=\"btn btn-outline-success my-2 my-sm-0\">
+                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">
+                            <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0\"/>
+                        </svg>
+                    </button>
+                </div>
+                ";
+        // line 60
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 60, $this->source); })()), 'form_end');
+        echo "
+            </li>
+            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"";
+        // line 63
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_panier");
         echo "\">Voir le panier</a>
-                    </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"";
-        // line 57
+            </li>
+            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"";
+        // line 66
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_promo");
         echo "\"><span style=\"color:red;\">Promos</span></a>
-                    </li>
-                </ul>
-                <ul class=\"navbar-nav ml-auto\">
-                    <form action=\"";
-        // line 61
+            </li>
+        </ul>
+        <ul class=\"navbar-nav ml-auto\">
+            <li class=\"nav-item\">
+                <form action=\"";
+        // line 71
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("search_user");
         echo "\" method=\"post\" class=\"form-inline my-2 my-lg-0 mr-auto\">
-                        <input class=\"form-control\" type=\"text\" name=\"keyword\" placeholder=\"Rechercher un produit\" aria-label=\"Search\">
-                        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Rechercher</button>
-                    </form>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\">Aide et Contact</a>
-                    </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"";
-        // line 69
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_loyalty_card", ["id" => (isset($context["user_id"]) || array_key_exists("user_id", $context) ? $context["user_id"] : (function () { throw new RuntimeError('Variable "user_id" does not exist.', 69, $this->source); })())]), "html", null, true);
+                    <input class=\"form-control\" type=\"text\" name=\"keyword\" placeholder=\"Rechercher un produit\" aria-label=\"Search\">
+                    <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">
+                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">
+                            <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0\"/>
+                        </svg>
+                    </button>
+                </form>
+            </li>
+            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"#\">Aide et Contact</a>
+            </li>
+            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"";
+        // line 84
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_loyalty_card", ["id" => (isset($context["user_id"]) || array_key_exists("user_id", $context) ? $context["user_id"] : (function () { throw new RuntimeError('Variable "user_id" does not exist.', 84, $this->source); })())]), "html", null, true);
         echo "\">Ma carte de fidélité</a>
-                    </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"/user/profile\">Mon Compte</a>
-                    </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"/logout\">Déconnexion</a>
-                    </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link btn btn-outline-danger\" href=\"#\">
-                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"red\" class=\"bi bi-cart\" style=\"margin-bottom:4px\" viewBox=\"0 0 16 16\">
-                                <path d=\"M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2\"/>
-                            </svg>
-                            <span class=\"text-danger\">";
-        // line 82
-        echo twig_escape_filter($this->env, (isset($context["totalPrice"]) || array_key_exists("totalPrice", $context) ? $context["totalPrice"] : (function () { throw new RuntimeError('Variable "totalPrice" does not exist.', 82, $this->source); })()), "html", null, true);
+            </li>
+            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"/user/profile\">Mon Compte</a>
+            </li>
+            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"/logout\">Déconnexion</a>
+            </li>
+            <li class=\"nav-item\">
+                <a class=\"nav-link btn btn-outline-danger\" href=\"#\">
+                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"red\" class=\"bi bi-cart\" style=\"margin-bottom:4px\" viewBox=\"0 0 16 16\">
+                        <path d=\"M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2\"/>
+                    </svg>
+                    <span class=\"text-danger\">";
+        // line 97
+        echo twig_escape_filter($this->env, (isset($context["totalPrice"]) || array_key_exists("totalPrice", $context) ? $context["totalPrice"] : (function () { throw new RuntimeError('Variable "totalPrice" does not exist.', 97, $this->source); })()), "html", null, true);
         echo "€</span>
-                        </a>                   
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                </a>                   
+            </li>
+        </ul>
+    </div>
+</nav>
+
         <section class=\"section\">
             <div>
                 <h1>Bienvenue :)</h1>
@@ -163,9 +188,9 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
     </header>
 
             ";
-        // line 96
+        // line 112
         $this->displayBlock('body', $context, $blocks);
-        // line 98
+        // line 114
         echo "<br>
 <br>
 
@@ -207,6 +232,20 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
     <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>
     <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js\"></script>
     <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryForm = document.getElementById('categoryForm');
+    const categorySelect = document.getElementById('category');
+
+    categoryForm.addEventListener('submit', function(event) {
+        // Vérifiez si une catégorie est sélectionnée
+        if (!categorySelect.value) {
+            event.preventDefault(); // Empêche l'envoi du formulaire si aucune catégorie n'est sélectionnée
+            alert('Veuillez sélectionner une catégorie.'); // Affiche un message d'erreur
+        }
+    });
+});
+</script>
 </body>
 </html>
 ";
@@ -240,14 +279,14 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
 
     }
 
-    // line 96
+    // line 112
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 97
+        // line 113
         echo "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -275,7 +314,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  251 => 97,  244 => 96,  232 => 10,  219 => 5,  169 => 98,  167 => 96,  150 => 82,  134 => 69,  123 => 61,  116 => 57,  110 => 54,  96 => 43,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
+        return array (  290 => 113,  283 => 112,  271 => 10,  258 => 5,  194 => 114,  192 => 112,  174 => 97,  158 => 84,  142 => 71,  134 => 66,  128 => 63,  122 => 60,  112 => 53,  107 => 51,  96 => 43,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -320,53 +359,69 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
     </style>
 <body>
     <header>
-        <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
-            <a href=\"/uservue\" style=\"text-decoration: none;\">
-                <img src=\"{{ asset('images/logo.png') }}\" alt=\"Logo\" style=\"width: 150px; height: auto; border-radius: 50%; border: 4px solid #4CAF50; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s;\">
-            </a>
-            <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
-                <span class=\"navbar-toggler-icon\"></span>
-            </button>
-            <div class=\"collapse navbar-collapse\" id=\"navbarNav\">
-                <ul class=\"navbar-nav\">
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\">Rayons</a>
-                    </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"{{ path('user_panier') }}\">Voir le panier</a>
-                    </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"{{ path('app_user_promo') }}\"><span style=\"color:red;\">Promos</span></a>
-                    </li>
-                </ul>
-                <ul class=\"navbar-nav ml-auto\">
-                    <form action=\"{{ path('search_user') }}\" method=\"post\" class=\"form-inline my-2 my-lg-0 mr-auto\">
-                        <input class=\"form-control\" type=\"text\" name=\"keyword\" placeholder=\"Rechercher un produit\" aria-label=\"Search\">
-                        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Rechercher</button>
-                    </form>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\">Aide et Contact</a>
-                    </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"{{ path('user_loyalty_card', {'id': user_id}) }}\">Ma carte de fidélité</a>
-                    </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"/user/profile\">Mon Compte</a>
-                    </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"/logout\">Déconnexion</a>
-                    </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link btn btn-outline-danger\" href=\"#\">
-                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"red\" class=\"bi bi-cart\" style=\"margin-bottom:4px\" viewBox=\"0 0 16 16\">
-                                <path d=\"M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2\"/>
-                            </svg>
-                            <span class=\"text-danger\">{{ totalPrice }}€</span>
-                        </a>                   
-                    </li>
-                </ul>
-            </div>
-        </nav>
+<nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
+    <a href=\"/uservue\" style=\"text-decoration: none;\">
+        <img src=\"{{ asset('images/logo.png') }}\" alt=\"Logo\" style=\"width: 150px; height: auto; border-radius: 50%; border: 4px solid #4CAF50; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s;\">
+    </a>
+    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
+        <span class=\"navbar-toggler-icon\"></span>
+    </button>
+    <div class=\"collapse navbar-collapse\" id=\"navbarNav\">
+        <ul class=\"navbar-nav\">
+            <li class=\"nav-item\">
+                {{ form_start(form, {'attr': {'class': 'form-inline my-2 my-lg-0 mr-auto'}}) }}
+                <div class=\"form-group\">
+                    {{ form_row(form.category, {'attr': {'class': 'form-control', 'placeholder': 'Rechercher un produit', 'aria-label': 'Search'}}) }}
+                    <button type=\"submit\" class=\"btn btn-outline-success my-2 my-sm-0\">
+                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">
+                            <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0\"/>
+                        </svg>
+                    </button>
+                </div>
+                {{ form_end(form) }}
+            </li>
+            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"{{ path('user_panier') }}\">Voir le panier</a>
+            </li>
+            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"{{ path('app_user_promo') }}\"><span style=\"color:red;\">Promos</span></a>
+            </li>
+        </ul>
+        <ul class=\"navbar-nav ml-auto\">
+            <li class=\"nav-item\">
+                <form action=\"{{ path('search_user') }}\" method=\"post\" class=\"form-inline my-2 my-lg-0 mr-auto\">
+                    <input class=\"form-control\" type=\"text\" name=\"keyword\" placeholder=\"Rechercher un produit\" aria-label=\"Search\">
+                    <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">
+                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">
+                            <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0\"/>
+                        </svg>
+                    </button>
+                </form>
+            </li>
+            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"#\">Aide et Contact</a>
+            </li>
+            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"{{ path('user_loyalty_card', {'id': user_id}) }}\">Ma carte de fidélité</a>
+            </li>
+            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"/user/profile\">Mon Compte</a>
+            </li>
+            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"/logout\">Déconnexion</a>
+            </li>
+            <li class=\"nav-item\">
+                <a class=\"nav-link btn btn-outline-danger\" href=\"#\">
+                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"red\" class=\"bi bi-cart\" style=\"margin-bottom:4px\" viewBox=\"0 0 16 16\">
+                        <path d=\"M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2\"/>
+                    </svg>
+                    <span class=\"text-danger\">{{ totalPrice }}€</span>
+                </a>                   
+            </li>
+        </ul>
+    </div>
+</nav>
+
         <section class=\"section\">
             <div>
                 <h1>Bienvenue :)</h1>
@@ -418,6 +473,20 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
     <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>
     <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js\"></script>
     <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryForm = document.getElementById('categoryForm');
+    const categorySelect = document.getElementById('category');
+
+    categoryForm.addEventListener('submit', function(event) {
+        // Vérifiez si une catégorie est sélectionnée
+        if (!categorySelect.value) {
+            event.preventDefault(); // Empêche l'envoi du formulaire si aucune catégorie n'est sélectionnée
+            alert('Veuillez sélectionner une catégorie.'); // Affiche un message d'erreur
+        }
+    });
+});
+</script>
 </body>
 </html>
 ", "headeruser.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\headeruser.html.twig");

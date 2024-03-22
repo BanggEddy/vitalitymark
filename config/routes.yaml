@@ -72,3 +72,12 @@ api_loyalty_card:
 user_profile_view:
   path: /user/profile
   controller: App\Controller\UserController::viewProfile
+
+app_search_products:
+  path: /search-products
+  controller: App\Controller\UservueController::searchProducts
+  methods: [GET, POST]
+
+user_category_products:
+  path: /user/uservue/categorie/{category}
+  controller: App\Controller\UservueController::showCategoryProducts

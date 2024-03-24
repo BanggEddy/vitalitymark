@@ -11,15 +11,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use App\Form\ProductSearchType;
 
 #[Route('/promo/admin')]
 class PromoAdminController extends AbstractController
 {
     #[Route('/', name: 'app_promo_admin_index', methods: ['GET'])]
-    public function index(PromoRepository $promoRepository): Response
+    public function index(PromoRepository $promoRepository, Request $request): Response
     {
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('admin_category_products', ['category' => $category]));
+        }
+
         return $this->render('admin/promo_admin/index.html.twig', [
             'promos' => $promoRepository->findAll(),
+            'form' => $form->createView(),
         ]);
     }
 
@@ -65,20 +79,42 @@ class PromoAdminController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_promo_admin_show', methods: ['GET'])]
-    public function show(Promo $promo): Response
+    public function show(Promo $promo, Request $request): Response
     {
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('admin_category_products', ['category' => $category]));
+        }
         return $this->render('admin/promo_admin/show.html.twig', [
             'promo' => $promo,
+            'form' => $form->createView(),
+
         ]);
     }
 
     #[Route('/{id}/edit', name: 'app_promo_admin_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Promo $promo, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(PromoType::class, $promo);
+        $form = $this->createForm(ProductSearchType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('admin_category_products', ['category' => $category]));
+        }
+
+        $formPromo = $this->createForm(PromoType::class, $promo);
+        $formPromo->handleRequest($request);
+
+        if ($formPromo->isSubmitted() && $formPromo->isValid()) {
             // Récupération de l'objet Products associé à l'ID fourni dans le formulaire
             $productId = $promo->getIdproduct()->getId();
             $product = $entityManager->getRepository(Products::class)->find($productId);
@@ -94,15 +130,22 @@ class PromoAdminController extends AbstractController
             $promo->setCategory($product->getCategory());
             $promo->setPrice($product->getPrice());
 
+            // Calcul du prix après promotion
+            $reduction = $promo->getReduction();
+            $prixInitial = $promo->getPrice();
+            $prixApresPromo = $prixInitial - ($prixInitial * ($reduction / 100));
+            $promo->setPriceafterpromo($prixApresPromo);
+
             // Enregistrement de la promotion dans la base de données
             $entityManager->flush();
 
-            return new Response('Promo updated successfully', Response::HTTP_OK);
+            return $this->redirectToRoute('app_promo_admin_index');
         }
 
         return $this->render('admin/promo_admin/edit.html.twig', [
-            'form' => $form->createView(),
+            'form' => $formPromo->createView(),
             'promo' => $promo,
+            'search_form' => $form->createView(),
         ]);
     }
 

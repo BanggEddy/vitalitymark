@@ -95,7 +95,23 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
             <div class=\"collapse navbar-collapse\" id=\"navbarNav\">
                 <ul class=\"navbar-nav\">
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\">Rayons</a>
+                        ";
+        // line 44
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 44, $this->source); })()), 'form_start', ["attr" => ["class" => "form-inline my-2 my-lg-0"]]);
+        echo "
+                        ";
+        // line 45
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 45, $this->source); })()), "category", [], "any", false, false, false, 45), 'row', ["attr" => ["class" => "form-control", "placeholder" => "Rechercher", "aria-label" => "Search"]]);
+        echo "
+                        <button type=\"submit\" class=\"btn btn-outline-success my-2 my-sm-0\">
+                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">
+                                <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0\"/>
+                            </svg>
+                        </button>
+                        ";
+        // line 51
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 51, $this->source); })()), 'form_end');
+        echo "
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/promo \"><span style=\"color:red;\">Promos</span></a>
@@ -103,7 +119,7 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
                 </ul>
                 <ul class=\"navbar-nav ml-auto\">
                     <form action=\"";
-        // line 51
+        // line 58
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("search");
         echo "\" method=\"post\" class=\"form-inline my-2 my-lg-0 mr-auto\">
                         <input class=\"form-control\" type=\"text\" name=\"keyword\" placeholder=\"Rechercher un produit\" aria-label=\"Search\">
@@ -111,9 +127,6 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
                     </form>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/contact\">Aide et Contact</a>
-                    </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\">Mon Panier</a>
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/login\">Mon Compte</a>
@@ -133,9 +146,9 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
     </header>
 
             ";
-        // line 78
+        // line 82
         $this->displayBlock('body', $context, $blocks);
-        // line 80
+        // line 84
         echo "
 <br>
 <br>
@@ -195,14 +208,14 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
 
     }
 
-    // line 78
+    // line 82
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 79
+        // line 83
         echo "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -230,7 +243,7 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  206 => 79,  199 => 78,  187 => 10,  174 => 5,  139 => 80,  137 => 78,  107 => 51,  87 => 34,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
+        return array (  219 => 83,  212 => 82,  200 => 10,  187 => 5,  152 => 84,  150 => 82,  123 => 58,  113 => 51,  104 => 45,  100 => 44,  87 => 34,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -278,7 +291,14 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
             <div class=\"collapse navbar-collapse\" id=\"navbarNav\">
                 <ul class=\"navbar-nav\">
                     <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\">Rayons</a>
+                        {{ form_start(form, {'attr': {'class': 'form-inline my-2 my-lg-0'}}) }}
+                        {{ form_row(form.category, {'attr': {'class': 'form-control', 'placeholder': 'Rechercher', 'aria-label': 'Search'}}) }}
+                        <button type=\"submit\" class=\"btn btn-outline-success my-2 my-sm-0\">
+                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">
+                                <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0\"/>
+                            </svg>
+                        </button>
+                        {{ form_end(form) }}
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/promo \"><span style=\"color:red;\">Promos</span></a>
@@ -291,9 +311,6 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
                     </form>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/contact\">Aide et Contact</a>
-                    </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\">Mon Panier</a>
                     </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/login\">Mon Compte</a>

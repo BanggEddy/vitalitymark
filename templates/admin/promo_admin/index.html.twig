@@ -19,8 +19,15 @@
             margin: 20px;
             background-color: #DBFFCA;
             border: 1px solid #ccc;
-            box-shadow: 10px 10px 4px #7cdf7c; /* Ajout de l'ombre */
-            max-width: 300px; /* Optionnel : limiter la largeur */
+            box-shadow: 5px 5px 2px #7cdf7c; 
+            max-width: 300px;
+            transition: transform 0.3s ease; 
+        }
+
+        .promo-card:hover {
+            transform: scale(1.05); 
+            box-shadow: 8px 8px 4px #7cdf7c; 
+            transition: 0.5s;
         }
 
         .promo-image {
@@ -50,9 +57,15 @@
         .promo-actions a {
             margin-right: 10px;
         }
+
+        .promo-actions a:hover {
+            box-shadow: 2px 2px 2px #7cdf7c; 
+            transform: translateY(-1px);
+            transition:0.5s 
+        }
     </style>
 
-    <h1>Promo index</h1>
+    <h1>Liste des articles en promotions</h1>
     <a href="{{ path('app_promo_admin_new') }}" class="btn btn-success">Ajouter un produit en promotion</a>
     <br><br>
     <div class="row">
@@ -60,11 +73,17 @@
             <div class="promo-card">
                 <img src="{{ asset('images/' ~ promo.images) }}" class="promo-image">
                 <div class="promo-details">
-                    <h3>{{ promo.name }}</h3>
-                    <p class="promo-price">{{ promo.priceafterpromo }} €</p>
-                    <p>{{ promo.description }}</p>
-                    <p class="promo-quantity">Quantité disponible: {{ promo.quantity }}</p>
-                    <p class="promo-category">Catégorie: {{ promo.category }}</p>
+                            <h2 class="promo-title" style="font-weight: bold;">{{ promo.getName() }}</h2>
+                            {% set now = 'now'|date('Y-m-d') %}
+                            {% set remainingDays = (promo.getDateFin()|date('U') - now|date('U')) / (24 * 3600) %}
+                            {% if remainingDays > 0 %}
+                                <p class="promo-description" style="font-weight: bold;">Nombre de jours restants: {{ remainingDays|round(0, 'floor') }}</p>
+                            {% else %}
+                                <p class="promo-description" style="font-weight: bold;">Offre expirée</p>
+                            {% endif %}
+                            <p class="promo-description">Quantité disponible: {{ promo.getQuantity() }}</p>
+                            <p class="promo-description" style="font-weight: bold;color:red;">{{ promo.getReduction() }} % de réduction</p>
+                            <p class="promo-price">Prix après promotion: {{ promo.getPriceafterpromo() }} €</p>
                     <div class="promo-actions">
                         <a href="{{ path('app_promo_admin_show', {'id': promo.id}) }}" class="btn btn-primary">Voir en détail</a>
                         <a href="{{ path('app_promo_admin_edit', {'id': promo.id}) }}" class="btn btn-info">Modifier</a>

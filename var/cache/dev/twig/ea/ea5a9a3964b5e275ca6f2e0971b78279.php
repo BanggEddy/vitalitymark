@@ -70,22 +70,29 @@ class __TwigTemplate_28c405b5ceae2dba6d7b6b378bc74971 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "    <h1>Edit Promo</h1>
+        echo "
+    <div style=\"background-color: #e0f2f1; padding: 20px;\">
+        <h1 style=\"color: #388e3c;\">Edit Promo</h1>
 
-    ";
-        // line 8
+        <div style=\"background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);\">
+            ";
+        // line 11
         echo twig_include($this->env, $context, "admin/promo_admin/_form.html.twig", ["button_label" => "Update"]);
         echo "
 
-    <a href=\"";
-        // line 10
+            <a href=\"";
+        // line 13
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_promo_admin_index");
-        echo "\">back to list</a>
+        echo "\" style=\"color: #388e3c; text-decoration: none;\">back to list</a>
+        </div>
 
-    ";
-        // line 12
+        <div style=\"margin-top: 20px; background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);\">
+            ";
+        // line 17
         echo twig_include($this->env, $context, "admin/promo_admin/_delete_form.html.twig");
         echo "
+        </div>
+    </div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -113,7 +120,7 @@ class __TwigTemplate_28c405b5ceae2dba6d7b6b378bc74971 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  87 => 12,  82 => 10,  77 => 8,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  92 => 17,  85 => 13,  80 => 11,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -123,13 +130,20 @@ class __TwigTemplate_28c405b5ceae2dba6d7b6b378bc74971 extends Template
 {% block title %}Edit Promo{% endblock %}
 
 {% block body %}
-    <h1>Edit Promo</h1>
 
-    {{ include('admin/promo_admin/_form.html.twig', {'button_label': 'Update'}) }}
+    <div style=\"background-color: #e0f2f1; padding: 20px;\">
+        <h1 style=\"color: #388e3c;\">Edit Promo</h1>
 
-    <a href=\"{{ path('app_promo_admin_index') }}\">back to list</a>
+        <div style=\"background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);\">
+            {{ include('admin/promo_admin/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('admin/promo_admin/_delete_form.html.twig') }}
+            <a href=\"{{ path('app_promo_admin_index') }}\" style=\"color: #388e3c; text-decoration: none;\">back to list</a>
+        </div>
+
+        <div style=\"margin-top: 20px; background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);\">
+            {{ include('admin/promo_admin/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}
 ", "admin/promo_admin/edit.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\admin\\promo_admin\\edit.html.twig");
     }

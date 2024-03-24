@@ -3,71 +3,10 @@
 {% block title %}Hello AdminproductsController!{% endblock %}
 
 {% block body %}
-<style>
-    .product-card {
-        background-color: #f8f9fa;
-        border: 1px solid #dee2e6;
-        border-radius: 10px;
-        padding: 20px;
-        margin-bottom: 20px;
-        background-color: #DBFFCA;
-        border: 1px solid #ccc;
-        transition: transform 0.3s ease; 
-        box-shadow: 2px 1px 1px #7cdf7c; 
 
-    }
-
-    .product-card:hover {
-        transform: translateY(-7px); 
-        box-shadow: 10px 10px 4px #7cdf7c; 
-        transition: 0.8s;
-
-    }
-
-    .product-image {
-        width: 100%;
-        max-height: 200px;
-        object-fit: cover;
-        border-radius: 10px;
-    }
-
-    .product-details {
-        margin-top: 10px;
-    }
-
-    .product-price {
-        font-size: 18px;
-        font-weight: bold;
-    }
-
-    .product-quantity {
-        color: #28a745;
-    }
-
-    .product-category {
-        color: #6c757d;
-    }
-
-    .form-control:focus {
-        transform: translateY(0); 
-        transition: transform 0.5s ease;
-    }
-
-    .btn-success:hover {
-        background-color: #fff; 
-        border-color: #fff; 
-        color:#28a745
-    }
-
-    .btn-danger:hover {
-        background-color: #fff; 
-        border-color: #fff; 
-        color:#dc3545
-    }
-</style>
 
 <div class="container">
-    <h1>Liste des produits</h1>
+    <br>
 
     <div class="row">
         <div class="col-md-4">
@@ -81,6 +20,40 @@
                 </div>
             </div>
         </div>
+        {% for promo in promotions %}
+            <div class="col-md-4">
+                    <div class="promo-card">
+                        <img src="{{ asset('images/' ~ promo.getImages()) }}" class="promo-image">
+                        <div class="promo-details">
+                            <h2 class="promo-title" style="font-weight: bold;">{{ promo.getName() }}</h2>
+                            {% set now = 'now'|date('Y-m-d') %}
+                            {% set remainingDays = (promo.getDateFin()|date('U') - now|date('U')) / (24 * 3600) %}
+                            {% if remainingDays > 0 %}
+                                <p class="promo-description" style="font-weight: bold;">Nombre de jours restants: {{ remainingDays|round(0, 'floor') }}</p>
+                            {% else %}
+                                <p class="promo-description" style="font-weight: bold;">Offre expirée</p>
+                            {% endif %}
+                            <p class="promo-description">Quantité disponible: {{ promo.getQuantity() }}</p>
+                            <p class="promo-description" style="font-weight: bold;color:red;">{{ promo.getReduction() }} % de réduction</p>
+                            <p class="promo-price">Prix après promotion: {{ promo.getPriceafterpromo() }} €</p>
+                            <form action="{{ path('add_quantity_promo', {'promoId': promo.id}) }}" method="post" class="mb-3">
+                                <div class="input-group">
+                                    <label for="add_quantity_promo" class="input-group-text">Ajouter Quantité:</label>
+                                    <input type="number" id="add_quantity_promo" name="quantity" class="form-control" min="1" value="1">
+                                    <button type="submit" class="btn btn-success">Ajouter</button>
+                                </div>
+                            </form>
+                            <form action="{{ path('remove_quantity_promo', {'promoId': promo.id}) }}" method="post">
+                                <div class="input-group">
+                                    <label for="remove_quantity_promo" class="input-group-text">Retirer Quantité:</label>
+                                    <input type="number" id="remove_quantity_promo" name="quantity" class="form-control" min="1" value="1">
+                                    <button type="submit" class="btn btn-danger">Retirer</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        {% endfor %}
         {% for product in products %}
         <div class="col-md-4">
             <div class="product-card">
@@ -112,6 +85,7 @@
             </div>
         </div>
         {% endfor %}
+        
     </div>
 </div>
 {% endblock %}

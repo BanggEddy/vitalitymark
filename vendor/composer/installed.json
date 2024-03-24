@@ -353,17 +353,17 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "2.11.3",
-            "version_normalized": "2.11.3.0",
+            "version": "2.12.0",
+            "version_normalized": "2.12.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "492725310ae9a1b5b20d6ae09fb5ae6404616e68"
+                "reference": "5418e811a14724068e95e0ba43353b903ada530f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/492725310ae9a1b5b20d6ae09fb5ae6404616e68",
-                "reference": "492725310ae9a1b5b20d6ae09fb5ae6404616e68",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/5418e811a14724068e95e0ba43353b903ada530f",
+                "reference": "5418e811a14724068e95e0ba43353b903ada530f",
                 "shasum": ""
             },
             "require": {
@@ -401,6 +401,7 @@
                 "symfony/property-info": "^5.4 || ^6.0 || ^7.0",
                 "symfony/proxy-manager-bridge": "^5.4 || ^6.0 || ^7.0",
                 "symfony/security-bundle": "^5.4 || ^6.0 || ^7.0",
+                "symfony/stopwatch": "^5.4 || ^6.0 || ^7.0",
                 "symfony/string": "^5.4 || ^6.0 || ^7.0",
                 "symfony/twig-bridge": "^5.4 || ^6.0 || ^7.0",
                 "symfony/validator": "^5.4 || ^6.0 || ^7.0",
@@ -415,12 +416,12 @@
                 "ext-pdo": "*",
                 "symfony/web-profiler-bundle": "To use the data collector."
             },
-            "time": "2024-02-10T20:56:20+00:00",
+            "time": "2024-03-19T07:20:37+00:00",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
                 "psr-4": {
-                    "Doctrine\\Bundle\\DoctrineBundle\\": ""
+                    "Doctrine\\Bundle\\DoctrineBundle\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -455,7 +456,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/DoctrineBundle/issues",
-                "source": "https://github.com/doctrine/DoctrineBundle/tree/2.11.3"
+                "source": "https://github.com/doctrine/DoctrineBundle/tree/2.12.0"
             },
             "funding": [
                 {
@@ -1015,17 +1016,17 @@
         },
         {
             "name": "doctrine/orm",
-            "version": "3.1.0",
-            "version_normalized": "3.1.0.0",
+            "version": "3.1.1",
+            "version_normalized": "3.1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/orm.git",
-                "reference": "716fc97b70cf8116f74eaa0588eef51420874bf9"
+                "reference": "9c560713925ac5859342e6ff370c4c997acf2fd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/orm/zipball/716fc97b70cf8116f74eaa0588eef51420874bf9",
-                "reference": "716fc97b70cf8116f74eaa0588eef51420874bf9",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/9c560713925ac5859342e6ff370c4c997acf2fd4",
+                "reference": "9c560713925ac5859342e6ff370c4c997acf2fd4",
                 "shasum": ""
             },
             "require": {
@@ -1042,7 +1043,7 @@
                 "php": "^8.1",
                 "psr/cache": "^1 || ^2 || ^3",
                 "symfony/console": "^5.4 || ^6.0 || ^7.0",
-                "symfony/var-exporter": "~6.2.13 || ^6.3.2 || ^7.0"
+                "symfony/var-exporter": "^6.3.9 || ^7.0"
             },
             "require-dev": {
                 "doctrine/coding-standard": "^12.0",
@@ -1058,7 +1059,7 @@
                 "ext-dom": "Provides support for XSD validation for XML mapping files",
                 "symfony/cache": "Provides cache support for Setup Tool with doctrine/cache 2.0"
             },
-            "time": "2024-03-03T17:45:20+00:00",
+            "time": "2024-03-21T11:37:52+00:00",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -1100,23 +1101,23 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/orm/issues",
-                "source": "https://github.com/doctrine/orm/tree/3.1.0"
+                "source": "https://github.com/doctrine/orm/tree/3.1.1"
             },
             "install-path": "../doctrine/orm"
         },
         {
             "name": "doctrine/persistence",
-            "version": "3.3.1",
-            "version_normalized": "3.3.1.0",
+            "version": "3.3.2",
+            "version_normalized": "3.3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/persistence.git",
-                "reference": "b6fd1f126b13c1f7e7321f7338b14a19116b5de4"
+                "reference": "477da35bd0255e032826f440b94b3e37f2d56f42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/persistence/zipball/b6fd1f126b13c1f7e7321f7338b14a19116b5de4",
-                "reference": "b6fd1f126b13c1f7e7321f7338b14a19116b5de4",
+                "url": "https://api.github.com/repos/doctrine/persistence/zipball/477da35bd0255e032826f440b94b3e37f2d56f42",
+                "reference": "477da35bd0255e032826f440b94b3e37f2d56f42",
                 "shasum": ""
             },
             "require": {
@@ -1138,7 +1139,7 @@
                 "symfony/cache": "^4.4 || ^5.4 || ^6.0",
                 "vimeo/psalm": "4.30.0 || 5.3.0"
             },
-            "time": "2024-03-01T19:53:13+00:00",
+            "time": "2024-03-12T14:54:36+00:00",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -1187,7 +1188,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/persistence/issues",
-                "source": "https://github.com/doctrine/persistence/tree/3.3.1"
+                "source": "https://github.com/doctrine/persistence/tree/3.3.2"
             },
             "funding": [
                 {
@@ -3320,17 +3321,17 @@
         },
         {
             "name": "symfony/maker-bundle",
-            "version": "v1.56.0",
-            "version_normalized": "1.56.0.0",
+            "version": "v1.57.0",
+            "version_normalized": "1.57.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/maker-bundle.git",
-                "reference": "bbb7949ae048363df7c8439abeddef8befd155ce"
+                "reference": "2c90181911241648356b828b86b04fe3571aca0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/bbb7949ae048363df7c8439abeddef8befd155ce",
-                "reference": "bbb7949ae048363df7c8439abeddef8befd155ce",
+                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/2c90181911241648356b828b86b04fe3571aca0b",
+                "reference": "2c90181911241648356b828b86b04fe3571aca0b",
                 "shasum": ""
             },
             "require": {
@@ -3361,7 +3362,7 @@
                 "symfony/yaml": "^6.4|^7.0",
                 "twig/twig": "^3.0|^4.x-dev"
             },
-            "time": "2024-03-04T13:36:45+00:00",
+            "time": "2024-03-22T12:00:21+00:00",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -3395,7 +3396,7 @@
             ],
             "support": {
                 "issues": "https://github.com/symfony/maker-bundle/issues",
-                "source": "https://github.com/symfony/maker-bundle/tree/v1.56.0"
+                "source": "https://github.com/symfony/maker-bundle/tree/v1.57.0"
             },
             "funding": [
                 {

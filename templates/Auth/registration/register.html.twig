@@ -48,6 +48,23 @@
         transform: translateY(0); 
         transition: transform 0.5s ease;
     }
+    .btn-details {
+        background-color: #8CD769; 
+        color: #fff; 
+        border: none; 
+        border-radius: 5px; 
+        padding: 8px 42%; 
+        font-size: 14px; 
+    }
+
+    .btn-details:hover {
+        background-color: #fff;
+        color:#8CD769;
+        transform: scale(1.05);
+        transition: 0.5s; 
+
+
+    }
 </style>
 
 
@@ -86,7 +103,7 @@
                                 {{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'form-check-label'}}) }}
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-block">S'inscrire</button>
+                            <button type="submit" class="btn btn-details">S'inscrire</button>
                             <p>*Champs obligatoires</p>
                             {{ form_end(registrationForm) }}
 

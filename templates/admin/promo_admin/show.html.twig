@@ -3,64 +3,117 @@
 {% block title %}Promo{% endblock %}
 
 {% block body %}
-    <h1>Promo</h1>
+    <style>
+        .promo-card {
+            background-color: #e0f2f1; 
+            border: 1px solid #7cdf7c; 
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 5px 5px 2px #7cdf7c; 
+            max-width: 400px; 
+            margin: auto; 
+            margin-top: 50px; 
+            transition: transform 0.3s ease;
+        }
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ promo.id }}</td>
-            </tr>
-            <tr>
-                <th>Reduction</th>
-                <td>{{ promo.reduction }}</td>
-            </tr>
-            <tr>
-                <th>Id du Produit</th>
-                <td>{{ promo.idproduct.id }}</td> {# Assuming you want to display the id of the associated product #}
-            </tr>
-            <tr>
-                <th>Date Fin</th>
-                <td>{{ promo.dateFin ? promo.dateFin|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Date Début</th>
-                <td>{{ promo.dateDebut ? promo.dateDebut|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Prix après promo</th>
-                <td>{{ promo.priceafterpromo }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ promo.description }}</td>
-            </tr>
-            <tr>
-                <th>Quantité</th>
-                <td>{{ promo.quantity }}</td>
-            </tr>
-            <tr>
-                <th>Prix</th>
-                <td>{{ promo.price }}</td>
-            </tr>
-            <tr>
-                <th>Images</th>
-                <td>{{ promo.images }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ promo.name }}</td>
-            </tr>
-            <tr>
-                <th>Catégorie</th>
-                <td>{{ promo.category }}</td>
-            </tr>
-        </tbody>
-    </table>
+        .promo-card:hover {
+            transform: scale(1.05);
+            box-shadow: 8px 8px 4px #7cdf7c;
+            transition: 0.5s;
+        }
 
-    <a href="{{ path('app_promo_admin_index') }}">Retour à la liste</a>
+        .promo-details {
+            margin-top: 10px;
+        }
 
-    <a href="{{ path('app_promo_admin_edit', {'id': promo.id}) }}">Modifier</a>
+        .promo-price {
+            font-size: 18px;
+            font-weight: bold;
+        }
 
-    {{ include('admin/promo_admin/_delete_form.html.twig') }}
+        .promo-quantity {
+            color: #28a745; 
+        }
+
+        .promo-category {
+            color: #28a745; 
+        }
+
+        .promo-actions a {
+            margin-right: 10px;
+        }
+
+        .promo-actions a:hover {
+            box-shadow: 2px 2px 2px #28a745;
+            transform: translateY(-1px);
+            transition: 0.5s;
+        }
+    </style>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="promo-card">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ promo.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Reduction</th>
+                                <td>{{ promo.reduction }}</td>
+                            </tr>
+                            <tr>
+                                <th>Id du Produit</th>
+                                <td>{{ promo.idproduct.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date Fin</th>
+                                <td>{{ promo.dateFin ? promo.dateFin|date('Y-m-d') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date Début</th>
+                                <td>{{ promo.dateDebut ? promo.dateDebut|date('Y-m-d') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Prix après promo</th>
+                                <td>{{ promo.priceafterpromo }}</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td>{{ promo.description }}</td>
+                            </tr>
+                            <tr>
+                                <th>Quantité</th>
+                                <td>{{ promo.quantity }}</td>
+                            </tr>
+                            <tr>
+                                <th>Prix</th>
+                                <td>{{ promo.price }}</td>
+                            </tr>
+                            <tr>
+                                <th>Images</th>
+                                <td>{{ promo.images }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ promo.name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Catégorie</th>
+                                <td>{{ promo.category }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="{{ path('app_promo_admin_index') }}" class="btn btn-primary">Retour à la liste</a>
+                        <a href="{{ path('app_promo_admin_edit', {'id': promo.id}) }}" class="btn btn-info">Modifier</a>
+                            {{ include('admin/promo_admin/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

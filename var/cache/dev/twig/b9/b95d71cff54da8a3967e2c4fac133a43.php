@@ -149,6 +149,11 @@ class __TwigTemplate_a111288918df0798db987e11edac280f extends Template
         // line 42
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_coupon_new");
         echo "\">Create new</a>
+    <a href=\"";
+        // line 43
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("loyalty_card_new");
+        echo "\">Ajouter un coupon pour le même type</a>
+
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -176,7 +181,7 @@ class __TwigTemplate_a111288918df0798db987e11edac280f extends Template
      */
     public function getDebugInfo()
     {
-        return array (  150 => 42,  145 => 39,  136 => 35,  127 => 31,  123 => 30,  118 => 28,  114 => 27,  110 => 26,  106 => 25,  102 => 24,  98 => 23,  95 => 22,  90 => 21,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  154 => 43,  150 => 42,  145 => 39,  136 => 35,  127 => 31,  123 => 30,  118 => 28,  114 => 27,  110 => 26,  106 => 25,  102 => 24,  98 => 23,  95 => 22,  90 => 21,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -223,6 +228,8 @@ class __TwigTemplate_a111288918df0798db987e11edac280f extends Template
     </table>
 
     <a href=\"{{ path('app_coupon_new') }}\">Create new</a>
+    <a href=\"{{ path('loyalty_card_new') }}\">Ajouter un coupon pour le même type</a>
+
 {% endblock %}
 ", "admin/coupon/index.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\admin\\coupon\\index.html.twig");
     }

@@ -16,6 +16,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\Entity\User;
 use App\Entity\Promo;
+use App\Form\ProductSearchType;
+use App\Repository\PromoRepository;
+use App\Repository\PanierRepository;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -31,20 +34,48 @@ class AdminproductsController extends AbstractController
     }
 
     #[Route('/adminproducts', name: 'app_adminproducts')]
-    public function index(ProductsRepository $productsRepository): Response
+    public function index(ProductsRepository $productsRepository, Request $request, PromoRepository $promoRepository,): Response
     {
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('admin_category_products', ['category' => $category]));
+        }
+        $promotions = $promoRepository->findAll();
         $products = $productsRepository->findAll();
 
         return $this->render('admin/adminproducts/index.html.twig', [
             'controller_name' => 'AdminproductsController',
             'products' => $products,
+            'form' => $form->createView(),
+            'promotions' => $promotions,
         ]);
     }
+
+
     //Ajouter un produit
     #[Route('/adminajouterproducts', name: 'app_admin_add_products')]
-    public function addProducts(): Response
+    public function addProducts(Request $request): Response
     {
-        return $this->render('admin/adminproducts/new.html.twig');
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('admin_category_products', ['category' => $category]));
+        }
+
+        return $this->render('admin/adminproducts/new.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     #[Route('/product/create', name: 'app_create_product')]
@@ -88,12 +119,23 @@ class AdminproductsController extends AbstractController
     }
     //Supprimer un produit
     #[Route('/admindeleteproducts', name: 'app_admin_delete_products')]
-    public function deleteProducts(ProductsRepository $productsRepository): Response
+    public function deleteProducts(ProductsRepository $productsRepository, Request $request): Response
     {
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('admin_category_products', ['category' => $category]));
+        }
         $products = $productsRepository->findAll();
 
         return $this->render('admin/adminproducts/delete.html.twig', [
             'products' => $products,
+            'form' => $form->createView(),
         ]);
     }
     #[Route('/deleteproduct/{id}', name: 'app_delete_product')]
@@ -115,12 +157,23 @@ class AdminproductsController extends AbstractController
 
     //Update un produit
     #[Route('/adminupdateproducts', name: 'app_admin_update_products')]
-    public function updateProducts(ProductsRepository $productsRepository): Response
+    public function updateProducts(ProductsRepository $productsRepository, Request $request): Response
     {
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('admin_category_products', ['category' => $category]));
+        }
         $products = $productsRepository->findAll();
 
         return $this->render('admin/adminproducts/edit.html.twig', [
             'products' => $products,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -171,11 +224,20 @@ class AdminproductsController extends AbstractController
 
         return $this->redirectToRoute('app_adminproducts');
     }
-    #[Route('/compteadmin', name: 'app_admin_compte')]
-    public function adminCompte(): Response
+    #[Route('/compte/admin', name: 'app_admin_compte')]
+    public function adminCompte(Request $request): Response
     {
         $user = $this->getUser();
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('user_category_products', ['category' => $category]));
+        }
         // Vérifier si un utilisateur est connecté
         if ($user instanceof User) {
             $userId = $user->getId();
@@ -185,7 +247,97 @@ class AdminproductsController extends AbstractController
 
         return $this->render('admin/adminproducts/compteadmin.html.twig', [
             'userId' => $userId,
+            'user' => $user,
+            'form' => $form->createView(),
         ]);
+    }
+    /**
+     * @Route("/edit_admin_profile", name="edit_admin_profile", methods={"POST"})
+     */
+    #[Route('edit/admin/profile', name: 'edit_admin_profile')]
+    public function editUserProfile(Request $request, EntityManagerInterface $entityManager, PanierRepository $panierRepository): Response
+    {
+        $user = $this->getUser();
+
+        if (!$user instanceof User) {
+            throw $this->createNotFoundException('Utilisateur non trouvé.');
+        }
+
+        $email = $request->request->get('email');
+        $name = $request->request->get('name');
+        $adresse = $request->request->get('adresse');
+        $civilite = $request->request->get('civilite');
+
+        $user->setEmail($email);
+        $user->setName($name);
+        $user->setAdresse($adresse);
+        $user->setCivilite($civilite);
+
+        $entityManager->flush();
+
+        return new RedirectResponse($this->generateUrl('compte_admin'));
+    }
+
+    #[Route('/admin/add_quantity_promo/{productId}', name: 'admin_add_quantity_promo')]
+    public function addQuantityPromo(Request $request, $promoId): Response
+    {
+        $promoRepository = $this->entityManager->getRepository(Promo::class);
+        $promo = $promoRepository->find($promoId);
+
+        if (!$promo) {
+            throw $this->createNotFoundException('Le produit avec l\'ID ' . $promoId . ' n\'existe pas.');
+        }
+
+        // Récupérer la quantité à ajouter depuis le formulaire
+        $quantityToAdd = $request->request->get('quantity');
+
+        // Ajouter la quantité au produit
+        $newQuantity = $promo->getQuantity() + $quantityToAdd;
+        $promo->setQuantity($newQuantity);
+
+        $this->entityManager->flush();
+
+        return $this->redirectToRoute('admin_products_list');
+    }
+
+    #[Route('/admin/remove_quantity_promo/{productId}', name: 'admin_remove_quantity_promo')]
+    public function removeQuantityPromo(Request $request, $promoId): Response
+    {
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('admin_category_products', ['category' => $category]));
+        }
+
+        $promoRepository = $this->entityManager->getRepository(Promo::class);
+        $promo = $promoRepository->find($promoId);
+
+        if (!$promo) {
+            throw $this->createNotFoundException('Le produit avec l\'ID ' . $promoId . ' n\'existe pas.');
+        }
+
+        $quantityToRemove = $request->request->get('quantity');
+
+        // Vérifier si la quantité à retirer est inférieure ou égale à la quantité disponible
+        if ($quantityToRemove <= $promo->getQuantity()) {
+            // Retirer la quantité du produit
+            $newQuantity = $promo->getQuantity() - $quantityToRemove;
+            $promo->setQuantity($newQuantity);
+
+            // Sauvegarder les changements dans la base de données
+            $this->entityManager->flush();
+        } else {
+            // Gérer le cas où la quantité à retirer est supérieure à la quantité disponible
+            throw new \Exception('La quantité à retirer est supérieure à la quantité disponible.');
+        }
+
+        // Rediriger vers la liste des produits
+        return $this->redirectToRoute('admin_products_list');
     }
 
     #[Route('/admin/add_quantity/{productId}', name: 'admin_add_quantity')]
@@ -241,10 +393,23 @@ class AdminproductsController extends AbstractController
 
     //Afficher le profil admin
     #[Route('/compte/admin', name: 'compte_admin')]
-    public function profiladmin()
+    public function profiladmin(Request $request)
     {
 
-        return $this->render('admin/adminproducts/compteadmin.html.twig', []);
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('admin_category_products', ['category' => $category]));
+        }
+
+        return $this->render('admin/adminproducts/compteadmin.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     //Rechercher un produit
@@ -275,6 +440,33 @@ class AdminproductsController extends AbstractController
             'products' => $products,
             'promos' => $promos,
             'keyword' => $keyword,
+        ]);
+    }
+
+    #Rechercher des produits selon la catégorie
+    #[Route('/admin/adminproducts/categorie/{category}', name: 'admin_category_products')]
+    public function showCategoryProductsAdmin($category, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+        $userId = $user instanceof User ? $user->getId() : null;
+
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $category = $form->getData()['category'];
+            return new RedirectResponse($this->generateUrl('admin_category_products', ['category' => $category]));
+        }
+
+        $products = $entityManager->getRepository(Products::class)->findBy(['category' => $category]);
+        $promotions = $entityManager->getRepository(Promo::class)->findBy(['category' => $category]);
+
+        return $this->render('admin/adminproducts/categorie.html.twig', [
+            'category' => $category,
+            'products' => $products,
+            'promotions' => $promotions,
+            'form' => $form->createView(),
+            'user_id' => $userId,
         ]);
     }
 }

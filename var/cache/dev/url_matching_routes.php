@@ -20,15 +20,16 @@ return [
         '/product/create' => [[['_route' => 'app_create_product', '_controller' => 'App\\Controller\\AdminproductsController::create'], null, null, null, false, false, null]],
         '/admindeleteproducts' => [[['_route' => 'app_admin_delete_products', '_controller' => 'App\\Controller\\AdminproductsController::deleteProducts'], null, null, null, false, false, null]],
         '/adminupdateproducts' => [[['_route' => 'app_admin_update_products', '_controller' => 'App\\Controller\\AdminproductsController::updateProducts'], null, null, null, false, false, null]],
-        '/compteadmin' => [
+        '/compte/admin' => [
             [['_route' => 'app_admin_compte', '_controller' => 'App\\Controller\\AdminproductsController::adminCompte'], null, null, null, false, false, null],
-            [['_route' => 'compteadmin', '_controller' => 'App\\Controller\\AdminproductsController::adminPage'], null, null, null, false, false, null],
+            [['_route' => 'compte_admin', '_controller' => 'App\\Controller\\AdminproductsController::profiladmin'], null, null, null, false, false, null],
         ],
-        '/compte/admin' => [[['_route' => 'compte_admin', '_controller' => 'App\\Controller\\AdminproductsController::profiladmin'], null, null, null, false, false, null]],
+        '/edit/admin/profile' => [[['_route' => 'edit_admin_profile', '_controller' => 'App\\Controller\\AdminproductsController::editUserProfile'], null, null, null, false, false, null]],
         '/search/admin' => [[['_route' => 'search_admin', '_controller' => 'App\\Controller\\AdminproductsController::search'], null, null, null, false, false, null]],
         '/adminvue' => [[['_route' => 'app_adminvue', '_controller' => 'App\\Controller\\AdminvueController::index'], null, null, null, false, false, null]],
         '/coupon' => [[['_route' => 'app_coupon_index', '_controller' => 'App\\Controller\\CouponController::index'], null, ['GET' => 0], null, true, false, null]],
         '/coupon/new' => [[['_route' => 'app_coupon_new', '_controller' => 'App\\Controller\\CouponController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/coupon/admin/loyalty_card/new' => [[['_route' => 'loyalty_card_new', '_controller' => 'App\\Controller\\CouponController::newCoupon'], null, null, null, false, false, null]],
         '/loyalty/card' => [[['_route' => 'app_loyalty_card_index', '_controller' => 'App\\Controller\\LoyaltyCardController::index'], null, ['GET' => 0], null, true, false, null]],
         '/loyalty/card/new' => [[['_route' => 'app_loyalty_card_new', '_controller' => 'App\\Controller\\LoyaltyCardController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/promo/admin' => [[['_route' => 'app_promo_admin_index', '_controller' => 'App\\Controller\\PromoAdminController::index'], null, ['GET' => 0], null, true, false, null]],
@@ -55,6 +56,7 @@ return [
         '/product/new' => [[['_route' => 'adminajouterproducts', '_controller' => 'App\\Controller\\AdminproductsController::new'], null, null, null, false, false, null]],
         '/product/delete' => [[['_route' => 'admindeleteproducts', '_controller' => 'App\\Controller\\AdminproductsController::delete'], null, null, null, false, false, null]],
         '/product/update' => [[['_route' => 'adminupdateproducts', '_controller' => 'App\\Controller\\AdminupdateController::update'], null, null, null, false, false, null]],
+        '/compteadmin' => [[['_route' => 'compteadmin', '_controller' => 'App\\Controller\\AdminproductsController::adminPage'], null, null, null, false, false, null]],
         '/api/user/panier' => [[['_route' => 'api_user_panier', '_controller' => 'App\\Controller\\UserController::getUserPanier'], null, null, null, false, false, null]],
         '/admin/products/list' => [[['_route' => 'admin_products_list', '_controller' => 'App\\Controller\\AdminproductsController::index'], null, null, null, false, false, null]],
         '/contact' => [[['_route' => 'app_contact', '_controller' => 'App\\Controller\\AccueilController::indexcontact'], null, null, null, false, false, null]],
@@ -72,43 +74,61 @@ return [
                         .'|motion/([^/]++)(*:124)'
                     .')'
                 .')'
-                .'|/ad(?'
-                    .'|min(?'
-                        .'|formedit/([^/]++)(*:163)'
-                        .'|/(?'
-                            .'|add_quantity/([^/]++)(*:196)'
-                            .'|remove_quantity/([^/]++)(*:228)'
-                            .'|products/([^/]++)/(?'
-                                .'|add_quantity(*:269)'
-                                .'|remove_quantity(*:292)'
+                .'|/a(?'
+                    .'|d(?'
+                        .'|min(?'
+                            .'|formedit/([^/]++)(*:166)'
+                            .'|/(?'
+                                .'|ad(?'
+                                    .'|d_quantity(?'
+                                        .'|_promo/([^/]++)(*:211)'
+                                        .'|/([^/]++)(*:228)'
+                                    .')'
+                                    .'|minproducts/categorie/([^/]++)(*:267)'
+                                .')'
+                                .'|remove_quantity(?'
+                                    .'|_promo/([^/]++)(*:309)'
+                                    .'|/([^/]++)(*:326)'
+                                .')'
+                                .'|products/([^/]++)/(?'
+                                    .'|add_quantity(?'
+                                        .'|(*:371)'
+                                        .'|_promo(*:385)'
+                                    .')'
+                                    .'|remove_quantity(?'
+                                        .'|(*:412)'
+                                        .'|_promo(*:426)'
+                                    .')'
+                                .')'
                             .')'
                         .')'
+                        .'|d\\-to\\-cart/([^/]++)(*:458)'
                     .')'
-                    .'|d\\-to\\-cart/([^/]++)(*:323)'
+                    .'|ccueil/categorie/([^/]++)(*:492)'
                 .')'
                 .'|/coupon/([^/]++)(?'
-                    .'|(*:351)'
-                    .'|/edit(*:364)'
-                    .'|(*:372)'
+                    .'|(*:520)'
+                    .'|/edit(*:533)'
+                    .'|(*:541)'
                 .')'
                 .'|/loyalty/card/([^/]++)(?'
-                    .'|(*:406)'
-                    .'|/edit(*:419)'
-                    .'|(*:427)'
+                    .'|(*:575)'
+                    .'|/edit(*:588)'
+                    .'|(*:596)'
                 .')'
                 .'|/promo/admin/([^/]++)(?'
-                    .'|(*:460)'
-                    .'|/edit(*:473)'
-                    .'|(*:481)'
+                    .'|(*:629)'
+                    .'|/edit(*:642)'
+                    .'|(*:650)'
                 .')'
                 .'|/user/(?'
-                    .'|loyalty\\-card/([^/]++)(*:521)'
+                    .'|loyalty\\-card/([^/]++)(*:690)'
                     .'|uservue/ca(?'
-                        .'|rd/([^/]++)(*:553)'
-                        .'|tegorie/([^/]++)(*:577)'
+                        .'|rd/([^/]++)(*:722)'
+                        .'|tegorie/([^/]++)(*:746)'
                     .')'
                 .')'
-                .'|/editproduct/([^/]++)(*:608)'
+                .'|/editproduct/([^/]++)(*:777)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -116,25 +136,31 @@ return [
         68 => [[['_route' => 'app_delete_product', '_controller' => 'App\\Controller\\AdminproductsController::deleteProduct'], ['id'], null, null, false, true, null]],
         101 => [[['_route' => 'details_produit', '_controller' => 'App\\Controller\\AccueilController::detailsProduit'], ['id'], null, null, false, true, null]],
         124 => [[['_route' => 'details_promotion', '_controller' => 'App\\Controller\\AccueilController::detailsPromotion'], ['id'], null, null, false, true, null]],
-        163 => [[['_route' => 'app_admin_form_edit', '_controller' => 'App\\Controller\\AdminproductsController::editProductForm'], ['id'], null, null, false, true, null]],
-        196 => [[['_route' => 'admin_add_quantity', '_controller' => 'App\\Controller\\AdminproductsController::addQuantity'], ['productId'], null, null, false, true, null]],
-        228 => [[['_route' => 'admin_remove_quantity', '_controller' => 'App\\Controller\\AdminproductsController::removeQuantity'], ['productId'], null, null, false, true, null]],
-        269 => [[['_route' => 'add_quantity', '_controller' => 'App\\Controller\\AdminproductsController::addQuantity'], ['productId'], ['POST' => 0], null, false, false, null]],
-        292 => [[['_route' => 'remove_quantity', '_controller' => 'App\\Controller\\AdminproductsController::removeQuantity'], ['productId'], ['POST' => 0], null, false, false, null]],
-        323 => [[['_route' => 'add_to_cart', '_controller' => 'App\\Controller\\UservueController::addToCart'], ['id'], null, null, false, true, null]],
-        351 => [[['_route' => 'app_coupon_show', '_controller' => 'App\\Controller\\CouponController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        364 => [[['_route' => 'app_coupon_edit', '_controller' => 'App\\Controller\\CouponController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        372 => [[['_route' => 'app_coupon_delete', '_controller' => 'App\\Controller\\CouponController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        406 => [[['_route' => 'app_loyalty_card_show', '_controller' => 'App\\Controller\\LoyaltyCardController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        419 => [[['_route' => 'app_loyalty_card_edit', '_controller' => 'App\\Controller\\LoyaltyCardController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        427 => [[['_route' => 'app_loyalty_card_delete', '_controller' => 'App\\Controller\\LoyaltyCardController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        460 => [[['_route' => 'app_promo_admin_show', '_controller' => 'App\\Controller\\PromoAdminController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        473 => [[['_route' => 'app_promo_admin_edit', '_controller' => 'App\\Controller\\PromoAdminController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        481 => [[['_route' => 'app_promo_admin_delete', '_controller' => 'App\\Controller\\PromoAdminController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        521 => [[['_route' => 'user_loyalty_card', '_controller' => 'App\\Controller\\UservueController::redirectToUserLoyaltyCard'], ['id'], null, null, false, true, null]],
-        553 => [[['_route' => 'user_loyalty_card_page', '_controller' => 'App\\Controller\\UservueController::showUserLoyaltyCardPage'], ['id'], null, null, false, true, null]],
-        577 => [[['_route' => 'user_category_products', '_controller' => 'App\\Controller\\UservueController::showCategoryProducts'], ['category'], null, null, false, true, null]],
-        608 => [
+        166 => [[['_route' => 'app_admin_form_edit', '_controller' => 'App\\Controller\\AdminproductsController::editProductForm'], ['id'], null, null, false, true, null]],
+        211 => [[['_route' => 'admin_add_quantity_promo', '_controller' => 'App\\Controller\\AdminproductsController::addQuantityPromo'], ['productId'], null, null, false, true, null]],
+        228 => [[['_route' => 'admin_add_quantity', '_controller' => 'App\\Controller\\AdminproductsController::addQuantity'], ['productId'], null, null, false, true, null]],
+        267 => [[['_route' => 'admin_category_products', '_controller' => 'App\\Controller\\AdminproductsController::showCategoryProductsAdmin'], ['category'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        309 => [[['_route' => 'admin_remove_quantity_promo', '_controller' => 'App\\Controller\\AdminproductsController::removeQuantityPromo'], ['productId'], null, null, false, true, null]],
+        326 => [[['_route' => 'admin_remove_quantity', '_controller' => 'App\\Controller\\AdminproductsController::removeQuantity'], ['productId'], null, null, false, true, null]],
+        371 => [[['_route' => 'add_quantity', '_controller' => 'App\\Controller\\AdminproductsController::addQuantity'], ['productId'], ['POST' => 0], null, false, false, null]],
+        385 => [[['_route' => 'add_quantity_promo', '_controller' => 'App\\Controller\\AdminproductsController::addQuantityPromo'], ['promoId'], ['POST' => 0], null, false, false, null]],
+        412 => [[['_route' => 'remove_quantity', '_controller' => 'App\\Controller\\AdminproductsController::removeQuantity'], ['productId'], ['POST' => 0], null, false, false, null]],
+        426 => [[['_route' => 'remove_quantity_promo', '_controller' => 'App\\Controller\\AdminproductsController::removeQuantityPromo'], ['promoId'], ['POST' => 0], null, false, false, null]],
+        458 => [[['_route' => 'add_to_cart', '_controller' => 'App\\Controller\\UservueController::addToCart'], ['id'], null, null, false, true, null]],
+        492 => [[['_route' => 'accueil_category_products', '_controller' => 'App\\Controller\\AccueilController::showCategoryProductsAccueil'], ['category'], null, null, false, true, null]],
+        520 => [[['_route' => 'app_coupon_show', '_controller' => 'App\\Controller\\CouponController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        533 => [[['_route' => 'app_coupon_edit', '_controller' => 'App\\Controller\\CouponController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        541 => [[['_route' => 'app_coupon_delete', '_controller' => 'App\\Controller\\CouponController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        575 => [[['_route' => 'app_loyalty_card_show', '_controller' => 'App\\Controller\\LoyaltyCardController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        588 => [[['_route' => 'app_loyalty_card_edit', '_controller' => 'App\\Controller\\LoyaltyCardController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        596 => [[['_route' => 'app_loyalty_card_delete', '_controller' => 'App\\Controller\\LoyaltyCardController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        629 => [[['_route' => 'app_promo_admin_show', '_controller' => 'App\\Controller\\PromoAdminController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        642 => [[['_route' => 'app_promo_admin_edit', '_controller' => 'App\\Controller\\PromoAdminController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        650 => [[['_route' => 'app_promo_admin_delete', '_controller' => 'App\\Controller\\PromoAdminController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        690 => [[['_route' => 'user_loyalty_card', '_controller' => 'App\\Controller\\UservueController::redirectToUserLoyaltyCard'], ['id'], null, null, false, true, null]],
+        722 => [[['_route' => 'user_loyalty_card_page', '_controller' => 'App\\Controller\\UservueController::showUserLoyaltyCardPage'], ['id'], null, null, false, true, null]],
+        746 => [[['_route' => 'user_category_products', '_controller' => 'App\\Controller\\UservueController::showCategoryProducts'], ['category'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        777 => [
             [['_route' => 'app_edit_product', '_controller' => 'App\\Controller\\AdminproductsController::editProduct'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

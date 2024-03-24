@@ -44,6 +44,7 @@ add_quantity:
   path: "/admin/products/{productId}/add_quantity"
   methods: ["POST"]
   controller: 'App\Controller\AdminproductsController::addQuantity'
+#Supp Quantité Produit
 remove_quantity:
   path: "/admin/products/{productId}/remove_quantity"
   methods: ["POST"]
@@ -51,7 +52,16 @@ remove_quantity:
 admin_products_list:
   path: "/admin/products/list"
   controller: 'App\Controller\AdminproductsController::index'
-
+#ADD QUANTITY PROMO
+add_quantity_promo:
+  path: "/admin/products/{promoId}/add_quantity_promo"
+  methods: ["POST"]
+  controller: 'App\Controller\AdminproductsController::addQuantityPromo'
+#Supp Quantité Promo
+remove_quantity_promo:
+  path: "/admin/products/{promoId}/remove_quantity_promo"
+  methods: ["POST"]
+  controller: 'App\Controller\AdminproductsController::removeQuantityPromo'
 # Routes pour afficher les détails du produit ou de la promotion dans ACCUEIL
 details_produit:
   path: "/details-produit/{id}"
@@ -85,6 +95,15 @@ app_search_products:
   controller: App\Controller\UservueController::searchProducts
   methods: [GET, POST]
 
+accueil_category_products:
+  path: /accueil/categorie/{category}
+  controller: App\Controller\AccueilController::showCategoryProductsAccueil
+admin_category_products:
+  path: /admin/adminproducts/categorie/{category}
+  controller: App\Controller\AdminproductsController::showCategoryProductsAdmin
+  methods: ["GET", "POST"]
+
 user_category_products:
-  path: /user/uservue/categorie/{category}
-  controller: App\Controller\UservueController::showCategoryProducts
+  path: "/user/uservue/categorie/{category}"
+  controller: 'App\Controller\UservueController::showCategoryProducts'
+  methods: ["GET", "POST"]

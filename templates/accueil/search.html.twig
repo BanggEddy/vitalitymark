@@ -1,7 +1,5 @@
 {% extends 'header.html.twig' %}
 
-{% block title %}Résultats de la recherche{% endblock %}
-
 {% block body %}
 <style>
 .product-card {
@@ -13,15 +11,15 @@
     background-color: #DBFFCA;
     border: 1px solid #ccc;
     box-shadow: 10px 10px 4px #7cdf7c;
-    transition: transform 0.3s ease-in-out; /* Transition de l'effet */
+    transition: transform 0.3s ease-in-out; 
 }
 
 .product-card:hover {
-    transform: translateY(-10px); /* Déplacement vers le haut */
+    transform: translateY(-10px); 
 }
 
 .product-card img {
-    position: relative; /* Position relative pour positionner l'élément de superposition */
+    position: relative; 
     width: 100%;
     max-height: 200px;
     object-fit: cover;
@@ -35,14 +33,14 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 128, 0, 0.5); /* Couleur de fond semi-transparente */
-    border-radius: 10px; /* Coins arrondis */
-    opacity: 0; /* Opacité initiale */
-    transition: opacity 0.3s ease-in-out; /* Transition de l'opacité */
+    background-color: rgba(0, 128, 0, 0.5); 
+    border-radius: 10px; 
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out;
 }
 
 .product-card:hover img::after {
-    opacity: 1; /* Opacité lorsque survolé */
+    opacity: 1;
 }
 
 .product-card-details {
@@ -63,54 +61,54 @@
 }
 
 .promo-card {
-    background-color: #f08080; /* Couleur de fond */
-    border: 1px 10px solid #fa8072; /* Bordure */
-    border-radius: 10px; /* Coins arrondis */
-    padding: 20px; /* Espacement intérieur */
-    margin-bottom: 20px; /* Marge en bas */
-    box-shadow: 5px 5px 5px #888888; /* Ombre */
-    transition: transform 0.3s ease-in-out; /* Transition de l'effet */
+    background-color: #f08080; 
+    border: 1px 10px solid #fa8072; 
+    border-radius: 10px; 
+    padding: 20px; 
+    margin-bottom: 20px; 
+    box-shadow: 5px 5px 5px #888888; 
+    transition: transform 0.3s ease-in-out; 
 }
 
 .promo-card:hover {
-    transform: translateY(-5px); /* Déplacement vers le haut */
+    transform: translateY(-5px); 
 }
 
 .promo-card img {
-    width: 100%; /* Largeur de l'image */
-    max-height: 200px; /* Hauteur maximale de l'image */
-    object-fit: cover; /* Redimensionner l'image pour couvrir la zone */
-    border-radius: 10px; /* Coins arrondis */
+    width: 100%; 
+    max-height: 200px; 
+    object-fit: cover; 
+    border-radius: 10px; 
 }
 
 .promo-card-details {
-    margin-top: 10px; /* Marge en haut */
+    margin-top: 10px;
 }
 
 .promo-card-title {
-    font-weight: bold; /* Gras */
+    font-weight: bold; 
 }
 
 .promo-card-description {
-    color: #555; /* Couleur du texte de la description */
+    color: #555; 
 }
 
 .promo-card-price {
-    color: #333; /* Couleur du texte du prix */
-    font-weight: bold; /* Gras */
+    color: #333; 
+    font-weight: bold; 
 }
 
 .btn-details {
-    background-color: #fff; /* Couleur de fond */
-    color: #000; /* Couleur du texte */
-    border: none; /* Suppression de la bordure */
-    border-radius: 5px; /* Coins arrondis */
-    padding: 8px 16px; /* Espacement interne */
-    font-size: 14px; /* Taille de la police */
+    background-color: #fff;
+    color: #000;
+    border: none; 
+    border-radius: 5px; 
+    padding: 8px 16px; 
+    font-size: 14px;
 }
 
 .btn-details:hover {
-    background-color: #000; /* Couleur de fond au survol */
+    background-color: #000; 
     color:#fff;
 }
 </style>

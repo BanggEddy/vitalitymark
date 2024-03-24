@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use App\Form\CouponAllType;
 
 #[Route('/coupon')]
 class CouponController extends AbstractController
@@ -77,5 +78,28 @@ class CouponController extends AbstractController
         }
 
         return $this->redirectToRoute('app_coupon_index', [], Response::HTTP_SEE_OTHER);
+    }
+    /**
+     * @Route("/admin/loyalty_card/new", name="loyalty_card_new")
+     */
+    #[Route("/admin/loyalty_card/new", name: "loyalty_card_new")]
+    public function newCoupon(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $coupon = new Coupon();
+        $form = $this->createForm(CouponAllType::class, $coupon);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($coupon);
+            $entityManager->flush();
+
+            // Add logic to associate the coupon with loyalty cards of the same type here
+
+            return $this->redirectToRoute('loyalty_card_index');
+        }
+
+        return $this->render('admin/coupon/newtype.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 }

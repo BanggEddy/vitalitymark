@@ -1,0 +1,181 @@
+{% extends 'headeradmin.html.twig' %}
+
+{% block title %}Hello AccueilController!{% endblock %}
+
+{% block body %}
+<style>
+.product-card {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #DBFFCA;
+    border: 1px solid #ccc;
+    box-shadow: 5px 1px 1px #7cdf7c; 
+    transition: transform 0.3s ease-in-out; 
+}
+.product-card:hover {
+    transform: translateY(-10px); 
+    box-shadow: 10px 5px 5px rgba(0, 128, 0, 0.5); 
+    transition: 0.5s;
+}
+
+.product-image {
+    position: relative; 
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product-image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 128, 0, 0.5);
+    border-radius: 10px; 
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out; 
+}
+
+.product-image:hover::after {
+    opacity: 1; 
+}
+
+.product-details {
+    margin-top: 10px;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.product-quantity {
+    color: #28a745;
+}
+
+.product-category {
+    color: #6c757d;
+}
+</style>
+<style>
+.promo-card {
+    background-color: #f08080; 
+    border: 1px 10px solid #fa8072 ; 
+    border-radius: 10px; 
+    padding: 20px; 
+    margin-bottom: 20px; 
+    box-shadow: 5px 5px 5px #888888; 
+    transition: transform 0.3s ease-in-out; 
+}
+
+.promo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 10px 5px 5px #888888; 
+    transition: 0.5s;
+}
+
+.promo-image {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover; 
+    border-radius: 10px;
+}
+
+.promo-details {
+    margin-top: 10px; 
+}
+
+.promo-title {
+    font-size: 18px;
+    font-weight: bold; 
+}
+
+.promo-description {
+    color: #555; 
+}
+
+.promo-date {
+    color: #777; 
+}
+
+.promo-price {
+    color: #333;
+    font-weight: bold; 
+}
+.btn-details {
+    background-color: #fff; 
+    color: #000; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 8px 16px; 
+    font-size: 14px; 
+}
+
+.btn-details:hover {
+    background-color: #000;
+    color:#fff;
+}
+</style>
+<div class="container">
+    <br>
+    <h1>Liste des produits</h1>
+    <br>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="product-card">
+                <h2> En ce moment</h2>
+                <img src="{{ asset('images/cardfront.png') }}" alt="{{ 'photo' }}" class="product-image">
+                <div class="product-details">
+                    <h3>La sélection du moment</h3>
+                    <p>Découvrez nos meilleures promotions, nos dernières nouveautés ou nos plus grands succès que nous avons sélectionnés.</p>
+                    <a href="{{ path('app_login') }}" class="btn btn-primary">J'en profite</a>
+                </div>
+            </div>
+        </div>
+        {% for promo in promotions %}
+            <div class="col-md-4">
+                    <div class="promo-card">
+                        <img src="{{ asset('images/' ~ promo.getImages()) }}" class="promo-image">
+                        <div class="promo-details">
+                            <h2 class="promo-title" style="font-weight: bold;">{{ promo.getName() }}</h2>
+                            {% set now = 'now'|date('Y-m-d') %}
+                            {% set remainingDays = (promo.getDateFin()|date('U') - now|date('U')) / (24 * 3600) %}
+                            {% if remainingDays > 0 %}
+                                <p class="promo-description" style="font-weight: bold;">Nombre de jours restants: {{ remainingDays|round(0, 'floor') }}</p>
+                            {% else %}
+                                <p class="promo-description" style="font-weight: bold;">Offre expirée</p>
+                            {% endif %}
+                            <p class="promo-description">Quantité disponible: {{ promo.getQuantity() }}</p>
+                            <p class="promo-description" style="font-weight: bold;color:red;">{{ promo.getReduction() }} % de réduction</p>
+                            <p class="promo-price">Prix après promotion: {{ promo.getPriceafterpromo() }} €</p>
+                            <a href="{{ path('details_promotion', {'id': promo.id}) }}" class="btn btn-details">Voir les détails</a>
+                        </div>
+                    </div>
+            </div>
+        {% endfor %}
+        {% for product in products %}
+        <div class="col-md-4">
+                <div class="product-card">
+                    <img src="{{ asset('images/' ~ product.images) }}" class="product-image">
+                    <div class="product-details">
+                        <h3 style="font-weight: bold;">{{ product.name }}</h3>
+                        <p class="product-price">{{ product.price }} €</p>
+                        <p>{{ product.description }}</p>
+                        <p class="product-quantity">Quantité disponible: {{ product.quantity }}</p>
+                        <p class="product-category">Catégorie: {{ product.category }}</p>
+                        <a href="{{ path('details_produit', {'id': product.id}) }}" class="btn btn-details">Voir les détails</a>
+                    </div>
+                </div>
+        </div>
+        {% endfor %}
+        
+    </div>
+</div>
+{% endblock %}

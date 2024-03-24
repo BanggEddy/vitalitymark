@@ -129,7 +129,7 @@ class __TwigTemplate_bf74e39579bd64fb38e6f689b8f1cfd1 extends Template
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 36, $this->source); })()), "description", [], "any", false, false, false, 36), "html", null, true);
         echo "</textarea>
         </div>
-        <button type=\"submit\" class=\"btn btn-primary\">Enregistrer</button>
+        <button type=\"submit\" class=\"btn btn-\">Enregistrer</button>
     </form>
 </div>
 ";
@@ -201,7 +201,7 @@ class __TwigTemplate_bf74e39579bd64fb38e6f689b8f1cfd1 extends Template
             <label for=\"description\">Description</label>
             <textarea class=\"form-control\" id=\"description\" name=\"description\">{{ product.description }}</textarea>
         </div>
-        <button type=\"submit\" class=\"btn btn-primary\">Enregistrer</button>
+        <button type=\"submit\" class=\"btn btn-\">Enregistrer</button>
     </form>
 </div>
 {% endblock %}

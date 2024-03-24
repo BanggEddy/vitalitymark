@@ -1,0 +1,63 @@
+{% extends 'header.html.twig' %}
+
+{% block body %}
+<style>
+
+</style>
+<div class="container">
+    <br>
+    <h1>Liste des produits</h1>
+    <br>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="product-card">
+                <h2> En ce moment</h2>
+                <img src="{{ asset('images/cardfront.png') }}" alt="{{ 'photo' }}" class="product-image">
+                <div class="product-details">
+                    <h3>La sélection du moment</h3>
+                    <p>Découvrez nos meilleures promotions, nos dernières nouveautés ou nos plus grands succès que nous avons sélectionnés.</p>
+                    <a href="{{ path('app_login') }}" class="btn btn-primary">J'en profite</a>
+                </div>
+            </div>
+        </div>
+        {% for promo in promotions %}
+            <div class="col-md-4">
+                    <div class="promo-card">
+                        <img src="{{ asset('images/' ~ promo.getImages()) }}" class="promo-image">
+                        <div class="promo-details">
+                            <h2 class="promo-title" style="font-weight: bold;">{{ promo.getName() }}</h2>
+                            {% set now = 'now'|date('Y-m-d') %}
+                            {% set remainingDays = (promo.getDateFin()|date('U') - now|date('U')) / (24 * 3600) %}
+                            {% if remainingDays > 0 %}
+                                <p class="promo-description" style="font-weight: bold;">Nombre de jours restants: {{ remainingDays|round(0, 'floor') }}</p>
+                            {% else %}
+                                <p class="promo-description" style="font-weight: bold;">Offre expirée</p>
+                            {% endif %}
+                            <p class="promo-description">Quantité disponible: {{ promo.getQuantity() }}</p>
+                            <p class="promo-description" style="font-weight: bold;color:red;">{{ promo.getReduction() }} % de réduction</p>
+                            <p class="promo-price">Prix après promotion: {{ promo.getPriceafterpromo() }} €</p>
+                            <a href="{{ path('details_promotion', {'id': promo.id}) }}" class="btn btn-details">Voir les détails</a>
+                        </div>
+                    </div>
+            </div>
+        {% endfor %}
+        {% for product in products %}
+        <div class="col-md-4">
+                <div class="product-card">
+                    <img src="{{ asset('images/' ~ product.images) }}" class="product-image">
+                    <div class="product-details">
+                        <h3 style="font-weight: bold;">{{ product.name }}</h3>
+                        <p class="product-price">{{ product.price }} €</p>
+                        <p>{{ product.description }}</p>
+                        <p class="product-quantity">Quantité disponible: {{ product.quantity }}</p>
+                        <p class="product-category">Catégorie: {{ product.category }}</p>
+                        <a href="{{ path('details_produit', {'id': product.id}) }}" class="btn btn-details">Voir les détails</a>
+                    </div>
+                </div>
+        </div>
+        {% endfor %}
+        
+    </div>
+</div>
+{% endblock %}

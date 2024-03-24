@@ -68,15 +68,7 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
     justify-content: space-around;
     align-items: center;
   }
-  
-  .card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    text-align: center;
-  }
+
 </style>
 <body>
 
@@ -84,7 +76,7 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
             <a href=\"/adminproducts\" style=\"text-decoration: none;\">
                 <img src=\"";
-        // line 35
+        // line 27
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
         echo "\" alt=\"Logo\" style=\"width: 150px; height: auto; border-radius: 50%; border: 4px solid #4CAF50; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s;\">
             </a>
@@ -93,10 +85,33 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
             </button>
             <div class=\"collapse navbar-collapse\" id=\"navbarNav\">
                 <ul class=\"navbar-nav\">
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\">Rayons</a>
-                    </li>
-                    <li class=\"nav-item\">
+                    ";
+        // line 34
+        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 34, $this->source); })()), "request", [], "any", false, false, false, 34), "attributes", [], "any", false, false, false, 34), "get", ["_route"], "method", false, false, false, 34) != "app_promo_admin_edit")) {
+            // line 35
+            echo "                        <li class=\"nav-item\">
+                            ";
+            // line 36
+            echo             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 36, $this->source); })()), 'form_start', ["attr" => ["class" => "form-inline my-2 my-lg-0"]]);
+            echo "
+                            ";
+            // line 37
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 37, $this->source); })()), "category", [], "any", false, false, false, 37), 'row', ["attr" => ["class" => "form-control", "placeholder" => "Rechercher", "aria-label" => "Search"]]);
+            echo "
+                            <button type=\"submit\" class=\"btn btn-outline-success my-2 my-sm-0\">
+                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">
+                                    <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0\"/>
+                                </svg>
+                            </button>
+                            ";
+            // line 43
+            echo             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 43, $this->source); })()), 'form_end');
+            echo "
+                        </li>
+                    ";
+        }
+        // line 46
+        echo "                    <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/promo/admin/\"><span style=\"color:red;\">Promo</span></a>
                     </li>
                     <!-- Ajout de la liste déroulante -->
@@ -105,25 +120,21 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
                             Actions
                         </a>
                         <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdownMenuLink\">
-                            <a class=\"dropdown-item\" href=\"/adminajouterproducts\">Ajouter</a>
-                            <a class=\"dropdown-item\" href=\"/adminupdateproducts\">Modifier</a>
-                            <a class=\"dropdown-item\" href=\"/admindeleteproducts\">Supprimer</a>
+                            <a class=\"dropdown-item\" href=\"/adminajouterproducts\">Ajouter un produit</a>
+                            <a class=\"dropdown-item\" href=\"/adminupdateproducts\">Modifier un produit</a>
+                            <a class=\"dropdown-item\" href=\"/admindeleteproducts\">Supprimer un produit</a>
                         </div>
                     </li>
                     <!-- Fin de la liste déroulante -->
                 </ul>
                 <ul class=\"navbar-nav ml-auto\">
                     <form action=\"";
-        // line 62
+        // line 63
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("search_admin");
         echo "\" method=\"post\" class=\"form-inline my-2 my-lg-0 mr-auto\">
                         <input class=\"form-control\" type=\"text\" name=\"keyword\" placeholder=\"Rechercher un produit\" aria-label=\"Search\">
                         <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Rechercher</button>
                     </form>
-
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\">Mon Panier</a>
-                    </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/compte/admin\">Mon Compte</a>
                     </li>
@@ -145,9 +156,9 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
     </header>
 
     ";
-        // line 90
+        // line 87
         $this->displayBlock('body', $context, $blocks);
-        // line 92
+        // line 89
         echo "<br>
 <br>
 
@@ -225,14 +236,14 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
 
     }
 
-    // line 90
+    // line 87
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 91
+        // line 88
         echo "    ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -260,7 +271,7 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  236 => 91,  229 => 90,  217 => 10,  204 => 5,  151 => 92,  149 => 90,  118 => 62,  88 => 35,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
+        return array (  247 => 88,  240 => 87,  228 => 10,  215 => 5,  162 => 89,  160 => 87,  133 => 63,  114 => 46,  108 => 43,  99 => 37,  95 => 36,  92 => 35,  90 => 34,  80 => 27,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -284,15 +295,7 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
     justify-content: space-around;
     align-items: center;
   }
-  
-  .card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    text-align: center;
-  }
+
 </style>
 <body>
 
@@ -306,9 +309,18 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
             </button>
             <div class=\"collapse navbar-collapse\" id=\"navbarNav\">
                 <ul class=\"navbar-nav\">
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\">Rayons</a>
-                    </li>
+                    {% if app.request.attributes.get('_route') != 'app_promo_admin_edit' %}
+                        <li class=\"nav-item\">
+                            {{ form_start(form, {'attr': {'class': 'form-inline my-2 my-lg-0'}}) }}
+                            {{ form_row(form.category, {'attr': {'class': 'form-control', 'placeholder': 'Rechercher', 'aria-label': 'Search'}}) }}
+                            <button type=\"submit\" class=\"btn btn-outline-success my-2 my-sm-0\">
+                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">
+                                    <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0\"/>
+                                </svg>
+                            </button>
+                            {{ form_end(form) }}
+                        </li>
+                    {% endif %}
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/promo/admin/\"><span style=\"color:red;\">Promo</span></a>
                     </li>
@@ -318,9 +330,9 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
                             Actions
                         </a>
                         <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdownMenuLink\">
-                            <a class=\"dropdown-item\" href=\"/adminajouterproducts\">Ajouter</a>
-                            <a class=\"dropdown-item\" href=\"/adminupdateproducts\">Modifier</a>
-                            <a class=\"dropdown-item\" href=\"/admindeleteproducts\">Supprimer</a>
+                            <a class=\"dropdown-item\" href=\"/adminajouterproducts\">Ajouter un produit</a>
+                            <a class=\"dropdown-item\" href=\"/adminupdateproducts\">Modifier un produit</a>
+                            <a class=\"dropdown-item\" href=\"/admindeleteproducts\">Supprimer un produit</a>
                         </div>
                     </li>
                     <!-- Fin de la liste déroulante -->
@@ -330,10 +342,6 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
                         <input class=\"form-control\" type=\"text\" name=\"keyword\" placeholder=\"Rechercher un produit\" aria-label=\"Search\">
                         <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Rechercher</button>
                     </form>
-
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"#\">Mon Panier</a>
-                    </li>
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/compte/admin\">Mon Compte</a>
                     </li>

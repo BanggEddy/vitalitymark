@@ -29,59 +29,54 @@ class UservueController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
+    // Nouvelle méthode pour calculer le prix total
+    private function totalPrice($user, PanierRepository $panierRepository): float
+    {
+        $totalPrice = 0;
+        $panier = $panierRepository->findBy(['iduser' => $user]);
+
+        foreach ($panier as $item) {
+            if ($item->getIdpromo() !== null) {
+                $priceAfterPromo = $item->getIdpromo()->getPriceafterpromo();
+                $totalPrice += $item->getQuantity() * $priceAfterPromo;
+            } elseif ($item->getIdproducts() !== null) {
+                $price = $item->getIdproducts()->getPrice();
+                $totalPrice += $item->getQuantity() * $price;
+            }
+        }
+
+        return $totalPrice;
+    }
+
     #[Route('/uservue', name: 'app_uservue')]
     public function index(
         Request $request,
-        EntityManagerInterface $entityManager,
         ProductsRepository $productsRepository,
         PanierRepository $panierRepository,
         PromoRepository $promoRepository
     ): Response {
         $form = $this->createForm(ProductSearchType::class);
         $form->handleRequest($request);
-        $products = [];
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Récupération des données du formulaire
             $category = $form->getData()['category'];
-
-            // Redirection vers la page de catégorie avec le paramètre de catégorie
             return new RedirectResponse($this->generateUrl('user_category_products', ['category' => $category]));
         }
 
         $user = $this->getUser();
+        $userId = $user instanceof User ? $user->getId() : null;
 
-        // Récupérer l'ID de l'utilisateur
-        $userId = null;
-        if ($user instanceof User) {
-            // Récupérer l'ID de l'utilisateur
-            $userId = $user->getId();
-        }
+        // Appel de la méthode totalPrice pour obtenir le prix total
+        $totalPrice = $this->totalPrice($user, $panierRepository, $request);
 
-        $allProducts = $productsRepository->findAll();
-        $panier = $panierRepository->findBy(['iduser' => $user]);
+        // Récupérer tous les produits
+        $products = $productsRepository->findAll();
+
+        // Récupérer toutes les promotions
         $promotions = $promoRepository->findAll();
-        $totalPrice = 0;
-
-        // Parcourir les éléments du panier
-        foreach ($panier as $item) {
-            // Vérifier si l'élément du panier est une promotion ou un produit normal
-            if ($item->getIdpromo() !== null) {
-                // Si c'est une promotion, calculer le prix après la réduction
-                $priceAfterPromo = $item->getIdpromo()->getPriceafterpromo();
-                // Ajouter le prix après promotion au total
-                $totalPrice += $item->getQuantity() * $priceAfterPromo;
-            } elseif ($item->getIdproducts() !== null) {
-                // Si c'est un produit normal, calculer le prix normal
-                $price = $item->getIdproducts()->getPrice();
-                // Ajouter le prix normal au total
-                $totalPrice += $item->getQuantity() * $price;
-            }
-        }
 
         return $this->render('user/uservue/index.html.twig', [
-            'products' => $products,
-            'allProducts' => $allProducts,
+            'products' => $products, // Passer les produits à la vue
             'controller_name' => 'UservueController',
             'totalPrice' => $totalPrice,
             'promotions' => $promotions,
@@ -89,6 +84,7 @@ class UservueController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
 
     #Promo Client
     #[Route('/user/promo', name: 'app_user_promo')]
@@ -116,25 +112,9 @@ class UservueController extends AbstractController
 
         $products = $productsRepository->findAll();
         $user = $this->getUser();
-        $panier = $panierRepository->findBy(['iduser' => $user]);
         $promotions = $promoRepository->findAll();
-        $totalPrice = 0;
-
-        // Parcourir les éléments du panier
-        foreach ($panier as $item) {
-            // Vérifier si l'élément du panier est une promotion ou un produit normal
-            if ($item->getIdpromo() !== null) {
-                // Si c'est une promotion, calculer le prix après la réduction
-                $priceAfterPromo = $item->getIdpromo()->getPriceafterpromo();
-                // Ajouter le prix après promotion au total
-                $totalPrice += $item->getQuantity() * $priceAfterPromo;
-            } elseif ($item->getIdproducts() !== null) {
-                // Si c'est un produit normal, calculer le prix normal
-                $price = $item->getIdproducts()->getPrice();
-                // Ajouter le prix normal au total
-                $totalPrice += $item->getQuantity() * $price;
-            }
-        }
+        // Appel de la méthode totalPrice pour obtenir le prix total
+        $totalPrice = $this->totalPrice($user, $panierRepository);
 
         return $this->render('user/uservue/promo.html.twig', [
             'products' => $products,
@@ -393,23 +373,9 @@ class UservueController extends AbstractController
         $user = $this->getUser();
         $totalPrice = 0;
         $user = $this->getUser();
-        $panier = $panierRepository->findBy(['iduser' => $user]);
 
-        // Parcourir les éléments du panier
-        foreach ($panier as $item) {
-            // Vérifier si l'élément du panier est une promotion ou un produit normal
-            if ($item->getIdpromo() !== null) {
-                // Si c'est une promotion, calculer le prix après la réduction
-                $priceAfterPromo = $item->getIdpromo()->getPriceafterpromo();
-                // Ajouter le prix après promotion au total
-                $totalPrice += $item->getQuantity() * $priceAfterPromo;
-            } elseif ($item->getIdproducts() !== null) {
-                // Si c'est un produit normal, calculer le prix normal
-                $price = $item->getIdproducts()->getPrice();
-                // Ajouter le prix normal au total
-                $totalPrice += $item->getQuantity() * $price;
-            }
-        }
+        // Appel de la méthode totalPrice pour obtenir le prix total
+        $totalPrice = $this->totalPrice($user, $panierRepository);
 
         $user = $this->getUser();
 
@@ -458,27 +424,9 @@ class UservueController extends AbstractController
         }
         $user = $this->getUser();
 
-        $totalPrice = 0;
-        $user = $this->getUser();
-        $panier = $panierRepository->findBy(['iduser' => $user]);
+        // Appel de la méthode totalPrice pour obtenir le prix total
+        $totalPrice = $this->totalPrice($user, $panierRepository);
 
-        // Calculer le prix total en parcourant les éléments du panier de l'utilisateur
-        foreach ($panier as $item) {
-            // Vérifier si l'élément du panier est une promotion ou un produit normal
-            if ($item->getIdpromo() !== null) {
-                // Si c'est une promotion, calculer le prix après la réduction
-                $priceAfterPromo = $item->getIdpromo()->getPriceafterpromo();
-                // Ajouter le prix après promotion au total
-                $totalPrice += $item->getQuantity() * $priceAfterPromo;
-            } elseif ($item->getIdproducts() !== null) {
-                // Si c'est un produit normal, calculer le prix normal
-                $price = $item->getIdproducts()->getPrice();
-                // Ajouter le prix normal au total
-                $totalPrice += $item->getQuantity() * $price;
-            }
-        }
-
-        $user = $this->getUser();
 
         // Récupérer l'ID de l'utilisateur
         $userId = null;
@@ -523,19 +471,34 @@ class UservueController extends AbstractController
     }
 
     #[Route('/user/uservue/categorie/{category}', name: 'user_category_products')]
-    public function showCategoryProducts($category): Response
+    public function showCategoryProducts($category, Request $request, EntityManagerInterface $entityManager, PanierRepository $panierRepository): Response
     {
+        $user = $this->getUser();
+        $userId = $user instanceof User ? $user->getId() : null;
 
-        $products = $this->entityManager->getRepository(Products::class)->findBy(['category' => $category]);
-        $promotions = $this->entityManager->getRepository(Promo::class)->findBy(['category' => $category]);
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $category = $form->getData()['category'];
+            return new RedirectResponse($this->generateUrl('user_category_products', ['category' => $category]));
+        }
+
+        // Appel de la méthode totalPrice pour obtenir le prix total
+        $totalPrice = $this->totalPrice($user, $panierRepository);
+
+        $products = $entityManager->getRepository(Products::class)->findBy(['category' => $category]);
+        $promotions = $entityManager->getRepository(Promo::class)->findBy(['category' => $category]);
 
         return $this->render('user/uservue/categorie.html.twig', [
             'category' => $category,
             'products' => $products,
             'promotions' => $promotions,
+            'form' => $form->createView(),
+            'user_id' => $userId,
+            'totalPrice' => $totalPrice,
         ]);
     }
-
 
     //Contact
     #[Route('/contact/user', name: 'app_contact_user')]
@@ -562,24 +525,8 @@ class UservueController extends AbstractController
             $userId = $user->getId();
         }
 
-        $panier = $panierRepository->findBy(['iduser' => $user]);
-        $totalPrice = 0;
-
-        // Parcourir les éléments du panier
-        foreach ($panier as $item) {
-            // Vérifier si l'élément du panier est une promotion ou un produit normal
-            if ($item->getIdpromo() !== null) {
-                // Si c'est une promotion, calculer le prix après la réduction
-                $priceAfterPromo = $item->getIdpromo()->getPriceafterpromo();
-                // Ajouter le prix après promotion au total
-                $totalPrice += $item->getQuantity() * $priceAfterPromo;
-            } elseif ($item->getIdproducts() !== null) {
-                // Si c'est un produit normal, calculer le prix normal
-                $price = $item->getIdproducts()->getPrice();
-                // Ajouter le prix normal au total
-                $totalPrice += $item->getQuantity() * $price;
-            }
-        }
+        // Appel de la méthode totalPrice pour obtenir le prix total
+        $totalPrice = $this->totalPrice($user, $panierRepository);
 
         return $this->render('user/uservue/contact.html.twig', [
             'controller_name' => 'AccueilController',
@@ -591,6 +538,7 @@ class UservueController extends AbstractController
         ]);
     }
 
+    #Contact User
     /**
      * @Route("/contact/submit", name="app_contact_submit")
      */

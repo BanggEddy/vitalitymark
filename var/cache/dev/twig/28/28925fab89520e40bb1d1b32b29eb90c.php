@@ -25,7 +25,6 @@ class __TwigTemplate_f8f3557b72e4c84f2d1ef58e85515a62 extends Template
         $this->source = $this->getSourceContext();
 
         $this->blocks = [
-            'title' => [$this, 'block_title'],
             'body' => [$this, 'block_body'],
         ];
     }
@@ -50,26 +49,13 @@ class __TwigTemplate_f8f3557b72e4c84f2d1ef58e85515a62 extends Template
     }
 
     // line 3
-    public function block_title($context, array $blocks = [])
-    {
-        $macros = $this->macros;
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
-
-        echo "Résultats de la recherche";
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-    }
-
-    // line 5
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 6
+        // line 4
         echo "<style>
 .product-card {
     background-color: #f8f9fa;
@@ -80,15 +66,15 @@ class __TwigTemplate_f8f3557b72e4c84f2d1ef58e85515a62 extends Template
     background-color: #DBFFCA;
     border: 1px solid #ccc;
     box-shadow: 10px 10px 4px #7cdf7c;
-    transition: transform 0.3s ease-in-out; /* Transition de l'effet */
+    transition: transform 0.3s ease-in-out; 
 }
 
 .product-card:hover {
-    transform: translateY(-10px); /* Déplacement vers le haut */
+    transform: translateY(-10px); 
 }
 
 .product-card img {
-    position: relative; /* Position relative pour positionner l'élément de superposition */
+    position: relative; 
     width: 100%;
     max-height: 200px;
     object-fit: cover;
@@ -102,14 +88,14 @@ class __TwigTemplate_f8f3557b72e4c84f2d1ef58e85515a62 extends Template
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 128, 0, 0.5); /* Couleur de fond semi-transparente */
-    border-radius: 10px; /* Coins arrondis */
-    opacity: 0; /* Opacité initiale */
-    transition: opacity 0.3s ease-in-out; /* Transition de l'opacité */
+    background-color: rgba(0, 128, 0, 0.5); 
+    border-radius: 10px; 
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out;
 }
 
 .product-card:hover img::after {
-    opacity: 1; /* Opacité lorsque survolé */
+    opacity: 1;
 }
 
 .product-card-details {
@@ -130,54 +116,54 @@ class __TwigTemplate_f8f3557b72e4c84f2d1ef58e85515a62 extends Template
 }
 
 .promo-card {
-    background-color: #f08080; /* Couleur de fond */
-    border: 1px 10px solid #fa8072; /* Bordure */
-    border-radius: 10px; /* Coins arrondis */
-    padding: 20px; /* Espacement intérieur */
-    margin-bottom: 20px; /* Marge en bas */
-    box-shadow: 5px 5px 5px #888888; /* Ombre */
-    transition: transform 0.3s ease-in-out; /* Transition de l'effet */
+    background-color: #f08080; 
+    border: 1px 10px solid #fa8072; 
+    border-radius: 10px; 
+    padding: 20px; 
+    margin-bottom: 20px; 
+    box-shadow: 5px 5px 5px #888888; 
+    transition: transform 0.3s ease-in-out; 
 }
 
 .promo-card:hover {
-    transform: translateY(-5px); /* Déplacement vers le haut */
+    transform: translateY(-5px); 
 }
 
 .promo-card img {
-    width: 100%; /* Largeur de l'image */
-    max-height: 200px; /* Hauteur maximale de l'image */
-    object-fit: cover; /* Redimensionner l'image pour couvrir la zone */
-    border-radius: 10px; /* Coins arrondis */
+    width: 100%; 
+    max-height: 200px; 
+    object-fit: cover; 
+    border-radius: 10px; 
 }
 
 .promo-card-details {
-    margin-top: 10px; /* Marge en haut */
+    margin-top: 10px;
 }
 
 .promo-card-title {
-    font-weight: bold; /* Gras */
+    font-weight: bold; 
 }
 
 .promo-card-description {
-    color: #555; /* Couleur du texte de la description */
+    color: #555; 
 }
 
 .promo-card-price {
-    color: #333; /* Couleur du texte du prix */
-    font-weight: bold; /* Gras */
+    color: #333; 
+    font-weight: bold; 
 }
 
 .btn-details {
-    background-color: #fff; /* Couleur de fond */
-    color: #000; /* Couleur du texte */
-    border: none; /* Suppression de la bordure */
-    border-radius: 5px; /* Coins arrondis */
-    padding: 8px 16px; /* Espacement interne */
-    font-size: 14px; /* Taille de la police */
+    background-color: #fff;
+    color: #000;
+    border: none; 
+    border-radius: 5px; 
+    padding: 8px 16px; 
+    font-size: 14px;
 }
 
 .btn-details:hover {
-    background-color: #000; /* Couleur de fond au survol */
+    background-color: #000; 
     color:#fff;
 }
 </style>
@@ -188,45 +174,45 @@ class __TwigTemplate_f8f3557b72e4c84f2d1ef58e85515a62 extends Template
     <br>
 
     ";
-        // line 123
-        if ( !twig_test_empty((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 123, $this->source); })()))) {
-            // line 124
+        // line 121
+        if ( !twig_test_empty((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 121, $this->source); })()))) {
+            // line 122
             echo "    <h2>Produits</h2>
     <div class=\"row\">
         ";
-            // line 126
+            // line 124
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 126, $this->source); })()));
+            $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 124, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
-                // line 127
+                // line 125
                 echo "        <div class=\"col-md-4\">
             <div class=\"product-card\">
                 <img src=\"";
-                // line 129
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["product"], "images", [], "any", false, false, false, 129))), "html", null, true);
+                // line 127
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["product"], "images", [], "any", false, false, false, 127))), "html", null, true);
                 echo "\" class=\"product-card-img-top\" alt=\"";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 129), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 127), "html", null, true);
                 echo "\">
                 <div class=\"product-card-details\">
                     <h3 class=\"product-card-title\">";
-                // line 131
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 131), "html", null, true);
+                // line 129
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 129), "html", null, true);
                 echo "</h3>
                     <p class=\"product-card-text\">";
-                // line 132
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "description", [], "any", false, false, false, 132), "html", null, true);
+                // line 130
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "description", [], "any", false, false, false, 130), "html", null, true);
                 echo "</p>
                     <p class=\"product-card-price\">";
-                // line 133
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "price", [], "any", false, false, false, 133), "html", null, true);
+                // line 131
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "price", [], "any", false, false, false, 131), "html", null, true);
                 echo " €</p>
                     <p class=\"product-card-category\">Catégorie: ";
-                // line 134
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "category", [], "any", false, false, false, 134), "html", null, true);
+                // line 132
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "category", [], "any", false, false, false, 132), "html", null, true);
                 echo "</p>
                     <a href=\"";
-                // line 135
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("details_produit", ["id" => twig_get_attribute($this->env, $this->source, $context["product"], "id", [], "any", false, false, false, 135)]), "html", null, true);
+                // line 133
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("details_produit", ["id" => twig_get_attribute($this->env, $this->source, $context["product"], "id", [], "any", false, false, false, 133)]), "html", null, true);
                 echo "\" class=\"btn btn-details\">Voir les détails</a>
                 </div>
             </div>
@@ -236,48 +222,48 @@ class __TwigTemplate_f8f3557b72e4c84f2d1ef58e85515a62 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 140
+            // line 138
             echo "    </div>
     ";
         }
-        // line 142
+        // line 140
         echo "
     ";
-        // line 143
-        if ( !twig_test_empty((isset($context["promos"]) || array_key_exists("promos", $context) ? $context["promos"] : (function () { throw new RuntimeError('Variable "promos" does not exist.', 143, $this->source); })()))) {
-            // line 144
+        // line 141
+        if ( !twig_test_empty((isset($context["promos"]) || array_key_exists("promos", $context) ? $context["promos"] : (function () { throw new RuntimeError('Variable "promos" does not exist.', 141, $this->source); })()))) {
+            // line 142
             echo "    <h2>Promotions</h2>
     <div class=\"row\">
         ";
-            // line 146
+            // line 144
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["promos"]) || array_key_exists("promos", $context) ? $context["promos"] : (function () { throw new RuntimeError('Variable "promos" does not exist.', 146, $this->source); })()));
+            $context['_seq'] = twig_ensure_traversable((isset($context["promos"]) || array_key_exists("promos", $context) ? $context["promos"] : (function () { throw new RuntimeError('Variable "promos" does not exist.', 144, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["promo"]) {
-                // line 147
+                // line 145
                 echo "        <div class=\"col-md-4\">
             <div class=\"promo-card\">
                 <img src=\"";
-                // line 149
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["promo"], "getImages", [], "method", false, false, false, 149))), "html", null, true);
+                // line 147
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["promo"], "getImages", [], "method", false, false, false, 147))), "html", null, true);
                 echo "\" class=\"promo-card-img-top\" alt=\"";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getName", [], "method", false, false, false, 149), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getName", [], "method", false, false, false, 147), "html", null, true);
                 echo "\">
                 <div class=\"promo-card-details\">
                     <h3 class=\"promo-card-title\">";
-                // line 151
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getName", [], "method", false, false, false, 151), "html", null, true);
+                // line 149
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getName", [], "method", false, false, false, 149), "html", null, true);
                 echo "</h3>
                     <p class=\"promo-card-description\">";
-                // line 152
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getDescription", [], "method", false, false, false, 152), "html", null, true);
+                // line 150
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getDescription", [], "method", false, false, false, 150), "html", null, true);
                 echo "</p>
                     <p class=\"promo-card-price\">";
-                // line 153
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getPriceafterpromo", [], "method", false, false, false, 153), "html", null, true);
+                // line 151
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getPriceafterpromo", [], "method", false, false, false, 151), "html", null, true);
                 echo " €</p>
                     <a href=\"";
-                // line 154
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("details_promotion", ["id" => twig_get_attribute($this->env, $this->source, $context["promo"], "id", [], "any", false, false, false, 154)]), "html", null, true);
+                // line 152
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("details_promotion", ["id" => twig_get_attribute($this->env, $this->source, $context["promo"], "id", [], "any", false, false, false, 152)]), "html", null, true);
                 echo "\" class=\"btn btn-details\">Voir les détails</a>
                 </div>
             </div>
@@ -287,20 +273,20 @@ class __TwigTemplate_f8f3557b72e4c84f2d1ef58e85515a62 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['promo'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 159
+            // line 157
             echo "    </div>
     ";
         }
-        // line 161
+        // line 159
         echo "
     ";
-        // line 162
-        if ((twig_test_empty((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 162, $this->source); })())) && twig_test_empty((isset($context["promos"]) || array_key_exists("promos", $context) ? $context["promos"] : (function () { throw new RuntimeError('Variable "promos" does not exist.', 162, $this->source); })())))) {
-            // line 163
+        // line 160
+        if ((twig_test_empty((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 160, $this->source); })())) && twig_test_empty((isset($context["promos"]) || array_key_exists("promos", $context) ? $context["promos"] : (function () { throw new RuntimeError('Variable "promos" does not exist.', 160, $this->source); })())))) {
+            // line 161
             echo "    <p>Aucun résultat trouvé.</p>
     ";
         }
-        // line 165
+        // line 163
         echo "</div>
 ";
         
@@ -329,14 +315,12 @@ class __TwigTemplate_f8f3557b72e4c84f2d1ef58e85515a62 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  304 => 165,  300 => 163,  298 => 162,  295 => 161,  291 => 159,  280 => 154,  276 => 153,  272 => 152,  268 => 151,  261 => 149,  257 => 147,  253 => 146,  249 => 144,  247 => 143,  244 => 142,  240 => 140,  229 => 135,  225 => 134,  221 => 133,  217 => 132,  213 => 131,  206 => 129,  202 => 127,  198 => 126,  194 => 124,  192 => 123,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  290 => 163,  286 => 161,  284 => 160,  281 => 159,  277 => 157,  266 => 152,  262 => 151,  258 => 150,  254 => 149,  247 => 147,  243 => 145,  239 => 144,  235 => 142,  233 => 141,  230 => 140,  226 => 138,  215 => 133,  211 => 132,  207 => 131,  203 => 130,  199 => 129,  192 => 127,  188 => 125,  184 => 124,  180 => 122,  178 => 121,  59 => 4,  52 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'header.html.twig' %}
-
-{% block title %}Résultats de la recherche{% endblock %}
 
 {% block body %}
 <style>
@@ -349,15 +333,15 @@ class __TwigTemplate_f8f3557b72e4c84f2d1ef58e85515a62 extends Template
     background-color: #DBFFCA;
     border: 1px solid #ccc;
     box-shadow: 10px 10px 4px #7cdf7c;
-    transition: transform 0.3s ease-in-out; /* Transition de l'effet */
+    transition: transform 0.3s ease-in-out; 
 }
 
 .product-card:hover {
-    transform: translateY(-10px); /* Déplacement vers le haut */
+    transform: translateY(-10px); 
 }
 
 .product-card img {
-    position: relative; /* Position relative pour positionner l'élément de superposition */
+    position: relative; 
     width: 100%;
     max-height: 200px;
     object-fit: cover;
@@ -371,14 +355,14 @@ class __TwigTemplate_f8f3557b72e4c84f2d1ef58e85515a62 extends Template
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 128, 0, 0.5); /* Couleur de fond semi-transparente */
-    border-radius: 10px; /* Coins arrondis */
-    opacity: 0; /* Opacité initiale */
-    transition: opacity 0.3s ease-in-out; /* Transition de l'opacité */
+    background-color: rgba(0, 128, 0, 0.5); 
+    border-radius: 10px; 
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out;
 }
 
 .product-card:hover img::after {
-    opacity: 1; /* Opacité lorsque survolé */
+    opacity: 1;
 }
 
 .product-card-details {
@@ -399,54 +383,54 @@ class __TwigTemplate_f8f3557b72e4c84f2d1ef58e85515a62 extends Template
 }
 
 .promo-card {
-    background-color: #f08080; /* Couleur de fond */
-    border: 1px 10px solid #fa8072; /* Bordure */
-    border-radius: 10px; /* Coins arrondis */
-    padding: 20px; /* Espacement intérieur */
-    margin-bottom: 20px; /* Marge en bas */
-    box-shadow: 5px 5px 5px #888888; /* Ombre */
-    transition: transform 0.3s ease-in-out; /* Transition de l'effet */
+    background-color: #f08080; 
+    border: 1px 10px solid #fa8072; 
+    border-radius: 10px; 
+    padding: 20px; 
+    margin-bottom: 20px; 
+    box-shadow: 5px 5px 5px #888888; 
+    transition: transform 0.3s ease-in-out; 
 }
 
 .promo-card:hover {
-    transform: translateY(-5px); /* Déplacement vers le haut */
+    transform: translateY(-5px); 
 }
 
 .promo-card img {
-    width: 100%; /* Largeur de l'image */
-    max-height: 200px; /* Hauteur maximale de l'image */
-    object-fit: cover; /* Redimensionner l'image pour couvrir la zone */
-    border-radius: 10px; /* Coins arrondis */
+    width: 100%; 
+    max-height: 200px; 
+    object-fit: cover; 
+    border-radius: 10px; 
 }
 
 .promo-card-details {
-    margin-top: 10px; /* Marge en haut */
+    margin-top: 10px;
 }
 
 .promo-card-title {
-    font-weight: bold; /* Gras */
+    font-weight: bold; 
 }
 
 .promo-card-description {
-    color: #555; /* Couleur du texte de la description */
+    color: #555; 
 }
 
 .promo-card-price {
-    color: #333; /* Couleur du texte du prix */
-    font-weight: bold; /* Gras */
+    color: #333; 
+    font-weight: bold; 
 }
 
 .btn-details {
-    background-color: #fff; /* Couleur de fond */
-    color: #000; /* Couleur du texte */
-    border: none; /* Suppression de la bordure */
-    border-radius: 5px; /* Coins arrondis */
-    padding: 8px 16px; /* Espacement interne */
-    font-size: 14px; /* Taille de la police */
+    background-color: #fff;
+    color: #000;
+    border: none; 
+    border-radius: 5px; 
+    padding: 8px 16px; 
+    font-size: 14px;
 }
 
 .btn-details:hover {
-    background-color: #000; /* Couleur de fond au survol */
+    background-color: #000; 
     color:#fff;
 }
 </style>

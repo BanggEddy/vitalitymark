@@ -11,7 +11,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Products;
 use App\Entity\Promo;
 use App\Entity\Contact;
+use App\Form\ProductSearchType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class AccueilController extends AbstractController
 {
@@ -23,8 +25,23 @@ class AccueilController extends AbstractController
     }
 
     #[Route('/', name: 'app_accueil')]
-    public function index(ProductsRepository $productsRepository, PromoRepository $promoRepository): Response
-    {
+    public function index(
+        ProductsRepository $productsRepository,
+        PromoRepository $promoRepository,
+        Request $request,
+    ): Response {
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+        $products = [];
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('accueil_category_products', ['category' => $category]));
+        }
+
         $products = $productsRepository->findAll();
         $promotions = $promoRepository->findAll();
 
@@ -32,36 +49,75 @@ class AccueilController extends AbstractController
             'controller_name' => 'AccueilController',
             'products' => $products,
             'promotions' => $promotions,
+            'form' => $form->createView(),
         ]);
     }
     #[Route('/promo', name: 'app_promo')]
-    public function promo(ProductsRepository $productsRepository, PromoRepository $promoRepository): Response
+    public function promo(PromoRepository $promoRepository, Request $request): Response
     {
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('accueil_category_products', ['category' => $category]));
+        }
+
         $promotions = $promoRepository->findAll();
 
         return $this->render('accueil/indexpromo.html.twig', [
             'controller_name' => 'AccueilController',
             'promotions' => $promotions,
+            'form' => $form->createView(),
         ]);
     }
 
     #[Route('/details-produit/{id}', name: 'details_produit')]
-    public function detailsProduit($id): Response
+    public function detailsProduit($id, Request $request): Response
     {
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+        $category = null;
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return $this->redirectToRoute('accueil_category_products', ['category' => $category]);
+        }
+
         $product = $this->entityManager->getRepository(Products::class)->find($id);
 
         return $this->render('accueil/indexproduit.html.twig', [
-            'product' => $product
+            'product' => $product,
+            'form' => $form->createView(),
         ]);
     }
 
     #[Route('/details-promotion/{id}', name: 'details_promotion')]
-    public function detailsPromotion($id): Response
+    public function detailsPromotion($id, Request $request): Response
     {
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+        $category = null;
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return $this->redirectToRoute('accueil_category_products', ['category' => $category]);
+        }
+
         $promo = $this->entityManager->getRepository(Promo::class)->find($id);
 
         return $this->render('accueil/indexproduit.html.twig', [
-            'promo' => $promo
+            'promo' => $promo,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -69,6 +125,18 @@ class AccueilController extends AbstractController
     #[Route('/search', name: 'search')]
     public function search(Request $request, EntityManagerInterface $entityManager)
     {
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+        $category = null;
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return $this->redirectToRoute('accueil_category_products', ['category' => $category]);
+        }
+
         // Récupérer le terme de recherche depuis la requête
         $keyword = $request->request->get('keyword');
 
@@ -93,17 +161,32 @@ class AccueilController extends AbstractController
             'products' => $products,
             'promos' => $promos,
             'keyword' => $keyword,
+            'form' => $form->createView(),
         ]);
     }
 
     //Contact
     #[Route('/', name: 'app_contact')]
-    public function indexcontact(): Response
+    public function indexcontact(Request $request): Response
     {
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+        $category = null;
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return $this->redirectToRoute('accueil_category_products', ['category' => $category]);
+        }
+
         return $this->render('accueil/contact.html.twig', [
             'controller_name' => 'AccueilController',
+            'form' => $form->createView(),
         ]);
     }
+
     #[Route('/contact/submit', name: 'app_contact_submit')]
     public function submitContact(Request $request): Response
     {
@@ -124,5 +207,34 @@ class AccueilController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('app_contact');
+    }
+
+
+    #[Route('/accueil/categorie/{category}', name: 'accueil_category_products')]
+    public function showCategoryProductsAccueil(Request $request): Response
+    {
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+        $category = null;
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return $this->redirectToRoute('accueil_category_products', ['category' => $category]);
+        }
+
+        // Si aucune catégorie n'est sélectionnée via le formulaire, utilisez celle fournie dans l'URL
+        $category = $request->get('category');
+        $products = $this->entityManager->getRepository(Products::class)->findBy(['category' => $category]);
+        $promotions = $this->entityManager->getRepository(Promo::class)->findBy(['category' => $category]);
+
+        return $this->render('accueil/categorie.html.twig', [
+            'category' => $category,
+            'products' => $products,
+            'promotions' => $promotions,
+            'form' => $form->createView(),
+        ]);
     }
 }

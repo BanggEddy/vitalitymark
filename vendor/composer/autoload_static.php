@@ -388,7 +388,7 @@ class ComposerStaticInitbc2bf199ca665ee622ddc82df4e3eb85
         ),
         'Doctrine\\Bundle\\DoctrineBundle\\' => 
         array (
-            0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle',
+            0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle/src',
         ),
         'App\\Tests\\' => 
         array (

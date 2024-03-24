@@ -25,7 +25,6 @@ class __TwigTemplate_73487eeab7377ad83f5b80be2031c9c3 extends Template
         $this->source = $this->getSourceContext();
 
         $this->blocks = [
-            'title' => [$this, 'block_title'],
             'body' => [$this, 'block_body'],
         ];
     }
@@ -50,50 +49,37 @@ class __TwigTemplate_73487eeab7377ad83f5b80be2031c9c3 extends Template
     }
 
     // line 3
-    public function block_title($context, array $blocks = [])
-    {
-        $macros = $this->macros;
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
-
-        echo "Contact";
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-    }
-
-    // line 5
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 6
+        // line 4
         echo "<style>
     body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f8f9fa; /* Couleur de fond */
+        background-color: #f8f9fa; 
     }
 
     .container {
         width: 80%;
         margin: 20px auto;
-        background-color: #fff; /* Fond du conteneur */
+        background-color: #fff; 
         padding: 20px;
-        border-radius: 10px; /* Coins arrondis */
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
-        transition: transform 0.3s ease; /* Transition douce */
+        border-radius: 10px; 
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+        transition: transform 0.3s ease; 
     }
 
     .container:hover {
-        transform: translateY(-5px); /* Translation vers le haut */
+        transform: translateY(-5px); 
     }
 
     h2 {
-        color: #4CAF50; /* Couleur de titre */
+        color: #4CAF50; 
     }
 
     .form-group {
@@ -112,33 +98,33 @@ class __TwigTemplate_73487eeab7377ad83f5b80be2031c9c3 extends Template
         margin-top: 5px;
         border: 1px solid #ccc;
         border-radius: 5px;
-        transition: border-color 0.3s ease, transform 0.3s ease; /* Transition douce */
+        transition: border-color 0.3s ease, transform 0.3s ease; 
     }
 
     input[type=\"text\"]:focus,
     input[type=\"email\"]:focus,
     textarea:focus {
-        border-color: #4CAF50; /* Bordure couleur verte lors du focus */
+        border-color: #4CAF50; 
     }
 
     input[type=\"text\"]:hover,
     input[type=\"email\"]:hover,
     textarea:hover {
-        transform: translateY(-5px); /* Translation vers le haut au survol */
+        transform: translateY(-5px); 
     }
 
     button {
         padding: 10px 20px;
-        background-color: #4CAF50; /* Couleur de fond du bouton */
+        background-color: #4CAF50; 
         color: #fff;
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        transition: background-color 0.3s ease; /* Transition douce */
+        transition: background-color 0.3s ease; 
     }
 
     button:hover {
-        background-color: #45a049; /* Couleur de fond du bouton au survol */
+        background-color: #45a049; 
     }
 </style>
 
@@ -146,7 +132,7 @@ class __TwigTemplate_73487eeab7377ad83f5b80be2031c9c3 extends Template
 <div class=\"container\">
     <h2>Nous Contacter</h2>
     <form action=\"";
-        // line 81
+        // line 79
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_contact_submit");
         echo "\" method=\"POST\">
         <div class=\"form-group\">
@@ -203,14 +189,12 @@ class __TwigTemplate_73487eeab7377ad83f5b80be2031c9c3 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  150 => 81,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  136 => 79,  59 => 4,  52 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'header.html.twig' %}
-
-{% block title %}Contact{% endblock %}
 
 {% block body %}
 <style>
@@ -218,25 +202,25 @@ class __TwigTemplate_73487eeab7377ad83f5b80be2031c9c3 extends Template
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f8f9fa; /* Couleur de fond */
+        background-color: #f8f9fa; 
     }
 
     .container {
         width: 80%;
         margin: 20px auto;
-        background-color: #fff; /* Fond du conteneur */
+        background-color: #fff; 
         padding: 20px;
-        border-radius: 10px; /* Coins arrondis */
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
-        transition: transform 0.3s ease; /* Transition douce */
+        border-radius: 10px; 
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+        transition: transform 0.3s ease; 
     }
 
     .container:hover {
-        transform: translateY(-5px); /* Translation vers le haut */
+        transform: translateY(-5px); 
     }
 
     h2 {
-        color: #4CAF50; /* Couleur de titre */
+        color: #4CAF50; 
     }
 
     .form-group {
@@ -255,33 +239,33 @@ class __TwigTemplate_73487eeab7377ad83f5b80be2031c9c3 extends Template
         margin-top: 5px;
         border: 1px solid #ccc;
         border-radius: 5px;
-        transition: border-color 0.3s ease, transform 0.3s ease; /* Transition douce */
+        transition: border-color 0.3s ease, transform 0.3s ease; 
     }
 
     input[type=\"text\"]:focus,
     input[type=\"email\"]:focus,
     textarea:focus {
-        border-color: #4CAF50; /* Bordure couleur verte lors du focus */
+        border-color: #4CAF50; 
     }
 
     input[type=\"text\"]:hover,
     input[type=\"email\"]:hover,
     textarea:hover {
-        transform: translateY(-5px); /* Translation vers le haut au survol */
+        transform: translateY(-5px); 
     }
 
     button {
         padding: 10px 20px;
-        background-color: #4CAF50; /* Couleur de fond du bouton */
+        background-color: #4CAF50; 
         color: #fff;
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        transition: background-color 0.3s ease; /* Transition douce */
+        transition: background-color 0.3s ease; 
     }
 
     button:hover {
-        background-color: #45a049; /* Couleur de fond du bouton au survol */
+        background-color: #45a049; 
     }
 </style>
 

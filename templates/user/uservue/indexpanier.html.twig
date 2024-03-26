@@ -5,57 +5,39 @@
 {% block body %}
 <div class="container">
     <h1 class="mt-4 mb-4">User Panier</h1>
-    <h2>Produits Normaux :</h2>
+    <h2>Produits :</h2>
     <table class="table">
         <thead>
             <tr>
+                <th scope="col">Image</th>
                 <th scope="col">Product Name</th>
                 <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Subtotal</th>
+                <th scope="col">Reduction</th> {# Nouvelle colonne pour afficher la réduction #}
             </tr>
         </thead>
         <tbody>
             {% for panierDetail in panierDetails %}
-                {% if panierDetail.price is defined %}
-                    <tr>
-                        <td>{{ panierDetail.product_name }}</td>
-                        <td>{{ panierDetail.price }}</td>
-                        <td>{{ panierDetail.quantity }}</td>
-                        <td>{{ panierDetail.subtotal }}</td>
-                    </tr>
-                {% endif %}
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-
-<div class="container">
-    <h2>Produits en Promotion :</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Product Name</th>
-                <th scope="col">Price After Promo</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Subtotal</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for panierDetail in panierDetails %}
-                {% if panierDetail.price_after_promo is defined %}
-                    <tr>
-                        <td>{{ panierDetail.product_name }}</td>
-                        <td>{{ panierDetail.price_after_promo }}</td>
-                        <td>{{ panierDetail.quantity }}</td>
-                        <td>{{ panierDetail.subtotal }}</td>
-                    </tr>
-                {% endif %}
+                <tr>
+                    <td>
+                        <img src="{{ asset('images/' ~ panierDetail['images']) }}" alt="{{ panierDetail['name'] }}" class="product-image">
+                    </td>
+                    <td>{{ panierDetail['name'] }}</td>
+                    <td>{{ panierDetail['price'] }}</td>
+                    <td>{{ panierDetail['quantity'] }}</td>
+                    <td>{{ panierDetail['subtotal'] }}</td>
+                    <td>
+                        {% if panierDetail['reduction'] is not null %} {# Vérifier s'il y a une réduction #}
+                            {{ panierDetail['reduction'] }}% {# Afficher la réduction en pourcentage #}
+                        {% else %}
+                            N/A {# Afficher N/A si aucune réduction n'est disponible #}
+                        {% endif %}
+                    </td>
+                </tr>
             {% endfor %}
         </tbody>
     </table>
     <h3>Total Price: {{ totalPrice }}</h3>
 </div>
-</body>
-</html>
 {% endblock %}

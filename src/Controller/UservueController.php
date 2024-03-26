@@ -202,7 +202,6 @@ class UservueController extends AbstractController
             $this->entityManager->flush();
             $this->entityManager->commit();
 
-            // Rediriger vers la page '/uservue'
             $url = $urlGenerator->generate('uservue');
             return new RedirectResponse($url);
         } catch (\Exception $e) {
@@ -214,92 +213,90 @@ class UservueController extends AbstractController
 
     #Panier user
     #[Route('/user/panier', name: 'user_panier')]
-    public function getUserPanier(PanierRepository $panierRepository, Request $request, $category = null): Response
+    public function getUserPanier(PanierRepository $panierRepository, Request $request): Response
     {
-
+        // Création du formulaire de recherche de produit
         $form = $this->createForm(ProductSearchType::class);
         $form->handleRequest($request);
 
+        // Gestion de la soumission du formulaire de recherche
         if ($form->isSubmitted() && $form->isValid()) {
-            // Récupération des données du formulaire
+            // Récupération de la catégorie sélectionnée dans le formulaire
             $category = $form->getData()['category'];
 
             // Redirection vers la page de catégorie avec le paramètre de catégorie
             return new RedirectResponse($this->generateUrl('user_category_products', ['category' => $category]));
         }
 
+        // Récupération de l'utilisateur connecté
         /** @var UserInterface|null $user */
         $user = $this->getUser();
 
         if (!$user) {
             throw $this->createNotFoundException('User not found');
         }
-        $user = $this->getUser();
 
-        // Récupérer l'ID de l'utilisateur
-        $userId = null;
-        if ($user instanceof User) {
-            // Récupérer l'ID de l'utilisateur
-            $userId = $user->getId();
-        }
+        // Récupération de l'ID de l'utilisateur
+        $userId = $user->getId();
+
+        // Récupération des produits du panier de l'utilisateur
         $paniers = $panierRepository->findBy(['iduser' => $user]);
 
+        // Initialisation des détails du panier et du prix total
         $panierDetails = [];
-        $promoDetails = [];
         $totalPrice = 0;
+
+        // Traitement des produits du panier
         foreach ($paniers as $panier) {
+            // Récupération du produit associé au panier
             $product = $panier->getIdproducts();
-
-            // Vérifier si un produit est associé au panier
-            if ($product) {
-                $quantity = $panier->getQuantity();
-                $price = 0; // Initialiser le prix à zéro
-
-                // Récupérer le prix du produit
-                $productPrice = $product->getPrice();
-
-                // Calculer le sous-total pour chaque produit
-                $subtotal = $productPrice * $quantity;
-                $totalPrice += $subtotal; // Ajouter le sous-total au prix total
-
-                // Ajouter les détails du panier
-                $panierDetails[] = [
-                    'product_name' => $product->getName(),
-                    'price' => $productPrice,
-                    'quantity' => $quantity,
-                    'subtotal' => $subtotal, // Ajouter le sous-total aux détails du panier
-                ];
-            }
-
             $promo = $panier->getIdpromo();
 
-            // Vérifier si une promotion est associée au panier
-            if ($promo) {
-                // Créer un tableau pour stocker les détails de la promotion
-                $promoDetails = [
-                    'product_name' => $promo->getIdproduct()->getName(),
-                    'price_after_promo' => $promo->getPriceafterpromo(),
+            // Si un produit est associé au panier
+            if ($product) {
+                $reduction = null; // Initialiser la réduction à null
+                $productPrice = $product->getPrice(); // Récupérer le prix du produit
+
+                // Ajouter les détails du produit au panier
+                $panierDetails[] = [
+                    'images' => $product->getImages(),
+                    'name' => $product->getName(),
+                    'price' => $productPrice,
                     'quantity' => $panier->getQuantity(),
-                    'subtotal' => $promo->getPriceafterpromo() * $panier->getQuantity(), // Calculer le sous-total avec le prix après promo
+                    'subtotal' => $productPrice * $panier->getQuantity(),
+                    'reduction' => $reduction, // La réduction est nulle pour les produits
                 ];
 
-                // Ajouter les détails de la promotion au tableau des détails du panier
-                $panierDetails[] = $promoDetails;
+                // Ajout du sous-total au prix total
+                $totalPrice += $panierDetails[count($panierDetails) - 1]['subtotal'];
+            } elseif ($promo) { // Si une promotion est associée au panier
+                $reduction = $promo->getReduction(); // Récupérer la réduction
+                $productPrice = $promo->getPriceafterpromo(); // Utiliser le prix après la promotion
 
-                // Ajouter le prix de la promotion au prix total
-                $totalPrice += $promoDetails['subtotal'];
+                // Ajouter les détails de la promotion au panier
+                $panierDetails[] = [
+                    'images' => $promo->getIdproduct()->getImages(), // Utiliser les images du produit associé à la promotion
+                    'name' => $promo->getIdproduct()->getName(), // Utiliser le nom du produit associé à la promotion
+                    'price' => $productPrice,
+                    'quantity' => $panier->getQuantity(),
+                    'subtotal' => $productPrice * $panier->getQuantity(),
+                    'reduction' => $reduction,
+                ];
+
+                // Ajout du sous-total au prix total
+                $totalPrice += $panierDetails[count($panierDetails) - 1]['subtotal'];
             }
         }
 
+        // Affichage du template avec les détails du panier
         return $this->render('user/uservue/indexpanier.html.twig', [
-            'category' => $category,
-            'promoDetails' => $promoDetails,
             'panierDetails' => $panierDetails,
             'totalPrice' => $totalPrice,
             'user_id' => $userId,
             'form' => $form->createView(),
         ]);
     }
+
 
     #Chercher un article
     #[Route('/search/user', name: 'search_user')]
@@ -327,7 +324,6 @@ class UservueController extends AbstractController
             // Récupération des données du formulaire
             $category = $form->getData()['category'];
 
-            // Redirection vers la page de catégorie avec le paramètre de catégorie
             return new RedirectResponse($this->generateUrl('user_category_products', ['category' => $category]));
         }
         // Récupérer le terme de recherche depuis la requête
@@ -386,7 +382,6 @@ class UservueController extends AbstractController
         // Construire l'URL de redirection vers la page de la carte de fidélité
         $redirectUrl = $this->generateUrl('user_loyalty_card_page', ['id' => $id]);
 
-        // Créer une réponse de redirection
         return new RedirectResponse($redirectUrl);
     }
 
@@ -401,7 +396,6 @@ class UservueController extends AbstractController
             // Récupération des données du formulaire
             $category = $form->getData()['category'];
 
-            // Redirection vers la page de catégorie avec le paramètre de catégorie
             return new RedirectResponse($this->generateUrl('user_category_products', ['category' => $category]));
         }
         $user = $this->getUser();
@@ -453,7 +447,6 @@ class UservueController extends AbstractController
             // Récupération des données du formulaire
             $category = $form->getData()['category'];
 
-            // Redirection vers la page de catégorie avec le paramètre de catégorie
             return new RedirectResponse($this->generateUrl('user_category_products', ['category' => $category]));
         }
         $user = $this->getUser();

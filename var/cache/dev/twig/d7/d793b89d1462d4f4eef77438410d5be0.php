@@ -236,40 +236,52 @@ class __TwigTemplate_ef781f65281f748ec82349c5b1698d8a extends Template
             echo "                        <p class=\"promo-description\">Réduction de: ";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getReduction", [], "method", false, false, false, 125), "html", null, true);
             echo " %</p>
-
                         <p class=\"promo-price\">Prix après promotion: ";
-            // line 127
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getPriceafterpromo", [], "method", false, false, false, 127), "html", null, true);
+            // line 126
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promo"], "getPriceafterpromo", [], "method", false, false, false, 126), "html", null, true);
             echo " €</p>
-
-                        <form action=\"";
-            // line 129
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_to_cart", ["id" => twig_get_attribute($this->env, $this->source, $context["promo"], "getId", [], "method", false, false, false, 129)]), "html", null, true);
-            echo "\" method=\"post\">
-                            <div class=\"form-group\">
-                                <label for=\"quantity\">Quantité :</label>
-                                <select name=\"quantity\" id=\"quantity\" class=\"form-control custom-select\">
-                                    ";
-            // line 133
-            $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(range(1, twig_get_attribute($this->env, $this->source, $context["promo"], "getQuantity", [], "method", false, false, false, 133)));
-            foreach ($context['_seq'] as $context["_key"] => $context["qty"]) {
-                // line 134
-                echo "                                        <option value=\"";
-                echo twig_escape_filter($this->env, $context["qty"], "html", null, true);
-                echo "\">";
-                echo twig_escape_filter($this->env, $context["qty"], "html", null, true);
-                echo "</option>
-                                    ";
+                        
+                        ";
+            // line 128
+            if ((twig_get_attribute($this->env, $this->source, $context["promo"], "getQuantity", [], "method", false, false, false, 128) > 0)) {
+                // line 129
+                echo "                            <form action=\"";
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_to_cart", ["id" => twig_get_attribute($this->env, $this->source, $context["promo"], "getId", [], "method", false, false, false, 129)]), "html", null, true);
+                echo "\" method=\"post\">
+                                <div class=\"form-group\">
+                                    <label for=\"quantity\">Quantité :</label>
+                                    <select name=\"quantity\" id=\"quantity\" class=\"form-control custom-select\">
+                                        ";
+                // line 133
+                $context['_parent'] = $context;
+                $context['_seq'] = twig_ensure_traversable(range(1, twig_get_attribute($this->env, $this->source, $context["promo"], "getQuantity", [], "method", false, false, false, 133)));
+                foreach ($context['_seq'] as $context["_key"] => $context["qty"]) {
+                    // line 134
+                    echo "                                            <option value=\"";
+                    echo twig_escape_filter($this->env, $context["qty"], "html", null, true);
+                    echo "\">";
+                    echo twig_escape_filter($this->env, $context["qty"], "html", null, true);
+                    echo "</option>
+                                        ";
+                }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['qty'], $context['_parent'], $context['loop']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 136
+                echo "                                    </select>
+                                </div>
+                                <button type=\"submit\" class=\"btn btn-primary\">Ajouter au panier</button>
+                            </form>
+                        ";
+            } else {
+                // line 141
+                echo "                            <p>Rupture de stock</p>
+                        ";
             }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['qty'], $context['_parent'], $context['loop']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 136
-            echo "                                </select>
-                            </div>
-                            <button type=\"submit\" class=\"btn btn-primary\">Ajouter au panier</button>
-                        </form>
+            // line 143
+            echo "                        <a href=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("details_promotion", ["id" => twig_get_attribute($this->env, $this->source, $context["promo"], "id", [], "any", false, false, false, 143)]), "html", null, true);
+            echo "\" class=\"btn btn-details\">Voir les détails</a>
                     </div>
                 </div>
             </div>
@@ -278,68 +290,84 @@ class __TwigTemplate_ef781f65281f748ec82349c5b1698d8a extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['promo'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 144
-        echo "        ";
+        // line 148
+        echo "
+        ";
+        // line 149
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 144, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 149, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
-            // line 145
+            // line 150
             echo "        <div class=\"col-md-4\">
             <div class=\"product-card\">
                 <img src=\"";
-            // line 147
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["product"], "images", [], "any", false, false, false, 147))), "html", null, true);
+            // line 152
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["product"], "images", [], "any", false, false, false, 152))), "html", null, true);
             echo "\" class=\"card-img-top product-image\" alt=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 147), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 152), "html", null, true);
             echo "\">
                 <div class=\"product-details\">
                     <h5 class=\"card-title\">";
-            // line 149
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 149), "html", null, true);
+            // line 154
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 154), "html", null, true);
             echo "</h5>
                     <p class=\"card-text\">";
-            // line 150
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "description", [], "any", false, false, false, 150), "html", null, true);
+            // line 155
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "description", [], "any", false, false, false, 155), "html", null, true);
             echo "</p>
                     <p class=\"card-text\"><strong>Prix :</strong> ";
-            // line 151
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "price", [], "any", false, false, false, 151), "html", null, true);
+            // line 156
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "price", [], "any", false, false, false, 156), "html", null, true);
             echo " €</p>
                     <p class=\"card-text\"><strong>Quantité disponible :</strong> ";
-            // line 152
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "quantity", [], "any", false, false, false, 152), "html", null, true);
+            // line 157
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "quantity", [], "any", false, false, false, 157), "html", null, true);
             echo "</p>
                 </div>
                 <div class=\"product-footer\">
-                    <form action=\"";
-            // line 155
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_to_cart", ["id" => twig_get_attribute($this->env, $this->source, $context["product"], "id", [], "any", false, false, false, 155)]), "html", null, true);
-            echo "\" method=\"post\">
-                        <div class=\"form-group\">
-                            <label for=\"quantity\">Quantité :</label>
-                            <select name=\"quantity\" id=\"quantity\" class=\"form-control custom-select\">
-                                ";
-            // line 159
-            $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(range(0, twig_get_attribute($this->env, $this->source, $context["product"], "quantity", [], "any", false, false, false, 159)));
-            foreach ($context['_seq'] as $context["_key"] => $context["qty"]) {
-                // line 160
-                echo "                                <option value=\"";
-                echo twig_escape_filter($this->env, $context["qty"], "html", null, true);
-                echo "\">";
-                echo twig_escape_filter($this->env, $context["qty"], "html", null, true);
-                echo "</option>
-                                ";
+                    ";
+            // line 160
+            if ((twig_get_attribute($this->env, $this->source, $context["product"], "quantity", [], "any", false, false, false, 160) > 0)) {
+                // line 161
+                echo "                        <form action=\"";
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_to_cart", ["id" => twig_get_attribute($this->env, $this->source, $context["product"], "id", [], "any", false, false, false, 161)]), "html", null, true);
+                echo "\" method=\"post\">
+                            <div class=\"form-group\">
+                                <label for=\"quantity\">Quantité :</label>
+                                <select name=\"quantity\" id=\"quantity\" class=\"form-control custom-select\">
+                                    ";
+                // line 165
+                $context['_parent'] = $context;
+                $context['_seq'] = twig_ensure_traversable(range(0, twig_get_attribute($this->env, $this->source, $context["product"], "quantity", [], "any", false, false, false, 165)));
+                foreach ($context['_seq'] as $context["_key"] => $context["qty"]) {
+                    // line 166
+                    echo "                                        <option value=\"";
+                    echo twig_escape_filter($this->env, $context["qty"], "html", null, true);
+                    echo "\">";
+                    echo twig_escape_filter($this->env, $context["qty"], "html", null, true);
+                    echo "</option>
+                                    ";
+                }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['qty'], $context['_parent'], $context['loop']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 168
+                echo "                                </select>
+                            </div>
+                            <button type=\"submit\" class=\"btn btn-primary\">Ajouter au panier</button>
+                        </form>
+                    ";
+            } else {
+                // line 173
+                echo "                        <p>Rupture de stock</p>
+                    ";
             }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['qty'], $context['_parent'], $context['loop']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 162
-            echo "                            </select>
-                        </div>
-                        <button type=\"submit\" class=\"btn btn-primary\">Ajouter au panier</button>
-                    </form>
-                </div>
+            // line 175
+            echo "                </div>
+            <a href=\"";
+            // line 176
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("details_produit_user", ["id" => twig_get_attribute($this->env, $this->source, $context["product"], "id", [], "any", false, false, false, 176)]), "html", null, true);
+            echo "\" class=\"btn btn-details\">Voir les détails</a>
             </div>
         </div>
         ";
@@ -347,7 +375,7 @@ class __TwigTemplate_ef781f65281f748ec82349c5b1698d8a extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 170
+        // line 180
         echo "    </div>
 </div>
 ";
@@ -377,7 +405,7 @@ class __TwigTemplate_ef781f65281f748ec82349c5b1698d8a extends Template
      */
     public function getDebugInfo()
     {
-        return array (  351 => 170,  338 => 162,  327 => 160,  323 => 159,  316 => 155,  310 => 152,  306 => 151,  302 => 150,  298 => 149,  291 => 147,  287 => 145,  282 => 144,  269 => 136,  258 => 134,  254 => 133,  247 => 129,  242 => 127,  236 => 125,  231 => 123,  227 => 121,  221 => 119,  218 => 118,  215 => 117,  212 => 116,  208 => 114,  204 => 113,  200 => 112,  196 => 111,  191 => 109,  186 => 106,  182 => 105,  175 => 101,  166 => 97,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  379 => 180,  369 => 176,  366 => 175,  362 => 173,  355 => 168,  344 => 166,  340 => 165,  332 => 161,  330 => 160,  324 => 157,  320 => 156,  316 => 155,  312 => 154,  305 => 152,  301 => 150,  297 => 149,  294 => 148,  282 => 143,  278 => 141,  271 => 136,  260 => 134,  256 => 133,  248 => 129,  246 => 128,  241 => 126,  236 => 125,  231 => 123,  227 => 121,  221 => 119,  218 => 118,  215 => 117,  212 => 116,  208 => 114,  204 => 113,  200 => 112,  196 => 111,  191 => 109,  186 => 106,  182 => 105,  175 => 101,  166 => 97,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -507,24 +535,29 @@ class __TwigTemplate_ef781f65281f748ec82349c5b1698d8a extends Template
                         <p class=\"promo-description\">Quantité disponible: {{ promo.getQuantity() }}</p>
                         {# Calcul du prix après promotion #}
                         <p class=\"promo-description\">Réduction de: {{ promo.getReduction() }} %</p>
-
                         <p class=\"promo-price\">Prix après promotion: {{ promo.getPriceafterpromo() }} €</p>
-
-                        <form action=\"{{ path('add_to_cart', {'id': promo.getId()}) }}\" method=\"post\">
-                            <div class=\"form-group\">
-                                <label for=\"quantity\">Quantité :</label>
-                                <select name=\"quantity\" id=\"quantity\" class=\"form-control custom-select\">
-                                    {% for qty in 1..promo.getQuantity() %}
-                                        <option value=\"{{ qty }}\">{{ qty }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <button type=\"submit\" class=\"btn btn-primary\">Ajouter au panier</button>
-                        </form>
+                        
+                        {% if promo.getQuantity() > 0 %}
+                            <form action=\"{{ path('add_to_cart', {'id': promo.getId()}) }}\" method=\"post\">
+                                <div class=\"form-group\">
+                                    <label for=\"quantity\">Quantité :</label>
+                                    <select name=\"quantity\" id=\"quantity\" class=\"form-control custom-select\">
+                                        {% for qty in 1..promo.getQuantity() %}
+                                            <option value=\"{{ qty }}\">{{ qty }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <button type=\"submit\" class=\"btn btn-primary\">Ajouter au panier</button>
+                            </form>
+                        {% else %}
+                            <p>Rupture de stock</p>
+                        {% endif %}
+                        <a href=\"{{ path('details_promotion', {'id': promo.id}) }}\" class=\"btn btn-details\">Voir les détails</a>
                     </div>
                 </div>
             </div>
         {% endfor %}
+
         {% for product in products %}
         <div class=\"col-md-4\">
             <div class=\"product-card\">
@@ -536,24 +569,29 @@ class __TwigTemplate_ef781f65281f748ec82349c5b1698d8a extends Template
                     <p class=\"card-text\"><strong>Quantité disponible :</strong> {{ product.quantity }}</p>
                 </div>
                 <div class=\"product-footer\">
-                    <form action=\"{{ path('add_to_cart', {'id': product.id}) }}\" method=\"post\">
-                        <div class=\"form-group\">
-                            <label for=\"quantity\">Quantité :</label>
-                            <select name=\"quantity\" id=\"quantity\" class=\"form-control custom-select\">
-                                {% for qty in 0..product.quantity %}
-                                <option value=\"{{ qty }}\">{{ qty }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <button type=\"submit\" class=\"btn btn-primary\">Ajouter au panier</button>
-                    </form>
+                    {% if product.quantity > 0 %}
+                        <form action=\"{{ path('add_to_cart', {'id': product.id}) }}\" method=\"post\">
+                            <div class=\"form-group\">
+                                <label for=\"quantity\">Quantité :</label>
+                                <select name=\"quantity\" id=\"quantity\" class=\"form-control custom-select\">
+                                    {% for qty in 0..product.quantity %}
+                                        <option value=\"{{ qty }}\">{{ qty }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <button type=\"submit\" class=\"btn btn-primary\">Ajouter au panier</button>
+                        </form>
+                    {% else %}
+                        <p>Rupture de stock</p>
+                    {% endif %}
                 </div>
+            <a href=\"{{ path('details_produit_user', {'id': product.id}) }}\" class=\"btn btn-details\">Voir les détails</a>
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
 {% endblock %}
-", "user/uservue/index.html.twig", "C:\\Users\\lidav\\OneDrive\\Bureau\\vitalitymark\\templates\\user\\uservue\\index.html.twig");
+", "user/uservue/index.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\user\\uservue\\index.html.twig");
     }
 }

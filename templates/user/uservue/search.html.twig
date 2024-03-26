@@ -3,155 +3,81 @@
 {% block title %}Résultats de la recherche{% endblock %}
 
 {% block body %}
-<style>
-.product-card {
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    background-color: #DBFFCA;
-    border: 1px solid #ccc;
-    box-shadow: 10px 10px 4px #7cdf7c;
-    transition: transform 0.3s ease-in-out; /* Transition de l'effet */
-}
 
-.product-card:hover {
-    transform: translateY(-10px); /* Déplacement vers le haut */
-}
-
-.product-card img {
-    position: relative; /* Position relative pour positionner l'élément de superposition */
-    width: 100%;
-    max-height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.product-card img::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 128, 0, 0.5); /* Couleur de fond semi-transparente */
-    border-radius: 10px; /* Coins arrondis */
-    opacity: 0; /* Opacité initiale */
-    transition: opacity 0.3s ease-in-out; /* Transition de l'opacité */
-}
-
-.product-card:hover img::after {
-    opacity: 1; /* Opacité lorsque survolé */
-}
-
-.product-card-details {
-    margin-top: 10px;
-}
-
-.product-card-title {
-    font-weight: bold;
-}
-
-.product-card-price {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.product-card-category {
-    color: #6c757d;
-}
-
-.promo-card {
-    background-color: #f08080; /* Couleur de fond */
-    border: 1px 10px solid #fa8072; /* Bordure */
-    border-radius: 10px; /* Coins arrondis */
-    padding: 20px; /* Espacement intérieur */
-    margin-bottom: 20px; /* Marge en bas */
-    box-shadow: 5px 5px 5px #888888; /* Ombre */
-    transition: transform 0.3s ease-in-out; /* Transition de l'effet */
-}
-
-.promo-card:hover {
-    transform: translateY(-5px); /* Déplacement vers le haut */
-}
-
-.promo-card img {
-    width: 100%; /* Largeur de l'image */
-    max-height: 200px; /* Hauteur maximale de l'image */
-    object-fit: cover; /* Redimensionner l'image pour couvrir la zone */
-    border-radius: 10px; /* Coins arrondis */
-}
-
-.promo-card-details {
-    margin-top: 10px; /* Marge en haut */
-}
-
-.promo-card-title {
-    font-weight: bold; /* Gras */
-}
-
-.promo-card-description {
-    color: #555; /* Couleur du texte de la description */
-}
-
-.promo-card-price {
-    color: #333; /* Couleur du texte du prix */
-    font-weight: bold; /* Gras */
-}
-
-.btn-details {
-    background-color: #fff; /* Couleur de fond */
-    color: #000; /* Couleur du texte */
-    border: none; /* Suppression de la bordure */
-    border-radius: 5px; /* Coins arrondis */
-    padding: 8px 16px; /* Espacement interne */
-    font-size: 14px; /* Taille de la police */
-}
-
-.btn-details:hover {
-    background-color: #000; /* Couleur de fond au survol */
-    color:#fff;
-}
-</style>
 
 <div class="container">
     <br>
     <h1>Résultats de la recherche</h1>
     <br>
+    {% if promos is not empty %}
+    <h2>Promotions</h2>
+    <div class="row">
+        {% for promo in promos %}
+            <div class="col-md-4">
+                <div class="promo-card">
+                    <!-- Afficher les détails de la promotion -->
+                    <img src="{{ asset('images/' ~ promo.getImages()) }}" class="promo-image">
+                    <div class="promo-details">
+                        <h5 class="promo-title">{{ promo.getName() }}</h5>
+                        <p class="promo-description">{{ promo.getDescription() }}</p>
+                        <p class="promo-date">Date de début: {{ promo.getDateDebut()|date('d/m/Y') }}</p>
+                        <p class="promo-date">Date de fin: {{ promo.getDateFin()|date('d/m/Y') }}</p>
+                        {# Calcul du nombre de jours restants #}
+                        {% set now = 'now'|date('Y-m-d') %}
+                        {% set remainingDays = (promo.getDateFin()|date('U') - now|date('U')) / (24 * 3600) %}
+                        {% if remainingDays > 0 %}
+                            <p class="promo-description">Nombre de jours restants: {{ remainingDays|round(0, 'floor') }}</p>
+                        {% else %}
+                            <p class="promo-description">Offre expirée</p>
+                        {% endif %}
+                        <p class="promo-description">Quantité disponible: {{ promo.getQuantity() }}</p>
+                        {# Calcul du prix après promotion #}
+                        <p class="promo-description">Réduction de: {{ promo.getReduction() }} %</p>
 
+                        <p class="promo-price">Prix après promotion: {{ promo.getPriceafterpromo() }} €</p>
+
+                        <form action="{{ path('add_to_cart', {'id': promo.getId()}) }}" method="post">
+                            <div class="form-group">
+                                <label for="quantity">Quantité :</label>
+                                <select name="quantity" id="quantity" class="form-control custom-select">
+                                    {% for qty in 0..promo.getQuantity() %}
+                                        <option value="{{ qty }}">{{ qty }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
     {% if products is not empty %}
     <h2>Produits</h2>
     <div class="row">
         {% for product in products %}
         <div class="col-md-4">
             <div class="product-card">
-                <img src="{{ asset('images/' ~ product.images) }}" class="product-card-img-top" alt="{{ product.name }}">
-                <div class="product-card-details">
-                    <h3 class="product-card-title">{{ product.name }}</h3>
-                    <p class="product-card-text">{{ product.description }}</p>
-                    <p class="product-card-price">{{ product.price }} €</p>
-                    <p class="product-card-category">Catégorie: {{ product.category }}</p>
-                    <a href="{{ path('details_produit', {'id': product.id}) }}" class="btn btn-details">Voir les détails</a>
+                <img src="{{ asset('images/' ~ product.images) }}" class="card-img-top product-image" alt="{{ product.name }}">
+                <div class="product-details">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    <p class="card-text"><strong>Prix :</strong> {{ product.price }} €</p>
+                    <p class="card-text"><strong>Quantité disponible :</strong> {{ product.quantity }}</p>
                 </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-    {% endif %}
-
-    {% if promos is not empty %}
-    <h2>Promotions</h2>
-    <div class="row">
-        {% for promo in promos %}
-        <div class="col-md-4">
-            <div class="promo-card">
-                <img src="{{ asset('images/' ~ promo.getImages()) }}" class="promo-card-img-top" alt="{{ promo.getName() }}">
-                <div class="promo-card-details">
-                    <h3 class="promo-card-title">{{ promo.getName() }}</h3>
-                    <p class="promo-card-description">{{ promo.getDescription() }}</p>
-                    <p class="promo-card-price">{{ promo.getPriceafterpromo() }} €</p>
-                    <a href="{{ path('details_promotion', {'id': promo.id}) }}" class="btn btn-details">Voir les détails</a>
+                <div class="product-footer">
+                    <form action="{{ path('add_to_cart', {'id': product.id}) }}" method="post">
+                        <div class="form-group">
+                            <label for="quantity">Quantité :</label>
+                            <select name="quantity" id="quantity" class="form-control custom-select">
+                                {% for qty in 0..product.quantity %}
+                                <option value="{{ qty }}">{{ qty }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+                    </form>
                 </div>
             </div>
         </div>

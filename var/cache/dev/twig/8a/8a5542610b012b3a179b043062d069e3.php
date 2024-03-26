@@ -72,7 +72,6 @@ class __TwigTemplate_748b28bc49f55d9cde3742c3f16c468f extends Template
 
         // line 6
         echo "    <style>
-/* Styles pour les cards */
 .nature-card {
     background-color: #e5f4e7;
     border: 2px solid #8fc580;
@@ -111,94 +110,94 @@ class __TwigTemplate_748b28bc49f55d9cde3742c3f16c468f extends Template
 
     }
 
-    // line 42
+    // line 41
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 43
+        // line 42
         echo "    <br><br>
     <div class=\"container nature\">
         <div class=\"row\">
             ";
-        // line 46
+        // line 45
         if (array_key_exists("product", $context)) {
-            // line 47
+            // line 46
             echo "                <div class=\"col-md-6\">
                     <div class=\"border p-3 nature-card\">
                         <img src=\"";
-            // line 49
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 49, $this->source); })()), "images", [], "any", false, false, false, 49))), "html", null, true);
+            // line 48
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 48, $this->source); })()), "images", [], "any", false, false, false, 48))), "html", null, true);
             echo "\" class=\"img-fluid product-image image-transition\" alt=\"Image du produit\">
                     </div>
                 </div>
                 <div class=\"col-md-6\">
                     <div class=\"product-details nature-card\">
                         <h2 class=\"card-title\">";
-            // line 54
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 54, $this->source); })()), "name", [], "any", false, false, false, 54), "html", null, true);
+            // line 53
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 53, $this->source); })()), "name", [], "any", false, false, false, 53), "html", null, true);
             echo "</h2>
                         <p>Prix: ";
-            // line 55
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 55, $this->source); })()), "price", [], "any", false, false, false, 55), "html", null, true);
+            // line 54
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 54, $this->source); })()), "price", [], "any", false, false, false, 54), "html", null, true);
             echo " €</p>
                         <p>Quantité disponible: ";
-            // line 56
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 56, $this->source); })()), "quantity", [], "any", false, false, false, 56), "html", null, true);
+            // line 55
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 55, $this->source); })()), "quantity", [], "any", false, false, false, 55), "html", null, true);
             echo "</p>
                         <p>Description:</p>
                         <p>";
-            // line 58
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 58, $this->source); })()), "description", [], "any", false, false, false, 58), "html", null, true);
+            // line 57
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 57, $this->source); })()), "description", [], "any", false, false, false, 57), "html", null, true);
             echo "</p>
                     </div>
                 </div>
             ";
-        } elseif (        // line 61
+        } elseif (        // line 60
 array_key_exists("promo", $context)) {
-            // line 62
+            // line 61
             echo "                <div class=\"col-md-6\">
                     <div class=\"border p-3 nature-card\">
                         <img src=\"";
-            // line 64
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 64, $this->source); })()), "idproduct", [], "any", false, false, false, 64), "images", [], "any", false, false, false, 64))), "html", null, true);
+            // line 63
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 63, $this->source); })()), "idproduct", [], "any", false, false, false, 63), "images", [], "any", false, false, false, 63))), "html", null, true);
             echo "\" class=\"img-fluid promo-image image-transition\" alt=\"Image de la promotion\">
                     </div>
                 </div>
                 <div class=\"col-md-6\">
                     <div class=\"promo-details nature-card\">
                         <h2 class=\"card-title\">";
-            // line 69
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 69, $this->source); })()), "name", [], "any", false, false, false, 69), "html", null, true);
+            // line 68
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 68, $this->source); })()), "name", [], "any", false, false, false, 68), "html", null, true);
             echo "</h2>
                         <p>Réduction: ";
-            // line 70
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 70, $this->source); })()), "reduction", [], "any", false, false, false, 70), "html", null, true);
+            // line 69
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 69, $this->source); })()), "reduction", [], "any", false, false, false, 69), "html", null, true);
             echo "%</p>
                         <p>Date de début: ";
-            // line 71
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 71, $this->source); })()), "dateDebut", [], "any", false, false, false, 71), "d/m/Y"), "html", null, true);
+            // line 70
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 70, $this->source); })()), "dateDebut", [], "any", false, false, false, 70), "d/m/Y"), "html", null, true);
             echo "</p>
                         <p>Date de fin: ";
-            // line 72
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 72, $this->source); })()), "dateFin", [], "any", false, false, false, 72), "d/m/Y"), "html", null, true);
+            // line 71
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 71, $this->source); })()), "dateFin", [], "any", false, false, false, 71), "d/m/Y"), "html", null, true);
             echo "</p>
                         <p>Prix après promotion: ";
-            // line 73
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 73, $this->source); })()), "priceafterpromo", [], "any", false, false, false, 73), "html", null, true);
+            // line 72
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 72, $this->source); })()), "priceafterpromo", [], "any", false, false, false, 72), "html", null, true);
             echo " €</p>
                         <p>Description:</p>
                         <p>";
-            // line 75
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 75, $this->source); })()), "description", [], "any", false, false, false, 75), "html", null, true);
+            // line 74
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["promo"]) || array_key_exists("promo", $context) ? $context["promo"] : (function () { throw new RuntimeError('Variable "promo" does not exist.', 74, $this->source); })()), "description", [], "any", false, false, false, 74), "html", null, true);
             echo "</p>
                     </div>
                 </div>
             ";
         }
-        // line 79
+        // line 78
         echo "            <a href=\"/\" class=\"btn btn-details\">< Retour</a>
         </div>
     </div>
@@ -236,7 +235,7 @@ array_key_exists("promo", $context)) {
      */
     public function getDebugInfo()
     {
-        return array (  202 => 79,  195 => 75,  190 => 73,  186 => 72,  182 => 71,  178 => 70,  174 => 69,  166 => 64,  162 => 62,  160 => 61,  154 => 58,  149 => 56,  145 => 55,  141 => 54,  133 => 49,  129 => 47,  127 => 46,  122 => 43,  115 => 42,  74 => 6,  67 => 5,  54 => 3,  37 => 1,);
+        return array (  201 => 78,  194 => 74,  189 => 72,  185 => 71,  181 => 70,  177 => 69,  173 => 68,  165 => 63,  161 => 61,  159 => 60,  153 => 57,  148 => 55,  144 => 54,  140 => 53,  132 => 48,  128 => 46,  126 => 45,  121 => 42,  114 => 41,  74 => 6,  67 => 5,  54 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -247,7 +246,6 @@ array_key_exists("promo", $context)) {
 
 {% block stylesheets %}
     <style>
-/* Styles pour les cards */
 .nature-card {
     background-color: #e5f4e7;
     border: 2px solid #8fc580;
@@ -330,6 +328,6 @@ array_key_exists("promo", $context)) {
         });
     </script>
 {% endblock %}
-", "accueil/indexproduit.html.twig", "C:\\Users\\lidav\\OneDrive\\Bureau\\vitalitymark\\templates\\accueil\\indexproduit.html.twig");
+", "accueil/indexproduit.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\accueil\\indexproduit.html.twig");
     }
 }

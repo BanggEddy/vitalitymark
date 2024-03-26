@@ -82,6 +82,6 @@ class __TwigTemplate_e32f69c8dc454db4caaa349ad820bbd7 extends Template
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ coupon.id) }}\">
     <button class=\"btn\">Delete</button>
 </form>
-", "admin/coupon/_delete_form.html.twig", "C:\\Users\\lidav\\OneDrive\\Bureau\\vitalitymark\\templates\\admin\\coupon\\_delete_form.html.twig");
+", "admin/coupon/_delete_form.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\admin\\coupon\\_delete_form.html.twig");
     }
 }

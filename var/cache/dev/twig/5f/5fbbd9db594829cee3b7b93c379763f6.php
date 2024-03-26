@@ -286,6 +286,6 @@ class __TwigTemplate_bf74e39579bd64fb38e6f689b8f1cfd1 extends Template
     <br>
 </div>
 {% endblock %}
-", "admin/adminproducts/formedit.html.twig", "C:\\Users\\lidav\\OneDrive\\Bureau\\vitalitymark\\templates\\admin\\adminproducts\\formedit.html.twig");
+", "admin/adminproducts/formedit.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\admin\\adminproducts\\formedit.html.twig");
     }
 }

@@ -153,7 +153,7 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
         echo "<br>
 <br>
 
-<section2 class=\"justify-content-around\">
+<section2 class=\"row justify-content-around\">
     <div class=\"col-md-3\">
         <div class=\"card\">
             <div class=\"card-body\">
@@ -349,7 +349,7 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
 <br>
 <br>
 
-<section2 class=\"justify-content-around\">
+<section2 class=\"row justify-content-around\">
     <div class=\"col-md-3\">
         <div class=\"card\">
             <div class=\"card-body\">
@@ -392,6 +392,6 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
     <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>
 </body>
 </html>
-", "headeradmin.html.twig", "C:\\Users\\lidav\\OneDrive\\Bureau\\vitalitymark\\templates\\headeradmin.html.twig");
+", "headeradmin.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\headeradmin.html.twig");
     }
 }

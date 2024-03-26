@@ -123,24 +123,29 @@
                         <p class="promo-description">Quantité disponible: {{ promo.getQuantity() }}</p>
                         {# Calcul du prix après promotion #}
                         <p class="promo-description">Réduction de: {{ promo.getReduction() }} %</p>
-
                         <p class="promo-price">Prix après promotion: {{ promo.getPriceafterpromo() }} €</p>
-
-                        <form action="{{ path('add_to_cart', {'id': promo.getId()}) }}" method="post">
-                            <div class="form-group">
-                                <label for="quantity">Quantité :</label>
-                                <select name="quantity" id="quantity" class="form-control custom-select">
-                                    {% for qty in 1..promo.getQuantity() %}
-                                        <option value="{{ qty }}">{{ qty }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Ajouter au panier</button>
-                        </form>
+                        
+                        {% if promo.getQuantity() > 0 %}
+                            <form action="{{ path('add_to_cart', {'id': promo.getId()}) }}" method="post">
+                                <div class="form-group">
+                                    <label for="quantity">Quantité :</label>
+                                    <select name="quantity" id="quantity" class="form-control custom-select">
+                                        {% for qty in 1..promo.getQuantity() %}
+                                            <option value="{{ qty }}">{{ qty }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+                            </form>
+                        {% else %}
+                            <p>Rupture de stock</p>
+                        {% endif %}
+                        <a href="{{ path('details_promotion', {'id': promo.id}) }}" class="btn btn-details">Voir les détails</a>
                     </div>
                 </div>
             </div>
         {% endfor %}
+
         {% for product in products %}
         <div class="col-md-4">
             <div class="product-card">
@@ -152,18 +157,23 @@
                     <p class="card-text"><strong>Quantité disponible :</strong> {{ product.quantity }}</p>
                 </div>
                 <div class="product-footer">
-                    <form action="{{ path('add_to_cart', {'id': product.id}) }}" method="post">
-                        <div class="form-group">
-                            <label for="quantity">Quantité :</label>
-                            <select name="quantity" id="quantity" class="form-control custom-select">
-                                {% for qty in 0..product.quantity %}
-                                <option value="{{ qty }}">{{ qty }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Ajouter au panier</button>
-                    </form>
+                    {% if product.quantity > 0 %}
+                        <form action="{{ path('add_to_cart', {'id': product.id}) }}" method="post">
+                            <div class="form-group">
+                                <label for="quantity">Quantité :</label>
+                                <select name="quantity" id="quantity" class="form-control custom-select">
+                                    {% for qty in 0..product.quantity %}
+                                        <option value="{{ qty }}">{{ qty }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+                        </form>
+                    {% else %}
+                        <p>Rupture de stock</p>
+                    {% endif %}
                 </div>
+            <a href="{{ path('details_produit_user', {'id': product.id}) }}" class="btn btn-details">Voir les détails</a>
             </div>
         </div>
         {% endfor %}

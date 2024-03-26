@@ -70,29 +70,13 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
             background-color: #DBFFCA;
             border-color: #DBFFCA;
         }
-        /* Ajout d'une transition pour la section2 */
-        section2 {
-            background-color: #DBFFCA;
-            padding: 20px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            transition: all 0.5s ease;
-        }
-        section2 .card {
-            transition: transform 0.3s ease;
-        }
-        section2 .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
     </style>
 <body>
     <header>
 <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
     <a href=\"/uservue\" style=\"text-decoration: none;\">
         <img src=\"";
-        // line 43
+        // line 27
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
         echo "\" alt=\"Logo\" style=\"width: 150px; height: auto; border-radius: 50%; border: 4px solid #4CAF50; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s;\">
     </a>
@@ -103,12 +87,12 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
         <ul class=\"navbar-nav\">
             <li class=\"nav-item\">
                 ";
-        // line 51
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 51, $this->source); })()), 'form_start', ["attr" => ["class" => "form-inline my-2 my-lg-0"]]);
+        // line 35
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 35, $this->source); })()), 'form_start', ["attr" => ["class" => "form-inline my-2 my-lg-0"]]);
         echo "
                 ";
-        // line 52
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 52, $this->source); })()), "category", [], "any", false, false, false, 52), 'row', ["attr" => ["class" => "form-control", "placeholder" => "Rechercher", "aria-label" => "Search"]]);
+        // line 36
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 36, $this->source); })()), "category", [], "any", false, false, false, 36), 'row', ["attr" => ["class" => "form-control", "placeholder" => "Rechercher", "aria-label" => "Search"]]);
         echo "
                 <button type=\"submit\" class=\"btn btn-outline-success my-2 my-sm-0\">
                     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">
@@ -116,19 +100,19 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                     </svg>
                 </button>
                 ";
-        // line 58
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 58, $this->source); })()), 'form_end');
+        // line 42
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 42, $this->source); })()), 'form_end');
         echo "
             </li>
             <li class=\"nav-item\">
                 <a class=\"nav-link\" href=\"";
-        // line 61
+        // line 45
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_panier");
         echo "\">Voir le panier</a>
             </li>
             <li class=\"nav-item\">
                 <a class=\"nav-link\" href=\"";
-        // line 64
+        // line 48
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_promo");
         echo "\"><span style=\"color:red;\">Promos</span></a>
             </li>
@@ -136,7 +120,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
         <ul class=\"navbar-nav ml-auto\">
             <li class=\"nav-item\">
                 <form action=\"";
-        // line 69
+        // line 53
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("search_user");
         echo "\" method=\"post\" class=\"form-inline my-2 my-lg-0 mr-auto\">
                     <input class=\"form-control\" type=\"text\" name=\"keyword\" placeholder=\"Rechercher un produit\" aria-label=\"Search\">
@@ -152,8 +136,8 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
             </li>
             <li class=\"nav-item\">
                 <a class=\"nav-link\" href=\"";
-        // line 82
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_loyalty_card", ["id" => (isset($context["user_id"]) || array_key_exists("user_id", $context) ? $context["user_id"] : (function () { throw new RuntimeError('Variable "user_id" does not exist.', 82, $this->source); })())]), "html", null, true);
+        // line 66
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_loyalty_card", ["id" => (isset($context["user_id"]) || array_key_exists("user_id", $context) ? $context["user_id"] : (function () { throw new RuntimeError('Variable "user_id" does not exist.', 66, $this->source); })())]), "html", null, true);
         echo "\">Ma carte de fidélité</a>
             </li>
             <li class=\"nav-item\">
@@ -168,8 +152,8 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
                         <path d=\"M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2\"/>
                     </svg>
                     <span class=\"text-danger\">";
-        // line 95
-        echo twig_escape_filter($this->env, (isset($context["totalPrice"]) || array_key_exists("totalPrice", $context) ? $context["totalPrice"] : (function () { throw new RuntimeError('Variable "totalPrice" does not exist.', 95, $this->source); })()), "html", null, true);
+        // line 79
+        echo twig_escape_filter($this->env, (isset($context["totalPrice"]) || array_key_exists("totalPrice", $context) ? $context["totalPrice"] : (function () { throw new RuntimeError('Variable "totalPrice" does not exist.', 79, $this->source); })()), "html", null, true);
         echo "€</span>
                 </a>                   
             </li>
@@ -186,9 +170,9 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
     </header>
 
             ";
-        // line 110
+        // line 94
         $this->displayBlock('body', $context, $blocks);
-        // line 112
+        // line 96
         echo "<br>
 <br>
 
@@ -226,6 +210,7 @@ class __TwigTemplate_5af85cd571fb2d59629b6141d1e64961 extends Template
         </div>
     </div>
 </section2>
+
     <!-- Inclure Bootstrap JS -->
     <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>
     <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js\"></script>
@@ -277,14 +262,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }
 
-    // line 110
+    // line 94
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 111
+        // line 95
         echo "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -312,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
      */
     public function getDebugInfo()
     {
-        return array (  288 => 111,  281 => 110,  269 => 10,  256 => 5,  192 => 112,  190 => 110,  172 => 95,  156 => 82,  140 => 69,  132 => 64,  126 => 61,  120 => 58,  111 => 52,  107 => 51,  96 => 43,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
+        return array (  273 => 95,  266 => 94,  254 => 10,  241 => 5,  176 => 96,  174 => 94,  156 => 79,  140 => 66,  124 => 53,  116 => 48,  110 => 45,  104 => 42,  95 => 36,  91 => 35,  80 => 27,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -337,22 +322,6 @@ document.addEventListener('DOMContentLoaded', function() {
             color: white;
             background-color: #DBFFCA;
             border-color: #DBFFCA;
-        }
-        /* Ajout d'une transition pour la section2 */
-        section2 {
-            background-color: #DBFFCA;
-            padding: 20px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            transition: all 0.5s ease;
-        }
-        section2 .card {
-            transition: transform 0.3s ease;
-        }
-        section2 .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
     </style>
 <body>
@@ -465,6 +434,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 </section2>
+
     <!-- Inclure Bootstrap JS -->
     <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>
     <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js\"></script>
@@ -485,6 +455,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 </body>
 </html>
-", "headeruser.html.twig", "C:\\Users\\lidav\\OneDrive\\Bureau\\vitalitymark\\templates\\headeruser.html.twig");
+", "headeruser.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\headeruser.html.twig");
     }
 }

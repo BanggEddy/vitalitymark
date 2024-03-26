@@ -153,42 +153,53 @@ class UservueController extends AbstractController
 
             // Vérifier si le produit existe
             if ($product === null && $promo === null) {
-                return new JsonResponse(['error' => 'Product not found.'], Response::HTTP_NOT_FOUND);
+                return new JsonResponse(['error' => 'Product or Promotion not found.'], Response::HTTP_NOT_FOUND);
             }
 
             // Vérifier si la quantité demandée est disponible
             if ($product && $product->getQuantity() < $quantity) {
-                return new JsonResponse(['error' => 'Not enough quantity available.'], Response::HTTP_BAD_REQUEST);
+                return new JsonResponse(['error' => 'Not enough quantity available for the product.'], Response::HTTP_BAD_REQUEST);
             }
 
             if ($promo && $promo->getQuantity() < $quantity) {
-                return new JsonResponse(['error' => 'Not enough quantity available in the promotion.'], Response::HTTP_BAD_REQUEST);
+                return new JsonResponse(['error' => 'Not enough quantity available for the promotion.'], Response::HTTP_BAD_REQUEST);
             }
 
-            $panier = new Panier();
-            $panier->setQuantity($quantity);
-
             if ($product) {
-                $panier->setIdproducts($product);
-                // Décrémenter la quantité disponible du produit normal
+                // Décrémenter la quantité disponible du produit
                 $product->setQuantity($product->getQuantity() - $quantity);
-            } elseif ($promo) {
-                $panier->setIdpromo($promo);
+            }
+
+            if ($promo) {
                 // Décrémenter la quantité disponible de la promotion
                 $promo->setQuantity($promo->getQuantity() - $quantity);
             }
 
-            $panier->setIduser($user);
+            // Vérifier si le produit ou la promotion est déjà dans le panier
+            $panierItem = $this->entityManager->getRepository(Panier::class)->findOneBy(['idproducts' => $product, 'idpromo' => $promo, 'iduser' => $user]);
+
+            if ($panierItem) {
+                // Si l'élément existe déjà dans le panier, mettre à jour la quantité
+                $panierItem->setQuantity($panierItem->getQuantity() + $quantity);
+            } else {
+                // Créer un nouvel élément de panier
+                $panierItem = new Panier();
+                $panierItem->setQuantity($quantity);
+                $panierItem->setIduser($user);
+
+                if ($product) {
+                    $panierItem->setIdproducts($product);
+                }
+                if ($promo) {
+                    $panierItem->setIdpromo($promo);
+                }
+
+                // Enregistrer le nouvel élément de panier dans la base de données
+                $this->entityManager->persist($panierItem);
+            }
 
             // Enregistrer les modifications dans la base de données
-            $this->entityManager->persist($panier);
-            if ($product) {
-                $this->entityManager->persist($product);
-            } elseif ($promo) {
-                $this->entityManager->persist($promo);
-            }
             $this->entityManager->flush();
-
             $this->entityManager->commit();
 
             // Rediriger vers la page '/uservue'
@@ -199,6 +210,7 @@ class UservueController extends AbstractController
             return new JsonResponse(['error' => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
 
     #Panier user
     #[Route('/user/panier', name: 'user_panier')]
@@ -297,6 +309,27 @@ class UservueController extends AbstractController
         PanierRepository $panierRepository,
         PromoRepository $promoRepository
     ) {
+        /** @var UserInterface|null $user */
+        $user = $this->getUser();
+
+        if (!$user) {
+            throw $this->createNotFoundException('User not found');
+        }
+        $userId = null;
+        if ($user instanceof User) {
+            $userId = $user->getId();
+        }
+
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('user_category_products', ['category' => $category]));
+        }
         // Récupérer le terme de recherche depuis la requête
         $keyword = $request->request->get('keyword');
 
@@ -342,7 +375,8 @@ class UservueController extends AbstractController
             'promos' => $promos,
             'keyword' => $keyword,
             'totalPrice' => $totalPrice,
-
+            'form' => $form->createView(),
+            'user_id' => $userId,
         ]);
     }
 
@@ -572,5 +606,39 @@ class UservueController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('app_contact_user');
+    }
+
+    /*Voir les détails */
+    #[Route('/details-produit/user/{id}', name: 'details_produit_user')]
+    public function detailsProduit($id, Request $request, PanierRepository $panierRepository,): Response
+    {
+        $user = $this->getUser();
+        $userId = null;
+
+        if ($user instanceof User) {
+            $userId = $user->getId();
+        }
+
+        $totalPrice = $this->totalPrice($user, $panierRepository);
+
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+        $category = null; // Initialiser $category à null
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            return new RedirectResponse($this->generateUrl('user_category_products', ['category' => $category]));
+        }
+
+        $product = $this->entityManager->getRepository(Products::class)->find($id);
+
+        return $this->render('user/uservue/details.html.twig', [
+            'product' => $product,
+            'user_id' => $userId,
+            'form' => $form->createView(),
+            'totalPrice' => $totalPrice,
+        ]);
     }
 }

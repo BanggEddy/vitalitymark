@@ -70,17 +70,26 @@ class __TwigTemplate_26eadd81e94abbd788a24126e07b75ab extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "    <h1>Create new Promo</h1>
-
-    ";
-        // line 8
+        echo "
+<div class=\"container mt-4\">
+  <div class=\"row justify-content-center\">
+    <div class=\"col-md-6\"> 
+      <div class=\"card nature-card\">
+        <div class=\"card-body\">
+          <h1 class=\"card-title mb-3\">Create new Promo</h1>
+          ";
+        // line 13
         echo twig_include($this->env, $context, "admin/promo_admin/_form.html.twig");
         echo "
-
-    <a href=\"";
-        // line 10
+          <a href=\"";
+        // line 14
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_promo_admin_index");
-        echo "\">back to list</a>
+        echo "\" class=\"btn btn-details\">back to list</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -108,7 +117,7 @@ class __TwigTemplate_26eadd81e94abbd788a24126e07b75ab extends Template
      */
     public function getDebugInfo()
     {
-        return array (  82 => 10,  77 => 8,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
+        return array (  86 => 14,  82 => 13,  73 => 6,  66 => 5,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -118,12 +127,21 @@ class __TwigTemplate_26eadd81e94abbd788a24126e07b75ab extends Template
 {% block title %}New Promo{% endblock %}
 
 {% block body %}
-    <h1>Create new Promo</h1>
 
-    {{ include('admin/promo_admin/_form.html.twig') }}
-
-    <a href=\"{{ path('app_promo_admin_index') }}\">back to list</a>
+<div class=\"container mt-4\">
+  <div class=\"row justify-content-center\">
+    <div class=\"col-md-6\"> 
+      <div class=\"card nature-card\">
+        <div class=\"card-body\">
+          <h1 class=\"card-title mb-3\">Create new Promo</h1>
+          {{ include('admin/promo_admin/_form.html.twig') }}
+          <a href=\"{{ path('app_promo_admin_index') }}\" class=\"btn btn-details\">back to list</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
-", "admin/promo_admin/new.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\admin\\promo_admin\\new.html.twig");
+", "admin/promo_admin/new.html.twig", "C:\\Users\\lidav\\OneDrive\\Bureau\\vitalitymark\\templates\\admin\\promo_admin\\new.html.twig");
     }
 }

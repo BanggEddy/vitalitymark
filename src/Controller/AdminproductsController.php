@@ -178,10 +178,22 @@ class AdminproductsController extends AbstractController
     }
 
     #[Route('/adminformedit/{id}', name: 'app_admin_form_edit')]
-    public function editProductForm(Products $product): Response
+    public function editProductForm(Products $product, Request $request): Response
     {
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération des données du formulaire
+            $category = $form->getData()['category'];
+
+            // Redirection vers la page de catégorie avec le paramètre de catégorie
+            return new RedirectResponse($this->generateUrl('admin_category_products', ['category' => $category]));
+        }
+
         return $this->render('admin/adminproducts/formedit.html.twig', [
             'product' => $product,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -203,7 +215,6 @@ class AdminproductsController extends AbstractController
                     $imageName
                 );
             } catch (FileException $e) {
-                // Gérer l'erreur, par exemple afficher un message à l'utilisateur
             }
             // Supprimer l'ancienne image s'il en existe une
             $oldImage = $product->getImages();
@@ -213,6 +224,7 @@ class AdminproductsController extends AbstractController
             // Mettre à jour le nom de la nouvelle image dans l'entité Products
             $product->setImages($imageName);
         }
+
 
         $product->setName($name);
         $product->setPrice($price);

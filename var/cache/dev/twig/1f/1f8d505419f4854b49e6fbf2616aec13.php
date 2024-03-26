@@ -124,6 +124,6 @@ class __TwigTemplate_77942cad6c59ec3b90c3612268da4394 extends Template
 
     <a href=\"{{ path('app_coupon_index') }}\">back to list</a>
 {% endblock %}
-", "admin/coupon/new.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\admin\\coupon\\new.html.twig");
+", "admin/coupon/new.html.twig", "C:\\Users\\lidav\\OneDrive\\Bureau\\vitalitymark\\templates\\admin\\coupon\\new.html.twig");
     }
 }

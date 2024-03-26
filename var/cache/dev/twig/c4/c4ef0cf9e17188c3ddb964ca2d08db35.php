@@ -60,23 +60,14 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
         $this->displayBlock('stylesheets', $context, $blocks);
         // line 11
         echo "</head>
-<style>
-  section2 {
-    background-color: #DBFFCA;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
 
-</style>
 <body>
 
     <header>
         <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
             <a href=\"/adminproducts\" style=\"text-decoration: none;\">
                 <img src=\"";
-        // line 27
+        // line 18
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
         echo "\" alt=\"Logo\" style=\"width: 150px; height: auto; border-radius: 50%; border: 4px solid #4CAF50; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s;\">
             </a>
@@ -86,17 +77,17 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
             <div class=\"collapse navbar-collapse\" id=\"navbarNav\">
                 <ul class=\"navbar-nav\">
                     ";
-        // line 34
-        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 34, $this->source); })()), "request", [], "any", false, false, false, 34), "attributes", [], "any", false, false, false, 34), "get", ["_route"], "method", false, false, false, 34) != "app_promo_admin_edit")) {
-            // line 35
+        // line 25
+        if (!twig_in_filter(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 25, $this->source); })()), "request", [], "any", false, false, false, 25), "attributes", [], "any", false, false, false, 25), "get", ["_route"], "method", false, false, false, 25), ["app_promo_admin_edit", "app_promo_admin_new"])) {
+            // line 26
             echo "                        <li class=\"nav-item\">
                             ";
-            // line 36
-            echo             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 36, $this->source); })()), 'form_start', ["attr" => ["class" => "form-inline my-2 my-lg-0"]]);
+            // line 27
+            echo             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 27, $this->source); })()), 'form_start', ["attr" => ["class" => "form-inline my-2 my-lg-0"]]);
             echo "
                             ";
-            // line 37
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 37, $this->source); })()), "category", [], "any", false, false, false, 37), 'row', ["attr" => ["class" => "form-control", "placeholder" => "Rechercher", "aria-label" => "Search"]]);
+            // line 28
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 28, $this->source); })()), "category", [], "any", false, false, false, 28), 'row', ["attr" => ["class" => "form-control", "placeholder" => "Rechercher", "aria-label" => "Search"]]);
             echo "
                             <button type=\"submit\" class=\"btn btn-outline-success my-2 my-sm-0\">
                                 <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">
@@ -104,13 +95,13 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
                                 </svg>
                             </button>
                             ";
-            // line 43
-            echo             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 43, $this->source); })()), 'form_end');
+            // line 34
+            echo             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 34, $this->source); })()), 'form_end');
             echo "
                         </li>
                     ";
         }
-        // line 46
+        // line 37
         echo "                    <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"/promo/admin/\"><span style=\"color:red;\">Promo</span></a>
                     </li>
@@ -129,7 +120,7 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
                 </ul>
                 <ul class=\"navbar-nav ml-auto\">
                     <form action=\"";
-        // line 63
+        // line 54
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("search_admin");
         echo "\" method=\"post\" class=\"form-inline my-2 my-lg-0 mr-auto\">
                         <input class=\"form-control\" type=\"text\" name=\"keyword\" placeholder=\"Rechercher un produit\" aria-label=\"Search\">
@@ -156,13 +147,13 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
     </header>
 
     ";
-        // line 87
+        // line 78
         $this->displayBlock('body', $context, $blocks);
-        // line 89
+        // line 80
         echo "<br>
 <br>
 
-<section2 class=\"row justify-content-around\">
+<section2 class=\"justify-content-around\">
     <div class=\"col-md-3\">
         <div class=\"card\">
             <div class=\"card-body\">
@@ -236,14 +227,14 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
 
     }
 
-    // line 87
+    // line 78
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 88
+        // line 79
         echo "    ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -271,7 +262,7 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  247 => 88,  240 => 87,  228 => 10,  215 => 5,  162 => 89,  160 => 87,  133 => 63,  114 => 46,  108 => 43,  99 => 37,  95 => 36,  92 => 35,  90 => 34,  80 => 27,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
+        return array (  238 => 79,  231 => 78,  219 => 10,  206 => 5,  153 => 80,  151 => 78,  124 => 54,  105 => 37,  99 => 34,  90 => 28,  86 => 27,  83 => 26,  81 => 25,  71 => 18,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -287,16 +278,7 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
     <link rel=\"stylesheet\" href=\"{{ asset('css/style.css') }}\">
     {% block stylesheets %}{% endblock %}
 </head>
-<style>
-  section2 {
-    background-color: #DBFFCA;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
 
-</style>
 <body>
 
     <header>
@@ -309,7 +291,7 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
             </button>
             <div class=\"collapse navbar-collapse\" id=\"navbarNav\">
                 <ul class=\"navbar-nav\">
-                    {% if app.request.attributes.get('_route') != 'app_promo_admin_edit' %}
+                    {% if app.request.attributes.get('_route') not in ['app_promo_admin_edit', 'app_promo_admin_new'] %}
                         <li class=\"nav-item\">
                             {{ form_start(form, {'attr': {'class': 'form-inline my-2 my-lg-0'}}) }}
                             {{ form_row(form.category, {'attr': {'class': 'form-control', 'placeholder': 'Rechercher', 'aria-label': 'Search'}}) }}
@@ -367,7 +349,7 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
 <br>
 <br>
 
-<section2 class=\"row justify-content-around\">
+<section2 class=\"justify-content-around\">
     <div class=\"col-md-3\">
         <div class=\"card\">
             <div class=\"card-body\">
@@ -410,6 +392,6 @@ class __TwigTemplate_d9e3e563c7d0e7b674d2cc4d039fd807 extends Template
     <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>
 </body>
 </html>
-", "headeradmin.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\headeradmin.html.twig");
+", "headeradmin.html.twig", "C:\\Users\\lidav\\OneDrive\\Bureau\\vitalitymark\\templates\\headeradmin.html.twig");
     }
 }

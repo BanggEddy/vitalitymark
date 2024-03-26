@@ -11,15 +11,26 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Form\CouponAllType;
+use App\Form\ProductSearchType;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 #[Route('/coupon')]
 class CouponController extends AbstractController
 {
     #[Route('/', name: 'app_coupon_index', methods: ['GET'])]
-    public function index(CouponRepository $couponRepository): Response
+    public function index(CouponRepository $couponRepository,Request $request): Response
     {
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $category = $form->getData()['category'];
+            return new RedirectResponse($this->generateUrl('admin_category_products', ['category' => $category]));
+        }
+
         return $this->render('admin/coupon/index.html.twig', [
             'coupons' => $couponRepository->findAll(),
+            'form' => $form->createView(),
         ]);
     }
 

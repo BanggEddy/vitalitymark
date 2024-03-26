@@ -2,73 +2,88 @@
 
 {% block title %}Détails du Produit ou de la Promotion{% endblock %}
 
+{% block stylesheets %}
+    <style>
+/* Styles pour les cards */
+.nature-card {
+    background-color: #e5f4e7;
+    border: 2px solid #8fc580;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.nature-card .card-body {
+    padding: 2rem;
+}
+
+.nature-card .card-title {
+    color: #4e7d4e;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.nature-card p {
+    margin-bottom: 10px;
+}
+
+/* Hover effect */
+.image-transition {
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-transition:hover {
+    transform: scale(1.05);
+}
+
+    </style>
+{% endblock %}
+
 {% block body %}
-<style>
-    .product-details, .promo-details {
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        background-color: #f9f9f9;
-        margin-bottom: 20px;
-        background-color:#fff;
-    }
-
-    .product-image, .promo-image {
-        width: 100%;
-        height: auto;
-        border-radius: 5px;
-    }
-
-    .promo-details h2, .product-details h2 {
-        margin-top: 0;
-    }
-</style>
-<br><br>
-<div class="container">
-    <div class="row">
-        {% if product is defined %}
-            <div class="col-md-6">
-                <div class="border p-3">
-                    <img src="{{ asset('images/' ~ product.images) }}" class="img-fluid product-image image-transition" alt="Image du produit">
+    <br><br>
+    <div class="container nature">
+        <div class="row">
+            {% if product is defined %}
+                <div class="col-md-6">
+                    <div class="border p-3 nature-card">
+                        <img src="{{ asset('images/' ~ product.images) }}" class="img-fluid product-image image-transition" alt="Image du produit">
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="product-details">
-                    <h2>{{ product.name }}</h2>
-                    <p>Prix: {{ product.price }} €</p>
-                    <p>Quantité disponible: {{ product.quantity }}</p>
-                    <p>Description:</p>
-                    <p>{{ product.description }}</p>
+                <div class="col-md-6">
+                    <div class="product-details nature-card">
+                        <h2 class="card-title">{{ product.name }}</h2>
+                        <p>Prix: {{ product.price }} €</p>
+                        <p>Quantité disponible: {{ product.quantity }}</p>
+                        <p>Description:</p>
+                        <p>{{ product.description }}</p>
+                    </div>
                 </div>
-            </div>
-        {% elseif promo is defined %}
-            <div class="col-md-6">
-                <div class="border p-3">
-                    <img src="{{ asset('images/' ~ promo.idproduct.images) }}" class="img-fluid promo-image image-transition" alt="Image de la promotion">
+            {% elseif promo is defined %}
+                <div class="col-md-6">
+                    <div class="border p-3 nature-card">
+                        <img src="{{ asset('images/' ~ promo.idproduct.images) }}" class="img-fluid promo-image image-transition" alt="Image de la promotion">
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="promo-details">
-                    <h2>{{ promo.name }}</h2>
-                    <p>Réduction: {{ promo.reduction }}%</p>
-                    <p>Date de début: {{ promo.dateDebut|date('d/m/Y') }}</p>
-                    <p>Date de fin: {{ promo.dateFin|date('d/m/Y') }}</p>
-                    <p>Prix après promotion: {{ promo.priceafterpromo }} €</p>
-                    <p>Description:</p>
-                    <p>{{ promo.description }}</p>
+                <div class="col-md-6">
+                    <div class="promo-details nature-card">
+                        <h2 class="card-title">{{ promo.name }}</h2>
+                        <p>Réduction: {{ promo.reduction }}%</p>
+                        <p>Date de début: {{ promo.dateDebut|date('d/m/Y') }}</p>
+                        <p>Date de fin: {{ promo.dateFin|date('d/m/Y') }}</p>
+                        <p>Prix après promotion: {{ promo.priceafterpromo }} €</p>
+                        <p>Description:</p>
+                        <p>{{ promo.description }}</p>
+                    </div>
                 </div>
-            </div>
-        {% endif %}
-                            <a class="nav-link" href="/">< Retour</a>
-
+            {% endif %}
+            <a href="/" class="btn btn-details">< Retour</a>
+        </div>
     </div>
-    
-</div>
 
-<script>
-    // Ajout d'un effet de transition sur les images au survol
-    $('.image-transition').hover(function() {
-        $(this).toggleClass('scale-up'); // Zoom au survol
-    });
-</script>
+    <script>
+        // Ajout d'un effet de transition sur les images au survol
+        $('.image-transition').hover(function() {
+            $(this).toggleClass('scale-up'); // Zoom au survol
+        });
+    </script>
 {% endblock %}

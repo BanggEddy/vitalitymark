@@ -190,6 +190,6 @@ class __TwigTemplate_190929de6880c2ca9916cfb7acf16091 extends Template
   </div>
 </div>
 {% endblock %}
-", "user/uservue/user.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\user\\uservue\\user.html.twig");
+", "user/uservue/user.html.twig", "C:\\Users\\lidav\\OneDrive\\Bureau\\vitalitymark\\templates\\user\\uservue\\user.html.twig");
     }
 }

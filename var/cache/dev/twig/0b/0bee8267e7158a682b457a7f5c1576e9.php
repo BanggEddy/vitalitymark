@@ -26,7 +26,6 @@ class __TwigTemplate_6014f0c1f25ca7ab336ac9093467b158 extends Template
 
         $this->blocks = [
             'title' => [$this, 'block_title'],
-            'stylesheets' => [$this, 'block_stylesheets'],
             'body' => [$this, 'block_body'],
         ];
     }
@@ -63,87 +62,20 @@ class __TwigTemplate_6014f0c1f25ca7ab336ac9093467b158 extends Template
 
     }
 
-    // line 5
-    public function block_stylesheets($context, array $blocks = [])
-    {
-        $macros = $this->macros;
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
-
-        // line 6
-        echo "    ";
-        $this->displayParentBlock("stylesheets", $context, $blocks);
-        echo "
-    <style>
-        body {
-            background-color: #eaf5e1; /* Couleur verte pâle */
-            font-family: 'Arial', sans-serif; /* Police de caractère */
-        }
-
-        .container {
-            background-color: #fff; /* Fond blanc */
-            padding: 20px;
-            border-radius: 10px; /* Coins arrondis */
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
-            margin-top: 50px; /* Espace en haut */
-            transition: margin-top 0.3s ease; /* Transition de l'animation */
-        }
-
-        .container:hover {
-            margin-top: 40px; /* Déplacement vers le haut au survol */
-        }
-
-        h1 {
-            text-align: center; /* Centré */
-        }
-
-        label {
-            color: #4caf50; /* Vert foncé */
-        }
-
-        .form-group input {
-            border: 1px solid #4caf50; /* Bordure verte */
-            transition: transform 0.4s ease; /* Transition de l'animation */
-            padding: 10px; /* Ajout de marge interne pour éviter les chevauchements */
-            margin-bottom: 20px; /* Espacement entre les champs */
-        }
-
-        .form-group input:focus {
-            transform: translateY(0); /* Annuler le déplacement vers le haut lorsqu'il est sélectionné */
-        }
-
-        .form-group input:hover {
-            transform: translateY(-5px); /* Déplacement vers le haut au survol */
-        }
-
-        .btn-primary {
-            background-color: #4caf50; /* Fond vert */
-            border-color: #4caf50; /* Bordure verte */
-        }
-
-        .btn-primary:hover {
-            background-color: #388e3c; /* Fond vert foncé au survol */
-            border-color: #388e3c; /* Bordure verte foncée au survol */
-        }
-    </style>
-";
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-    }
-
-    // line 63
+    // line 6
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 64
-        echo "<div class=\"container\">
+        // line 7
+        echo "<br>
+<div class=\"container nature-card\">
+<br>
     <h1>Ajouter un nouveau produit</h1>
     <form action=\"";
-        // line 66
+        // line 11
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_create_product");
         echo "\" method=\"post\" enctype=\"multipart/form-data\">
         <div class=\"form-group\">
@@ -182,9 +114,13 @@ class __TwigTemplate_6014f0c1f25ca7ab336ac9093467b158 extends Template
             <label for=\"description\">Description:</label>
             <textarea class=\"form-control\" id=\"description\" name=\"description\" rows=\"3\" required></textarea>
         </div>
-        <button type=\"submit\" class=\"btn btn-primary\">Ajouter</button>
+        <br>
+        <button type=\"submit\" class=\"btn btn-details\">Ajouter</button>
+        <br><br>
     </form>
 </div>
+<br>
+
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -212,7 +148,7 @@ class __TwigTemplate_6014f0c1f25ca7ab336ac9093467b158 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  147 => 66,  143 => 64,  136 => 63,  74 => 6,  67 => 5,  54 => 3,  37 => 1,);
+        return array (  79 => 11,  73 => 7,  66 => 6,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -221,66 +157,11 @@ class __TwigTemplate_6014f0c1f25ca7ab336ac9093467b158 extends Template
 
 {% block title %}Ajouter un nouveau produit{% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <style>
-        body {
-            background-color: #eaf5e1; /* Couleur verte pâle */
-            font-family: 'Arial', sans-serif; /* Police de caractère */
-        }
-
-        .container {
-            background-color: #fff; /* Fond blanc */
-            padding: 20px;
-            border-radius: 10px; /* Coins arrondis */
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
-            margin-top: 50px; /* Espace en haut */
-            transition: margin-top 0.3s ease; /* Transition de l'animation */
-        }
-
-        .container:hover {
-            margin-top: 40px; /* Déplacement vers le haut au survol */
-        }
-
-        h1 {
-            text-align: center; /* Centré */
-        }
-
-        label {
-            color: #4caf50; /* Vert foncé */
-        }
-
-        .form-group input {
-            border: 1px solid #4caf50; /* Bordure verte */
-            transition: transform 0.4s ease; /* Transition de l'animation */
-            padding: 10px; /* Ajout de marge interne pour éviter les chevauchements */
-            margin-bottom: 20px; /* Espacement entre les champs */
-        }
-
-        .form-group input:focus {
-            transform: translateY(0); /* Annuler le déplacement vers le haut lorsqu'il est sélectionné */
-        }
-
-        .form-group input:hover {
-            transform: translateY(-5px); /* Déplacement vers le haut au survol */
-        }
-
-        .btn-primary {
-            background-color: #4caf50; /* Fond vert */
-            border-color: #4caf50; /* Bordure verte */
-        }
-
-        .btn-primary:hover {
-            background-color: #388e3c; /* Fond vert foncé au survol */
-            border-color: #388e3c; /* Bordure verte foncée au survol */
-        }
-    </style>
-{% endblock %}
-
-
 
 {% block body %}
-<div class=\"container\">
+<br>
+<div class=\"container nature-card\">
+<br>
     <h1>Ajouter un nouveau produit</h1>
     <form action=\"{{ path('app_create_product') }}\" method=\"post\" enctype=\"multipart/form-data\">
         <div class=\"form-group\">
@@ -319,10 +200,14 @@ class __TwigTemplate_6014f0c1f25ca7ab336ac9093467b158 extends Template
             <label for=\"description\">Description:</label>
             <textarea class=\"form-control\" id=\"description\" name=\"description\" rows=\"3\" required></textarea>
         </div>
-        <button type=\"submit\" class=\"btn btn-primary\">Ajouter</button>
+        <br>
+        <button type=\"submit\" class=\"btn btn-details\">Ajouter</button>
+        <br><br>
     </form>
 </div>
+<br>
+
 {% endblock %}
-", "admin/adminproducts/new.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\admin\\adminproducts\\new.html.twig");
+", "admin/adminproducts/new.html.twig", "C:\\Users\\lidav\\OneDrive\\Bureau\\vitalitymark\\templates\\admin\\adminproducts\\new.html.twig");
     }
 }

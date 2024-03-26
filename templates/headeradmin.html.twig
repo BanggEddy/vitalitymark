@@ -9,16 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     {% block stylesheets %}{% endblock %}
 </head>
-<style>
-  section2 {
-    background-color: #DBFFCA;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
 
-</style>
 <body>
 
     <header>
@@ -31,7 +22,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    {% if app.request.attributes.get('_route') != 'app_promo_admin_edit' %}
+                    {% if app.request.attributes.get('_route') not in ['app_promo_admin_edit', 'app_promo_admin_new'] %}
                         <li class="nav-item">
                             {{ form_start(form, {'attr': {'class': 'form-inline my-2 my-lg-0'}}) }}
                             {{ form_row(form.category, {'attr': {'class': 'form-control', 'placeholder': 'Rechercher', 'aria-label': 'Search'}}) }}
@@ -89,7 +80,7 @@
 <br>
 <br>
 
-<section2 class="row justify-content-around">
+<section2 class="justify-content-around">
     <div class="col-md-3">
         <div class="card">
             <div class="card-body">

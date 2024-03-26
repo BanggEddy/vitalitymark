@@ -3,9 +3,18 @@
 {% block title %}New Promo{% endblock %}
 
 {% block body %}
-    <h1>Create new Promo</h1>
 
-    {{ include('admin/promo_admin/_form.html.twig') }}
-
-    <a href="{{ path('app_promo_admin_index') }}">back to list</a>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6"> 
+      <div class="card nature-card">
+        <div class="card-body">
+          <h1 class="card-title mb-3">Create new Promo</h1>
+          {{ include('admin/promo_admin/_form.html.twig') }}
+          <a href="{{ path('app_promo_admin_index') }}" class="btn btn-details">back to list</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

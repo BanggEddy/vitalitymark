@@ -61,13 +61,6 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
         // line 11
         echo "</head>
 <style>
-  section2 {
-    background-color: #DBFFCA;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
   
   .card {
     background-color: white;
@@ -77,13 +70,16 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
     width: 200px;
     text-align: center;
   }
+    header {
+        font-size: 16px;
+    }
 </style>
 <body>
     <header>
-        <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
+    <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
             <a href=\"/\" style=\"text-decoration: none;\">
                 <img src=\"";
-        // line 34
+        // line 30
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
         echo "\" alt=\"Logo\" style=\"width: 150px; height: auto; border-radius: 50%; border: 4px solid #4CAF50; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s;\">
             </a>
@@ -96,12 +92,12 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
                 <ul class=\"navbar-nav\">
                     <li class=\"nav-item\">
                         ";
-        // line 44
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 44, $this->source); })()), 'form_start', ["attr" => ["class" => "form-inline my-2 my-lg-0"]]);
+        // line 40
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 40, $this->source); })()), 'form_start', ["attr" => ["class" => "form-inline my-2 my-lg-0"]]);
         echo "
                         ";
-        // line 45
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 45, $this->source); })()), "category", [], "any", false, false, false, 45), 'row', ["attr" => ["class" => "form-control", "placeholder" => "Rechercher", "aria-label" => "Search"]]);
+        // line 41
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 41, $this->source); })()), "category", [], "any", false, false, false, 41), 'row', ["attr" => ["class" => "form-control", "placeholder" => "Rechercher", "aria-label" => "Search"]]);
         echo "
                         <button type=\"submit\" class=\"btn btn-outline-success my-2 my-sm-0\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">
@@ -109,8 +105,8 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
                             </svg>
                         </button>
                         ";
-        // line 51
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 51, $this->source); })()), 'form_end');
+        // line 47
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 47, $this->source); })()), 'form_end');
         echo "
                     </li>
                     <li class=\"nav-item\">
@@ -119,7 +115,7 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
                 </ul>
                 <ul class=\"navbar-nav ml-auto\">
                     <form action=\"";
-        // line 58
+        // line 54
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("search");
         echo "\" method=\"post\" class=\"form-inline my-2 my-lg-0 mr-auto\">
                         <input class=\"form-control\" type=\"text\" name=\"keyword\" placeholder=\"Rechercher un produit\" aria-label=\"Search\">
@@ -146,31 +142,48 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
     </header>
 
             ";
-        // line 82
+        // line 78
         $this->displayBlock('body', $context, $blocks);
-        // line 84
+        // line 80
         echo "
 <br>
 <br>
 
-    <section2>
-    <div class=\"card\">
-        <h2>Obtenir de l'aide</h2>
-        <p>Des experts sont là pour vous aider.</p>
+<section2 class=\"justify-content-around\">
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>Obtenir de l'aide</h2>
+                <p>Des experts sont là pour vous aider.</p>
+            </div>
+        </div>
     </div>
-    <div class=\"card\">
-        <h2>Trouver un magasin</h2>
-        <p>Localisez nos magasins près de chez vous.</p>
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>Trouver un magasin</h2>
+                <p>Localisez nos magasins près de chez vous.</p>
+            </div>
+        </div>
     </div>
-    <div class=\"card\">
-        <h2>Télécharger l'application</h2>
-        <p>Accédez à nos services où que vous soyez.</p>
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>Télécharger l'application</h2>
+                <p>Accédez à nos services où que vous soyez.</p>
+            </div>
+        </div>
     </div>
-    <div class=\"card\">
-        <h2>FAQ & Questions?</h2>
-        <p>Trouver des réponses à vos questions.</p>
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>FAQ & Questions?</h2>
+                <p>Trouver des réponses à vos questions.</p>
+            </div>
+        </div>
     </div>
-    </section2>
+</section2>
+
     <!-- Inclure Bootstrap JS -->
     <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>
     <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js\"></script>
@@ -208,14 +221,14 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
 
     }
 
-    // line 82
+    // line 78
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 83
+        // line 79
         echo "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -243,7 +256,7 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  219 => 83,  212 => 82,  200 => 10,  187 => 5,  152 => 84,  150 => 82,  123 => 58,  113 => 51,  104 => 45,  100 => 44,  87 => 34,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
+        return array (  232 => 79,  225 => 78,  213 => 10,  200 => 5,  148 => 80,  146 => 78,  119 => 54,  109 => 47,  100 => 41,  96 => 40,  83 => 30,  62 => 11,  60 => 10,  56 => 9,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -260,13 +273,6 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
     {% block stylesheets %}{% endblock %}
 </head>
 <style>
-  section2 {
-    background-color: #DBFFCA;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
   
   .card {
     background-color: white;
@@ -276,10 +282,13 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
     width: 200px;
     text-align: center;
   }
+    header {
+        font-size: 16px;
+    }
 </style>
 <body>
     <header>
-        <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
+    <nav class=\"navbar navbar-expand-lg navbar-light navbar-custom\">
             <a href=\"/\" style=\"text-decoration: none;\">
                 <img src=\"{{ asset('images/logo.png') }}\" alt=\"Logo\" style=\"width: 150px; height: auto; border-radius: 50%; border: 4px solid #4CAF50; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s;\">
             </a>
@@ -335,30 +344,47 @@ class __TwigTemplate_1c708671d3aad3f172cce8f72cff3f77 extends Template
 <br>
 <br>
 
-    <section2>
-    <div class=\"card\">
-        <h2>Obtenir de l'aide</h2>
-        <p>Des experts sont là pour vous aider.</p>
+<section2 class=\"justify-content-around\">
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>Obtenir de l'aide</h2>
+                <p>Des experts sont là pour vous aider.</p>
+            </div>
+        </div>
     </div>
-    <div class=\"card\">
-        <h2>Trouver un magasin</h2>
-        <p>Localisez nos magasins près de chez vous.</p>
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>Trouver un magasin</h2>
+                <p>Localisez nos magasins près de chez vous.</p>
+            </div>
+        </div>
     </div>
-    <div class=\"card\">
-        <h2>Télécharger l'application</h2>
-        <p>Accédez à nos services où que vous soyez.</p>
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>Télécharger l'application</h2>
+                <p>Accédez à nos services où que vous soyez.</p>
+            </div>
+        </div>
     </div>
-    <div class=\"card\">
-        <h2>FAQ & Questions?</h2>
-        <p>Trouver des réponses à vos questions.</p>
+    <div class=\"col-md-3\">
+        <div class=\"card\">
+            <div class=\"card-body\">
+                <h2>FAQ & Questions?</h2>
+                <p>Trouver des réponses à vos questions.</p>
+            </div>
+        </div>
     </div>
-    </section2>
+</section2>
+
     <!-- Inclure Bootstrap JS -->
     <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>
     <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js\"></script>
     <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>
 </body>
 </html>
-", "header.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\header.html.twig");
+", "header.html.twig", "C:\\Users\\lidav\\OneDrive\\Bureau\\vitalitymark\\templates\\header.html.twig");
     }
 }

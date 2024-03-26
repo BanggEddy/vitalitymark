@@ -484,6 +484,6 @@ class __TwigTemplate_f8f3557b72e4c84f2d1ef58e85515a62 extends Template
     {% endif %}
 </div>
 {% endblock %}
-", "accueil/search.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\accueil\\search.html.twig");
+", "accueil/search.html.twig", "C:\\Users\\lidav\\OneDrive\\Bureau\\vitalitymark\\templates\\accueil\\search.html.twig");
     }
 }

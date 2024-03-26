@@ -296,6 +296,6 @@ class __TwigTemplate_058969131b1ced473dbddb077d3ddc46 extends Template
         </div>
     </div>
 </div>
-{% endblock %}", "user/uservue/card.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\user\\uservue\\card.html.twig");
+{% endblock %}", "user/uservue/card.html.twig", "C:\\Users\\lidav\\OneDrive\\Bureau\\vitalitymark\\templates\\user\\uservue\\card.html.twig");
     }
 }

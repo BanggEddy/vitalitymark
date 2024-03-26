@@ -34,7 +34,7 @@ class PromoType extends AbstractType
             ->add('quantity')
             ->add('idproduct', EntityType::class, [
                 'class' => Products::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
             ]);
     }
 

@@ -273,6 +273,6 @@ class __TwigTemplate_19450e03a9f0767f5b03edfc3c335807 extends Template
     </div>
 </div>
 {% endblock %}
-", "admin/adminproducts/delete.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\admin\\adminproducts\\delete.html.twig");
+", "admin/adminproducts/delete.html.twig", "C:\\Users\\lidav\\OneDrive\\Bureau\\vitalitymark\\templates\\admin\\adminproducts\\delete.html.twig");
     }
 }

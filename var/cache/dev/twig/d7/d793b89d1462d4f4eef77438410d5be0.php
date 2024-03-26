@@ -554,6 +554,6 @@ class __TwigTemplate_ef781f65281f748ec82349c5b1698d8a extends Template
     </div>
 </div>
 {% endblock %}
-", "user/uservue/index.html.twig", "C:\\Users\\David\\Desktop\\vitalitymark\\templates\\user\\uservue\\index.html.twig");
+", "user/uservue/index.html.twig", "C:\\Users\\lidav\\OneDrive\\Bureau\\vitalitymark\\templates\\user\\uservue\\index.html.twig");
     }
 }

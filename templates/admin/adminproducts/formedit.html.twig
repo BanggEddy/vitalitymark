@@ -3,9 +3,12 @@
 {% block title %}Édition d'un produit{% endblock %}
 
 {% block body %}
-<div class="container">
+<br>
+<div class="container nature-card">
+<br>
     <h1>Édition d'un produit</h1>
-    <form action="{{ path('app_edit_product', {'id': product.id}) }}" method="post"  enctype="multipart/form-data">
+    <br>
+    <form action="{{ path('app_edit_product', {'id': product.id}) }}" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Nom du produit</label>
             <input type="text" class="form-control" id="name" name="name" value="{{ product.name }}">
@@ -16,7 +19,19 @@
         </div>
         <div class="form-group">
             <label for="category">Catégorie</label>
-            <input type="text" class="form-control" id="category" name="category" value="{{ product.category }}">
+            <select class="form-control" id="category" name="category">
+                <option value="">Sélectionner une catégorie</option>
+                <option value="Produits frais" {% if product.category == 'Produits frais' %} selected {% endif %}>Produits frais</option>
+                <option value="Épicerie" {% if product.category == 'Épicerie' %} selected {% endif %}>Épicerie</option>
+                <option value="Boulangerie" {% if product.category == 'Boulangerie' %} selected {% endif %}>Boulangerie</option>
+                <option value="Surgelés" {% if product.category == 'Surgelés' %} selected {% endif %}>Surgelés</option>
+                <option value="Boissons" {% if product.category == 'Boissons' %} selected {% endif %}>Boissons</option>
+                <option value="Produits d'hygiène et de beauté" {% if product.category == 'Produits d\'hygiène et de beauté' %} selected {% endif %}>Produits d'hygiène et de beauté</option>
+                <option value="Entretien ménager" {% if product.category == 'Entretien ménager' %} selected {% endif %}>Entretien ménager</option>
+                <option value="Articles pour bébés et enfants" {% if product.category == 'Articles pour bébés et enfants' %} selected {% endif %}>Articles pour bébés et enfants</option>
+                <option value="Produits de santé" {% if product.category == 'Produits de santé' %} selected {% endif %}>Produits de santé</option>
+                <option value="Articles pour animaux de compagnie" {% if product.category == 'Articles pour animaux de compagnie' %} selected {% endif %}>Articles pour animaux de compagnie</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="image">Image du produit</label>
@@ -35,7 +50,9 @@
             <label for="description">Description</label>
             <textarea class="form-control" id="description" name="description">{{ product.description }}</textarea>
         </div>
-        <button type="submit" class="btn btn-">Enregistrer</button>
+        <button type="submit" class="btn btn-details">Enregistrer</button>
+        <br>
     </form>
+    <br>
 </div>
 {% endblock %}

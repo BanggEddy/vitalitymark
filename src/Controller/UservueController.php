@@ -259,10 +259,12 @@ class UservueController extends AbstractController
 
                 // Ajouter les détails du produit au panier
                 $panierDetails[] = [
+                    'id' => $panier->getId(),
                     'images' => $product->getImages(),
                     'name' => $product->getName(),
                     'price' => $productPrice,
                     'quantity' => $panier->getQuantity(),
+                    'description' => $product->getDescription(),
                     'subtotal' => $productPrice * $panier->getQuantity(),
                     'reduction' => $reduction, // La réduction est nulle pour les produits
                 ];
@@ -275,6 +277,7 @@ class UservueController extends AbstractController
 
                 // Ajouter les détails de la promotion au panier
                 $panierDetails[] = [
+                    'id' => $panier->getId(),
                     'images' => $promo->getIdproduct()->getImages(), // Utiliser les images du produit associé à la promotion
                     'name' => $promo->getIdproduct()->getName(), // Utiliser le nom du produit associé à la promotion
                     'price' => $productPrice,
@@ -633,5 +636,69 @@ class UservueController extends AbstractController
             'form' => $form->createView(),
             'totalPrice' => $totalPrice,
         ]);
+    }
+
+    #[Route('/update-quantity', name: 'update_quantity', methods: ['POST'])]
+    public function updateQuantity(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        // Récupérer les données de la requête AJAX
+        $panierId = $request->request->get('panierId');
+        $action = $request->request->get('action');
+
+        // Récupérer le repository du Panier
+        $panierRepository = $entityManager->getRepository(Panier::class);
+
+        // Récupérer le panier à partir de son ID
+        $panier = $panierRepository->find($panierId);
+
+        // Vérifier si le panier existe
+        if (!$panier) {
+            return new Response('Le panier n\'existe pas.', Response::HTTP_NOT_FOUND);
+        }
+
+        // Vérifier l'action demandée (ajouter ou soustraire)
+        if ($action === 'add') {
+            // Augmenter la quantité dans le panier
+            $panier->setQuantity($panier->getQuantity() + 1);
+
+            // Vérifier si le panier contient un produit ordinaire ou une promotion
+            if ($panier->getIdproducts()) {
+                // Décrémenter la quantité du produit
+                $product = $panier->getIdproducts();
+                $product->setQuantity($product->getQuantity() - 1);
+            } elseif ($panier->getIdpromo()) {
+                // Décrémenter la quantité de la promotion
+                $promo = $panier->getIdpromo();
+                $promo->setQuantity($promo->getQuantity() - 1);
+            }
+        } elseif ($action === 'subtract') {
+            // Vérifier si la quantité dans le panier est supérieure à zéro
+            if ($panier->getQuantity() <= 0) {
+                return new Response('La quantité du panier est déjà zéro.', Response::HTTP_BAD_REQUEST);
+            }
+
+            // Réduire la quantité dans le panier
+            $panier->setQuantity($panier->getQuantity() - 1);
+
+            // Vérifier si le panier contient un produit ordinaire ou une promotion
+            if ($panier->getIdproducts()) {
+                // Incrémenter la quantité du produit
+                $product = $panier->getIdproducts();
+                $product->setQuantity($product->getQuantity() + 1);
+            } elseif ($panier->getIdpromo()) {
+                // Incrémenter la quantité de la promotion
+                $promo = $panier->getIdpromo();
+                $promo->setQuantity($promo->getQuantity() + 1);
+            }
+        } else {
+            // Action non reconnue
+            return new Response('Action non valide.', Response::HTTP_BAD_REQUEST);
+        }
+
+        // Enregistrer les modifications dans la base de données
+        $entityManager->flush();
+
+        // Retourner une réponse indiquant le succès
+        return new Response('La quantité du panier a été mise à jour avec succès.', Response::HTTP_OK);
     }
 }
